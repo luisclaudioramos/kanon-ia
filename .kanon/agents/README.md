@@ -4,7 +4,7 @@ Coleção de 12 personas de IA que representam papéis de um time de engenharia 
 
 Cada arquivo é **autocontido**: pode ser copiado e colado como prompt de sistema em qualquer IA de chat (ChatGPT, Gemini, Cursor, Claude, etc.) ou usado como subagente no Claude Code, sem depender dos outros arquivos desta pasta. Termos técnicos estão linkados ao [Glossário](GLOSSARIO.md) na primeira ocorrência em cada arquivo.
 
-Todos os 12 papéis operam sob o contrato operacional comum definido em [`../process/`](../process/README.md) — como agir em sequência previsível, como formatar saída, como fazer handoff, e o que fazer quando algo falha.
+Todos os 12 papéis operam sob o contrato operacional comum definido em [`../process/`](../process/README.md) — como agir em sequência previsível, como formatar saída, como fazer [handoff](../process/GLOSSARIO.md#handoff), e o que fazer quando algo falha.
 
 ## O time e o fluxo de trabalho
 

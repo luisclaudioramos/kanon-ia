@@ -37,3 +37,7 @@ Este índice é a "Constituição" do sistema completo: harness (`.kanon/`) + sk
 - [`reference/boas-praticas-dev/`](../reference/boas-praticas-dev) define **o que é** qualidade técnica (princípios, testes, segurança, etc.).
 - [`agents/`](../agents) define **quem** aplica essas práticas, sob qual lente e em que ponto do fluxo.
 - `process/` (esta pasta) define **como** o conjunto de agentes opera de forma previsível, inclusive quando algo falha.
+
+## Glossário
+
+[`GLOSSARIO.md`](GLOSSARIO.md) cobre o vocabulário específico do mecanismo do harness (Selo, Gate, Fan-out, Handoff, Envelope de Retorno, RAG, BM25, Tier de Modelo, etc.) — termos que `skills/`, `agents/` e `templates/` usam sem redefinir. Termos de engenharia de software em geral estão em [`reference/boas-praticas-dev/GLOSSARIO.md`](../reference/boas-praticas-dev/GLOSSARIO.md); termos de produto/UX/dados estão em [`agents/GLOSSARIO.md`](../agents/GLOSSARIO.md).

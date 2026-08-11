@@ -4,7 +4,7 @@
 Gerar os arquivos `TEST-CASE.md` derivados dos Acceptance Criteria (ou das Repro Steps, no caso de Bugs), usando linguagem Gherkin (Dado-Quando-Então) e cobrindo 100% dos AC.
 
 ## Fase / Posição no fluxo
-Fase 4 — Desenvolvimento e Testes. Roda em paralelo à implementação, alimentando [`14-qualification`](../14-qa-validation/SKILL.md) e [`28-test-report`](../28-test-report/SKILL.md).
+Fase 4 — Desenvolvimento e Testes. Roda em paralelo à implementação, alimentando [`14-qa-validation`](../14-qa-validation/SKILL.md) e [`28-test-report`](../28-test-report/SKILL.md).
 
 ## Entradas
 - Acceptance Criteria da User Story (skill 05) ou Repro Steps do Bug (skill 32).
@@ -21,4 +21,4 @@ Fase 4 — Desenvolvimento e Testes. Roda em paralelo à implementação, alimen
 - `agentes-ia/QA-ENGINEER.md`, `05-refine-user-stories`, `32-report-bug`.
 
 ## Procedimento em caso de falha
-Um AC sem caso de teste correspondente bloqueia a skill `14-qualification` — a lacuna é reportada, não ignorada.
+Um AC sem caso de teste correspondente bloqueia a skill `14-qa-validation` — a lacuna é reportada, não ignorada.

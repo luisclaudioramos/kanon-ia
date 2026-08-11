@@ -13,22 +13,13 @@ _Breadcrumb: [Feature](./FEATURE.md) > Plan v_[preencher: número da versão]_
 ### Fora do escopo (Out)
 - _[preencher]_
 
-## Design Gate — 2 alternativas obrigatórias
+## Decisão herdada do Design Gate
+A escolha entre as ≥2 alternativas de alto nível já foi feita e aprovada por um humano em [DESIGN.md](./DESIGN.md) (skill 41, antes desta Feature Specification existir) — este Plano não reabre essa decisão, apenas a referencia:
 
-### Alternativa A: _[preencher: nome]_
-- Descrição: _[preencher]_
-- Prós: _[preencher]_
-- Contras: _[preencher]_
+**Alternativa escolhida**: _[preencher: copiar de DESIGN.md]_
+**Justificativa**: _[preencher: copiar de DESIGN.md]_
 
-### Alternativa B: _[preencher: nome]_
-- Descrição: _[preencher]_
-- Prós: _[preencher]_
-- Contras: _[preencher]_
-
-## Decisão final
-**Escolhida**: _[preencher: A ou B]_
-**Decidido por**: _[preencher: TECH-LEAD/ARCHITECT]_
-**Justificativa**: _[preencher]_
+Se a análise técnica profunda (`reports/architecture-assessment.md`, skill 04) invalidar essa escolha, o rollback volta para o Design Gate — não é decidido de novo aqui, silenciosamente.
 
 Ver detalhamento técnico em [ARCHITECTURE.md](./ARCHITECTURE.md).
 

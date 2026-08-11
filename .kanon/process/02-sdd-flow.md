@@ -1,14 +1,15 @@
 # 02 — SDD Flow (Spec-Driven Development Pipeline)
 
 ## Propósito
-Descrever o fluxo macro e sequencial de desenvolvimento — do Requirement Summary até o registro em `MEMORY.md` — ditando a ordem em que as skills numeradas (01 a 32) devem ser acionadas.
+Descrever o fluxo macro e sequencial de desenvolvimento — do Requirement Summary até o registro em `MEMORY.md` — ditando a ordem em que as skills numeradas (00 a 41) devem ser acionadas.
 
 ## Quando se aplica
 Em qualquer atividade de desenvolvimento não trivial, do levantamento do requisito até o registro final de conhecimento aprendido.
 
 ## Regras
-- O fluxo segue a ordem macro: **Requirement Summary → Especificação/Design → Plano → Implementação → Validação → Registro em `MEMORY.md`**.
-- Cada skill numerada (01–32) tem uma posição definida nesse pipeline; uma skill não é acionada fora de ordem sem justificativa explícita e registrada.
+- O fluxo segue a ordem macro: **Requirement Summary → Design Gate → Especificação/Design → Plano → Implementação → Validação → Registro em `MEMORY.md`**.
+- O Design Gate (`41-design-gate`) é um hard gate entre o Requirement Summary e a Feature Specification: sem `DESIGN.md` aprovado por um humano, a Feature Specification (skills 01-03) não produz artefato — reforçado por `.claude/hooks/design-gate-approval-gate.js`, não apenas por convenção.
+- Cada skill numerada (00–41) tem uma posição definida nesse pipeline; uma skill não é acionada fora de ordem sem justificativa explícita e registrada.
 - O pipeline mapeia para a sequência de papéis descrita em [`agentes-ia/README.md`](../agents/README.md) (PO → UI-UX-DESIGNER → ARCHITECT → ... → SRE), mas opera no nível de skills, não de papéis — uma skill pode acionar um ou mais agentes.
 - Nenhuma etapa é considerada concluída sem o artefato correspondente existir de fato (Requirement Summary escrito, plano registrado, runbook gerado, etc.).
 - Ao final do fluxo, o aprendizado relevante da feature é registrado em `MEMORY.md` — o fluxo não termina na implementação.

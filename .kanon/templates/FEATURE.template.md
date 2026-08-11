@@ -28,4 +28,4 @@ Além do DoD global (`process/05-definition-of-done.md`):
 - [ ] _[preencher: critério adicional específico desta Feature, se houver]_
 
 ## Documentos relacionados
-- [Plan](./PLAN.md) · [Architecture](./ARCHITECTURE.md) · [Instructions](./INSTRUCTIONS.md)
+- [Design Gate](./DESIGN.md) · [Plan](./PLAN.md) · [Architecture](./ARCHITECTURE.md) · [Instructions](./INSTRUCTIONS.md)

@@ -10,6 +10,8 @@ Todos os 12 papéis operam sob o contrato operacional comum definido em [`../pro
 
 O fluxo abaixo é sequencial por padrão, mas com dois tipos de papel que atravessam todas as fases: **TECH-LEAD** e **SCRUM-MASTER** (cross-cutting), e um shift-left explícito do **QA-ENGINEER**, que entra desde a arquitetura — não só no final.
 
+Antes mesmo deste fluxo, o **Design Gate** (`skills/41-design-gate`) já aciona ARCHITECT — e UI-UX-DESIGNER quando a Feature envolve interface — para um esboço de alto nível com aprovação humana obrigatória; só depois disso a sequência abaixo começa a produzir os artefatos detalhados.
+
 ```
 PO → UI-UX-DESIGNER → ARCHITECT → TECH-LEAD ─┬→ BACKEND-ENGINEER  ─┐
         │                                      ├→ FRONTEND-ENGINEER ─┼→ CODE-REVIEWER → SECURITY-ENGINEER → QA-ENGINEER (validação final) → SRE
@@ -27,8 +29,8 @@ Cruzando todas as fases: TECH-LEAD (autoridade técnica/desempate) e SCRUM-MASTE
 | Papel | Missão em uma linha | Entra em cena |
 |---|---|---|
 | [PO](AGENT-PO.md) | Definir o quê e o porquê, com critérios de aceite claros | Início de tudo |
-| [UI-UX-DESIGNER](AGENT-UI-UX-DESIGNER.md) | Desenhar fluxo de interação, wireframes e usabilidade | Após o PO, antes do ARCHITECT |
-| [ARCHITECT](AGENT-ARCHITECT.md) | Desenhar a estrutura técnica da solução | Após requisito e fluxo definidos |
+| [UI-UX-DESIGNER](AGENT-UI-UX-DESIGNER.md) | Desenhar fluxo de interação, wireframes e usabilidade | Após o PO, antes do ARCHITECT; já no Design Gate (skill 41) se a Feature envolve interface |
+| [ARCHITECT](AGENT-ARCHITECT.md) | Desenhar a estrutura técnica da solução | Já no Design Gate (skill 41, esboço de alto nível) e depois na Architecture Assessment (skill 04, análise profunda) |
 | [TECH-LEAD](AGENT-TECH-LEAD.md) | Validar viabilidade técnica e ser autoridade de desempate | Transversal |
 | [QA-ENGINEER](AGENT-QA-ENGINEER.md) | Garantir testabilidade desde o desenho e validar o resultado | Desde a arquitetura (shift-left) e na validação final |
 | [BACKEND-ENGINEER](AGENT-BACKEND-ENGINEER.md) | Implementar a lógica de servidor/domínio | Implementação |

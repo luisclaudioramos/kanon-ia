@@ -1,7 +1,7 @@
 # Setup — Configuração Inicial do Harness
 
 ## Propósito
-Diferente das 41 skills numeradas, `setup` não é uma skill de pipeline — é a instalação única do sistema, executada apenas na primeira inicialização do ambiente. Por isso vive como pasta (`skills/setup/`), não como um `.md` numerado solto.
+Diferente das 42 skills numeradas, `setup` não é uma skill de pipeline — é a instalação única do sistema, executada apenas na primeira inicialização do ambiente. Por isso vive como pasta (`skills/setup/`), não como um `.md` numerado solto.
 
 ## Quando se aplica
 Uma única vez, antes de [`00-harness-runtime`](../00-harness-runtime/SKILL.md) rodar pela primeira vez em um ambiente novo.

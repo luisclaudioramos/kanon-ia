@@ -34,7 +34,7 @@ Disparo de múltiplos subagentes em paralelo a partir de um [handoff](#handoff),
 
 <a id="gate"></a>
 ### Gate
-Checkpoint de validação que aceita ou rejeita um artefato antes que ele avance no pipeline — implementado como [hook](#hook) `PreToolUse`. O [`09-identity-seals-gate.md`](09-identity-seals-gate.md) é o gate mestre, executado antes de qualquer gate especializado (ex.: [`10-core-agnosticism-gate.md`](10-core-agnosticism-gate.md)). Um artefato rejeitado por um gate volta para quem o gerou, nunca segue adiante "com ressalva".
+Checkpoint de validação que aceita ou rejeita um artefato antes que ele avance no pipeline. O [`09-identity-seals-gate.md`](09-identity-seals-gate.md) é o gate mestre, executado antes de qualquer gate especializado (ex.: [`10-core-agnosticism-gate.md`](10-core-agnosticism-gate.md)). Nem todo gate tem um [hook](#hook) `PreToolUse` real por trás — o Design Gate (`skills/41-design-gate`, reforçado por `design-gate-approval-gate.js`) tem; o Quality Gate (`skills/11-quality-gate`) hoje é aplicado pelo agente, sem hook próprio. Um artefato rejeitado por um gate volta para quem o gerou, nunca segue adiante "com ressalva".
 
 <a id="handoff"></a>
 ### Handoff
@@ -74,7 +74,7 @@ Contrato de inicialização do [harness](#harness) — variáveis de ambiente, c
 
 <a id="sdd"></a>
 ### SDD (Spec-Driven Development)
-Fluxo de desenvolvimento em que a especificação (Requirement Summary, arquitetura, User Stories, Tasks) precede e governa a implementação, ao invés de o código ser escrito antes de o requisito estar claro. É o pipeline macro que ordena as 41 skills. Ver [`02-sdd-flow.md`](02-sdd-flow.md).
+Fluxo de desenvolvimento em que a especificação (Requirement Summary, arquitetura, User Stories, Tasks) precede e governa a implementação, ao invés de o código ser escrito antes de o requisito estar claro. É o pipeline macro que ordena as 42 skills. Ver [`02-sdd-flow.md`](02-sdd-flow.md).
 
 <a id="selo"></a>
 ### Selo (Selo de Identidade)
@@ -86,4 +86,4 @@ Estimativa dos custos de infraestrutura, licenciamento, manutenção e operaçã
 
 <a id="tier"></a>
 ### Tier de Modelo / Tier de Esforço
-Classificação de toda tarefa por esforço exigido (**High/Medium/Low**), roteada para o tier de modelo mínimo correspondente (**Forte/Intermediário/Rápido**) — nunca para um tier mais fraco que o exigido. É o mecanismo por trás do [Selo II](#selo). Ver [`08-model-orchestration.md`](08-model-orchestration.md).
+Classificação de toda tarefa por esforço exigido (**XHigh/High/Medium/Low**), roteada para o tier de modelo mínimo correspondente (**Forte/Forte/Intermediário/Rápido**) — nunca para um tier mais fraco que o exigido. XHigh é reservado para decisões de governança do próprio pipeline (ex. [Design Gate](#gate)) e nunca aceita fallback de tier por indisponibilidade. É o mecanismo por trás do [Selo II](#selo). Ver [`08-model-orchestration.md`](08-model-orchestration.md).

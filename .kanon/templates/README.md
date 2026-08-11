@@ -9,10 +9,11 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 ### Grupo 1 — Arquitetura e Planejamento Mestre
 | Template | Gerado/usado por |
 |---|---|
-| [PLAN.template.md](PLAN.template.md) | Plano mestre da Feature, com as 2 alternativas do Design Gate |
+| [REQUIREMENT-SUMMARY.template.md](REQUIREMENT-SUMMARY.template.md) | Brief executivo, gerado por `skills/39-generate-requirement-summary` |
+| [DESIGN.template.md](DESIGN.template.md) | Hard gate de ≥2 alternativas de alto nível, gerado por `skills/41-design-gate` — bloqueia os 3 abaixo até `APPROVED` |
+| [PLAN.template.md](PLAN.template.md) | Plano mestre da Feature; herda a decisão já aprovada em `DESIGN.md` |
 | [ARCHITECTURE.template.md](ARCHITECTURE.template.md) | ADR gerado por `skills/04-architecture-assessment` |
 | [FEATURE.template.md](FEATURE.template.md) | Especificação funcional, gerada por `skills/03-create-feature-artifacts` |
-| [REQUIREMENT-SUMMARY.template.md](REQUIREMENT-SUMMARY.template.md) | Brief executivo, gerado por `skills/39-generate-requirement-summary` |
 
 ### Grupo 2 — Refino e Desdobramento
 | Template | Gerado/usado por |

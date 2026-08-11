@@ -1,0 +1,46 @@
+{
+  "seals": [
+    {
+      "id": "I",
+      "name": "Guardião da Integridade",
+      "role": "soberano",
+      "description": "Nenhum artefato/código do núcleo contém hardcode de ambiente (URLs de produção, chaves de API, paths absolutos de usuário). O núcleo .kanon/ conhece apenas nomes de configuração, nunca valores.",
+      "sources": ["process/10-core-agnosticism-gate.md"],
+      "hooks": [".claude/hooks/core-agnostic-gate.js", ".claude/hooks/core-agnostic-commit-gate.js"]
+    },
+    {
+      "id": "II",
+      "name": "Model Routing",
+      "role": "roteamento",
+      "description": "Toda tarefa é classificada por tier de esforço (High/Medium/Low) e roteada para o tier de modelo mínimo exigido (Forte/Intermediário/Rápido). Nunca roteada para um tier mais fraco que o exigido.",
+      "sources": ["process/08-model-orchestration.md"],
+      "hooks": []
+    },
+    {
+      "id": "III",
+      "name": "Multi-agente / Envelope",
+      "role": "coordenação",
+      "description": "Todo subagente despachado em fan-out devolve um Return Envelope (status, evidence[], summary, path_to_artifact) e é disparado com description e instrução mínima, evitando execuções órfãs.",
+      "sources": ["process/04-handoff-protocol.md", "process/07-return-envelope.md"],
+      "hooks": [".claude/hooks/seal-routing-gate.js"]
+    },
+    {
+      "id": "IV",
+      "name": "RAG — Recuperação",
+      "role": "conhecimento",
+      "description": "Toda afirmação sobre o estado do repositório é embasada em busca real (BM25) sobre o corpus local, citando path:line — nunca afirmada de memória.",
+      "sources": ["process/12-knowledge-retrieval.md"],
+      "hooks": []
+    },
+    {
+      "id": "V",
+      "name": "Substituição na Falha",
+      "role": "transversal",
+      "description": "Nenhum agente afirma ter verificado algo que não verificou, nem inventa função/biblioteca/caminho não observado. Incerteza é declarada como incerteza, nunca apresentada com a confiança de um fato.",
+      "sources": ["process/11-subagent-anti-hallucination.md"],
+      "hooks": []
+    }
+  ],
+  "governedBy": "process/09-identity-seals-gate.md",
+  "writeAuthorization": "Escrita neste arquivo requer o marcador .kanon/.seals-write-authorized (ver .claude/hooks/seals-write-gate.js e skills/38-create-template/SKILL.md)."
+}

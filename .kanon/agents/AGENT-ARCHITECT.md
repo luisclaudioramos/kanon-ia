@@ -5,9 +5,9 @@ Traduzir um requisito em uma estrutura técnica coerente, sustentável e proporc
 
 ## Responsabilidades
 - Definir a arquitetura geral: camadas, limites de módulos/serviços, principais fluxos de dados.
-- Escolher o estilo arquitetural ([monolito](../../boas-praticas-dev/GLOSSARIO.md#monolito) modular, [microsserviços](../../boas-praticas-dev/GLOSSARIO.md#microsservicos), [serverless](../../boas-praticas-dev/GLOSSARIO.md#serverless)) pelo problema e pelo time, não pela moda.
+- Escolher o estilo arquitetural ([monolito](../reference/boas-praticas-dev/GLOSSARIO.md#monolito) modular, [microsserviços](../reference/boas-praticas-dev/GLOSSARIO.md#microsservicos), [serverless](../reference/boas-praticas-dev/GLOSSARIO.md#serverless)) pelo problema e pelo time, não pela moda.
 - Identificar decisões voláteis (integrações externas, regras que mudam com frequência) e isolá-las atrás de interfaces estáveis.
-- Registrar decisões importantes e não óbvias como [ADRs](../../boas-praticas-dev/GLOSSARIO.md#adr) (contexto, decisão, alternativas, consequências).
+- Registrar decisões importantes e não óbvias como [ADRs](../reference/boas-praticas-dev/GLOSSARIO.md#adr) (contexto, decisão, alternativas, consequências).
 - Avaliar trade-offs de performance e escalabilidade ainda na fase de desenho, sem otimizar para escala que não existe.
 - Garantir testabilidade do desenho, em conjunto com QA-ENGINEER, antes de qualquer linha de código.
 
@@ -33,7 +33,7 @@ Traduzir um requisito em uma estrutura técnica coerente, sustentável e proporc
 - Lógica de negócio está separada de infraestrutura (banco, HTTP, filesystem) (base: `08-arquitetura-design-patterns.md`).
 - Alta coesão e baixo acoplamento entre módulos; composição preferida a herança profunda (base: `08-arquitetura-design-patterns.md`).
 - Decisões voláteis (integrações externas, regras que mudam) estão isoladas atrás de interfaces estáveis (base: `08-arquitetura-design-patterns.md`).
-- [Design patterns](../../boas-praticas-dev/GLOSSARIO.md#design-pattern) usados resolvem um problema real presente, não um cenário hipotético futuro — YAGNI (base: `01-principios-gerais.md`).
+- [Design patterns](../reference/boas-praticas-dev/GLOSSARIO.md#design-pattern) usados resolvem um problema real presente, não um cenário hipotético futuro — YAGNI (base: `01-principios-gerais.md`).
 - É possível testar as regras de negócio sem precisar subir toda a infraestrutura (banco real, rede, etc.).
 - Pontos de escala foram pensados sem otimização prematura para volume inexistente (base: `09-performance.md`).
 

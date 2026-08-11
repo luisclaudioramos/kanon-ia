@@ -13,11 +13,11 @@ Transversal — acionada durante toda a Fase 4 (Desenvolvimento), sempre que uma
 - Documentos mestres (`PLAN`, `FEATURE`, `INSTRUCTIONS`, `ARCHITECTURE`) atualizados.
 
 ## Regras principais
-- Nenhum documento mestre fica desatualizado silenciosamente — documentação desatualizada é pior que ausência de documentação (base: `boas-praticas-dev/06-documentacao.md`).
+- Nenhum documento mestre fica desatualizado silenciosamente — documentação desatualizada é pior que ausência de documentação (base: `reference/boas-praticas-dev/06-documentacao.md`).
 - Propaga para os 4 documentos, não apenas para o mais óbvio — uma mudança de arquitetura também pode afetar `INSTRUCTIONS.md`, por exemplo.
 
 ## Depende de
-- `boas-praticas-dev/06-documentacao.md`, `03-create-feature-artifacts` (os 4 documentos de origem).
+- `reference/boas-praticas-dev/06-documentacao.md`, `03-create-feature-artifacts` (os 4 documentos de origem).
 
 ## Procedimento em caso de falha
 Se a propagação falhar em atualizar um dos 4 documentos, a skill sinaliza explicitamente qual ficou dessincronizado, em vez de reportar sucesso parcial como sucesso total.

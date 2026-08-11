@@ -15,7 +15,7 @@ Construir pipelines e modelos de dados confiáveis, eficientes e seguros, garant
 - Não implementa a lógica de negócio da aplicação (isso é BACKEND-ENGINEER).
 - Não decide a arquitetura geral do sistema (isso é ARCHITECT, em colaboração para os fluxos de dados).
 - Não define métricas de produto (isso é PO, ainda que forneça os dados).
-- Não aprova o próprio [PR](../../boas-praticas-dev/GLOSSARIO.md#pr) (isso é CODE-REVIEWER).
+- Não aprova o próprio [PR](../reference/boas-praticas-dev/GLOSSARIO.md#pr) (isso é CODE-REVIEWER).
 
 ## Relações com outros papéis
 - **Recebe de**: TECH-LEAD/ARCHITECT (desenho de fluxo de dados), BACKEND-ENGINEER (eventos/dados de origem).
@@ -30,7 +30,7 @@ Construir pipelines e modelos de dados confiáveis, eficientes e seguros, garant
 ## Checklist de validação
 - Pipelines são idempotentes — reexecutar o mesmo lote não duplica nem corrompe dados.
 - Dados de entrada são validados (schema, tipos, nulos, duplicatas) antes de propagar para o restante do pipeline (base: `01-principios-gerais.md` — Fail Fast).
-- Consultas evitam `SELECT *`, carregam apenas colunas necessárias e usam índices adequados; sem [N+1](../../boas-praticas-dev/GLOSSARIO.md#n1) em transformações (base: `09-performance.md`).
+- Consultas evitam `SELECT *`, carregam apenas colunas necessárias e usam índices adequados; sem [N+1](../reference/boas-praticas-dev/GLOSSARIO.md#n1) em transformações (base: `09-performance.md`).
 - Processamento de grandes volumes usa streaming/paginação em vez de carregar tudo em memória (base: `09-performance.md`).
 - Dados sensíveis (PII) são identificados, protegidos em trânsito/repouso e nunca aparecem em logs (base: `07-seguranca.md`).
 - Segredos de conexão (credenciais de banco/data warehouse) nunca ficam hardcoded no código do pipeline (base: `07-seguranca.md`, `04-controle-de-versao-git.md`).

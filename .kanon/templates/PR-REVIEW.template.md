@@ -10,7 +10,7 @@ _Gerado/gerenciado por `skills/34-pull-request-review`._
 - [ ] Cobertura de testes para o comportamento novo e casos de borda
 - [ ] Documentação atualizada quando aplicável
 - [ ] Sem duplicação evitável (DRY)
-- [ ] Nomenclatura em inglês, revela intenção (`boas-praticas-dev/02-estilo-de-codigo.md`)
+- [ ] Nomenclatura em inglês, revela intenção (`reference/boas-praticas-dev/02-estilo-de-codigo.md`)
 
 ## Apontamentos
 | Severidade | Local | Descrição | Sugestão |

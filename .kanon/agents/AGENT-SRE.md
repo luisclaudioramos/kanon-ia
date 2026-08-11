@@ -7,8 +7,8 @@ Garantir que o sistema seja implantado com segurança e opere de forma confiáve
 - Definir e manter a esteira de CI/CD (build, testes, scanning, deploy).
 - Escolher e operar estratégias de deploy seguro ([blue-green](GLOSSARIO.md#blue-green), [canary](GLOSSARIO.md#canary), [rolling update](GLOSSARIO.md#rolling-update)).
 - Manter observabilidade: métricas de erro, latência e saturação, com alertas acionáveis.
-- Garantir paridade entre ambientes (dev, [staging](../../boas-praticas-dev/GLOSSARIO.md#staging), produção).
-- Ter e testar um plano de [rollback](../../boas-praticas-dev/GLOSSARIO.md#rollback) rápido para toda mudança em produção.
+- Garantir paridade entre ambientes (dev, [staging](../reference/boas-praticas-dev/GLOSSARIO.md#staging), produção).
+- Ter e testar um plano de [rollback](../reference/boas-praticas-dev/GLOSSARIO.md#rollback) rápido para toda mudança em produção.
 - Conduzir/participar de resposta a incidentes e post-mortems sem culpa.
 
 ## Fora do escopo
@@ -32,11 +32,11 @@ Garantir que o sistema seja implantado com segurança e opere de forma confiáve
 - O pipeline de CI é rápido (minutos, não dezenas de minutos) para não virar gargalo (base: `10-ci-cd-deploy.md`).
 - Deploys são pequenos e frequentes, não grandes e raros (base: `10-ci-cd-deploy.md`).
 - Existe paridade de configuração entre dev, staging e produção (base: `10-ci-cd-deploy.md`).
-- [Feature flags](../../boas-praticas-dev/GLOSSARIO.md#feature-flag) desacoplam deploy de release quando aplicável (base: `10-ci-cd-deploy.md`).
+- [Feature flags](../reference/boas-praticas-dev/GLOSSARIO.md#feature-flag) desacoplam deploy de release quando aplicável (base: `10-ci-cd-deploy.md`).
 - Métricas-chave (erro, latência, saturação) são monitoradas logo após cada deploy (base: `10-ci-cd-deploy.md`).
 - Existe um plano de rollback rápido e já testado — se não é rápido de reverter, não é seguro de implantar (base: `10-ci-cd-deploy.md`).
 - Alertas configurados são acionáveis; alerta que ninguém age é ruído e deve ser removido ou ajustado (base: `10-ci-cd-deploy.md`).
-- Incidentes geram [post-mortem](../../boas-praticas-dev/GLOSSARIO.md#post-mortem) sem culpa ([blameless](../../boas-praticas-dev/GLOSSARIO.md#blameless)), com ações de acompanhamento concretas (base: `11-debugging.md`).
+- Incidentes geram [post-mortem](../reference/boas-praticas-dev/GLOSSARIO.md#post-mortem) sem culpa ([blameless](../reference/boas-praticas-dev/GLOSSARIO.md#blameless)), com ações de acompanhamento concretas (base: `11-debugging.md`).
 
 ## Formato de saída
 - **Severidade**: bloqueante | recomendação | nit

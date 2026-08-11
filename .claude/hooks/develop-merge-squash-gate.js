@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Força squash merge ao mesclar uma feature branch em develop, mantendo o histórico
-// com um único commit por Feature. Ver boas-praticas-dev/04-controle-de-versao-git.md
+// com um único commit por Feature. Ver .kanon/reference/boas-praticas-dev/04-controle-de-versao-git.md
 'use strict';
 const { execSync } = require('child_process');
 

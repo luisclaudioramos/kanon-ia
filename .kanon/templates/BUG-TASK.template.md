@@ -9,7 +9,7 @@ _Breadcrumb: [Bug](./BUG.md) > Bug Task_
 _[preencher: o que exatamente corrigir, causa raiz a atacar]_
 
 ## Teste de regressão obrigatório
-_[preencher: descrição do teste que comprova que o bug não volta — base `boas-praticas-dev/03-testes.md`]_
+_[preencher: descrição do teste que comprova que o bug não volta — base `reference/boas-praticas-dev/03-testes.md`]_
 
 ## Definition of Done
 - [ ] Causa raiz corrigida (não só o sintoma)

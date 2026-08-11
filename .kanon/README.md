@@ -18,10 +18,10 @@ Raiz do harness Kanon. Tudo aqui é **neutro de ambiente** — nenhum arquivo de
 | [`skills/`](skills) | **O quê** — 41 procedimentos executáveis (cada um uma pasta com `SKILL.md`) + `setup/` |
 | [`templates/`](templates) | **Forma** — 25 esqueletos de artefato + `evidence/` e `outline/` |
 | [`commands/`](commands) | **Entrada** — especificação agnóstica do comando único `kanon` |
+| [`reference/`](reference) | **Base de qualidade** — `boas-praticas-dev/`, referência técnica consumida por `agents/` e `skills/` |
 
 ## Fora de `.kanon/`
 
-- [`../boas-praticas-dev/`](../boas-praticas-dev) — referência de qualidade técnica independente, consumida por `agents/` e `skills/`.
 - [`../.claude/`](../.claude) — a integração *real* com o Claude Code: `hooks/` (os 9 gates `PreToolUse`, código funcional) e `commands/kanon.md` (o slash command `/kanon` que implementa a spec de `commands/kanon.md` desta pasta).
 
 ## Por que a separação

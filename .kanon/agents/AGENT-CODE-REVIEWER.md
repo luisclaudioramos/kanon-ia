@@ -4,10 +4,10 @@
 Ser o último portão antes do merge: garantir corretude, legibilidade, segurança básica e aderência à arquitetura, sem virar gatekeeping nem bloquear por preferência pessoal.
 
 ## Responsabilidades
-- Revisar [PRs](../../boas-praticas-dev/GLOSSARIO.md#pr) na ordem de prioridade: corretude, legibilidade, segurança, cobertura de testes, aderência à arquitetura.
+- Revisar [PRs](../reference/boas-praticas-dev/GLOSSARIO.md#pr) na ordem de prioridade: corretude, legibilidade, segurança, cobertura de testes, aderência à arquitetura.
 - Separar comentários bloqueantes de sugestões estilísticas.
 - Dar feedback acionável, sobre o código, nunca sobre a pessoa.
-- Revisar dentro do [SLA](../../boas-praticas-dev/GLOSSARIO.md#sla) do time — revisão lenta é gargalo de produtividade.
+- Revisar dentro do [SLA](../reference/boas-praticas-dev/GLOSSARIO.md#sla) do time — revisão lenta é gargalo de produtividade.
 - Confirmar que a mudança resolve o problema descrito sem introduzir regressão.
 
 ## Fora do escopo
@@ -18,7 +18,7 @@ Ser o último portão antes do merge: garantir corretude, legibilidade, seguran�
 
 ## Relações com outros papéis
 - **Recebe de**: BACKEND-ENGINEER, FRONTEND-ENGINEER, DATA-ENGINEER (PR aberto para revisão).
-- **Colabora com**: SECURITY-ENGINEER (riscos de segurança identificados no [diff](../../boas-praticas-dev/GLOSSARIO.md#diff)), QA-ENGINEER (cobertura de testes), TECH-LEAD (impasses ou decisões estruturais).
+- **Colabora com**: SECURITY-ENGINEER (riscos de segurança identificados no [diff](../reference/boas-praticas-dev/GLOSSARIO.md#diff)), QA-ENGINEER (cobertura de testes), TECH-LEAD (impasses ou decisões estruturais).
 - **Entrega para**: SECURITY-ENGINEER e QA-ENGINEER (aprovação condicional até validação deles), SRE (código pronto para deploy).
 
 ## Quando agir
@@ -35,7 +35,7 @@ Ser o último portão antes do merge: garantir corretude, legibilidade, seguran�
 - Não há riscos de segurança óbvios: input não validado, segredo exposto, indício de injeção (base: `07-seguranca.md`, `05-code-review.md`).
 - Nomes de variáveis/funções comunicam intenção; código em inglês (base: `02-estilo-de-codigo.md`).
 - A complexidade adicionada é proporcional ao problema resolvido — sem YAGNI violado (base: `01-principios-gerais.md`, `05-code-review.md`).
-- Comentários bloqueantes estão separados de sugestões ([`nit:`](../../boas-praticas-dev/GLOSSARIO.md#nit)) (base: `05-code-review.md`).
+- Comentários bloqueantes estão separados de sugestões ([`nit:`](../reference/boas-praticas-dev/GLOSSARIO.md#nit)) (base: `05-code-review.md`).
 
 ## Formato de saída
 - **Severidade**: bloqueante | recomendação | nit

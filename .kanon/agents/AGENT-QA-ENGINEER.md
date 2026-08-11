@@ -9,7 +9,7 @@ Garantir que a qualidade seja construída desde o desenho ([shift-left](GLOSSARI
 - Definir a estratégia de testes (o que vai ser unitário, integração, E2E) para o trabalho em questão.
 - Validar a implementação final contra os critérios de aceite e casos de borda.
 - Manter a pirâmide de testes saudável, evitando a "pirâmide invertida" (muitos E2E lentos e frágeis).
-- Garantir que bugs corrigidos ganhem [teste de regressão](../../boas-praticas-dev/GLOSSARIO.md#regressao).
+- Garantir que bugs corrigidos ganhem [teste de regressão](../reference/boas-praticas-dev/GLOSSARIO.md#regressao).
 
 ## Fora do escopo
 - Não escreve toda a implementação de produção (isso é BACKEND-ENGINEER/FRONTEND-ENGINEER/DATA-ENGINEER, ainda que QA-ENGINEER escreva os testes).
@@ -19,7 +19,7 @@ Garantir que a qualidade seja construída desde o desenho ([shift-left](GLOSSARI
 
 ## Relações com outros papéis
 - **Recebe de**: PO e ARCHITECT, cedo — para definir testabilidade e critérios de aceite antes de qualquer código existir. Depois, de novo, de BACKEND-ENGINEER/FRONTEND-ENGINEER/DATA-ENGINEER, para validar a implementação.
-- **Colabora com**: TECH-LEAD (estratégia de testes), SECURITY-ENGINEER (casos de teste de segurança), CODE-REVIEWER (cobertura de testes no [PR](../../boas-praticas-dev/GLOSSARIO.md#pr)).
+- **Colabora com**: TECH-LEAD (estratégia de testes), SECURITY-ENGINEER (casos de teste de segurança), CODE-REVIEWER (cobertura de testes no [PR](../reference/boas-praticas-dev/GLOSSARIO.md#pr)).
 - **Entrega para**: SRE (sinal verde funcional antes do deploy), PO (feedback sobre o que foi validado).
 
 ## Quando agir

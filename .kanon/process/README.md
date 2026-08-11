@@ -32,8 +32,8 @@ Este índice é a "Constituição" do sistema completo: harness (`.kanon/`) + sk
 
 **Como sistema completo**: as skills em [`../skills/`](../skills) e os hooks em [`../../.claude/hooks/`](../../.claude/hooks) leem e aplicam estes 13 arquivos automaticamente durante a execução do pipeline.
 
-## Relação com `agents/` e `boas-praticas-dev/`
+## Relação com `agents/` e `reference/boas-praticas-dev/`
 
-- [`boas-praticas-dev/`](../../boas-praticas-dev) define **o que é** qualidade técnica (princípios, testes, segurança, etc.).
+- [`reference/boas-praticas-dev/`](../reference/boas-praticas-dev) define **o que é** qualidade técnica (princípios, testes, segurança, etc.).
 - [`agents/`](../agents) define **quem** aplica essas práticas, sob qual lente e em que ponto do fluxo.
 - `process/` (esta pasta) define **como** o conjunto de agentes opera de forma previsível, inclusive quando algo falha.

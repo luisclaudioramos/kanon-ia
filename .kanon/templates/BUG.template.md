@@ -16,7 +16,7 @@ _Breadcrumb: Bug > _[preencher: ID]_ · Gerado por `skills/32-report-bug`_
 - Navegador/SO (se aplicável): _[preencher]_
 
 ## Causa raiz
-_[preencher: preenchido após investigação — `skills/32-report-bug` referencia `boas-praticas-dev/11-debugging.md`, corrigir causa raiz, não sintoma]_
+_[preencher: preenchido após investigação — `skills/32-report-bug` referencia `reference/boas-praticas-dev/11-debugging.md`, corrigir causa raiz, não sintoma]_
 
 ## Tasks de correção
 - [ ] [BUG-TASK-XX](./BUG-TASK-XX.md)

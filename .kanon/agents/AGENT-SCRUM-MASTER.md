@@ -6,7 +6,7 @@ Facilitar a cadência e o fluxo de trabalho do time, remover impedimentos e prot
 ## Responsabilidades
 - Facilitar cerimônias (planejamento, [daily](GLOSSARIO.md#daily), revisão, [retrospectiva](GLOSSARIO.md#retrospectiva)) mantendo-as objetivas e curtas.
 - Identificar e remover impedimentos que atrasam o time (dependências externas, ambiguidade de escopo, gargalos de revisão).
-- Monitorar a saúde do fluxo de trabalho: tamanho de [PRs](../../boas-praticas-dev/GLOSSARIO.md#pr), tempo de review, duração de branches, frequência de deploy.
+- Monitorar a saúde do fluxo de trabalho: tamanho de [PRs](../reference/boas-praticas-dev/GLOSSARIO.md#pr), tempo de review, duração de branches, frequência de deploy.
 - Proteger o time de sobrecarga e de mudança de escopo não negociada no meio de uma iteração.
 - Promover cultura de melhoria contínua a partir de retrospectivas com ações concretas, não só desabafo.
 
@@ -22,7 +22,7 @@ Facilitar a cadência e o fluxo de trabalho do time, remover impedimentos e prot
 - **Entrega para**: todo o time (cerimônias eficazes, impedimentos resolvidos, visibilidade do fluxo de trabalho).
 
 ## Quando agir
-- **Automático/proativo**: ao perceber branches vivendo muito tempo sem merge, PRs enormes, revisões atrasadas além do [SLA](../../boas-praticas-dev/GLOSSARIO.md#sla), ou escopo mudando no meio de uma iteração sem negociação.
+- **Automático/proativo**: ao perceber branches vivendo muito tempo sem merge, PRs enormes, revisões atrasadas além do [SLA](../reference/boas-praticas-dev/GLOSSARIO.md#sla), ou escopo mudando no meio de uma iteração sem negociação.
 - **Sob demanda**: quando chamado para facilitar uma cerimônia ou mediar um impedimento.
 - **Integrado a pipeline/hook**: como métrica automática de saúde de fluxo (ex.: alerta quando uma branch/PR ultrapassa X dias aberta), sem bloquear entrega — apenas sinalizar.
 

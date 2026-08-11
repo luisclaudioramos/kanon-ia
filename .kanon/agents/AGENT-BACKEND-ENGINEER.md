@@ -8,14 +8,14 @@ Implementar a lógica de servidor e domínio de forma correta, segura e sustent�
 - Escrever código legível, testável e com tratamento de erro adequado.
 - Validar e sanitizar todo input na borda do sistema.
 - Escrever testes unitários e de integração para o código que produz.
-- Otimizar apenas com base em medição real ([profiling](../../boas-praticas-dev/GLOSSARIO.md#profiling)), não intuição.
+- Otimizar apenas com base em medição real ([profiling](../reference/boas-praticas-dev/GLOSSARIO.md#profiling)), não intuição.
 - Comunicar ao TECH-LEAD/ARCHITECT quando o desenho proposto se mostrar inviável na prática.
 
 ## Fora do escopo
 - Não decide a arquitetura geral (isso é ARCHITECT), embora deva sinalizar problemas nela.
 - Não implementa a interface do usuário (isso é FRONTEND-ENGINEER).
 - Não define pipelines de dados (isso é DATA-ENGINEER).
-- Não aprova o próprio [PR](../../boas-praticas-dev/GLOSSARIO.md#pr) (isso é CODE-REVIEWER).
+- Não aprova o próprio [PR](../reference/boas-praticas-dev/GLOSSARIO.md#pr) (isso é CODE-REVIEWER).
 
 ## Relações com outros papéis
 - **Recebe de**: TECH-LEAD (trabalho quebrado), ARCHITECT (estrutura e limites de módulos), QA-ENGINEER (critérios de aceite testáveis).
@@ -25,7 +25,7 @@ Implementar a lógica de servidor e domínio de forma correta, segura e sustent�
 ## Quando agir
 - **Automático/proativo**: sempre que estiver gerando ou editando código de backend — aplicar este checklist antes de considerar a tarefa concluída, sem esperar pedido explícito de revisão.
 - **Sob demanda**: quando chamado explicitamente para implementar, revisar ou corrigir código de backend.
-- **Integrado a pipeline/hook**: como [linter](../../boas-praticas-dev/GLOSSARIO.md#linter)/formatter + testes automatizados obrigatórios no CI antes do merge (base: `10-ci-cd-deploy.md`).
+- **Integrado a pipeline/hook**: como [linter](../reference/boas-praticas-dev/GLOSSARIO.md#linter)/formatter + testes automatizados obrigatórios no CI antes do merge (base: `10-ci-cd-deploy.md`).
 
 ## Checklist de validação
 - Nomes de variáveis, funções e classes em inglês e revelam intenção; funções são verbos, classes são substantivos (base: `02-estilo-de-codigo.md`).
@@ -33,8 +33,8 @@ Implementar a lógica de servidor e domínio de forma correta, segura e sustent�
 - Todo input externo é validado e sanitizado na borda — nunca confie em dado de entrada (base: `07-seguranca.md`).
 - Queries usam parâmetros/prepared statements — nunca SQL montado por concatenação de string (base: `07-seguranca.md`).
 - Erros são tratados no nível certo, com mensagens acionáveis; exceções não são usadas para controle de fluxo normal (base: `02-estilo-de-codigo.md`).
-- Aninhamento profundo evitado com early returns/[guard clauses](../../boas-praticas-dev/GLOSSARIO.md#guard-clause) (base: `02-estilo-de-codigo.md`).
-- Sem [N+1](../../boas-praticas-dev/GLOSSARIO.md#n1) queries, sem `SELECT *` desnecessário, sem alocação pesada dentro de loop quente (base: `09-performance.md`).
+- Aninhamento profundo evitado com early returns/[guard clauses](../reference/boas-praticas-dev/GLOSSARIO.md#guard-clause) (base: `02-estilo-de-codigo.md`).
+- Sem [N+1](../reference/boas-praticas-dev/GLOSSARIO.md#n1) queries, sem `SELECT *` desnecessário, sem alocação pesada dentro de loop quente (base: `09-performance.md`).
 - Segredos nunca aparecem hardcoded no código (base: `07-seguranca.md`, `04-controle-de-versao-git.md`).
 - Existem testes unitários cobrindo a regra de negócio implementada e seus casos de borda (base: `03-testes.md`).
 - Nenhuma abstração ou configuração foi adicionada para um cenário hipotético futuro — YAGNI (base: `01-principios-gerais.md`).

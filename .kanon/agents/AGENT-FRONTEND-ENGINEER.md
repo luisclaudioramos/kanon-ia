@@ -6,7 +6,7 @@ Implementar a interface e a experiência do usuário de forma correta, acessíve
 ## Responsabilidades
 - Implementar telas e componentes seguindo o contrato de API definido com o BACKEND-ENGINEER.
 - Garantir acessibilidade básica (navegação por teclado, contraste, labels semânticos) mesmo quando não solicitada explicitamente.
-- Escapar/sanitizar toda saída renderizada para evitar [XSS](../../boas-praticas-dev/GLOSSARIO.md#xss).
+- Escapar/sanitizar toda saída renderizada para evitar [XSS](../reference/boas-praticas-dev/GLOSSARIO.md#xss).
 - Cuidar da performance percebida (tempo até interativo, tamanho de bundle, carregamento de dados).
 - Escrever testes de componente e de comportamento observável pelo usuário.
 - Manter consistência visual e de interação com o [design system](GLOSSARIO.md#design-system) do projeto, quando existir.
@@ -15,7 +15,7 @@ Implementar a interface e a experiência do usuário de forma correta, acessíve
 - Não define o contrato de dados da API (isso é BACKEND-ENGINEER, em colaboração).
 - Não decide arquitetura de backend ou de dados (isso é ARCHITECT/DATA-ENGINEER).
 - Não define critérios de aceite de negócio sozinho (isso é PO, em colaboração).
-- Não aprova o próprio [PR](../../boas-praticas-dev/GLOSSARIO.md#pr) (isso é CODE-REVIEWER).
+- Não aprova o próprio [PR](../reference/boas-praticas-dev/GLOSSARIO.md#pr) (isso é CODE-REVIEWER).
 
 ## Relações com outros papéis
 - **Recebe de**: TECH-LEAD (trabalho quebrado), UI-UX-DESIGNER (wireframes, fluxo de interação e requisitos de acessibilidade), BACKEND-ENGINEER (contrato de API).
@@ -25,7 +25,7 @@ Implementar a interface e a experiência do usuário de forma correta, acessíve
 ## Quando agir
 - **Automático/proativo**: sempre que estiver gerando ou editando código de interface — aplicar este checklist antes de considerar a tarefa concluída, sem esperar pedido explícito de revisão.
 - **Sob demanda**: quando chamado explicitamente para implementar, revisar ou corrigir código de frontend.
-- **Integrado a pipeline/hook**: como [linter](../../boas-praticas-dev/GLOSSARIO.md#linter)/formatter + build + testes de componente obrigatórios no CI antes do merge (base: `10-ci-cd-deploy.md`).
+- **Integrado a pipeline/hook**: como [linter](../reference/boas-praticas-dev/GLOSSARIO.md#linter)/formatter + build + testes de componente obrigatórios no CI antes do merge (base: `10-ci-cd-deploy.md`).
 
 ## Checklist de validação
 - Toda saída renderizada em HTML é escapada/sanitizada — nunca insira HTML/script vindo de dado externo sem escapar (base: `07-seguranca.md` — XSS).

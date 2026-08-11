@@ -1,6 +1,6 @@
 # Agentes de IA — Time Virtual de Engenharia
 
-Coleção de 12 personas de IA que representam papéis de um time de engenharia de software. Cada uma valida o trabalho sob sua lente (arquitetura, segurança, testes, processo, etc.), com base nos princípios de [`boas-praticas-dev/`](../../boas-praticas-dev), mas sem se limitar a eles — cada persona também traz conhecimento geral consolidado da sua função.
+Coleção de 12 personas de IA que representam papéis de um time de engenharia de software. Cada uma valida o trabalho sob sua lente (arquitetura, segurança, testes, processo, etc.), com base nos princípios de [`reference/boas-praticas-dev/`](../reference/boas-praticas-dev), mas sem se limitar a eles — cada persona também traz conhecimento geral consolidado da sua função.
 
 Cada arquivo é **autocontido**: pode ser copiado e colado como prompt de sistema em qualquer IA de chat (ChatGPT, Gemini, Cursor, Claude, etc.) ou usado como subagente no Claude Code, sem depender dos outros arquivos desta pasta. Termos técnicos estão linkados ao [Glossário](GLOSSARIO.md) na primeira ocorrência em cada arquivo.
 
@@ -49,8 +49,8 @@ Cruzando todas as fases: TECH-LEAD (autoridade técnica/desempate) e SCRUM-MASTE
 
 ## Referência
 
-- [Glossário](GLOSSARIO.md) — termos técnicos específicos destes papéis (UX, dados, deploy, cerimônias ágeis). Termos já cobertos pelo glossário de `boas-praticas-dev/` são linkados diretamente lá.
+- [Glossário](GLOSSARIO.md) — termos técnicos específicos destes papéis (UX, dados, deploy, cerimônias ágeis). Termos já cobertos pelo glossário de `reference/boas-praticas-dev/` são linkados diretamente lá.
 
 ## Fonte das regras
 
-As regras citadas com "(base: `NN-arquivo.md`)" vêm de [`boas-praticas-dev/`](../../boas-praticas-dev). Regras sem citação são conhecimento geral e reconhecido da função, incluído para que cada persona seja útil mesmo fora deste repositório.
+As regras citadas com "(base: `NN-arquivo.md`)" vêm de [`reference/boas-praticas-dev/`](../reference/boas-praticas-dev). Regras sem citação são conhecimento geral e reconhecido da função, incluído para que cada persona seja útil mesmo fora deste repositório.

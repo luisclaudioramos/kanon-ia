@@ -15,7 +15,7 @@ Fase 1 — Arquitetura e Especificação. Roda após [`03-create-feature-artifac
 ## Regras principais
 - Aciona [`agentes-ia/ARCHITECT.md`](../../agents/AGENT-ARCHITECT.md) para propor as alternativas e [`agentes-ia/TECH-LEAD.md`](../../agents/AGENT-TECH-LEAD.md) para validar/desempatar.
 - Executa obrigatoriamente no tier de modelo **Forte + High** (ver [`process/08-model-orchestration.md`](../../process/08-model-orchestration.md)).
-- A decisão é registrada como ADR (ver `agentes-ia/ARCHITECT.md`, base `boas-praticas-dev/06-documentacao.md`).
+- A decisão é registrada como ADR (ver `agentes-ia/ARCHITECT.md`, base `reference/boas-praticas-dev/06-documentacao.md`).
 - Nenhuma das alternativas pode depender de hardcode de ambiente (ver [`process/10-core-agnosticism-gate.md`](../../process/10-core-agnosticism-gate.md)).
 
 ## Depende de

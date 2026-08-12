@@ -60,6 +60,17 @@
           }
         ]
       }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/claude-memory/session_end_memory.py\"",
+            "timeout": 15
+          }
+        ]
+      }
     ]
   }
 }

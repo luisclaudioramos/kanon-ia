@@ -1,6 +1,6 @@
 # Glossário — Termos do Harness Kanon
 
-Termos técnicos específicos do funcionamento interno do harness Kanon (mecanismo, não domínio de produto). Os 13 processos desta pasta, as skills, os agentes e os templates linkam a primeira ocorrência de cada termo aqui.
+Termos técnicos específicos do funcionamento interno do harness Kanon (mecanismo, não domínio de produto). Os 15 processos desta pasta, as skills, os agentes e os templates linkam a primeira ocorrência de cada termo aqui.
 
 Termos de engenharia de software em geral (ADR, PR, XSS, N+1 etc.) estão em [`reference/boas-praticas-dev/GLOSSARIO.md`](../reference/boas-praticas-dev/GLOSSARIO.md). Termos de produto/UX/dados estão em [`agents/GLOSSARIO.md`](../agents/GLOSSARIO.md). Este arquivo cobre apenas o vocabulário do próprio harness — como as peças se encaixam e se comunicam.
 
@@ -66,7 +66,7 @@ Formato obrigatório de citação (ex.: `src/validators/cpf.py:12`) para qualque
 
 <a id="rag"></a>
 ### RAG (Retrieval-Augmented Generation)
-Recuperação de informação real do [corpus](#corpus) (via [BM25](#bm25)) antes de embasar qualquer afirmação, em vez de responder "de memória". É o mecanismo por trás do [Selo IV](#selo). Ver [`12-knowledge-retrieval.md`](12-knowledge-retrieval.md).
+Recuperação de informação real do [corpus](#corpus) (via [BM25](#bm25)) antes de embasar qualquer afirmação, em vez de responder "de memória". É o mecanismo por trás do [Selo IV](#selo). Tem dois checkpoints formais obrigatórios (antes de `04-architecture-assessment` e antes de cada `11-quality-gate`), além do uso sob demanda. Ver [`12-knowledge-retrieval.md`](12-knowledge-retrieval.md) e `skills/36-knowledge-retrieval`.
 
 <a id="runtime-contract"></a>
 ### Runtime Contract
@@ -76,13 +76,17 @@ Contrato de inicialização do [harness](#harness) — variáveis de ambiente, c
 ### SDD (Spec-Driven Development)
 Fluxo de desenvolvimento em que a especificação (Requirement Summary, arquitetura, User Stories, Tasks) precede e governa a implementação, ao invés de o código ser escrito antes de o requisito estar claro. É o pipeline macro que ordena as 42 skills. Ver [`02-sdd-flow.md`](02-sdd-flow.md).
 
+<a id="segregacao-de-decisao"></a>
+### Segregação de Decisão
+Princípio de que a mesma janela de contexto/agente que produziu um artefato não pode ser quem o aprova em um [gate](#gate) — Quality Gate e Code Review exigem um revisor independente (subagente em fan-out, mecanismo do [Selo III](#selo)), não a mesma linha de raciocínio revisando a si mesma. Ver [`14-decision-segregation.md`](14-decision-segregation.md).
+
 <a id="selo"></a>
 ### Selo (Selo de Identidade)
 Um dos 5 pré-requisitos mínimos de integridade que todo artefato do harness precisa satisfazer, catalogados em `seals.manifest.json` e validados pelo gate mestre ([`09-identity-seals-gate.md`](09-identity-seals-gate.md)): **I** Guardião da Integridade (agnosticismo), **II** Model Routing, **III** Multi-agente/Envelope, **IV** RAG–Recuperação, **V** Substituição na Falha (anti-alucinação).
 
 <a id="tco"></a>
 ### TCO (Total Cost of Ownership)
-Estimativa dos custos de infraestrutura, licenciamento, manutenção e operação de uma Feature já implementada, compilada para o PO e stakeholders ao final do ciclo. Ver `skills/30-cost-of-ownership-tco`.
+Estimativa dos custos de infraestrutura, licenciamento, manutenção e operação de uma Feature, em duas passadas: preliminar (logo após a Architecture Assessment, informa o dimensionamento das Tasks) e final (no encerramento, compara estimado vs. real). Ownership é do TECH-LEAD; Engineers/QA consomem a preliminar para prazos; PO recebe ambas. Ver `skills/30-cost-of-ownership-tco`.
 
 <a id="tier"></a>
 ### Tier de Modelo / Tier de Esforço

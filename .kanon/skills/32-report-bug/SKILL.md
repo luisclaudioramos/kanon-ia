@@ -15,6 +15,7 @@ Fase 6 — Memória, Custo e Encerramento (classificada aqui, mas pode ser dispa
 ## Regras principais
 - Um bug só é aceito como `BUG.md` válido se tiver Repro Steps reprodutíveis (base: `reference/boas-praticas-dev/11-debugging.md` — reproduzir antes de corrigir).
 - Não interrompe o fluxo principal de nenhuma Feature em andamento — corre em paralelo.
+- **Acionamento automático, não só sob relato do usuário**: qualquer defeito ou divergência encontrada durante a execução de qualquer skill (ex.: uma inconsistência achada em `12-development-execution`, um RNF indeterminado em `11-quality-gate`) aciona esta skill automaticamente, gerando `BUG.md` vinculado à Feature de origem. Corrigir o defeito silenciosamente por dentro da Feature, sem `BUG.md`, deixa de ser um caminho válido — mesmo quando a correção é pequena e imediata (base: transparência, `reference/boas-praticas-dev/01-principios-gerais.md`).
 
 ## Depende de
 - `reference/boas-praticas-dev/11-debugging.md`, `27-bug-task-management`.

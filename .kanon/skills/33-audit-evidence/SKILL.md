@@ -4,7 +4,7 @@
 Materializar toda a trilha de artefatos (Features, User Stories, Tasks, Test Reports, Code Reviews, Aprovações) em um pacote formal de evidência (`Evidence-{id}-{title}.docx`), servindo como registro imutável para compliance, SOX ou auditorias internas.
 
 ## Fase / Posição no fluxo
-Fase 7 — Auditoria, Governança e Consolidação. Roda ao final do ciclo de vida da Feature, depois de todos os artefatos estarem em estado final.
+Fase 7 — Auditoria, Governança e Consolidação. **Mandatória** — roda ao final do ciclo de vida da Feature, depois de todos os artefatos estarem em estado final. Uma Feature não alcança `done` sem o pacote de evidência gerado (ver `process/05-definition-of-done.md`).
 
 ## Entradas
 - Todos os artefatos gerados durante a Feature (US, Tasks, Test Reports, Code Reviews, aprovações).

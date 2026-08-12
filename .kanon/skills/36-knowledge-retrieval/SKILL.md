@@ -1,10 +1,10 @@
 # 36 — Knowledge Retrieval (RAG Ativo)
 
 ## Propósito
-Executar, sob demanda, uma busca BM25 avançada sobre todo o corpus (código, `MEMORY.md`, runbooks, decisões passadas) e retornar um relatório estruturado com os trechos mais relevantes e suas fontes (`path:line`). Diferente da recuperação passiva/automática usada por outras skills, esta é acionada explicitamente pelo usuário ou agente.
+**Objetivo principal**: garantir que nenhuma decisão de arquitetura seja tomada, e nenhum gate seja aprovado, sem antes confirmar contra o corpus real o que já existe — fechando a lacuna entre "o agente lembra de algo" e "o agente confirmou algo". Executa uma busca BM25 avançada sobre todo o corpus (código, `MEMORY.md`, runbooks, decisões passadas) e retorna um relatório estruturado com os trechos mais relevantes e suas fontes (`path:line`). Diferente da recuperação passiva/automática usada por outras skills, esta é acionada explicitamente — pelos dois checkpoints formais abaixo, ou sob demanda pelo usuário/agente.
 
 ## Fase / Posição no fluxo
-Fase 7 — Auditoria, Governança e Consolidação (mas pode ser acionada a qualquer momento do pipeline).
+Fase 7 — Auditoria, Governança e Consolidação, mas com dois **checkpoints formais obrigatórios** em qualquer Feature: imediatamente antes de [`04-architecture-assessment`](../04-architecture-assessment/SKILL.md) (confirmar que decisões e padrões já existentes no corpus são conhecidos antes de propor arquitetura nova) e imediatamente antes de cada execução de [`11-quality-gate`](../11-quality-gate/SKILL.md) (confirmar que os critérios sendo avaliados batem com o que o corpus realmente mostra, não com memória do agente). Fora desses dois pontos, continua acionável a qualquer momento sob demanda.
 
 ## Entradas
 - Pergunta ou dúvida pontual do usuário/agente.

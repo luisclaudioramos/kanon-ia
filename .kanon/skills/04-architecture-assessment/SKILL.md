@@ -19,7 +19,7 @@ Fase 1 — Arquitetura e Especificação. Roda após [`03-create-feature-artifac
 - Nenhuma das alternativas pode depender de hardcode de ambiente (ver [`process/10-core-agnosticism-gate.md`](../../process/10-core-agnosticism-gate.md)).
 
 ## Depende de
-- `agentes-ia/ARCHITECT.md`, `agentes-ia/TECH-LEAD.md`, `process/08-model-orchestration.md`, `process/10-core-agnosticism-gate.md`.
+- `agentes-ia/ARCHITECT.md`, `agentes-ia/TECH-LEAD.md`, `process/08-model-orchestration.md`, `process/10-core-agnosticism-gate.md`, `36-knowledge-retrieval` (checkpoint formal obrigatório antes desta skill).
 
 ## Procedimento em caso de falha
 Se o tier de modelo Forte não estiver disponível, a skill fica bloqueada até estar — decisão de arquitetura crítica nunca é tomada em tier inferior (ver `process/08-model-orchestration.md`).

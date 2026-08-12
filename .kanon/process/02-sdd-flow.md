@@ -9,6 +9,10 @@ Em qualquer atividade de desenvolvimento não trivial, do levantamento do requis
 ## Regras
 - O fluxo segue a ordem macro: **Requirement Summary → Design Gate → Especificação/Design → Plano → Implementação → Validação → Registro em `MEMORY.md`**.
 - O Design Gate (`41-design-gate`) é um hard gate entre o Requirement Summary e a Feature Specification: sem `DESIGN.md` aprovado por um humano, a Feature Specification (skills 01-03) não produz artefato — reforçado por `.claude/hooks/design-gate-approval-gate.js`, não apenas por convenção.
+- `30-cost-of-ownership-tco` roda em **duas passadas**: preliminar logo após `04-architecture-assessment` (informa o dimensionamento de `07-refine-tasks`), final na Fase 6 (compara estimado vs. real). Não é uma etapa só de encerramento.
+- `36-knowledge-retrieval` tem dois checkpoints formais obrigatórios: antes de `04-architecture-assessment` e antes de cada execução de `11-quality-gate` — além do uso sob demanda a qualquer momento.
+- Pull Request (`34-pull-request-review`) é mandatório para uma Feature alcançar `done`, assim como TCO final e Audit Evidence (`33-audit-evidence`) — ver `process/05-definition-of-done.md` e `process/13-external-integration-prerequisite.md` para a exceção explícita registrada quando a ferramenta externa não está disponível.
+- Qualquer defeito encontrado durante a execução de qualquer skill aciona `32-report-bug` automaticamente — não é corrigido silenciosamente dentro do fluxo principal.
 - Cada skill numerada (00–41) tem uma posição definida nesse pipeline; uma skill não é acionada fora de ordem sem justificativa explícita e registrada.
 - O pipeline mapeia para a sequência de papéis descrita em [`agentes-ia/README.md`](../agents/README.md) (PO → UI-UX-DESIGNER → ARCHITECT → ... → SRE), mas opera no nível de skills, não de papéis — uma skill pode acionar um ou mais agentes.
 - Nenhuma etapa é considerada concluída sem o artefato correspondente existir de fato (Requirement Summary escrito, plano registrado, runbook gerado, etc.).

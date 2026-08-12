@@ -14,10 +14,10 @@ Fase 5 — Publicação e Integrações. Roda após artefatos de conhecimento co
 
 ## Regras principais
 - Publica apenas artefatos de conhecimento consolidado, não rascunhos ou artefatos de trabalho em andamento.
-- Integração externa (referência futura — depende da skill `setup`).
+- Integração externa — configuração e pré-requisito regidos por [`process/13-external-integration-prerequisite.md`](../../process/13-external-integration-prerequisite.md).
 
 ## Depende de
-- `04-architecture-assessment`, `19-runbook-authoring`, `setup/`.
+- `04-architecture-assessment`, `19-runbook-authoring`, `setup/`, `process/13-external-integration-prerequisite.md`.
 
 ## Procedimento em caso de falha
-Se o Outline estiver indisponível, a documentação permanece local e a skill sinaliza a pendência de publicação — não é perdida nem considerada "publicada" sem confirmação.
+Se o Outline estiver temporariamente indisponível, a documentação permanece local e a skill sinaliza a pendência de publicação — não é perdida nem considerada "publicada" sem confirmação. Se o Outline nunca foi configurado, segue `process/13`: orienta a configuração e só aceita pular com exceção explícita e registrada.

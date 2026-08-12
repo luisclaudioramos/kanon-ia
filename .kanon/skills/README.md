@@ -4,7 +4,7 @@ Enquanto [`process/`](../process/README.md) define **como** o sistema deve se co
 
 Cada skill é uma **pasta** contendo um `SKILL.md` (+ arquivos de apoio quando necessário) com: Propósito, Fase/Posição no fluxo, Entradas, Saídas, Regras principais, Depende de (processos/agentes/outras skills), Procedimento em caso de falha.
 
-Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes + hooks + integrações). Integrações externas (Azure DevOps/Notion/Outline) ainda não estão configuradas neste repositório — as skills abaixo já descrevem o papel delas para quando forem construídas (ver `.kanon/skills/setup/SKILL.md`).
+Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes + hooks + integrações). Integrações externas (Azure DevOps/Notion/Outline) ainda não estão configuradas neste repositório — as skills abaixo já descrevem o papel delas para quando forem construídas (ver `.kanon/skills/setup/SKILL.md`). Publicação e Pull Request são obrigatórios por padrão (`process/13-external-integration-prerequisite.md`); rodar sem essas integrações exige uma exceção explícita e registrada, não um pulo silencioso.
 
 ## Índice por fase
 
@@ -22,6 +22,7 @@ Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes 
 | [03-create-feature-artifacts](03-create-feature-artifacts/SKILL.md) | Cria a estrutura de pastas e os 3 documentos mestres da Feature |
 | [04-architecture-assessment](04-architecture-assessment/SKILL.md) | Avalia 2 alternativas de arquitetura e decide o tech-stack |
 | [22-generate-architecture-context](22-generate-architecture-context/SKILL.md) | Gera diagramas C4 e contexto técnico detalhado |
+| [30-cost-of-ownership-tco](30-cost-of-ownership-tco/SKILL.md) *(1ª passada)* | TCO preliminar — informa o dimensionamento de `07-refine-tasks` |
 
 ### Fase 2 — Refino de Usuário e Tarefas
 | Skill | Propósito |
@@ -63,16 +64,16 @@ Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes 
 |---|---|
 | [15-memory-update](15-memory-update/SKILL.md) | Compila lições aprendidas em `MEMORY.md` |
 | [23-register-lesson-learned](23-register-lesson-learned/SKILL.md) | Registra uma lição isolada, sem encerramento completo |
-| [30-cost-of-ownership-tco](30-cost-of-ownership-tco/SKILL.md) | Estima o custo total de propriedade da Feature |
-| [32-report-bug](32-report-bug/SKILL.md) | Cria um Bug estruturado e dispara o fluxo corretivo paralelo |
+| [30-cost-of-ownership-tco](30-cost-of-ownership-tco/SKILL.md) *(2ª passada, final)* | Compara TCO estimado vs. real, mandatório para `done` |
+| [32-report-bug](32-report-bug/SKILL.md) | Cria um Bug estruturado e dispara o fluxo corretivo paralelo — inclusive quando acionada automaticamente por outra skill que encontrou um defeito |
 
 ### Fase 7 — Auditoria, Governança e Consolidação
 | Skill | Propósito |
 |---|---|
-| [33-audit-evidence](33-audit-evidence/SKILL.md) | Gera pacote formal de evidência para auditoria |
-| [34-pull-request-review](34-pull-request-review/SKILL.md) | Orquestra criação, revisão e merge do Pull Request |
-| [35-feature-progress-report](35-feature-progress-report/SKILL.md) | Compila dashboard executivo de progresso |
-| [36-knowledge-retrieval](36-knowledge-retrieval/SKILL.md) | Busca ativa (RAG) sob demanda no corpus do projeto |
+| [33-audit-evidence](33-audit-evidence/SKILL.md) | Gera pacote formal de evidência para auditoria — mandatório para `done` |
+| [34-pull-request-review](34-pull-request-review/SKILL.md) | Orquestra criação, revisão e merge do Pull Request — mandatório para `done` |
+| [35-feature-progress-report](35-feature-progress-report/SKILL.md) | Compila dashboard executivo de progresso; risco/lacuna sem RF/RNF vira RF-X |
+| [36-knowledge-retrieval](36-knowledge-retrieval/SKILL.md) | Busca ativa (RAG); checkpoint formal obrigatório antes de 04 e de cada 11, além de sob demanda |
 | [37-validate-code-style](37-validate-code-style/SKILL.md) | Linter semântico de estilo, antes do code review |
 | [38-create-template](38-create-template/SKILL.md) | Cria e registra um novo template do sistema |
 | [39-generate-requirement-summary](39-generate-requirement-summary/SKILL.md) | Transforma anotação crua no primeiro artefato formal |
@@ -82,7 +83,7 @@ Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes 
 | Skill | Propósito |
 |---|---|
 | [17-navigable-links](17-navigable-links/SKILL.md) | Insere breadcrumbs e links bidirecionais entre artefatos |
-| [18-feature-context-back-propagation](18-feature-context-back-propagation/SKILL.md) | Propaga decisões/mudanças de volta aos documentos mestres |
+| [18-feature-context-back-propagation](18-feature-context-back-propagation/SKILL.md) | Propaga decisões/mudanças de volta aos documentos mestres; lacuna sem RF/RNF vira RF-X |
 | [19-runbook-authoring](19-runbook-authoring/SKILL.md) | Gera o runbook de produção que bloqueia/libera o deploy |
 | [20-diagram-authoring](20-diagram-authoring/SKILL.md) | Gera diagramas Mermaid para fluxos complexos |
 

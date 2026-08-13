@@ -1,7 +1,7 @@
 # 02 — SDD Flow (Spec-Driven Development Pipeline)
 
 ## Propósito
-Descrever o fluxo macro e sequencial de desenvolvimento — do Requirement Summary até o registro em `MEMORY.md` — ditando a ordem em que as skills numeradas (00 a 41) devem ser acionadas.
+Descrever o fluxo macro e sequencial de desenvolvimento — do Requirement Summary até o registro em `MEMORY.md` — ditando a ordem em que as skills numeradas (00 a 42) devem ser acionadas.
 
 ## Quando se aplica
 Em qualquer atividade de desenvolvimento não trivial, do levantamento do requisito até o registro final de conhecimento aprendido.
@@ -13,8 +13,9 @@ Em qualquer atividade de desenvolvimento não trivial, do levantamento do requis
 - `36-knowledge-retrieval` tem dois checkpoints formais obrigatórios: antes de `04-architecture-assessment` e antes de cada execução de `11-quality-gate` — além do uso sob demanda a qualquer momento.
 - Pull Request (`34-pull-request-review`) é mandatório para uma Feature alcançar `done`, assim como TCO final e Audit Evidence (`33-audit-evidence`) — ver `process/05-definition-of-done.md` e `process/13-external-integration-prerequisite.md` para a exceção explícita registrada quando a ferramenta externa não está disponível.
 - Qualquer defeito encontrado durante a execução de qualquer skill aciona `32-report-bug` automaticamente — não é corrigido silenciosamente dentro do fluxo principal.
-- Cada skill numerada (00–41) tem uma posição definida nesse pipeline; uma skill não é acionada fora de ordem sem justificativa explícita e registrada.
-- O pipeline mapeia para a sequência de papéis descrita em [`agentes-ia/README.md`](../agents/README.md) (PO → UI-UX-DESIGNER → ARCHITECT → ... → SRE), mas opera no nível de skills, não de papéis — uma skill pode acionar um ou mais agentes.
+- Cada skill numerada (00–42) tem uma posição definida nesse pipeline; uma skill não é acionada fora de ordem sem justificativa explícita e registrada.
+- `42-resolve-progress-risks` roda sob demanda na Fase 7, após `35-feature-progress-report` já ter listado os riscos de uma Feature — nunca antes, e nunca adivinhando um risco que não está na tabela.
+- O pipeline mapeia para a sequência de papéis descrita em [`agents/README.md`](../agents/README.md) (PO → UI-UX-DESIGNER → ARCHITECT → ... → SRE), mas opera no nível de skills, não de papéis — uma skill pode acionar um ou mais agentes.
 - Nenhuma etapa é considerada concluída sem o artefato correspondente existir de fato (Requirement Summary escrito, plano registrado, runbook gerado, etc.).
 - Ao final do fluxo, o aprendizado relevante da feature é registrado em `MEMORY.md` — o fluxo não termina na implementação.
 

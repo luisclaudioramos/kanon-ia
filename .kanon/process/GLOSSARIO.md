@@ -74,7 +74,7 @@ Contrato de inicialização do [harness](#harness) — variáveis de ambiente, c
 
 <a id="sdd"></a>
 ### SDD (Spec-Driven Development)
-Fluxo de desenvolvimento em que a especificação (Requirement Summary, arquitetura, User Stories, Tasks) precede e governa a implementação, ao invés de o código ser escrito antes de o requisito estar claro. É o pipeline macro que ordena as 42 skills. Ver [`02-sdd-flow.md`](02-sdd-flow.md).
+Fluxo de desenvolvimento em que a especificação (Requirement Summary, arquitetura, User Stories, Tasks) precede e governa a implementação, ao invés de o código ser escrito antes de o requisito estar claro. É o pipeline macro que ordena as 43 skills. Ver [`02-sdd-flow.md`](02-sdd-flow.md).
 
 <a id="segregacao-de-decisao"></a>
 ### Segregação de Decisão

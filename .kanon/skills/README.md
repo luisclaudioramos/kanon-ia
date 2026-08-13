@@ -78,6 +78,7 @@ Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes 
 | [38-create-template](38-create-template/SKILL.md) | Cria e registra um novo template do sistema |
 | [39-generate-requirement-summary](39-generate-requirement-summary/SKILL.md) | Transforma anotação crua no primeiro artefato formal |
 | [40-show-feature-memory](40-show-feature-memory/SKILL.md) | Exibe a memória consolidada da Feature |
+| [42-resolve-progress-risks](42-resolve-progress-risks/SKILL.md) | Age sobre os riscos listados em `PROGRESS-REPORT.md` (skill 35) — fecha, investiga ou mantém em aberto cada um, com evidência |
 
 ### Transversais e contínuas
 | Skill | Propósito |

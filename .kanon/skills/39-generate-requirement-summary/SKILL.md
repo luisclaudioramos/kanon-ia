@@ -13,11 +13,11 @@ Atua no início absoluto do fluxo, antes mesmo da skill 01, apesar do número al
 - `REQUIREMENT-SUMMARY.md`.
 
 ## Regras principais
-- Aciona [`agentes-ia/PO.md`](../../agents/AGENT-PO.md).
+- Aciona [`agents/AGENT-PO.md`](../../agents/AGENT-PO.md).
 - Usa formato de critério de aceite verificável (Gherkin) sempre que possível, mesmo neste estágio inicial.
 
 ## Depende de
-- `agentes-ia/PO.md`.
+- `agents/AGENT-PO.md`.
 
 ## Procedimento em caso de falha
 Se a anotação recebida não tiver informação mínima de problema/objetivo, a skill não gera um `REQUIREMENT-SUMMARY.md` vazio — pede mais contexto antes de formalizar o artefato.

@@ -5,7 +5,7 @@ _Meta-template: apoia `skills/05-refine-user-stories` antes de usar [USER-STORY.
 ## Faça
 - Escreva a narrativa do ponto de vista do usuário final, não do sistema.
 - Inclua cenários de erro/borda nos Acceptance Criteria, não só o caminho feliz.
-- Mantenha a US pequena o suficiente para caber em poucas tasks (ver `agentes-ia/PO.md` — escopo incremental).
+- Mantenha a US pequena o suficiente para caber em poucas tasks (ver `agents/AGENT-PO.md` — escopo incremental).
 - Valide os AC com QA-ENGINEER antes de marcar como `aprovado`.
 
 ## Evite

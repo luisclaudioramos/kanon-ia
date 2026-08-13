@@ -15,11 +15,11 @@ Fase 0 — Inicialização e Contexto. Roda após [`39-generate-requirement-summ
 
 ## Regras principais
 - É a primeira etapa formal do pipeline descrito em [`process/02-sdd-flow.md`](../../process/02-sdd-flow.md).
-- Aciona [`agentes-ia/PO.md`](../../agents/AGENT-PO.md) (e [`agentes-ia/UI-UX-DESIGNER.md`](../../agents/AGENT-UI-UX-DESIGNER.md) quando a Feature envolve interface) para produzir os requisitos.
-- Todo requisito extraído precisa vir com critério de aceite no formato Dado/Quando/Então (ver `agentes-ia/GLOSSARIO.md#gherkin`) — nunca um requisito vago sem forma de verificação.
+- Aciona [`agents/AGENT-PO.md`](../../agents/AGENT-PO.md) (e [`agents/AGENT-UI-UX-DESIGNER.md`](../../agents/AGENT-UI-UX-DESIGNER.md) quando a Feature envolve interface) para produzir os requisitos.
+- Todo requisito extraído precisa vir com critério de aceite no formato Dado/Quando/Então (ver `agents/GLOSSARIO.md#gherkin`) — nunca um requisito vago sem forma de verificação.
 
 ## Depende de
-- `agentes-ia/PO.md`, `agentes-ia/UI-UX-DESIGNER.md`, `process/02-sdd-flow.md`, `41-design-gate`.
+- `agents/AGENT-PO.md`, `agents/AGENT-UI-UX-DESIGNER.md`, `process/02-sdd-flow.md`, `41-design-gate`.
 
 ## Procedimento em caso de falha
 Se a ideação recebida não tiver informação suficiente para extrair um requisito verificável, a skill sinaliza a lacuna explicitamente e não avança para `02-discover-context` com um requisito incompleto.

@@ -5,7 +5,7 @@ _Meta-template: apoia `skills/01-refine-feature` antes de usar [FEATURE.template
 ## Faça
 - Separe claramente Requisitos Funcionais (RF) de Não Funcionais (RNF).
 - Torne cada RF mensurável/verificável — se não dá pra testar, não está pronto para virar RF.
-- Descreva o problema de negócio antes da solução (ver `agentes-ia/PO.md`).
+- Descreva o problema de negócio antes da solução (ver `agents/AGENT-PO.md`).
 - Registre o glossário de termos específicos do domínio, para evitar ambiguidade entre PO, Architect e Engenheiros.
 
 ## Evite

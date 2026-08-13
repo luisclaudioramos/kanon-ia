@@ -24,7 +24,7 @@ flowchart TD
 _(gerado/validado por `skills/20-diagram-authoring`)_
 
 ## Decisões voláteis isoladas
-_[preencher: quais integrações externas ou regras mutáveis foram isoladas atrás de interfaces estáveis — base agentes-ia/ARCHITECT.md]_
+_[preencher: quais integrações externas ou regras mutáveis foram isoladas atrás de interfaces estáveis — base agents/AGENT-ARCHITECT.md]_
 
 ## Consequências
 - _[preencher: o que essa decisão facilita]_

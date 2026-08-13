@@ -13,13 +13,13 @@ Fase 1 — Arquitetura e Especificação. Roda após [`03-create-feature-artifac
 - `reports/architecture-assessment.md` com as 2 alternativas avaliadas, a decisão e o tech-stack final.
 
 ## Regras principais
-- Aciona [`agentes-ia/ARCHITECT.md`](../../agents/AGENT-ARCHITECT.md) para propor as alternativas e [`agentes-ia/TECH-LEAD.md`](../../agents/AGENT-TECH-LEAD.md) para validar/desempatar.
+- Aciona [`agents/AGENT-ARCHITECT.md`](../../agents/AGENT-ARCHITECT.md) para propor as alternativas e [`agents/AGENT-TECH-LEAD.md`](../../agents/AGENT-TECH-LEAD.md) para validar/desempatar.
 - Executa obrigatoriamente no tier de modelo **Forte + High** (ver [`process/08-model-orchestration.md`](../../process/08-model-orchestration.md)).
-- A decisão é registrada como ADR (ver `agentes-ia/ARCHITECT.md`, base `reference/boas-praticas-dev/06-documentacao.md`).
+- A decisão é registrada como ADR (ver `agents/AGENT-ARCHITECT.md`, base `reference/boas-praticas-dev/06-documentacao.md`).
 - Nenhuma das alternativas pode depender de hardcode de ambiente (ver [`process/10-core-agnosticism-gate.md`](../../process/10-core-agnosticism-gate.md)).
 
 ## Depende de
-- `agentes-ia/ARCHITECT.md`, `agentes-ia/TECH-LEAD.md`, `process/08-model-orchestration.md`, `process/10-core-agnosticism-gate.md`, `36-knowledge-retrieval` (checkpoint formal obrigatório antes desta skill).
+- `agents/AGENT-ARCHITECT.md`, `agents/AGENT-TECH-LEAD.md`, `process/08-model-orchestration.md`, `process/10-core-agnosticism-gate.md`, `36-knowledge-retrieval` (checkpoint formal obrigatório antes desta skill).
 
 ## Procedimento em caso de falha
 Se o tier de modelo Forte não estiver disponível, a skill fica bloqueada até estar — decisão de arquitetura crítica nunca é tomada em tier inferior (ver `process/08-model-orchestration.md`).

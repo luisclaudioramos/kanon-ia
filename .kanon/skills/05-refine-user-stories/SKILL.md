@@ -13,12 +13,12 @@ Fase 2 — Refino de Usuário e Tarefas. Roda após a Fase 1 (arquitetura defini
 - Conjunto de User Stories com AC, cada uma em um dos três estados: `refinado`, `aprovado` ou `publicado`.
 
 ## Regras principais
-- Aciona [`agentes-ia/PO.md`](../../agents/AGENT-PO.md) para o valor de negócio e [`agentes-ia/QA-ENGINEER.md`](../../agents/AGENT-QA-ENGINEER.md) para garantir AC testáveis desde o início (shift-left).
-- Toda US só avança de `refinado` para `aprovado` com AC no formato Dado/Quando/Então (ver `agentes-ia/GLOSSARIO.md#gherkin`).
+- Aciona [`agents/AGENT-PO.md`](../../agents/AGENT-PO.md) para o valor de negócio e [`agents/AGENT-QA-ENGINEER.md`](../../agents/AGENT-QA-ENGINEER.md) para garantir AC testáveis desde o início (shift-left).
+- Toda US só avança de `refinado` para `aprovado` com AC no formato Dado/Quando/Então (ver `agents/GLOSSARIO.md#gherkin`).
 - A transição para `publicado` só ocorre depois de aprovado — nenhuma US pula direto de `refinado` para `publicado`.
 
 ## Depende de
-- `agentes-ia/PO.md`, `agentes-ia/QA-ENGINEER.md`.
+- `agents/AGENT-PO.md`, `agents/AGENT-QA-ENGINEER.md`.
 
 ## Procedimento em caso de falha
 Uma US sem AC testável não avança de `refinado` para `aprovado` — fica retida até o critério de aceite ser esclarecido, nunca aprovada "por prazo".

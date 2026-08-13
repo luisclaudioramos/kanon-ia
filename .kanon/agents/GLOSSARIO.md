@@ -1,6 +1,6 @@
 # Glossário
 
-Termos técnicos usados nos arquivos de `agentes-ia/`, para consulta rápida. Cada arquivo linka a primeira ocorrência de cada termo aqui.
+Termos técnicos usados nos arquivos de `agents/`, para consulta rápida. Cada arquivo linka a primeira ocorrência de cada termo aqui.
 
 Termos que já existem no glossário de [`boas-praticas-dev/`](../reference/boas-praticas-dev/GLOSSARIO.md) (ex.: ADR, XSS, N+1, PR) são linkados diretamente lá, para não duplicar definição. Este arquivo cobre apenas termos específicos do domínio de produto/UX/dados que ainda não estavam cobertos.
 

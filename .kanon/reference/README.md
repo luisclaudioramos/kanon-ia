@@ -7,5 +7,6 @@ Material de referência consumido por [`agents/`](../agents) e [`skills/`](../sk
 | Pasta | Papel |
 |---|---|
 | [`boas-praticas-dev/`](boas-praticas-dev) | Coleção de referências rápidas de boas práticas de desenvolvimento (código, testes, git, review, segurança, arquitetura, performance, CI/CD, debugging) |
+| [`levantamento-de-requisitos/`](levantamento-de-requisitos) | Coleção de referências rápidas de engenharia/elicitação de requisitos (processo, técnicas, evidências, escopo, contexto greenfield/brownfield, anti-padrões, validação) |
 
 Diferente de `agents/`, `process/`, `skills/`, `templates/` e `commands/`, o conteúdo desta pasta não é específico do harness Kanon — é conhecimento técnico geral que qualquer projeto pode reaproveitar isoladamente.

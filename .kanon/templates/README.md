@@ -47,6 +47,7 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 | Template | Gerado/usado por |
 |---|---|
 | [AZURE-PUBLISH-SUMMARY.template.md](AZURE-PUBLISH-SUMMARY.template.md) | `skills/16` e `skills/26` |
+| [SLACK-APPROVAL-SUMMARY.template.md](SLACK-APPROVAL-SUMMARY.template.md) | `skills/34-pull-request-review` — rastreia notificação de PR e sincronização com `#aprovacao-de-pr` |
 | [NOTION-PUBLISH-SUMMARY.template.md](NOTION-PUBLISH-SUMMARY.template.md) | `skills/21-notion-integration-sm` |
 | [OUTLINE-PUBLISH-SUMMARY.template.md](OUTLINE-PUBLISH-SUMMARY.template.md) | `skills/31-getoutline-integration` |
 | [SUBAGENT-DISPATCH.template.md](SUBAGENT-DISPATCH.template.md) | `skills/24-development-orchestration` |

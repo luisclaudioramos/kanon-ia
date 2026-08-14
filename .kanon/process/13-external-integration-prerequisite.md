@@ -4,11 +4,12 @@
 Impedir que uma Feature alcance a etapa de Publicação (`skills/16`, `21`, `31`) ou de Pull Request (`skills/34`) sem que a ferramenta externa correspondente esteja configurada — e, quando não estiver, orientar ativamente a configuração em vez de pular a etapa em silêncio.
 
 ## Quando se aplica
-Antes de qualquer skill de publicação (Azure DevOps, Notion, Outline) e antes de `34-pull-request-review` tentar criar um PR real.
+Antes de qualquer skill de publicação (Azure DevOps, Notion, Outline) e antes de `34-pull-request-review` tentar criar um PR real ou notificar o Slack.
 
 ## Regras
 - Publicação exige pelo menos uma integração configurada (Azure DevOps, Notion ou Outline) — ver `skills/setup/SKILL.md` para o procedimento de configuração.
 - Pull Request exige acesso funcional ao repositório remoto (MCP de git/DevOps, ou CLI autenticado como `gh`/`az repos`) — sem isso, `34-pull-request-review` não tem como abrir um PR real.
+- Notificação de aprovação no Slack (`#aprovacao-de-pr`, dentro de `34-pull-request-review`) exige o MCP do Slack configurado — diferente do PR em si, essa integração **não é bloqueante** para a Feature alcançar `done`: sem ela, a skill orienta a configuração, mas registra a notificação como pendente em `SLACK-APPROVAL-SUMMARY.md` em vez de bloquear.
 - Se a integração/acesso não estiver disponível, o harness não pula a etapa silenciosamente: orienta ativamente a configuração, com os passos concretos necessários.
 - Se, mesmo orientado, o usuário decidir prosseguir sem configurar agora, isso é aceito como **exceção explícita e registrada** — mesmo padrão de `05-definition-of-done.md`: quem decidiu, quando, e o item pendente listado. Nunca um skip que não deixa rastro.
 - Pull Request deixa de ser opcional para o encerramento de uma Feature: `09-feature-state-management` não move uma Feature para `done` sem um PR real associado, a menos que a exceção acima tenha sido registrada.

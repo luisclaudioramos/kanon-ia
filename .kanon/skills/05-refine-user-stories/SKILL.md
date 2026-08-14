@@ -15,7 +15,10 @@ Fase 2 — Refino de Usuário e Tarefas. Roda após a Fase 1 (arquitetura defini
 
 ## Regras principais
 - Aciona [`agents/AGENT-PO.md`](../../agents/AGENT-PO.md) para o valor de negócio e [`agents/AGENT-QA-ENGINEER.md`](../../agents/AGENT-QA-ENGINEER.md) para garantir AC testáveis desde o início (shift-left).
-- Toda US só avança de `refinado` para `aprovado` com AC no formato Dado/Quando/Então (ver `agents/GLOSSARIO.md#gherkin`).
+- Toda US só avança de `refinado` para `aprovado` com AC no formato Dado/Quando/Então (ver `agents/GLOSSARIO.md#gherkin`) — cobrindo pelo menos o cenário de fluxo principal; o cenário de erro/borda é preenchido sempre que existir um caminho de exceção relevante, nunca deixado como placeholder vazio sem essa avaliação.
+- Persona e Prioridade (MoSCoW) de cada US são definidas aqui, herdando o contexto de "Problema e valor" e "Priorização, Risco e Esforço" da `FEATURE.md` pai.
+- Dependências entre US ("Bloqueado por"/"Bloqueia") são mapeadas durante o refino, não descobertas só na execução (`07-refine-tasks`).
+- A seção "UI/UX" só é preenchida quando `agents/AGENT-UI-UX-DESIGNER.md` foi acionado para esta US (mesma condição de `skills/01-refine-feature`); caso contrário, é removida do arquivo em vez de ficar como placeholder vazio.
 - A transição para `publicado` só ocorre depois de aprovado — nenhuma US pula direto de `refinado` para `publicado`.
 - Decisões de negócio/arquitetura tomadas durante o refino (ex.: escopo de uma US, resolução de conflito entre requisitos) são registradas na tabela "Decisões" do `FEATURE.md` — não apenas na cabeça de quem refinou.
 

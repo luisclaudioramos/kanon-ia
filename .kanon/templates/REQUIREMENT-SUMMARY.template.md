@@ -8,8 +8,14 @@ _Brief executivo de 1 página — gerado por `skills/39-generate-requirement-sum
 **Quando deve ficar pronto**: _[preencher: data ou marco]_
 **Quanto custa** (estimativa macro): _[preencher]_
 
-## Evidência do problema
+## Evidência do problema (linha de base)
 _[preencher: log, reclamação recorrente, dado de performance atual — ou, na ausência de dado quantitativo, registrar isso explicitamente como lacuna qualitativa, não deixar em branco. Ver `reference/levantamento-de-requisitos/03-evidencias-e-metricas.md`]_
+
+## Hipótese de sucesso
+_[preencher: o que se espera que mude com esta entrega — ex. "reduzir o tempo de login em 30 segundos". Se ainda não houver hipótese clara, registrar isso explicitamente em vez de deixar em branco]_
+
+## Métrica de sucesso (KPI)
+_[preencher: como isso será medido depois de entregue, contra a linha de base acima — ex. "aumentar conversão de cadastro em 15%". Se ainda não houver métrica definível, registrar qual métrica passará a ser coletada a partir de agora. Ver `reference/levantamento-de-requisitos/03-evidencias-e-metricas.md`]_
 
 ## Critério de aceite inicial (quando já conhecido)
 Dado _[preencher]_, quando _[preencher]_, então _[preencher]_.

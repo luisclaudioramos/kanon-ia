@@ -11,9 +11,11 @@ Fase 1 — Arquitetura e Especificação. Roda após [`03-create-feature-artifac
 
 ## Saídas
 - `reports/architecture-assessment.md` com as 2 alternativas avaliadas, a decisão e o tech-stack final.
+- Tabela "Sistemas impactados" do `FEATURE.md` preenchida (repositórios/serviços tocados, tipo, impacto, ambiente/projeto de deploy).
 
 ## Regras principais
 - Aciona [`agents/AGENT-ARCHITECT.md`](../../agents/AGENT-ARCHITECT.md) para propor as alternativas e [`agents/AGENT-TECH-LEAD.md`](../../agents/AGENT-TECH-LEAD.md) para validar/desempatar.
+- A decisão final de arquitetura (stack escolhida, alternativa descartada) também é registrada na tabela "Decisões" do `FEATURE.md`, além do ADR completo em `ARCHITECTURE.md`.
 - Executa obrigatoriamente no tier de modelo **Forte + High** (ver [`process/08-model-orchestration.md`](../../process/08-model-orchestration.md)).
 - A decisão é registrada como ADR (ver `agents/AGENT-ARCHITECT.md`, base `reference/boas-praticas-dev/06-documentacao.md`).
 - Nenhuma das alternativas pode depender de hardcode de ambiente (ver [`process/10-core-agnosticism-gate.md`](../../process/10-core-agnosticism-gate.md)).

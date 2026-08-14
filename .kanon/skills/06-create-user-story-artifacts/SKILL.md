@@ -11,10 +11,12 @@ Fase 2 — Refino de Usuário e Tarefas. Roda após [`05-refine-user-stories`](.
 
 ## Saídas
 - Arquivos `USER-STORY-XX.md`.
+- Seção "User Stories" do `FEATURE.md` pai atualizada com o link e o status (estado/SP/horas) de cada US materializada.
 
 ## Regras principais
 - Segue [`process/06-markdown-formatting-rules.md`](../../process/06-markdown-formatting-rules.md).
 - Aciona [`17-navigable-links`](../17-navigable-links/SKILL.md) para linkar cada US de volta à Feature pai.
+- Ao materializar uma US, adiciona/atualiza a linha correspondente em "User Stories" do `FEATURE.md` — nunca deixa a Feature com uma US publicada e a lista desatualizada.
 
 ## Depende de
 - `05-refine-user-stories`, `process/06-markdown-formatting-rules.md`, `17-navigable-links`.

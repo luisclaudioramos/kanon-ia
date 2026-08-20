@@ -36,6 +36,7 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 ### Grupo 4 — Governança, Revisão e Entrega
 | Template | Gerado/usado por |
 |---|---|
+| [CODE-REVIEW-REPORT.template.md](CODE-REVIEW-REPORT.template.md) | `skills/13-code-review`, via `agents/AGENT-CODE-REVIEWER.md` — relatório detalhado que alimenta o `PR-REVIEW.template.md` |
 | [PR-REVIEW.template.md](PR-REVIEW.template.md) | `skills/34-pull-request-review` |
 | [RUNBOOK.template.md](RUNBOOK.template.md) | `skills/19-runbook-authoring` |
 | [HANDOFF.template.md](HANDOFF.template.md) | `skills/10-handoff-management`, `process/04` e `process/07` |

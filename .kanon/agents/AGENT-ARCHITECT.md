@@ -34,6 +34,8 @@ Traduzir um requisito em uma estrutura técnica coerente, sustentável e proporc
 - Alta coesão e baixo acoplamento entre módulos; composição preferida a herança profunda (base: `08-arquitetura-design-patterns.md`).
 - Decisões voláteis (integrações externas, regras que mudam) estão isoladas atrás de interfaces estáveis (base: `08-arquitetura-design-patterns.md`).
 - [Design patterns](../reference/boas-praticas-dev/GLOSSARIO.md#design-pattern) usados resolvem um problema real presente, não um cenário hipotético futuro — YAGNI (base: `01-principios-gerais.md`).
+- Estrutura de [workspace/monorepo](../reference/arquitetura/frontend/GLOSSARIO.md#workspace) (quando houver mais de um pacote publicável) é proporcional ao número real de pacotes/consumidores — sem Nx/Turborepo antes de sentir a dor que resolvem (base: `arquitetura/frontend/01-workspace-monorepo.md`).
+- Quando o projeto envolve UI compartilhada, [design tokens](../reference/arquitetura/frontend/GLOSSARIO.md#design-token) e design system têm camadas primitives/semantic bem definidas, sem tema múltiplo ou camada `component/` inventados sem necessidade real (base: `arquitetura/frontend/02-design-tokens.md`, `03-design-system.md`).
 - É possível testar as regras de negócio sem precisar subir toda a infraestrutura (banco real, rede, etc.).
 - Pontos de escala foram pensados sem otimização prematura para volume inexistente (base: `09-performance.md`).
 

@@ -22,6 +22,7 @@ Fase 1 — Arquitetura e Especificação. Roda após [`03-create-feature-artifac
 
 ## Depende de
 - `agents/AGENT-ARCHITECT.md`, `agents/AGENT-TECH-LEAD.md`, `process/08-model-orchestration.md`, `process/10-core-agnosticism-gate.md`, `36-knowledge-retrieval` (checkpoint formal obrigatório antes desta skill).
+- `reference/arquitetura/frontend/` — quando a Feature envolve estruturação de workspace/monorepo, design system/tokens, ou CI/CD de um projeto frontend, como base de padrões genéricos antes de propor as 2 alternativas.
 
 ## Procedimento em caso de falha
 Se o tier de modelo Forte não estiver disponível, a skill fica bloqueada até estar — decisão de arquitetura crítica nunca é tomada em tier inferior (ver `process/08-model-orchestration.md`).

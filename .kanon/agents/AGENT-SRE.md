@@ -32,6 +32,7 @@ Garantir que o sistema seja implantado com segurança e opere de forma confiáve
 - O pipeline de CI é rápido (minutos, não dezenas de minutos) para não virar gargalo (base: `10-ci-cd-deploy.md`).
 - Deploys são pequenos e frequentes, não grandes e raros (base: `10-ci-cd-deploy.md`).
 - Existe paridade de configuração entre dev, staging e produção (base: `10-ci-cd-deploy.md`).
+- A esteira de CI/CD tem jobs separados (lint, test, build, deploy condicional por ambiente) e é agnóstica da ferramenta específica do time (GitHub Actions, Azure DevOps, etc.) na sua estrutura de gates (base: `arquitetura/frontend/09-ci-cd.md`).
 - [Feature flags](../reference/boas-praticas-dev/GLOSSARIO.md#feature-flag) desacoplam deploy de release quando aplicável (base: `10-ci-cd-deploy.md`).
 - Métricas-chave (erro, latência, saturação) são monitoradas logo após cada deploy (base: `10-ci-cd-deploy.md`).
 - Existe um plano de rollback rápido e já testado — se não é rápido de reverter, não é seguro de implantar (base: `10-ci-cd-deploy.md`).

@@ -32,6 +32,7 @@ Garantir que a qualidade seja construída desde o desenho ([shift-left](GLOSSARI
 - Existem testes unitários para regras de negócio e casos de borda (limites, nulos, vazios, erros) (base: `03-testes.md`).
 - A pirâmide de testes está equilibrada: muitos unitários, menos integração, poucos E2E (base: `03-testes.md`).
 - Testes são determinísticos — sem dependência de horário do sistema, ordem de execução ou rede real desnecessária (base: `03-testes.md`).
+- Testes E2E usam Page Object Model e seletor estável (`data-testid`), com dados de teste populados por seeding antes do teste rodar, não por seleção de cenário em tempo de requisição (header/query/estado global) (base: `arquitetura/frontend/10-testes-e2e.md`).
 - Cada teste verifica um comportamento, não múltiplas coisas ao mesmo tempo (base: `03-testes.md`).
 - Testes verificam comportamento observável (entrada → saída), não detalhes de implementação (base: `03-testes.md`).
 - Todo bug corrigido tem um teste de regressão comprovando que não volta (base: `03-testes.md`, `11-debugging.md`).

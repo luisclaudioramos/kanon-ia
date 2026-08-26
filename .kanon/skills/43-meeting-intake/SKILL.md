@@ -7,7 +7,7 @@ Varrer as transcrições de um dia e produzir três coisas: os assuntos capturad
 Fase 0 — Inicialização e Contexto, antes de `skills/39-generate-requirement-summary`. Alimenta `skills/44-topic-enrichment` (assuntos) e `skills/45-knowledge-promotion` (respostas da rodada de esclarecimento).
 
 ## Entradas
-- Uma pasta de dia em `docs/transcription/`, nomeada `dd-mm-aaaa`, contendo uma ou mais transcrições de reunião em `.md`.
+- Uma pasta de dia em `docs/transcription/`, nomeada `dd-mm-yyyy`, contendo uma ou mais transcrições de reunião em `.md`.
 - Opcionalmente, `resumo-pessoal.md` na mesma pasta: as anotações do próprio usuário sobre o dia.
 
 ## Saídas

@@ -16,7 +16,7 @@ Fase 0 — Inicialização e Contexto. Roda após `skills/43-meeting-intake` e a
 - Fatos confirmados encaminhados a `skills/45-knowledge-promotion`.
 
 ## Regras principais
-- Aciona `skills/36-knowledge-retrieval` sobre três corpora: `docs/knowledge/`, as transcrições em `docs/transcription/` e o código dos projetos.
+- Aciona `skills/36-knowledge-retrieval` sobre três corpora: `docs/knowledge/`, as transcrições em `docs/transcription/` e o código dos projetos (36 cobre `docs/knowledge/` sob o "corpus local" genérico de `process/12-knowledge-retrieval.md`, ainda que o `SKILL.md` de 36 não enumere o caminho).
 - **O código não está na vault.** A pasta `projects/` é um registro de ponteiros: cada `.md` aponta para o clone local e para o repositório remoto do projeto. A skill resolve o projeto pelo registro `projects/README.md` antes de buscar, e nunca assume que `projects/<nome>/` contém código.
 - Para consultar e validar implementação, usa o repositório remoto indicado no registro, via os MCPs de Azure DevOps ou o remoto de GitHub quando for o caso. Não exige clone atualizado e reflete o branch principal.
 - Para localizar o código a ser alterado depois, usa o caminho local indicado no registro. **Levantamento nunca altera código** — quem altera são as skills de desenvolvimento que consomem o assunto adiante.

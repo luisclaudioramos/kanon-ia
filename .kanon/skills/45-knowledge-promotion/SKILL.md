@@ -17,7 +17,8 @@ Transversal. Roda em dois momentos distintos: (1) após `44-topic-enrichment`, q
 
 ## Regras principais
 - Nunca promove fato sem `fontes`. Lista vazia ou ausente aborta a promoção (`process/11-subagent-anti-hallucination.md`, `process/12-knowledge-retrieval.md`).
-- Fato originado apenas de transcrição, sem confirmação em código ou por pessoa, nasce com `confianca: relatado`. `confirmado` exige verificação em código ou confirmação explícita de alguém nomeado.
+- Fato originado apenas de transcrição, sem confirmação em código ou por pessoa, nasce com `confianca: relatado`. `confirmado` exige verificação no contrato autoritativo (o código-fonte real do sistema) ou confirmação explícita de alguém nomeado — evidência de mock, fixture ou stub de teste nunca sustenta `confirmado`, porque mostra o que o time espera do contrato, não o contrato.
+- `confianca` gradua a afirmação mais forte da nota, não a mais bem sustentada. Nota que mistura afirmações com lastros diferentes se divide em duas notas, cada uma com o seu grau.
 - Fato originado de rodada de esclarecimento nasce com o respondente citado em `fontes`, com data da sessão.
 - Nunca apaga nota. Conhecimento que deixou de valer recebe `supersedido_por` e permanece — o histórico é o que permite auditar uma decisão antiga.
 - Antes de criar nota nova, busca no corpus por nota equivalente (`skills/36-knowledge-retrieval`). Se existir, atualiza em vez de duplicar.

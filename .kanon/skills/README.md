@@ -12,6 +12,9 @@ Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes 
 | Skill | Propósito |
 |---|---|
 | [00-harness-runtime](00-harness-runtime/SKILL.md) | Boot do harness: valida ambiente, carrega o runtime contract, prepara o menu |
+| [43-meeting-intake](43-meeting-intake/SKILL.md) | Varre as transcrições de um dia, captura assuntos e interroga o usuário sobre o que não entendeu |
+| [44-topic-enrichment](44-topic-enrichment/SKILL.md) | Levanta o que já se sabe de um assunto e separa isso das lacunas que só um humano responde |
+| [45-knowledge-promotion](45-knowledge-promotion/SKILL.md) | Promove fato verificado para `docs/knowledge/` e marca como superada a nota que deixou de valer |
 | [41-design-gate](41-design-gate/SKILL.md) | Hard gate: ≥2 alternativas de alto nível + aprovação humana, antes de especificar a Feature (roda após 39, antes de 01) |
 | [01-refine-feature](01-refine-feature/SKILL.md) | Transforma ideação crua em estrutura inicial de Feature |
 | [02-discover-context](02-discover-context/SKILL.md) | Varre codebase/memória por padrões e decisões relacionadas |

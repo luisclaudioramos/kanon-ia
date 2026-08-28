@@ -44,6 +44,7 @@ Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes 
 | [13-code-review](13-code-review/SKILL.md) | Aciona CODE-REVIEWER para revisão sistemática |
 | [14-qa-validation](14-qa-validation/SKILL.md) | Valida a implementação contra os Acceptance Criteria |
 | [46-handoff-authoring](46-handoff-authoring/SKILL.md) | Gera três passagens de bastão de um assunto — engenharia, PO e Negócios — cada uma escrita para o que aquele leitor precisa decidir |
+| [47-handoff-delivery](47-handoff-delivery/SKILL.md) | Leva o handoff de engenharia ao comentário do work item e cria três rascunhos no Slack — nunca envia, nunca cria work item |
 
 ### Fase 4 — Desenvolvimento e Testes
 | Skill | Propósito |

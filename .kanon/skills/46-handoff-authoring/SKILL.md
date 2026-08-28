@@ -15,7 +15,7 @@ Fase 3 — Governança, Qualidade e Transições. Roda após `skills/44-topic-en
 - Para cada handoff, o texto da mensagem de encaminhamento, que é apresentado ao usuário e não gravado no documento.
 
 ## Regras principais
-- **Fonte única.** Os três leem o mesmo assunto e o corpus. Nenhum carrega fato ausente do dossiê — se faltar, a skill declara a falta e não preenche (`process/11-subagent-anti-hallucination.md`).
+- **Fonte única.** Os três leem o mesmo assunto e o corpus. Nenhum carrega fato ausente do dossiê — se faltar, a skill declara a falta e não preenche (`process/11-subagent-anti-hallucination.md`). Esta regra não é verificada por máquina: `tools/validate_handoffs.py` confere forma, não aterramento factual. Ela depende de disciplina do agente gerador mais a revisão humana obrigatória antes do envio.
 - **Regeneração é reescrita.** Quando o assunto muda, os três são reescritos do zero. A skill nunca remenda um handoff existente, porque remendo desalinha da fonte em silêncio.
 - **Cada perfil é definido pelo que o leitor precisa conseguir fazer**, não pelo cargo: engenharia sai capaz de escolher a abordagem e estimar; PO sai capaz de rotear cada pendência; Negócios sai capaz de responder a pergunta que trava o assunto.
 - **Papéis, nunca nomes, no documento.** Os nomes existem no assunto e continuam lá — a omissão é um ato da externalização, não um apagamento na origem. O nome próprio aparece apenas na mensagem de encaminhamento.
@@ -30,4 +30,4 @@ Fase 3 — Governança, Qualidade e Transições. Roda após `skills/44-topic-en
 - `templates/HANDOFF-DEV.template.md`, `templates/HANDOFF-PO.template.md`, `templates/HANDOFF-NEGOCIOS.template.md`, `skills/44-topic-enrichment`, `process/06-markdown-formatting-rules.md`, `process/11-subagent-anti-hallucination.md`.
 
 ## Procedimento em caso de falha
-Se o assunto não tiver `## Dossiê` preenchido, a skill declara isso e encerra — não gera handoff a partir de assunto apenas capturado. Se um fato necessário a um dos perfis não existir no assunto, a skill escreve o handoff sem ele e registra a ausência explicitamente no documento, em vez de preencher com suposição. Se `tools/validate_handoffs.py` acusar erro, os handoffs não são considerados entregues e a skill reporta o erro literal.
+Se o assunto não tiver `## Dossiê` preenchido, a skill declara isso e encerra — não gera handoff a partir de assunto apenas capturado. Se um fato necessário a um dos perfis não existir no assunto, a skill escreve o handoff sem ele e registra a ausência explicitamente no documento, em vez de preencher com suposição. Se não conseguir sustentar uma afirmação no dossiê, a skill omite a afirmação e registra a omissão no próprio handoff — nunca a mantém contando que alguém perceba depois. Se `tools/validate_handoffs.py` acusar erro, os handoffs não são considerados entregues e a skill reporta o erro literal.

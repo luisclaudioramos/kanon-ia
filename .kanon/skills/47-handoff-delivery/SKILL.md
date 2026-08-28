@@ -14,6 +14,7 @@ Fase 5 — Publicação e Integrações. Roda depois que `skills/46-handoff-auth
 
 ## Saídas
 - Um comentário no work item, com o handoff de engenharia inteiro e o bloco do que está travado.
+- Três mensagens gravadas em `docs/handoffs/<id-do-assunto>/mensagens/{dev,po,negocios}.md`, versionadas junto do handoff que encaminham.
 - Três rascunhos de mensagem no Slack, um por perfil, cada um com o link do work item.
 - No assunto, `rascunho_criado: <data>`.
 
@@ -30,6 +31,8 @@ Fase 5 — Publicação e Integrações. Roda depois que `skills/46-handoff-auth
 - **Rascunho duplicado é avisado, não deduplicado.** Repetir a rodada cria uma segunda cópia; o dano é pequeno e visível, e a skill diz isso em vez de inventar mecanismo.
 - **A skill nunca registra que a mensagem foi enviada.** O conhecimento dela termina no rascunho: o assunto grava `rascunho_criado`, e nada além. Quem envia sabe que enviou.
 - **Cada mensagem passa por `tools/validate_mensagem.py` antes de virar rascunho.** Erro bloqueia.
+- **A mensagem é gravada antes de virar rascunho**, no caminho que `validate_mensagem.caminho_da_mensagem` monta. O lugar não se improvisa a cada execução.
+- **A mensagem é o único artefato do vault que carrega nome de pessoa**, e isso é desenho, não descuido. `validate_handoffs.py` lê só os três arquivos de perfil e ignora `mensagens/`; a regra de papéis vale para o handoff, não para o convite a lê-lo.
 
 ## Depende de
 - `skills/46-handoff-authoring`, `skills/16-azure-devops-integration-sm`, `tools/compor_comentario.py`, `tools/validate_mensagem.py`, `tools/validate_handoffs.py`, `process/11-subagent-anti-hallucination.md`.

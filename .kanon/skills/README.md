@@ -43,6 +43,7 @@ Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes 
 | [11-quality-gate](11-quality-gate/SKILL.md) | Executa a bateria de validações da Definition of Done |
 | [13-code-review](13-code-review/SKILL.md) | Aciona CODE-REVIEWER para revisão sistemática |
 | [14-qa-validation](14-qa-validation/SKILL.md) | Valida a implementação contra os Acceptance Criteria |
+| [46-handoff-authoring](46-handoff-authoring/SKILL.md) | Gera três passagens de bastão de um assunto — engenharia, PO e Negócios — cada uma escrita para o que aquele leitor precisa decidir |
 
 ### Fase 4 — Desenvolvimento e Testes
 | Skill | Propósito |

@@ -15,6 +15,13 @@ origem:
 
 # Título do assunto
 
+## Trajetória
+
+```mermaid
+stateDiagram-v2
+    [*] --> capturado: dd-mm · varredura de dd-mm-aaaa
+```
+
 ## O que foi pedido
 
 Uma frase, sem interpretação.
@@ -34,9 +41,3 @@ Contexto de negócio, com fonte.
 ## Dossiê
 
 Preenchido pela skill 44.
-
-## Checklist pronto-para-39
-
-- [ ] Problema e objetivo enunciados
-- [ ] Nenhuma lacuna bloqueante em aberto
-- [ ] Pelo menos uma evidência com fonte

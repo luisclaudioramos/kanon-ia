@@ -13,7 +13,7 @@ Fase 0 — Inicialização e Contexto. Roda após `skills/43-meeting-intake` e a
 ## Saídas
 - A seção `## Dossiê` da nota preenchida, com duas listas separadas.
 - A seção `## Lacunas abertas` atualizada, cada item com dono nomeado.
-- `status` atualizado para `em-levantamento` ou `pronto-para-39`.
+- `status` atualizado para `em-levantamento` ou `consolidado`.
 - Fatos confirmados encaminhados a `skills/45-knowledge-promotion`.
 - Quando uma lacuna for fechada por consulta, o achado entra no `## Dossiê` com a consulta executada e a citação da fonte.
 
@@ -24,7 +24,7 @@ Fase 0 — Inicialização e Contexto. Roda após `skills/43-meeting-intake` e a
 - Para localizar o código a ser alterado depois, usa o caminho local indicado no registro. **Levantamento nunca altera código** — quem altera são as skills de desenvolvimento que consomem o assunto adiante.
 - O dossiê separa obrigatoriamente duas listas: **o que foi encontrado**, cada item com fonte e nível de confiança, e **lacunas que só um humano responde**, cada uma com dono nomeado.
 - Uma pergunta feita em reunião não conta como respondida só porque alguém falou depois dela. A skill compara a pergunta com a resposta e, se a resposta cobrir apenas o caso geral, registra a lacuna como aberta.
-- `status` só avança para `pronto-para-39` quando não há lacuna bloqueante em aberto. `tools/validate_notes.py` recusa a combinação `pronto-para-39` com item não marcado em `## Lacunas abertas`.
+- `status` só avança para `consolidado` quando não há lacuna bloqueante em aberto. `tools/validate_notes.py` recusa a combinação `consolidado` com item não marcado em `## Lacunas abertas`.
 - Backfill em transcrição antiga é dirigido, nunca varredura: busca-se o que a lacuna apontou. Fato recuperado de reunião antiga o bastante para o sistema ter mudado desde então nasce com `confianca` rebaixada.
 - Se a busca não retornar nada relevante, declara "não encontrado no corpus" — nunca preenche com suposição (`process/12-knowledge-retrieval.md`).
 - **Consulta a banco passa por `tools/valida_consulta.py` antes de executar.** O guard só deixa passar um comando de leitura. Ele analisa o texto do SQL, não a permissão da conexão, e nada na ferramenta de execução obriga a chamá-lo — a regra vive aqui, e é por isso que ela está escrita.
@@ -36,12 +36,15 @@ Fase 0 — Inicialização e Contexto. Roda após `skills/43-meeting-intake` e a
 - **Toda citação de Outline carrega a revisão**, montada por `tools/outline_consulta.py`. Sem revisão a citação não é fixável, e uma citação não fixável promete conferibilidade que não entrega.
 - **Resultado de consulta não traz linha de dado pessoal para a nota.** O corpus é versionado: o que entrar fica no histórico para sempre. Registra-se o fato estrutural ou o agregado; se responder à lacuna exigiu olhar linha individual, a nota diz que olhou e o que concluiu, sem transcrever.
 - **Consulta vazia é resposta, não ausência de resposta.** "Nenhuma linha" e "a restrição não existe" são conclusões diferentes, e passar de uma para a outra depende de a consulta ter sido a certa — o que é julgamento humano.
+- **Toda virada de fase entra no `historico.md` do assunto, que só cresce.** O log é a autoridade sobre a fase; o `status` do front-matter é cache do log.
+- **A máquina leva o assunto até `consolidado` e para ali.** `virou-us`, `virou-feature` e `descartado` só um humano dispara.
+- **Lacuna bloqueante nova num assunto já consolidado gera alerta, não retrocesso.** Entra uma linha no log com origem e destino vazios, porque nada se moveu, e o alerta aparece no dossiê. O dashboard ainda não lê `historico.md` — ver DESIGN.md §6.2. Rebaixar a fase é decisão de quem lê.
 
 ## Depende de
 - `skills/36-knowledge-retrieval`, `skills/43-meeting-intake`, `skills/45-knowledge-promotion`, `process/12-knowledge-retrieval.md`, `process/11-subagent-anti-hallucination.md`, registro de projetos em `projects/README.md`.
 - `tools/valida_consulta.py`, `tools/outline_consulta.py`.
 
 ## Procedimento em caso de falha
-Se a nota de assunto não existir ou não tiver front-matter válido, a skill reporta o erro do validador e não escreve. Se todas as lacunas dependerem de resposta humana indisponível no momento, o assunto permanece em `em-levantamento` com as lacunas nomeadas — nunca é promovido a `pronto-para-39` para desbloquear o fluxo.
+Se a nota de assunto não existir ou não tiver front-matter válido, a skill reporta o erro do validador e não escreve. Se todas as lacunas dependerem de resposta humana indisponível no momento, o assunto permanece em `em-levantamento` com as lacunas nomeadas — nunca é promovido a `consolidado` para desbloquear o fluxo.
 
 Se o banco ou o Outline estiverem inalcançáveis, a skill declara isso e a lacuna correspondente permanece aberta — inalcançável nunca vira "não encontrei, logo não existe". Se `tools/valida_consulta.py` recusar a consulta, ela não é executada e a skill reporta a recusa literal.

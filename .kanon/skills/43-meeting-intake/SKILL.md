@@ -11,13 +11,15 @@ Fase 0 — Inicialização e Contexto, antes de `skills/39-generate-requirement-
 - Opcionalmente, `resumo-pessoal.md` na mesma pasta: as anotações do próprio usuário sobre o dia.
 
 ## Saídas
-- Notas de assunto em `docs/assuntos/`, com `status: capturado` e apenas o esqueleto preenchido (`templates/ASSUNTO.template.md`).
+- Uma pasta por assunto novo em `docs/assuntos/<id>/`, nunca um `.md` solto: `assunto.md` com `status: capturado` e apenas o esqueleto preenchido (`templates/ASSUNTO.template.md`); `historico.md` iniciado com a primeira linha (`— → capturado`, disparo "varredura de `dd-mm-aaaa`", `máquina (43)`); `atos/` criada e vazia.
 - Um extrato do dia: decisões, fatos ditos e participantes.
 - Uma rodada de esclarecimento apresentada ao usuário (ver Regras principais).
 - `docs/assuntos/README.md` regenerado.
 
 ## Regras principais
 - Opera sobre a pasta de um dia inteiro, nunca sobre um arquivo isolado — o mesmo assunto costuma aparecer em mais de uma reunião do mesmo dia.
+- **Todo assunto novo nasce como pasta, nunca como arquivo solto.** Um `.md` direto em `docs/assuntos/` não é lido por `tools/funil_parse.py` — o assunto desapareceria do funil sem erro nenhum. As três peças (`assunto.md`, `historico.md`, `atos/`) nascem juntas.
+- **`historico.md` é a autoridade sobre a fase, e só cresce.** A primeira linha que a skill grava é sempre `— → capturado`; é a única virada que a 43 dispara. As viradas seguintes (`em-levantamento`, `consolidado`, …) são de `skills/44-topic-enrichment` em diante.
 - Lê `resumo-pessoal.md` primeiro, quando existir, e o trata como fonte de maior precedência que a transcrição em caso de conflito.
 - Não escreve nota de conhecimento a partir de transcrição. Captura o que foi dito, com timestamp; a promoção é de `skills/45-knowledge-promotion`.
 - Deduplica contra os assuntos existentes antes de criar. Um assunto levantado em três reuniões é um assunto com três entradas em `origem`, não três notas. Na dúvida sobre fundir, pergunta em vez de fundir.
@@ -32,6 +34,7 @@ Fase 0 — Inicialização e Contexto, antes de `skills/39-generate-requirement-
 
 ## Depende de
 - `templates/ASSUNTO.template.md`, `skills/45-knowledge-promotion`, `process/06-markdown-formatting-rules.md`, `process/11-subagent-anti-hallucination.md`.
+- `tools/fase_assunto.py` (formato do `historico.md`), `tools/valida_pasta_assunto.py` (coerência da pasta).
 
 ## Procedimento em caso de falha
 Se a pasta do dia não contiver nenhuma transcrição `.md`, a skill declara isso e encerra — não cria nota vazia. Se nenhuma transcrição contiver item acionável, declara "nenhum assunto capturado" e ainda assim executa a rodada de esclarecimento, que é útil mesmo sem assunto novo. Se `tools/validate_notes.py` acusar erro, a nota não é considerada entregue e a skill reporta o erro literal.

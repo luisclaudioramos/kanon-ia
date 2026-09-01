@@ -7,7 +7,7 @@ Promover fatos verificados para o corpus descritivo em `docs/knowledge/`, e marc
 Transversal. Roda em dois momentos distintos: (1) após `44-topic-enrichment`, quando o levantamento confirma um fato reutilizável; (2) após a entrega da US originada do assunto, quando a regra mudou e a nota anterior precisa ser superada. O segundo momento é o que impede o corpus de apodrecer.
 
 ## Entradas
-- Um dossiê de assunto com fatos confirmados (`docs/assuntos/<id>.md`, seção `## Dossiê`), ou
+- Um dossiê de assunto com fatos confirmados (`docs/assuntos/<id>/assunto.md`, seção `## Dossiê`), ou
 - Respostas de uma rodada de esclarecimento (`skills/43-meeting-intake`, seção 5.1.1 do design), ou
 - Uma US entregue cuja mudança invalida nota existente.
 

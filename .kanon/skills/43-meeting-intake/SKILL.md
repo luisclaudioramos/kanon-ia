@@ -7,12 +7,12 @@ Varrer as transcrições de um dia e produzir três coisas: os assuntos capturad
 Fase 0 — Inicialização e Contexto, antes de `skills/39-generate-requirement-summary`. Alimenta `skills/44-topic-enrichment` (assuntos) e `skills/45-knowledge-promotion` (respostas da rodada de esclarecimento).
 
 ## Entradas
-- Uma pasta de dia em `docs/transcription/`, nomeada `dd-mm-yyyy`, contendo uma ou mais transcrições de reunião em `.md`.
+- Uma pasta de dia em `docs/transcription/`, nomeada `aaaa-mm-dd`, contendo uma ou mais transcrições de reunião em `.md`.
 - Opcionalmente, `resumo-pessoal.md` na mesma pasta: as anotações do próprio usuário sobre o dia.
 
 ## Saídas
-- Uma pasta por assunto novo em `docs/assuntos/<id>/`, nunca um `.md` solto: `assunto.md` com `status: capturado` e apenas o esqueleto preenchido (`templates/ASSUNTO.template.md`); `historico.md` iniciado com a primeira linha (`— → capturado`, disparo "varredura de `dd-mm-aaaa`", `máquina (43)`); `atos/` criada e vazia.
-- Um extrato do dia: decisões, fatos ditos e participantes.
+- Uma pasta por assunto novo em `docs/assuntos/<id>/`, nunca um `.md` solto: `assunto.md` com `status: capturado` e apenas o esqueleto preenchido (`templates/ASSUNTO.template.md`); `historico.md` iniciado com a primeira linha (`— → capturado`, disparo "varredura de `aaaa-mm-dd`", `máquina (43)`); `atos/` criada e vazia.
+- Uma passada de classificação em `docs/extratos/<dia-iso>/<data-da-passada>-passada.md`, com quatro seções: o que foi classificado, o que não soube classificar, os descartes agrupados por motivo, e a lista completa de descartes.
 - Uma rodada de esclarecimento apresentada ao usuário (ver Regras principais).
 - `docs/assuntos/README.md` regenerado.
 
@@ -31,10 +31,19 @@ Fase 0 — Inicialização e Contexto, antes de `skills/39-generate-requirement-
 - As respostas do usuário são encaminhadas a `skills/45-knowledge-promotion` com o respondente e a data da sessão como fonte.
 - **Conteúdo sensível.** De uma reunião 1:1, extrai apenas itens de trabalho. Conteúdo pessoal, de saúde e de gestão de pessoas nunca vira nota de assunto nem de conhecimento — e a skill declara explicitamente que ignorou conteúdo dessa natureza, em vez de omitir em silêncio.
 - Toda nota escrita passa por `tools/validate_notes.py` antes do encerramento da skill.
+- **A unidade classificada é o assunto discutido**, não a reunião inteira nem cada afirmação. A skill não promete ter lido tudo: promete que o que reconheceu como assunto, ou classificou, ou declarou que não soube.
+- **A decisão primária é conhecimento ou atividade.** Se atividade, um dos cinco tipos de assunto; se conhecimento, um dos cinco que o corpus já usa. Nenhum vocabulário novo é inventado aqui.
+- **"Não soube classificar" e "decidi que não é assunto" são baldes diferentes.** O primeiro é a skill admitindo ignorância, e o item vai para **Não classificado** junto com o trecho, para o usuário decidir; o segundo é ela exercendo julgamento, e o item vai para **Descartes** com um motivo. O que ela reconheceu e nomeou vai para **Classificado**. Misturar os dois primeiros esconderia os dois.
+- **Todo descarte tem motivo de um conjunto declarado**, e a contagem agrupada tem de bater com a lista completa — `tools/extrato.py` recusa a passada em que divergirem.
+- **Uma passada nunca reescreve outra.** Reprocessar um dia cria arquivo novo. A passada registra que a skill olhou este material nesta data com estas regras, e reescrevê-la apagaria a evidência de como ela decidia antes. `tools/extrato.py:caminho_da_passada` existe para impor isso em código — recusa (`ExtratoInvalido`), por padrão, devolver um caminho já ocupado —, mas hoje não tem chamador de produção: quem grava a passada é o agente que executa esta skill, com sua própria ferramenta de escrita, não este código. A garantia real hoje é de procedimento: antes de gravar, a skill confere se `docs/extratos/<dia-iso>/<data-da-passada>-passada.md` já existe e, se existir, usa uma nova data de passada em vez de sobrescrever.
+- **Balde vazio aparece dizendo que está vazio.** Seção ausente é erro, não economia.
 
 ## Depende de
 - `templates/ASSUNTO.template.md`, `skills/45-knowledge-promotion`, `process/06-markdown-formatting-rules.md`, `process/11-subagent-anti-hallucination.md`.
 - `tools/fase_assunto.py` (formato do `historico.md`), `tools/valida_pasta_assunto.py` (coerência da pasta).
+- `tools/extrato.py`, `tools/descartes.py`.
 
 ## Procedimento em caso de falha
 Se a pasta do dia não contiver nenhuma transcrição `.md`, a skill declara isso e encerra — não cria nota vazia. Se nenhuma transcrição contiver item acionável, declara "nenhum assunto capturado" e ainda assim executa a rodada de esclarecimento, que é útil mesmo sem assunto novo. Se `tools/validate_notes.py` acusar erro, a nota não é considerada entregue e a skill reporta o erro literal.
+
+Se `tools/extrato.py` recusar a passada, o arquivo já está em disco quando isso acontece — o script só valida, não grava, e exige que o arquivo já exista para rodar. A skill apaga o arquivo recusado antes de encerrar e reporta os erros literais. Passada parcial não fica no disco, porque parece completa.

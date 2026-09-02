@@ -8,7 +8,7 @@ solicitante: Nome de quem pediu
 criado: AAAA-MM-DD
 atualizado: AAAA-MM-DD
 origem:
-  - arquivo: docs/transcription/dd-mm-aaaa/Nome da reunião.md
+  - arquivo: docs/transcription/aaaa-mm-dd/Nome da reunião.md
     timestamp: "00:00:00"
     quem: Quem falou
 ---
@@ -19,7 +19,7 @@ origem:
 
 ```mermaid
 stateDiagram-v2
-    [*] --> capturado: dd-mm · varredura de dd-mm-aaaa
+    [*] --> capturado: dd-mm · varredura de aaaa-mm-dd
 ```
 
 ## O que foi pedido

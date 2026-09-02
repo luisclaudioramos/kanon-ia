@@ -4,7 +4,7 @@ titulo: Título curto e específico
 escopo: nome-do-projeto
 confianca: relatado
 fontes:
-  - "docs/transcription/dd-mm-aaaa/Nome da reunião.md @00:00:00 — Quem falou"
+  - "docs/transcription/aaaa-mm-dd/Nome da reunião.md @00:00:00 — Quem falou"
 vigente_em: AAAA-MM-DD
 supersedido_por: null
 ---

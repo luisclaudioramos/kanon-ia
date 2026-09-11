@@ -1,0 +1,5 @@
+# Estado local do Claude Code — não descreve o harness e não viaja entre máquinas.
+# settings.local.json acumula permissões de sessões passadas, com caminhos absolutos
+# desta máquina; RESUME.md é checkpoint de sessão interrompida.
+.claude/settings.local.json
+.claude/RESUME.md

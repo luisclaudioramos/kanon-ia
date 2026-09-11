@@ -6,7 +6,11 @@ harness** — a especificação, não o conteúdo produzido com ela.
 
 ## O que tem aqui
 
-Tudo vive em [`.kanon/`](.kanon), a raiz do harness — 163 arquivos:
+Duas pastas, com papéis distintos: [`.kanon/`](.kanon) é a **especificação**, neutra de
+ambiente; [`.claude/`](.claude) é a **integração real** com o Claude Code, que faz a
+especificação valer em tempo de execução.
+
+### `.kanon/` — o núcleo, 163 arquivos
 
 | Pasta | Papel | Volume |
 |---|---|---|
@@ -16,6 +20,19 @@ Tudo vive em [`.kanon/`](.kanon), a raiz do harness — 163 arquivos:
 | [`.kanon/templates/`](.kanon/templates) | **Forma** — esqueletos de artefato, mais `evidence/` e `outline/` | 38 arquivos |
 | [`.kanon/commands/`](.kanon/commands) | **Entrada** — especificação agnóstica do comando `kanon` | 1 arquivo |
 | [`.kanon/reference/`](.kanon/reference) | **Base de qualidade** — `boas-praticas-dev/`, consumida por agentes e skills | 41 arquivos |
+
+### `.claude/` — a integração, 15 arquivos
+
+| Item | Papel |
+|---|---|
+| [`.claude/hooks/`](.claude/hooks) | Os 10 gates em JavaScript que rodam de verdade, todos ligados no `settings.json`: `identity-seals-gate`, `seal-registry-gate`, `seals-write-gate`, `seal-routing-gate`, `core-agnostic-gate`, `core-agnostic-commit-gate`, `design-gate-approval-gate`, `branch-delete-guard`, `develop-merge-squash-gate`, `pr-publish-consent-gate` — mais um README próprio |
+| [`.claude/settings.json`](.claude/settings.json) | Liga os hooks ao harness: 10 execuções em 3 matchers de `PreToolUse` |
+| [`.claude/commands/kanon.md`](.claude/commands/kanon.md) | O slash command `/kanon`, que implementa a especificação de `.kanon/commands/kanon.md` |
+> **Dois arquivos da pasta ficam fora do versionamento**, listados no
+> [`.gitignore`](.gitignore): `settings.local.json`, com as permissões acumuladas em
+> sessões passadas e caminhos absolutos da máquina, e `RESUME.md`, checkpoint de uma
+> sessão interrompida. Existem no disco e continuam funcionando localmente — só não
+> entram na história, porque não descrevem o harness e não viajam entre máquinas.
 
 ## Ordem de leitura
 
@@ -35,10 +52,12 @@ ou caminho absoluto de usuário — é o Selo I, verificado por
 `process/10-core-agnosticism-gate.md`. Por isso funciona como prompt e documentação em
 qualquer IA ou ferramenta, e pode ser copiado inteiro para outro ambiente.
 
-A integração específica de uma ferramenta mora fora dele. No repositório de origem isso é
-a pasta `.claude/`, com os hooks `PreToolUse` e o slash command `/kanon`. **Essa pasta não
-está aqui** — este repositório traz só o núcleo agnóstico. Se o harness for adaptado para
-outra IA, `.kanon/` viaja; só a camada de integração muda.
+A integração específica de uma ferramenta mora fora dele, em [`.claude/`](.claude): os
+hooks `PreToolUse` que barram de fato uma escrita fora do contrato, e o slash command
+`/kanon`. É ali que vivem os caminhos, os comandos e o que só faz sentido no Claude Code.
+
+Se amanhã o harness for adaptado para outra IA, `.kanon/` é copiado inteiro e só a camada
+de integração muda. A divisão é essa: `.kanon/` diz **o que** vale, `.claude/` faz valer.
 
 ## O que não está aqui
 

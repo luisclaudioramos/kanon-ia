@@ -36,3 +36,15 @@ Prettier + ESLint (flat config) + Husky + lint-staged, configurados uma vez na r
 ## Node e package manager
 
 Fixar a versão do Node via `engines` no `package.json` raiz e via `packageManager` (Yarn 4+, ativado por `corepack`) — evita divergência de versão entre máquinas e CI.
+
+## Documentação de cada pacote/app
+
+Todo pacote/app do workspace tem README próprio, seguindo as seções de [`boas-praticas-dev/06-documentacao.md`](../../boas-praticas-dev/06-documentacao.md) — a estrutura de diretórios acima organiza onde o código vive, não substitui a documentação de como rodar/testar/estender cada peça isoladamente.
+
+**Além daquelas seções gerais**, um pacote de frontend documenta o que é específico de UI:
+
+- **Como criar um componente** — em qual camada colocar (atom/molecule/organism, ver [Design System](03-design-system.md)), convenção de nome de arquivo, e o que todo componente novo precisa ter antes de ser considerado pronto (teste, `data-testid`, story, checagem de a11y).
+- **Acessibilidade** — checklist mínimo por componente: navegação por teclado, `aria-*`/`role` quando a semântica HTML nativa não basta, contraste, rótulo em todo elemento interativo.
+- **SEO** — só para rota/página pública: meta tags, dados estruturados, tags semânticas, `alt` em imagem (ver [Aplicação Frontend](05-aplicacao-frontend-angular.md)). Rota atrás de autenticação não precisa — e o README diz isso em uma linha, em vez de omitir sem explicação.
+
+Um pacote sem UI (tokens, backend de apoio) omite as três seções acima explicitamente.

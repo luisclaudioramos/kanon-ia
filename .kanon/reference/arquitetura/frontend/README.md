@@ -26,6 +26,8 @@ Coleção de padrões de referência para estruturar um projeto frontend moderno
 11. [Documentação do Projeto](11-documentacao-do-projeto.md)
 12. [Showcase de Componentes (Storybook)](12-showcase-storybook.md)
 
+> O README de cada pacote/app segue [`boas-praticas-dev/06-documentacao.md`](../../boas-praticas-dev/06-documentacao.md) (fonte única do padrão geral); o delta específico de frontend — como criar componente, acessibilidade, SEO — está em [Workspace e Monorepo](01-workspace-monorepo.md#documentação-de-cada-pacoteapp).
+
 ### Referência
 - [Glossário](GLOSSARIO.md) — termos específicos destes padrões. Termos já cobertos pelo glossário de [`boas-praticas-dev/`](../../boas-praticas-dev/GLOSSARIO.md) são linkados diretamente lá.
 

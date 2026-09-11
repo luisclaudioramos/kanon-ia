@@ -21,3 +21,6 @@ Consumir os design tokens via o pré-processador/sistema de estilo que o projeto
 
 ## Documentação viva
 [Storybook](12-showcase-storybook.md) (ou equivalente) como catálogo navegável — cada componente ganha uma "story" demonstrando suas variações, seguindo `06-documentacao.md` ("prefira gerar documentação a partir do código").
+
+## README
+Segue [`boas-praticas-dev/06-documentacao.md`](../../boas-praticas-dev/06-documentacao.md) mais o [delta de frontend](01-workspace-monorepo.md#documentação-de-cada-pacoteapp) por completo — este é o pacote onde "como criar um componente" e "acessibilidade" mais importam, por ser a fonte que todos os outros apps do workspace consomem.

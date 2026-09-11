@@ -16,3 +16,6 @@ Um backend de apoio para desenvolvimento/teste (mock de API, fixture de dados) n
 
 ## Testes
 Testes de integração HTTP (ex. Supertest) contra rotas reais, banco de teste isolado do de desenvolvimento, limpo antes de cada execução.
+
+## README
+Segue [`boas-praticas-dev/06-documentacao.md`](../../boas-praticas-dev/06-documentacao.md), omitindo as seções de UI do [delta de frontend](01-workspace-monorepo.md#documentação-de-cada-pacoteapp) e com "Segurança" focado em validação de entrada dos endpoints expostos, mesmo quando é só um backend de apoio.

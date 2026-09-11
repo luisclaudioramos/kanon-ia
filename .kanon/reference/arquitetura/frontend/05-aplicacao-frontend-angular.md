@@ -21,3 +21,6 @@ Configuração de ambiente (URLs de API, feature flags) injetada no momento do b
 
 ## Testes
 Unitários com o runner que o projeto já usa (Vitest, Karma/Jasmine); comportamento observável pelo usuário, não detalhe de implementação interna (`03-testes.md`).
+
+## README
+Segue [`boas-praticas-dev/06-documentacao.md`](../../boas-praticas-dev/06-documentacao.md) mais o [delta de frontend](01-workspace-monorepo.md#documentação-de-cada-pacoteapp) por completo — é o app final, tem rotas públicas (SEO se aplica) e é o principal consumidor de [design system](03-design-system.md)/[tokens](02-design-tokens.md)/[iconografia](04-iconografia.md).

@@ -24,3 +24,7 @@ packages/design-tokens/
     semantic/
   build/          # gerado — css/, scss/, js/
 ```
+
+## README
+
+Segue [`boas-praticas-dev/06-documentacao.md`](../../boas-praticas-dev/06-documentacao.md), omitindo explicitamente as seções de UI ([delta de frontend](01-workspace-monorepo.md#documentação-de-cada-pacoteapp)) — este pacote não expõe interface, só dados.

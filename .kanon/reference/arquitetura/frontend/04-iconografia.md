@@ -14,3 +14,6 @@ Separar o registro de ícones (mapa nome→SVG, independente de qualquer framewo
 
 ## Antes de catalogar
 Levantar o inventário real de ícones em uso na aplicação antes de desenhar a forma final do registro — cada projeto acumula um conjunto próprio de ícones ao longo do tempo, geralmente sem inventário formal existente.
+
+## README
+Segue [`boas-praticas-dev/06-documentacao.md`](../../boas-praticas-dev/06-documentacao.md); do [delta de frontend](01-workspace-monorepo.md#documentação-de-cada-pacoteapp), "SEO" fica omitido (não há página/rota) e "Acessibilidade" se restringe ao contrato acima, não ao checklist completo de uma tela.

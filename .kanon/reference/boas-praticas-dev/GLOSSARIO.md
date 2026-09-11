@@ -6,6 +6,10 @@ Termos técnicos usados nos documentos deste repositório, para consulta rápida
 ### ADR (Architecture Decision Record)
 Documento curto que registra uma decisão arquitetural importante: contexto, decisão tomada, alternativas consideradas e consequências. Evita que a mesma discussão se repita meses depois.
 
+<a id="aaa"></a>
+### AAA (Arrange-Act-Assert)
+Estrutura de um teste em três blocos visíveis e nessa ordem: preparar o estado e as entradas (Arrange), executar a única ação sob teste (Act), verificar o resultado observável (Assert).
+
 <a id="assert"></a>
 ### Assert / Asserção
 Instrução que verifica se uma condição é verdadeira em um ponto do código; se for falsa, interrompe a execução com um erro. Usada tanto para validar invariantes internas quanto para verificar resultados em testes.

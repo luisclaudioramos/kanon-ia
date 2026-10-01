@@ -35,7 +35,7 @@ _[preencher: onde está (script, seed, payload, usuário de teste de homologaç�
 - [ ] Testes unitários do comportamento novo ou corrigido (trava 3) — ou exceção: _[preencher: só docs / só migração SQL / só versão de dependência / só HTML/CSS sem lógica]_
 - [ ] Cobertura do diff: 100% de linhas e branches (trava 11) — relatório: _[preencher: link ou trecho]_ — exceções: _[preencher: código gerado / DTO sem lógica / configuração de inicialização, ou "nenhuma"]_
 - [ ] Mocks e fixtures atualizados para o contrato novo (trava 10)
-- [ ] Suíte completa passando: unitários, integração, E2E quando existir (trava 10) — ressalva de ambiente: _[preencher ou "nenhuma"]_
+- [ ] Suíte completa passando: unitários, integração, E2E quando existir (trava 10) — ressalva de ambiente: _[preencher ou "nenhuma"]_ — suíte já quebrada no destino: _[preencher: "não", ou a comparação antes/depois (nenhuma falha nova) + link do bug da dívida]_
 - [ ] Teste de mutação (só PR produzida pelo kanon): _[preencher: mutantes sobreviventes no código alterado = 0, ou relatório de lacunas]_ (trava 11)
 
 ## Validação de tela

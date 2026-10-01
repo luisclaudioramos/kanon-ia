@@ -15,10 +15,15 @@ _[preencher: o que exatamente implementar, arquivos/módulos afetados]_
 
 ## Definition of Done da Task
 - [ ] Implementado conforme instruções
-- [ ] Testes unitários cobrindo casos de borda (ver `agents/AGENT-QA-ENGINEER.md`)
+- [ ] Testes unitários do comportamento novo ou corrigido, ou exceção declarada com motivo (trava 3)
+- [ ] Cobertura de 100% do código novo ou alterado, ou exceções declaradas com motivo (trava 11)
+- [ ] Mocks, fixtures, testes de integração e E2E afetados atualizados, e suíte completa passando (trava 10)
+- [ ] Documentação do sistema atual afetada atualizada para o to-be (trava 9)
 - [ ] Sem hardcode de ambiente (`process/10-core-agnosticism-gate.md`)
 - [ ] Code review aprovado (`skills/13-code-review`)
 - [ ] Estilo validado (`skills/37-validate-code-style`)
+
+_Critérios de cada trava: `process/15-pull-request-gates.md`._
 
 ## Referência
 User Story pai: [USER-STORY-XX.md](./USER-STORY-XX.md)

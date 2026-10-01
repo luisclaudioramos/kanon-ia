@@ -7,7 +7,7 @@ Listar os critérios objetivos e imutáveis para que qualquer artefato (User Sto
 Antes de qualquer artefato ser marcado como `done` na máquina de estados (`03-state-management.md`).
 
 ## Regras
-- Critérios globais e imutáveis, que não variam por agente nem por pressa de prazo: testes passando, code review aprovado, runbook gerado, sem achado bloqueante de segurança aberto.
+- Critérios globais e imutáveis, que não variam por agente nem por pressa de prazo: testes passando (suíte completa, incluindo integração e E2E quando existirem), cobertura de 100% do código novo ou alterado, documentação do sistema atual atualizada para o to-be, code review aprovado com o mínimo de aprovações de colegas, runbook gerado, sem achado bloqueante de segurança aberto. Critérios detalhados das travas de PR em [`15-pull-request-gates.md`](15-pull-request-gates.md).
 - Os critérios são objetivos e verificáveis — checagens binárias (passou/não passou), não uma impressão de "parece pronto".
 - A lista de critérios é a mesma para todo tipo de artefato (User Story, Task, Bug); tipos diferentes podem ter critérios *adicionais*, nunca menos exigentes.
 - Para uma **Feature** especificamente, o DoD inclui também: Pull Request real associado (`process/13-external-integration-prerequisite.md`, exceto exceção explícita registrada), TCO final registrado (`30-cost-of-ownership-tco`) e pacote de Audit Evidence gerado (`33-audit-evidence`).
@@ -20,6 +20,8 @@ Antes de qualquer artefato ser marcado como `done` na máquina de estados (`03-s
 - Uma Feature em `done` sem PR, sem TCO final, ou sem Audit Evidence — e sem exceção explícita registrada para a ausência.
 - Um RNF indeterminado apresentado como "passou" ou usado para bloquear o fluxo principal sem notificar o usuário.
 - Um artefato com trabalho aceito no DoD da Feature, mas o checklist do próprio artefato (Task/User Story) ainda com itens `[ ]` — sinal de que `11-quality-gate` aprovou sem fechar o loop, não só um detalhe de rastreamento a corrigir depois.
+- Um artefato marcado "pronto" com cobertura do diff abaixo de 100% sem exceção declarada, ou com documentação do sistema atual descrevendo o comportamento antigo.
+- Uma PR mergeada com menos aprovações de colegas do que `15-pull-request-gates.md` exige.
 
 ## Procedimento em caso de falha
 Se um artefato precisar avançar sem satisfazer 100% do DoD (ex.: incidente crítico), isso é uma exceção explícita e registrada, com o item pendente listado — o artefato não é considerado `done` de fato até o item ser completado.
@@ -35,8 +37,10 @@ User Story "desconto-por-cep": done.
 **Certo** — cada critério confirmado antes de done:
 ```
 User Story "desconto-por-cep":
-  [x] testes passando
-  [x] code review aprovado
+  [x] testes passando (suíte completa)
+  [x] cobertura de 100% do código alterado
+  [x] documentação atualizada para o to-be
+  [x] code review aprovado (aprovações mínimas de colegas)
   [x] runbook gerado
   [x] sem achado bloqueante de segurança aberto
 → done

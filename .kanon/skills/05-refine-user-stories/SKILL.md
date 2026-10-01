@@ -18,7 +18,7 @@ Fase 2 — Refino de Usuário e Tarefas. Roda após a Fase 1 (arquitetura defini
 - Toda US só avança de `refinado` para `aprovado` com AC no formato Dado/Quando/Então (ver `agents/GLOSSARIO.md#gherkin`) — cobrindo pelo menos o cenário de fluxo principal; o cenário de erro/borda é preenchido sempre que existir um caminho de exceção relevante, nunca deixado como placeholder vazio sem essa avaliação.
 - Toda US só avança de `refinado` para `aprovado` com **Como é hoje**, **Como deve ficar** (trava 1) e **Sistemas afetados** (trava 5) preenchidos, ou com "Não se aplica: _motivo_" — regras em [`process/15-pull-request-gates.md`](../../process/15-pull-request-gates.md).
 - O texto da US segue a trava 2 (linguagem clara): toda sigla, jargão ou nome de sistema é explicado na primeira ocorrência.
-- Persona e Prioridade (MoSCoW) de cada US são definidas aqui, herdando o contexto de "Problema e valor" e "Priorização, Risco e Esforço" da `FEATURE.md` pai.
+- Persona e Prioridade (MoSCoW) de cada US são definidas aqui, herdando o contexto de "Descrição" e "Priorização, Risco e Esforço" da `FEATURE.md` pai.
 - Dependências entre US ("Bloqueado por"/"Bloqueia") são mapeadas durante o refino, não descobertas só na execução (`07-refine-tasks`).
 - A seção "UI/UX" só é preenchida quando `agents/AGENT-UI-UX-DESIGNER.md` foi acionado para esta US (mesma condição de `skills/01-refine-feature`); caso contrário, é removida do arquivo em vez de ficar como placeholder vazio.
 - A transição para `publicado` só ocorre depois de aprovado — nenhuma US pula direto de `refinado` para `publicado`.

@@ -1,14 +1,26 @@
-# Task — _[preencher: TASK-XX título curto]_
+# Task — _[preencher: TSK-XX - título curto]_
 
 _Breadcrumb: [Feature](../FEATURE.md) > [User Story](./USER-STORY-XX.md) > Task XX_
 
-**Esforço**: _[preencher: SP]_ x 6h = _[preencher: horas totais]_
+**Atividade**: Development | Testing | Documentation _(marcar aplicável)_
+**Esforço**: _[preencher: horas]_ h — a soma das Tasks da US fecha em SP × 6h (`skills/07-refine-tasks`)
 **Engenheiro**: Backend | Frontend | Data _(marcar aplicável)_
 **Depende de**: _[preencher: outras tasks, ou "nenhuma"]_
 **Sistemas afetados**: _[preencher: herdado da US, detalhando o que esta Task toca — trava 5]_
+**Tags**: _[preencher: as tags da US + `US-XX`]_
+
+_Linguagem clara (trava 2, `process/15-pull-request-gates.md`): toda sigla, jargão ou nome de sistema é explicado na primeira vez em que aparece._
 
 ## Instruções técnicas
-_[preencher: o que exatamente implementar, arquivos/módulos afetados]_
+_[preencher: o que exatamente implementar, arquivo por arquivo, a ponto de outra pessoa executar sem perguntar]_
+
+**_[preencher: arquivo, classe ou componente]_**
+- _[preencher: o que muda nele (campos, métodos, estrutura)]_
+
+**Comportamento esperado:**
+- _[preencher: condição → reação do sistema]_
+
+**_[preencher se houver: notas de UI (tooltip, mensagem), regras de dados ou padrões do repositório a seguir]_**
 
 ## Sub-tasks (opcional)
 - [ ] _[preencher]_

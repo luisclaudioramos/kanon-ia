@@ -1,7 +1,7 @@
 # 07 — Refine Tasks
 
 ## Propósito
-Dividir cada User Story em tarefas técnicas atômicas, aplicando a métrica de esforço SPx6h (Story Points × 6 horas) para estimar o trabalho de cada engenheiro.
+Dividir cada User Story em tarefas técnicas atômicas e estimar cada uma em horas, fechando a soma com a métrica SPx6h da US (Story Points × 6 horas).
 
 ## Fase / Posição no fluxo
 Fase 2 — Refino de Usuário e Tarefas. Roda após [`06-create-user-story-artifacts`](../06-create-user-story-artifacts/SKILL.md) e antes de [`08-create-task-artifacts`](../08-create-task-artifacts/SKILL.md).
@@ -10,11 +10,13 @@ Fase 2 — Refino de Usuário e Tarefas. Roda após [`06-create-user-story-artif
 - `USER-STORY-XX.md` (skill 06).
 
 ## Saídas
-- Lista de tasks técnicas atômicas, cada uma com estimativa em Story Points × 6h.
+- Lista de tasks técnicas atômicas, cada uma com atividade (Development, Testing ou Documentation) e estimativa em horas.
+- Tabela de Tasks da US (seção "Tasks" do `USER-STORY-XX.md`), com o total de horas igual aos Story Points da US × 6h.
 
 ## Regras principais
 - Aciona [`agents/AGENT-TECH-LEAD.md`](../../agents/AGENT-TECH-LEAD.md) para dividir o trabalho de forma que cada task seja independente e testável.
 - Uma task só recebe estimativa se puder ser desenvolvida e testada isoladamente (base: `agents/AGENT-TECH-LEAD.md`, checklist de divisão de trabalho).
+- A Task é estimada em **horas**; os Story Points ficam na US. A soma das horas das Tasks fecha em SP × 6h. Se não fechar, a diferença é resolvida antes de seguir: ou a US é reestimada, ou as Tasks são revistas.
 - Estimativa de SP/horas usa o **TCO preliminar** (`30-cost-of-ownership-tco`, primeira passada) como referência de complexidade/custo esperado — Engineers e QA não estimam no vácuo quando o TCO preliminar já existe.
 - Cada task é fatiada para gerar uma PR abaixo do limite de tamanho da trava 6 de [`process/15-pull-request-gates.md`](../../process/15-pull-request-gates.md). Uma task que só cabe numa PR acima desse limite é quebrada antes de ser estimada.
 - A task herda os **Sistemas afetados** da US e detalha quais deles ela toca (trava 5).

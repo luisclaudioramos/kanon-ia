@@ -20,7 +20,7 @@ Fase 2 — Refino de Usuário e Tarefas. Roda após [`06-create-user-story-artif
 - A task herda os **Sistemas afetados** da US e detalha quais deles ela toca (trava 5).
 
 ## Depende de
-- `agents/AGENT-TECH-LEAD.md`, `30-cost-of-ownership-tco` (TCO preliminar), process/15-pull-request-gates.md.
+- `agents/AGENT-TECH-LEAD.md`, `30-cost-of-ownership-tco` (TCO preliminar), `process/15-pull-request-gates.md`.
 
 ## Procedimento em caso de falha
 Uma task que não pode ser estimada de forma independente é sinalizada para quebra adicional — nunca estimada "no chute" só para preencher a lista.

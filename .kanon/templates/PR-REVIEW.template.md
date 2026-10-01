@@ -11,7 +11,7 @@ _Gerado/gerenciado por `skills/34-pull-request-review`._
 - [ ] 3 — Testes unitários (ou exceção declarada)
 - [ ] 4 — Como testar
 - [ ] 5 — Integrações
-- [ ] 6 — Tamanho (🟡 — se disparou, trava 8 exige 2 aprovações)
+- [ ] 6 — Tamanho (🟡 — se disparou, trava 8 exige aprovação adicional)
 - [ ] 7 — Massa de teste (sintética ou anonimizada)
 - [ ] 8 — Aprovações de colegas
 - [ ] 9 — Documentação atualizada

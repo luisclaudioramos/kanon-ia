@@ -25,7 +25,7 @@ Fase 2 — Refino de Usuário e Tarefas. Roda após a Fase 1 (arquitetura defini
 - Decisões de negócio/arquitetura tomadas durante o refino (ex.: escopo de uma US, resolução de conflito entre requisitos) são registradas na tabela "Decisões" do `FEATURE.md` — não apenas na cabeça de quem refinou.
 
 ## Depende de
-- `agents/AGENT-PO.md`, `agents/AGENT-QA-ENGINEER.md`, process/15-pull-request-gates.md.
+- `agents/AGENT-PO.md`, `agents/AGENT-QA-ENGINEER.md`, `process/15-pull-request-gates.md`.
 
 ## Procedimento em caso de falha
 Uma US sem AC testável não avança de `refinado` para `aprovado` — fica retida até o critério de aceite ser esclarecido, nunca aprovada "por prazo".

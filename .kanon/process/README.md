@@ -33,7 +33,7 @@ Este índice é a "Constituição" do sistema completo: harness (`.kanon/`) + sk
 
 **Como gate de revisão**: cada processo pode ser usado isoladamente como checklist de auditoria do próprio sistema de agentes — por exemplo, revisar se as respostas geradas realmente respeitam o `07-return-envelope`.
 
-**Como sistema completo**: as skills em [`../skills/`](../skills) e os hooks em [`../../.claude/hooks/`](../../.claude/hooks) leem e aplicam estes 15 arquivos automaticamente durante a execução do pipeline.
+**Como sistema completo**: as skills em [`../skills/`](../skills) e os hooks em [`../../.claude/hooks/`](../../.claude/hooks) leem e aplicam estes 16 arquivos automaticamente durante a execução do pipeline.
 
 ## Relação com `agents/` e `reference/boas-praticas-dev/`
 

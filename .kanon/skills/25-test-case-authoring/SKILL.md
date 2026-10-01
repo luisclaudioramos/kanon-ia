@@ -20,7 +20,7 @@ Fase 4 — Desenvolvimento e Testes. Roda em paralelo à implementação, alimen
 - Quando o código foi produzido pelo kanon, a skill aplica o "Ciclo adversarial" de `process/15` até a condição de parada ali definida, e nunca declara 100% sem relatório de cobertura e de mutação que comprove.
 
 ## Depende de
-- `agents/AGENT-QA-ENGINEER.md`, `05-refine-user-stories`, `32-report-bug`, process/15-pull-request-gates.md.
+- `agents/AGENT-QA-ENGINEER.md`, `05-refine-user-stories`, `32-report-bug`, `process/15-pull-request-gates.md`.
 
 ## Procedimento em caso de falha
 Um AC sem caso de teste correspondente bloqueia a skill `14-qa-validation` — a lacuna é reportada, não ignorada.

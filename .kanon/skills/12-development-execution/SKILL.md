@@ -23,7 +23,7 @@ Fase 4 — Desenvolvimento e Testes. Roda após [`08-create-task-artifacts`](../
   4. Preenche o `PR-DESCRIPTION` com todas as seções, usando "Não se aplica: _motivo_" onde couber.
 
 ## Depende de
-- `agents/AGENT-BACKEND-ENGINEER.md`, `agents/AGENT-FRONTEND-ENGINEER.md`, `agents/AGENT-DATA-ENGINEER.md`, `process/10-core-agnosticism-gate.md`, process/15-pull-request-gates.md, templates/PR-DESCRIPTION.template.md, 18-feature-context-back-propagation.
+- `agents/AGENT-BACKEND-ENGINEER.md`, `agents/AGENT-FRONTEND-ENGINEER.md`, `agents/AGENT-DATA-ENGINEER.md`, `process/10-core-agnosticism-gate.md`, `process/15-pull-request-gates.md`, `templates/PR-DESCRIPTION.template.md`, `18-feature-context-back-propagation`.
 
 ## Procedimento em caso de falha
 Se a task tiver ambiguidade que impeça a implementação, a skill bloqueia e devolve para [`07-refine-tasks`](../07-refine-tasks/SKILL.md) via handoff reverso, em vez de implementar algo baseado em suposição.

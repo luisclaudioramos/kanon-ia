@@ -11,6 +11,12 @@ Como _[preencher: papel]_,
 Eu quero _[preencher: ação]_,
 Para que _[preencher: benefício]_.
 
+## Como é hoje
+_[preencher: o comportamento atual, visto por quem usa. Sem falar de código. Trava 1 — `process/15-pull-request-gates.md`]_
+
+## Como deve ficar
+_[preencher: o comportamento esperado depois da entrega. Trava 1]_
+
 ## Acceptance Criteria (Gherkin)
 ### Cenário: Fluxo principal
 ```
@@ -41,6 +47,10 @@ _[preencher apenas quando esta US envolve interface — ver `agents/AGENT-UI-UX-
 ## Dependências e Riscos
 **Bloqueado por**: _[preencher: outra US/Task, ou "nenhuma"]_
 **Bloqueia**: _[preencher: o que depende desta US, ou "nenhuma"]_
+**Sistemas afetados** (trava 5):
+- **Consome**: _[preencher: APIs, filas, bancos que a entrega usa]_
+- **Quem consome o que muda**: _[preencher: sistemas ou telas afetados, ou "nenhum"]_
+- **Quebra contrato?**: _[preencher: não / sim — para quem]_
 
 ## Tasks vinculadas
 - [ ] [TASK-XX](./TASK-XX.md)

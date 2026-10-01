@@ -5,6 +5,7 @@ _Breadcrumb: [Feature](../FEATURE.md) > [User Story](./USER-STORY-XX.md) > Task 
 **Esforço**: _[preencher: SP]_ x 6h = _[preencher: horas totais]_
 **Engenheiro**: Backend | Frontend | Data _(marcar aplicável)_
 **Depende de**: _[preencher: outras tasks, ou "nenhuma"]_
+**Sistemas afetados**: _[preencher: herdado da US, detalhando o que esta Task toca — trava 5]_
 
 ## Instruções técnicas
 _[preencher: o que exatamente implementar, arquivos/módulos afetados]_

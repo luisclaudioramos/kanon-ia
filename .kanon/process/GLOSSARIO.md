@@ -1,6 +1,6 @@
 # Glossário — Termos do Harness Kanon
 
-Termos técnicos específicos do funcionamento interno do harness Kanon (mecanismo, não domínio de produto). Os 15 processos desta pasta, as skills, os agentes e os templates linkam a primeira ocorrência de cada termo aqui.
+Termos técnicos específicos do funcionamento interno do harness Kanon (mecanismo, não domínio de produto). Os 16 processos desta pasta, as skills, os agentes e os templates linkam a primeira ocorrência de cada termo aqui.
 
 Termos de engenharia de software em geral (ADR, PR, XSS, N+1 etc.) estão em [`reference/boas-praticas-dev/GLOSSARIO.md`](../reference/boas-praticas-dev/GLOSSARIO.md). Termos de produto/UX/dados estão em [`agents/GLOSSARIO.md`](../agents/GLOSSARIO.md). Este arquivo cobre apenas o vocabulário do próprio harness — como as peças se encaixam e se comunicam.
 

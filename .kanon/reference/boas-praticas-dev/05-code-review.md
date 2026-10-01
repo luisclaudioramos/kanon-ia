@@ -2,7 +2,7 @@
 
 ## Para quem está enviando o código
 - Abra [PRs](GLOSSARIO.md#pr) pequenos e com escopo único — mais fáceis e rápidos de revisar bem.
-- Descreva contexto: o problema, a solução escolhida, alternativas descartadas e como testar.
+- Descreva a mudança seguindo as travas de [`process/15-pull-request-gates.md`](../../process/15-pull-request-gates.md): como era e como fica, integrações, como testar, massa de teste, testes e documentação atualizada. O esqueleto está em [`templates/PR-DESCRIPTION.template.md`](../../templates/PR-DESCRIPTION.template.md).
 - Revise seu próprio [diff](GLOSSARIO.md#diff) antes de pedir revisão — muitos erros óbvios são pegos nessa autorrevisão.
 - Responda comentários com dados/raciocínio, não na defensiva. Discorde tecnicamente, não pessoalmente.
 

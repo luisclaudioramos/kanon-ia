@@ -20,6 +20,14 @@ Fase 7 — Auditoria, Governança e Consolidação. Roda após [`13-code-review`
 - PR é **mandatório** para uma Feature alcançar `done` — exige acesso funcional ao repositório remoto (MCP de git/DevOps, ou CLI autenticado como `gh`/`az repos`) como pré-requisito, regido por [`process/13-external-integration-prerequisite.md`](../../process/13-external-integration-prerequisite.md).
 - A revisão de `13-code-review` que alimenta este PR segue [`process/14-decision-segregation.md`](../../process/14-decision-segregation.md) — quem implementou não é quem aprova o próprio código.
 
+### Publicação dos comentários de revisão no PR
+- O texto das threads vem pronto de `13-code-review`, no formato de [`templates/PR-COMMENTS.template.md`](../../templates/PR-COMMENTS.template.md). Esta skill **não reescreve** o conteúdo; ela publica o que o revisor humano aprovou.
+- **Rascunho → revisão humana → publicação, nesta ordem, sempre.** O rascunho completo é apresentado ao revisor humano (no chat e no arquivo), que aprova, edita ou corta itens. Nada é publicado antes dessa aprovação explícita — vale mesmo com o padrão já estabelecido.
+- Publicação pela conta do revisor humano, via a integração configurada (`process/13-external-integration-prerequisite.md`): um thread geral sem arquivo + um thread inline por achado, cada inline ancorado em `arquivo:linha` da **última iteração** do PR. Antes de publicar, um dry-run confere quantidade de threads, âncoras e tamanho de cada texto.
+- **Sem voto** (aprovar / aguardando autor / rejeitar) salvo pedido explícito do revisor humano. Comentar e votar são decisões separadas.
+- Depois de publicar, os ids das threads e a data voltam para o cabeçalho do rascunho, que muda de `RASCUNHO` para `PUBLICADO`. É esse arquivo que a próxima rodada de revisão compara com a nova iteração do PR.
+- Comentário de PR não renderiza Mermaid; diagramas vão em texto, dentro de cerca de código.
+
 ### Notificação de aprovação no Slack
 - A cada PR criado/atualizado, a skill prepara uma mensagem individual (uma por PR, nunca uma lista batida de vários PRs) para o canal fixo `#aprovacao-de-pr`, com título, branch de origem → destino e link, e a envia **sempre como rascunho** (`slack_send_message_draft`) — só vai ao canal depois de confirmação explícita do usuário. Isso vale mesmo com o processo já padronizado: postar num canal do time nunca é automático.
 - Depois de enviada, a mensagem recebe a reação inicial 👀 (em análise) e o par `{PR, channel_id, message_ts}` é gravado em `SLACK-APPROVAL-SUMMARY.md` (template em `templates/SLACK-APPROVAL-SUMMARY.template.md`), que passa a ser o estado de rastreamento PR ↔ mensagem.
@@ -29,7 +37,7 @@ Fase 7 — Auditoria, Governança e Consolidação. Roda após [`13-code-review`
 - Canal e formato de mensagem são fixos (`#aprovacao-de-pr`, formato `[projeto] : [branch-origem] para [branch-destino] [link]` já documentado no Purpose do canal) — não configuráveis por projeto nesta versão.
 
 ## Depende de
-- `agents/AGENT-CODE-REVIEWER.md`, `process/07-return-envelope.md`, `11-quality-gate`, `process/13-external-integration-prerequisite.md`, `process/14-decision-segregation.md`, `templates/SLACK-APPROVAL-SUMMARY.template.md`.
+- `agents/AGENT-CODE-REVIEWER.md`, `process/07-return-envelope.md`, `11-quality-gate`, `13-code-review`, `process/13-external-integration-prerequisite.md`, `process/14-decision-segregation.md`, `templates/PR-COMMENTS.template.md`, `templates/SLACK-APPROVAL-SUMMARY.template.md`.
 
 ## Procedimento em caso de falha
 Enquanto houver voto pendente ou o Quality Gate não estiver aprovado, o PR permanece bloqueado para merge — a skill nunca libera por pressão de prazo. Se o acesso ao repositório remoto não estiver configurado, segue `process/13`: orienta a configuração do MCP/CLI e só aceita prosseguir sem PR com exceção explícita e registrada. Se o MCP do Slack não estiver disponível/configurado, a notificação fica pendente e é registrada como falha de sincronização em `SLACK-APPROVAL-SUMMARY.md` — nunca é tratada como enviada silenciosamente, mas também não bloqueia o PR em si (a notificação no Slack não é pré-requisito para `done`, diferente do PR real).

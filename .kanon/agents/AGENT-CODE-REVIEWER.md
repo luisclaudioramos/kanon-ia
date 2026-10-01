@@ -61,6 +61,20 @@ O CODE-REVIEWER nunca edita o código revisado — encontrar e classificar é o 
 - **Local**: arquivo:linha do diff
 - **Regra violada**: qual prática foi violada (com a fonte, se houver)
 - **Sugestão concreta**: o que mudar, com exemplo quando possível
+- Quando os achados vão para o PR, o texto literal das threads segue [`templates/PR-COMMENTS.template.md`](../templates/PR-COMMENTS.template.md) — regras na seção abaixo.
+
+## Comentários publicados no PR
+
+O relatório é para o time; o comentário no PR é para **uma pessoa**, que muitas vezes só tem acesso ao repositório que está revisando. Um achado que depende de lógica de outro sistema (BFF, API, worker, banco) só é útil se o leitor conseguir verificá-lo sem sair da thread. Por isso:
+
+1. **Declarar o leitor** antes de escrever (ex.: engenheiro frontend sem acesso ao repositório do BFF) e escrever para ele.
+2. **Um comentário geral + um inline por achado**, ordenados por severidade (`bloqueia` · `ajuste` · `pergunta` · `registro`). O geral resume em uma linha por item; o inline prova.
+3. **Abrir cada inline com a afirmação em uma frase, em negrito.** O leitor decide em uma linha se precisa do resto.
+4. **Citar a lógica do outro sistema inline**: trecho literal de 3 a 8 linhas, com `arquivo:linha` e link para a linha no repositório. Nunca "ver o arquivo X do back" — o leitor pode não ter o back.
+5. **Mostrar, não descrever**: diagrama em texto (dentro de cerca de código) com o caminho que funciona ao lado do que quebra, e exemplo com valores concretos (nome, data, hora) em vez de abstração. Comentário de PR não renderiza Mermaid.
+6. **Nunca referenciar documento interno** (spec, plano, transcrição, vault, memória). Decisão de negócio entra como "combinado com _pessoa_ em _data_".
+7. **Correção sempre presente**, com o efeito colateral (o outro campo que muda, o teste que passa a valer). Se o defeito passou pelo spec existente, sugerir o teste com o fixture concreto.
+8. **Rascunho antes de publicar**: o texto completo vai ao revisor humano, que aprova ou edita; a publicação é pela conta dele, ancorada na última iteração do PR, sem voto salvo pedido explícito. Os ids das threads voltam para o cabeçalho do rascunho.
 
 ## Exemplo concreto
 
@@ -74,6 +88,38 @@ O CODE-REVIEWER nunca edita o código revisado — encontrar e classificar é o 
 [bloqueante] Esta função mistura validação de input com persistência (linhas 12-30).
 Isso dificulta testar a validação sem banco real. Sugestão: extrair `validateOrder(order)`
 como função pura e chamar antes de `orderRepository.save(order)`.
+```
+
+**Errado** — achado que depende de outro sistema, escrito para quem tem acesso a ele:
+```
+[bloqueante] Está mandando `product.name` no POST. Confere no serviço de reserva do back,
+ele busca por marca. Vai dar BrandNotFound.
+```
+
+**Certo** — o mesmo achado, autossuficiente para um engenheiro frontend que não abre o back:
+```
+**O POST envia o nome do produto, e o back espera o nome da marca.**
+
+O `product` aqui é o item do card de resgate (`GET /product/redemption`). O BFF monta
+esse item assim (CampaignProductGetResponse.cs:24-30 — [link para a linha]):
+
+    Name  = product.Name;         // nome do PRODUTO  → ex.: "Vale-presente R$ 50"
+    Brand = product.Brand?.Name;  // nome da MARCA    → ex.: "Uber"
+
+A API de campanha procura a marca por nome exato na fase
+(ParticipantReservationService.cs:248 — [link para a linha]):
+
+    x.StageId == stageId && (x.Name == brandName || x.Id == brandId) && x.Active
+
+    catálogo de reserva            pós-resgate (esta PR)
+    { name: "Uber" }               { name: "Vale-presente R$ 50", brand: "Uber" }
+            │                               │
+            ▼                               ▼
+    POST { brand: "Uber" }  ✔      POST { brand: "Vale-presente R$ 50" }  ✘ BrandNotFound
+
+**Correção.** Enviar `item.brand`, deixando `name` só como fallback; o mesmo valor em
+`reservationName` (l.534). O spec não pega porque o fixture é `{ name: 'Voucher' }` —
+sugiro um teste com `{ name: 'Vale-presente R$ 50', brand: 'Uber' }` afirmando `brand: 'Uber'`.
 ```
 
 ## Processos

@@ -36,6 +36,7 @@ _[preencher: onde está (script, seed, payload, usuário de teste de homologaç�
 - [ ] Cobertura do diff: 100% de linhas e branches (trava 11) — relatório: _[preencher: link ou trecho]_ — exceções: _[preencher: código gerado / DTO sem lógica / configuração de inicialização, ou "nenhuma"]_
 - [ ] Mocks e fixtures atualizados para o contrato novo (trava 10)
 - [ ] Suíte completa passando: unitários, integração, E2E quando existir (trava 10) — ressalva de ambiente: _[preencher ou "nenhuma"]_
+- [ ] Teste de mutação (só PR produzida pelo kanon): _[preencher: mutantes sobreviventes no código alterado = 0, ou relatório de lacunas]_ (trava 11)
 
 ## Documentação atualizada
 _[preencher: docs do sistema atual alteradas para o to-be (README, docs do repositório, wiki), ou "Nenhuma doc descreve esse comportamento"]_ · _Trava 9._

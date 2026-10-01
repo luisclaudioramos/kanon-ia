@@ -10,14 +10,14 @@ Duas pastas, com papéis distintos: [`.kanon/`](.kanon) é a **especificação**
 ambiente; [`.claude/`](.claude) é a **integração real** com o Claude Code, que faz a
 especificação valer em tempo de execução.
 
-### `.kanon/` — o núcleo, 164 arquivos
+### `.kanon/` — o núcleo, 166 arquivos
 
 | Pasta | Papel | Volume |
 |---|---|---|
 | [`.kanon/agents/`](.kanon/agents) | **Quem** — papéis especializados (`AGENT-*.md`) que aplicam julgamento em cada etapa | 14 arquivos |
-| [`.kanon/process/`](.kanon/process) | **Como** — contratos comportamentais que regem o harness, mais `seals.manifest.json` | 18 arquivos |
+| [`.kanon/process/`](.kanon/process) | **Como** — contratos comportamentais que regem o harness, mais `seals.manifest.json` | 19 arquivos |
 | [`.kanon/skills/`](.kanon/skills) | **O quê** — procedimentos executáveis, cada um uma pasta com `SKILL.md` | 50 arquivos |
-| [`.kanon/templates/`](.kanon/templates) | **Forma** — esqueletos de artefato, mais `evidence/` e `outline/` | 39 arquivos |
+| [`.kanon/templates/`](.kanon/templates) | **Forma** — esqueletos de artefato, mais `evidence/` e `outline/` | 40 arquivos |
 | [`.kanon/commands/`](.kanon/commands) | **Entrada** — especificação agnóstica do comando `kanon` | 1 arquivo |
 | [`.kanon/reference/`](.kanon/reference) | **Base de qualidade** — `boas-praticas-dev/`, consumida por agentes e skills | 41 arquivos |
 

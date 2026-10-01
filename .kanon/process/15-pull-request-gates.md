@@ -72,9 +72,10 @@ Para o repositório como um todo, cobertura continua sendo indicador, não meta 
 - Agente declarando 100% de cobertura sem relatório.
 
 ## Procedimento em caso de falha
-- Trava 🔴 violada: a PR não é aberta (quando o kanon é o autor) ou recebe achado bloqueante no rascunho de comentários (quando o kanon revisa). O merge fica bloqueado até a correção.
+- Trava 🔴 violada: a PR não é aberta (quando o kanon é o autor) ou recebe achado bloqueante no rascunho de comentários (quando o kanon revisa). O merge fica bloqueado até a correção. Exceção: a trava 8 não impede a abertura, porque só pode ser cumprida com a PR já aberta; ela é conferida no merge, pelos votos da PR.
+- Ciclo adversarial sem avanço: o kanon pode abrir a PR com a trava 11 pendente, desde que o relatório de lacunas esteja na seção Testes da descrição. Quem decide é o revisor humano.
 - Trava 🟡 disparada: vira alerta na revisão e, no caso da trava 6, eleva a trava 8 para 2 aprovações.
-- Trava que não pôde ser verificada (relatório de cobertura inexistente no repositório, ambiente de E2E fora do ar): registrada como ressalva com a causa, nunca como aprovada.
+- Trava que não pôde ser verificada (relatório de cobertura inexistente no repositório, ambiente de E2E fora do ar): registrada como ressalva com a causa, nunca como aprovada. A ressalva segue o padrão "aprovado com ressalva" de `skills/11-quality-gate`: fica visível para o revisor, nunca conta como cumprida, e a decisão de merge é do revisor humano.
 
 ## Exemplo concreto
 
@@ -83,13 +84,13 @@ Para o repositório como um todo, cobertura continua sendo indicador, não meta 
 Ajuste no cadastro. Testado localmente.
 ```
 
-**Certo** — descrição que cumpre as travas:
-```
+**Certo** — descrição que cumpre as travas (dados fictícios; POST é o tipo de chamada HTTP que cria um registro numa API, e 201 e 400 são os códigos de resposta):
+```text
 US: #0000 — Cadastro aceita celular opcional
-Como era: o cadastro rejeitava cliente sem celular (erro SIG400).
+Como era: o cadastro recusava cliente sem celular (erro de validação).
 Como fica: celular vira opcional; sem celular, a validação exige e-mail.
-Integrações: consome members (POST /customers). Quem consome: signup-ui. Sem quebra de contrato.
-Como testar: homologação, criar cliente sem celular e com e-mail → 201; sem os dois → 400.
+Integrações: consome a API de clientes (POST /customers). Quem consome: o portal de cadastro. Sem quebra de contrato.
+Como testar: homologação, criar cliente sem celular e com e-mail → 201 (criado); sem os dois → 400 (recusado).
 Massa: payload sintético em tests/fixtures/customer-sem-celular.json.
 Testes: 2 unitários novos; cobertura do diff 100% (relatório no pipeline).
 Documentação: README da API atualizado (seção Cadastro).

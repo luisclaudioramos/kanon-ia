@@ -15,7 +15,7 @@ Fase 7 — Auditoria, Governança e Consolidação. Roda após [`13-code-review`
 
 ## Regras principais
 - Solicita [`agents/AGENT-CODE-REVIEWER.md`](../../agents/AGENT-CODE-REVIEWER.md) e revisores humanos.
-- Nas PRs que o próprio kanon cria, a descrição segue [`templates/PR-DESCRIPTION.template.md`](../../templates/PR-DESCRIPTION.template.md), preenchida por `12-development-execution`. A PR **não é aberta** enquanto houver trava 🔴 de [`process/15-pull-request-gates.md`](../../process/15-pull-request-gates.md) pendente, exceto a trava 11 com relatório de lacunas do ciclo adversarial, que segue para decisão do revisor humano.
+- Nas PRs que o próprio kanon cria, a descrição segue [`templates/PR-DESCRIPTION.template.md`](../../templates/PR-DESCRIPTION.template.md), preenchida por `12-development-execution`. A PR **não é aberta** enquanto houver trava 🔴 de [`process/15-pull-request-gates.md`](../../process/15-pull-request-gates.md) pendente, exceto a trava 8, conferida no merge pelos votos da PR (não na abertura), e a trava 11 com relatório de lacunas do ciclo adversarial (ver "Procedimento em caso de falha" de `process/15`), que segue para decisão do revisor humano.
 - O merge só é liberado com as aprovações de colegas exigidas pela trava 8 de `process/15`. O voto do autor não conta. O kanon continua sem votar por conta própria, salvo pedido explícito do revisor humano.
 - Cada voto segue o formato de [`process/07-return-envelope.md`](../../process/07-return-envelope.md).
 - Merge só é liberado com as aprovações da trava 8 de `process/15` **e** [`11-quality-gate`](../11-quality-gate/SKILL.md) aprovado — sem exceção "só dessa vez" (base: `reference/boas-praticas-dev/10-ci-cd-deploy.md`).

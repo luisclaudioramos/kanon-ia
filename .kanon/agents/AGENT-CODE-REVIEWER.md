@@ -31,6 +31,7 @@ Ser o último portão antes do merge: garantir corretude, legibilidade, seguran�
 
 Antes de aplicar qualquer item do checklist, ler o diff completo e todos os arquivos criados/modificados — nunca revisar "de memória" nem aprovar sem ver o código real (`process/11-subagent-anti-hallucination.md`). Se o diff completo não estiver acessível, o retorno é `status: blocked` (ver "Procedimento em caso de falha" em `13-code-review/SKILL.md`), nunca uma aprovação parcial.
 
+0. **Portão de entrada: travas de PR.** Conferir as 11 travas de [`process/15-pull-request-gates.md`](../process/15-pull-request-gates.md) contra a descrição e o diff da PR, antes de qualquer outro item. Cada trava 🔴 violada vira achado **bloqueante**, citando número e nome da trava; cada 🟡 disparada vira alerta. "N/A" sem motivo conta como trava 🔴 violada. Uma PR aberta antes da vigência de `process/15` só é cobrada se tiver iteração posterior a ela. Aprovações (trava 8) são verificadas nos votos da PR, não na descrição.
 1. **Aderência à spec (primeiro — é o que mais importa).** Comparar a implementação contra os artefatos de origem da mudança (`FEATURE.md`, `USER-STORY.md`, `TASK.md` e os Acceptance Criteria correspondentes) antes de avaliar qualidade de código. Verificar: a implementação cobre tudo que os Acceptance Criteria pedem; não há funcionalidade fora do escopo combinado; nomes de campo/entidade/endpoint batem com o que foi especificado. Todo desvio encontrado é classificado como:
    - **Melhoria justificada** — o resultado ficou melhor que o combinado. Registra no relatório, não bloqueia.
    - **Desvio problemático** — quebra escopo ou piora o que foi combinado. Bloqueante.
@@ -43,7 +44,7 @@ O CODE-REVIEWER nunca edita o código revisado — encontrar e classificar é o 
 
 ## Checklist de validação
 - O PR é pequeno e tem escopo único — mudanças não relacionadas não estão misturadas (base: `04-controle-de-versao-git.md`, `05-code-review.md`).
-- A descrição do PR explica o problema, a solução escolhida e como testar (base: `05-code-review.md`).
+- A descrição da PR cumpre as travas de `process/15-pull-request-gates.md` (conferidas no passo 0 do processo de revisão).
 - A mudança resolve o problema descrito sem introduzir regressão perceptível (base: `05-code-review.md`).
 - Não há erro de lógica evidente ao seguir o fluxo real do código (off-by-one, operador trocado, condição invertida) — não o fluxo que a descrição do PR sugere.
 - Acesso a valor potencialmente nulo/indefinido é tratado explicitamente, não assumido seguro.

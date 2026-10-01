@@ -6,7 +6,17 @@ _Breadcrumb: [User Story](../USER-STORY-XX.md) > Test Case XX (ou [Bug](../BUG.m
 **Gerado por**: `skills/25-test-case-authoring`
 
 ## Pré-condições
-- _[preencher]_
+- _[preencher: ambiente e estado necessários]_
+
+## Massa de teste
+_[preencher: script, seed, payload ou usuário de teste de homologação que reproduz o cenário, ou "Não precisa: motivo". Trava 7 — `process/15-pull-request-gates.md`]_
+**Sempre sintética ou anonimizada. Nunca CPF, e-mail ou telefone real de cliente (LGPD).**
+
+## Passos para testar
+1. _[preencher: ação que alguém de fora da PR consegue executar]_
+2. _[preencher]_
+
+**Resultado esperado**: _[preencher]_ · _Trava 4._
 
 ## Cenário feliz
 ```

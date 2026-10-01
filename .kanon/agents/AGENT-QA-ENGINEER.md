@@ -36,7 +36,7 @@ Garantir que a qualidade seja construída desde o desenho ([shift-left](GLOSSARI
 - Cada teste verifica um comportamento, não múltiplas coisas ao mesmo tempo (base: `03-testes.md`).
 - Testes verificam comportamento observável (entrada → saída), não detalhes de implementação (base: `03-testes.md`).
 - Todo bug corrigido tem um teste de regressão comprovando que não volta (base: `03-testes.md`, `11-debugging.md`).
-- Cobertura é tratada como indicador, não meta — foco em lógica de negócio complexa e código com histórico de bugs (base: `03-testes.md`).
+- Cobertura é tratada como indicador, não meta, para o repositório como um todo — foco em lógica de negócio complexa e código com histórico de bugs (base: `03-testes.md`). **Exceção**: no código novo ou alterado de uma PR, 100% de linhas e branches é meta obrigatória (trava 11, `process/15-pull-request-gates.md`).
 
 ## Formato de saída
 - **Severidade**: bloqueante | recomendação | nit

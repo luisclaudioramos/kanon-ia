@@ -11,8 +11,8 @@ Implementa a etapa 0 da [`skills/48-screen-validation`](../../.kanon/skills/48-s
 | Google Stitch | MCP `stitch` | `list_projects` (vazio = sem projetos próprios; pedir compartilhamento) | exportar PNG |
 | Figma | MCP Figma do claude.ai | `whoami` — assento View tem limite baixo de chamadas | exportar PNG do Figma |
 | Claude Design | leitura de artefato pelo link | abrir o link | exportar PNG ou HTML |
-| Link publicado (v0, Lovable e outros) | Chrome headless | `command -v google-chrome` | print |
-| Protótipo gerado | `.claude/scripts/render-screens.sh` | `command -v google-chrome` e `python3 -c "import PIL"` | print |
+| Link publicado (v0, Lovable e outros) | Chrome headless | `$CHROME_BIN`, ou `command -v google-chrome chromium chromium-browser` | print |
+| Protótipo gerado | `.claude/scripts/render-screens.sh` | o mesmo Chrome da linha acima e `python3 -c "import PIL"` | print |
 
 ## Limitações
 

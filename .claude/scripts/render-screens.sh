@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 # Converte cada .html de uma pasta em PNG com o Chrome headless e recorta a altura útil.
 # Uso: render-screens.sh <pasta-entrada> <pasta-saida> [largura=1920]
-# Saída: 0 ok · 2 Chrome ausente · 3 nenhum .html na entrada · 4 Pillow ausente · 5 falha do Chrome ao renderizar
+# Saída: 0 ok · 1 largura inválida · 2 Chrome ausente · 3 entrada inexistente ou sem .html · 4 Pillow ausente · 5 falha do Chrome ao renderizar
+# Avisa no stderr quando a página passa de 4000 px e foi cortada.
 set -euo pipefail
 IN="${1:?uso: render-screens.sh <pasta-entrada> <pasta-saida> [largura]}"
 OUT="${2:?uso: render-screens.sh <pasta-entrada> <pasta-saida> [largura]}"
 W="${3:-1920}"
+[[ "$W" =~ ^[0-9]+$ ]] || { echo "largura inválida: $W (use um número em px)" >&2; exit 1; }
+[ -d "$IN" ] || { echo "pasta de entrada não existe: $IN" >&2; exit 3; }
 CHROME="${CHROME_BIN:-$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)}"
 [ -n "$CHROME" ] && [ -x "$CHROME" ] || { echo "Chrome não encontrado ou não executável: ${CHROME:-nenhum} (defina CHROME_BIN)" >&2; exit 2; }
 python3 -c "import PIL" 2>/dev/null || { echo "Pillow não instalado (pip install pillow)" >&2; exit 4; }
@@ -26,12 +29,17 @@ import sys
 from PIL import Image
 src, dst = sys.argv[1], sys.argv[2]
 im = Image.open(src).convert('RGB'); w, h = im.size; px = im.load()
-bg = px[w - 1, h - 1]
-last = 0
-for y in range(h - 1, -1, -1):
-    if any(px[x, y] != bg for x in range(0, w, 3)):
-        last = y
-        break
+bottom = {px[x, h - 1] for x in range(0, w, 3)}
+last = h - 1
+if len(bottom) == 1:
+    bg = bottom.pop()
+    last = 0
+    for y in range(h - 1, -1, -1):
+        if any(px[x, y] != bg for x in range(0, w, 3)):
+            last = y
+            break
+if last >= h - 48:
+    print(f'aviso: {dst} foi cortada em {h} px (a página é maior)', file=sys.stderr)
 im.crop((0, 0, w, min(h, max(last + 48, 200)))).save(dst)
 PY
   rm -f "$full"

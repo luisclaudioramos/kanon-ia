@@ -26,7 +26,7 @@ Fase 2 — Refino de Usuário e Tarefas. Roda depois de [`05-refine-user-stories
 4. **Anatomia**: obrigatória em toda tela que mostra ou grava dados. Cada elemento recebe a origem: 🟩 vem da API · ⬜ fixo no código · 🟨 calculado no front · 🟦 campo novo ou ajuste no back. A origem é conferida no código, com `arquivo:linha` ([`process/12-knowledge-retrieval.md`](../../process/12-knowledge-retrieval.md)). Cada 🟦 vira pendência para o back-end na fila de perguntas ao time.
 5. **Comparativo**: tela atual e proposta lado a lado, na mesma escala, com as mudanças numeradas. Só quando a tela atual existe.
 6. **Lista de mudanças**: por tela, como é hoje, a proposta e o motivo; os estados de carregando, vazio e erro; e a seção "Simplificações do protótipo — não são mudanças".
-7. **Envio**: mensagem ao PO e ao negócio, sem jargão, com as telas e perguntas objetivas. O Tech Lead aprova o texto antes de qualquer envio. Quando a ferramenta de mensagem não anexa arquivos, a skill cria um rascunho e o Tech Lead anexa as imagens. O link do envio vai para a seção "Envios" e as telas passam a `enviada`.
+7. **Envio**: mensagem ao PO e ao negócio, sem jargão, sem prazo nem divisão de entrega, com as telas e perguntas objetivas. O Tech Lead aprova o texto antes de qualquer envio. Quando a ferramenta de mensagem não anexa arquivos, a skill cria um rascunho e o Tech Lead anexa as imagens. O link do envio vai para a seção "Envios" e as telas passam a `enviada`.
 8. **Retorno**: a skill lê a conversa desde o envio registrado (ou o link que o Tech Lead indicar) e **propõe**, por tela e versão: aprovada, aprovada com ressalvas, mudança pedida ou não é aprovação — com trecho curto, autor, data e link. O Tech Lead confirma. Só então registra.
 
 ### Versões e estados

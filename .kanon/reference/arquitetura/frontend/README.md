@@ -2,6 +2,8 @@
 
 Coleção de padrões de referência para estruturar um projeto frontend moderno do zero ou incrementalmente: workspace/monorepo, design tokens, design system, iconografia, aplicação, testes e entrega contínua. Complementa [`boas-praticas-dev/`](../../boas-praticas-dev) (que é agnóstico de stack) com decisões mais concretas de estruturação de projeto — ainda genéricas, não específicas de nenhum produto.
 
+As regras que o harness aplica sobre estes padrões — responsividade, mobile first, tokens, biblioteca primeiro, reuso e consistência entre telas — estão em [`process/16-design-foundations.md`](../../../process/16-design-foundations.md). O que cada sistema já tem definido fica no perfil de design dele (`skills/50-design-profile`).
+
 ## Índice
 
 ### Fundação de projeto

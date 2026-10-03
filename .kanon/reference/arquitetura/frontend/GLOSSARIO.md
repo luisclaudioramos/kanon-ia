@@ -29,3 +29,31 @@ Conjunto de princípios para construir aplicações backend portáveis e escalá
 <a id="ssr"></a>
 ### SSR (Server-Side Rendering)
 Técnica em que o HTML de uma página é renderizado no servidor antes de chegar ao navegador, melhorando SEO e tempo de carregamento percebido, em contraste com renderização só no cliente.
+
+<a id="breakpoint"></a>
+### Breakpoint
+Largura a partir da qual o layout muda (ex.: `md` a partir de 768 px). Definido nos design tokens e no perfil de design do sistema.
+
+<a id="mobile-first"></a>
+### Mobile first
+Forma de escrever estilos que parte do celular e acrescenta regras para telas maiores com `min-width`.
+
+<a id="largura-de-conferencia"></a>
+### Largura de conferência
+Largura em que toda tela é validada e testada: 390, 768 e 1920 px. Não é breakpoint.
+
+<a id="prancha"></a>
+### Prancha
+Imagem única com a mesma tela em 390, 768 e 1920 px lado a lado, usada para validar e comparar telas.
+
+<a id="padrao-por-funcao"></a>
+### Padrão por função
+Aparência combinada para um elemento com a mesma função em todas as telas (ex.: ação primária: componente, cor, tamanho e ícone), registrada no perfil de design.
+
+<a id="bug-visual"></a>
+### Bug visual
+Defeito de interface que o usuário enxerga (divergência entre telas, tela quebrada no celular, falta de contraste). Vira bug no work item.
+
+<a id="oportunidade-tecnica"></a>
+### Oportunidade técnica
+Melhoria interna invisível ao usuário (valor fixo igual a um token, componente duplicado). Fica no inventário do perfil de design.

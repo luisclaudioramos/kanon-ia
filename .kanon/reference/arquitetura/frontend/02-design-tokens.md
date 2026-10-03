@@ -11,6 +11,10 @@ Fonte única de verdade para cor, tipografia, espaçamento, raio de borda e elev
 
 Se o produto não tem múltiplos temas (ex.: é dark-only ou light-only), não crie variantes de tema nos tokens semânticos — tema múltiplo é uma decisão de produto, não um default de arquitetura.
 
+## Começando sem tokens
+
+Projeto que ainda não tem tokens não precisa de ferramenta para começar. O primeiro passo é transformar em CSS custom properties (`--color-primary`, `--spacing-4`) os valores que a regra D3 de [`process/16-design-foundations.md`](../../../process/16-design-foundations.md) aponta como repetidos — a cor que aparece 14 vezes, o espaçamento que aparece 30. Cada valor extraído vira um token semântico na hora; a camada de primitives e o motor de build entram quando a quantidade de tokens justificar.
+
 ## Motor de build
 
 Ferramentas como [Style Dictionary](https://amzn.github.io/style-dictionary/) geram múltiplos formatos de saída (CSS custom properties, variáveis SCSS, módulo JS) a partir de uma única definição JSON — evita manter os 3 formatos sincronizados manualmente. Alternativa: escrever CSS custom properties à mão quando o projeto for pequeno o bastante para não justificar a ferramenta.

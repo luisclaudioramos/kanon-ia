@@ -1,11 +1,13 @@
 # Aplicação Frontend (Angular)
 
 ## Estrutura
-Aplicação Angular consumindo o design system, os design tokens e a iconografia do workspace como pacotes internos — não reimplementando componentes/estilos que já existem nesses pacotes. Preferir componentes standalone a NgModules em projetos novos (menos boilerplate, mais simples de fazer tree-shaking).
+Aplicação Angular consumindo o design system, os design tokens e a iconografia — como pacotes internos do workspace ou da pasta indicada no perfil de design do sistema — — não reimplementando componentes/estilos que já existem nesses pacotes. Preferir componentes standalone a NgModules em projetos novos (menos boilerplate, mais simples de fazer tree-shaking).
 
 ## Estilo e responsividade
-- Definir breakpoints explícitos e nomeados (ex. `xs`/`sm`/`md`/`lg`/`xl`) referenciados a partir dos design tokens, não hardcoded na aplicação.
-- Mobile-first; `clamp()` para tipografia fluida; unidades relativas para espaçamento.
+- **Mobile first**: estilos partem do celular e crescem com `min-width` (regra D2 de [`process/16-design-foundations.md`](../../../process/16-design-foundations.md)). Nada de largura fixa em px nos contêineres.
+- **Breakpoints nomeados**, referenciados a partir dos design tokens, nunca hardcoded: base a partir de 0, `md` a partir de 768, `lg` a partir de 1280, `xl` a partir de 1440 — salvo o que o perfil de design do sistema definir.
+- **Larguras de conferência ≠ breakpoints**: toda tela é conferida em 390, 768 e 1920 px (regra D1), independente de onde os breakpoints caem.
+- `clamp()` para tipografia fluida; unidades relativas para espaçamento.
 - A ferramenta de estilo (SCSS, Tailwind, etc.) é a mesma decidida para o [design system](03-design-system.md) — nunca duas ferramentas concorrentes no mesmo produto.
 
 ## Performance

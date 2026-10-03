@@ -8,6 +8,14 @@ Nem todo componente da aplicação deve virar componente do design system:
 - **Entra:** componentes genéricos, sem conhecimento de domínio de negócio (botões, cards, badges, modais estruturais, inputs, navegação, tabelas).
 - **Fica na aplicação:** componentes acoplados a regras de negócio específicas — mover para um pacote compartilhado sem um segundo consumidor real força abstração prematura (`08-arquitetura-design-patterns.md`).
 
+## Projeto com biblioteca de componentes
+
+Quando o projeto já usa uma biblioteca de componentes (ex.: Angular Material), o design system fica **por cima** dela, não ao lado:
+
+- O tema da biblioteca é alimentado pelos [design tokens](02-design-tokens.md) do projeto — cor, tipografia e densidade mudam no tema, não em cada componente.
+- Botão, input, select, modal, tabela e afins vêm da biblioteca. Reimplementá-los cria um segundo componente para a mesma função, que diverge com o tempo (regras D4 e D6 de [`process/16-design-foundations.md`](../../../process/16-design-foundations.md)).
+- Componente próprio entra só para o que a biblioteca não tem, ou para uma composição com significado de domínio (ex.: um cartão de produto que junta imagem, nome, valor e selos), e registra o motivo.
+
 ## Taxonomia interna: Atomic Design
 Organizar por **atoms** (elementos sem composição interna: botão, input, badge) → **molecules** (combinações simples: campo de formulário = label + input + mensagem de erro) → **organisms** (composições maiores: modal estrutural, navegação). Adicionar uma camada `templates/` só se um padrão de layout de página realmente se repetir em uso.
 

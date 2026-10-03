@@ -43,9 +43,25 @@ _Só em PR que mexe na interface de uma US com telas (`skills/48-screen-validati
 
 | Tela | Versão aprovada | Registro | Implementada × aprovada |
 |---|---|---|---|
-| _[preencher: NN-nome]_ | _[preencher: vN, ou "aguardando validação — estado: enviada"]_ | _[preencher: link da linha no registro de aprovações]_ | _[preencher: print lado a lado, na mesma escala]_ |
+| _[preencher: NN-nome]_ | _[preencher: vN, ou "aguardando validação — estado: enviada"]_ | _[preencher: link da linha no registro de aprovações]_ | _[preencher: prancha 390/768/1920 implementada ao lado da prancha aprovada]_ |
 
 _Trava 12 (alerta, não bloqueia o merge). Diferença entre implementada e aprovada: corrigir, ou abrir mudança pedida (`skills/49-change-impact`)._
+
+## Fundamentos de design
+_Só em PR que mexe em interface. Regras em `process/16-design-foundations.md`; cobra só o que esta PR introduz. Senão: "Não se aplica: motivo"._
+
+**Perfil de design**: _[preencher: link e data da última confirmação, ou "sistema sem perfil"]_
+
+| Regra | Resultado | Evidência |
+|---|---|---|
+| D1 Responsividade | _[preencher: atende / desvio: motivo / não se aplica: motivo]_ | _[preencher: pranchas da seção Validação de tela]_ |
+| D2 Mobile first no código | _[preencher: atende / desvio: motivo / oportunidade INV-XX / não se aplica: motivo]_ | _[preencher: `arquivo:linha`]_ |
+| D3 Tokens | _[preencher]_ | _[preencher]_ |
+| D4 Biblioteca primeiro | _[preencher]_ | _[preencher]_ |
+| D5 Reuso e Atomic Design | _[preencher]_ | _[preencher]_ |
+| D6 Consistência entre telas | _[preencher]_ | _[preencher: padrão por função do perfil]_ |
+
+_Trava 13. 🔴 ou 🟡 por regra, conforme o perfil. Itens do inventário corrigidos nesta PR: _[preencher: INV-XX, ou "nenhum"]__
 
 ## Documentação atualizada
 _[preencher: docs do sistema atual alteradas para o to-be (README, docs do repositório, wiki), ou "Nenhuma doc descreve esse comportamento"]_ · _Trava 9._

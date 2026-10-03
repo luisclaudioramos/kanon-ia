@@ -18,6 +18,7 @@ _Gerado/gerenciado por `skills/34-pull-request-review`._
 - [ ] 10 — Mocks e demais testes
 - [ ] 11 — Cobertura de 100% do diff
 - [ ] 12 — Validação de tela (🟡 — só alerta; o bloqueio é o DoD da US)
+- [ ] 13 — Fundamentos de design (🔴 / 🟡 por regra D1–D6, conforme o perfil de design)
 
 ## Checklist de qualidade
 - [ ] Aderência aos Acceptance Criteria da User Story

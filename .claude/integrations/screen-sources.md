@@ -18,4 +18,4 @@ Implementa a etapa 0 da [`skills/48-screen-validation`](../../.kanon/skills/48-s
 
 - **Anexos no Slack**: o MCP do Slack não anexa arquivos. A skill cria um rascunho (`slack_send_message_draft`, um por canal); o Tech Lead anexa as imagens e envia; a skill lê o canal depois para registrar o link do envio.
 - **Login**: a IA nunca digita senha. Em sistema com SSO, o Tech Lead faz o login no navegador, e só depois a IA navega e captura.
-- **Escala**: desktop em 1920 px de largura. Capturas em outra largura são registradas com a largura real na seção "Fontes" e não entram no comparativo.
+- **Larguras**: toda tela em 390, 768 e 1920 px (`process/16-design-foundations.md`, D1). No `claude-in-chrome`, redimensionar a janela para cada largura (`resize_window`) antes de capturar; no Playwright, definir o viewport. Protótipo gerado: `render-screens.sh <entrada> <saída> 390,768,1920`, que também monta a prancha. Prints soltos: `prancha.py <saída> <390> <768> <1920>`.

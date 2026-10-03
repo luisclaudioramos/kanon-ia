@@ -38,6 +38,15 @@ _[preencher: onde está (script, seed, payload, usuário de teste de homologaç�
 - [ ] Suíte completa passando: unitários, integração, E2E quando existir (trava 10) — ressalva de ambiente: _[preencher ou "nenhuma"]_
 - [ ] Teste de mutação (só PR produzida pelo kanon): _[preencher: mutantes sobreviventes no código alterado = 0, ou relatório de lacunas]_ (trava 11)
 
+## Validação de tela
+_Só em PR que mexe na interface de uma US com telas (`skills/48-screen-validation`). Senão: "Não se aplica: motivo"._
+
+| Tela | Versão aprovada | Registro | Implementada × aprovada |
+|---|---|---|---|
+| _[preencher: NN-nome]_ | _[preencher: vN, ou "aguardando validação — estado: enviada"]_ | _[preencher: link da linha no registro de aprovações]_ | _[preencher: print lado a lado, na mesma escala]_ |
+
+_Trava 12 (alerta, não bloqueia o merge). Diferença entre implementada e aprovada: corrigir, ou abrir mudança pedida (`skills/49-change-impact`)._
+
 ## Documentação atualizada
 _[preencher: docs do sistema atual alteradas para o to-be (README, docs do repositório, wiki), ou "Nenhuma doc descreve esse comportamento"]_ · _Trava 9._
 

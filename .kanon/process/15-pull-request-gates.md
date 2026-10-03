@@ -1,7 +1,7 @@
 # 15 — Pull Request Gates
 
 ## Propósito
-Definir, num lugar só, as 11 travas que toda Pull Request precisa cumprir: onde cada uma nasce no fluxo, o que a PR confere, se bloqueia ou só alerta, e quais exceções valem. Skills e templates apontam para este arquivo em vez de copiar os critérios.
+Definir, num lugar só, as 12 travas que toda Pull Request precisa cumprir: onde cada uma nasce no fluxo, o que a PR confere, se bloqueia ou só alerta, e quais exceções valem. Skills e templates apontam para este arquivo em vez de copiar os critérios.
 
 ## Quando se aplica
 - Em toda PR aberta a partir de **2026-09-29**.
@@ -35,6 +35,7 @@ Definir, num lugar só, as 11 travas que toda Pull Request precisa cumprir: onde
 | 7 | Massa de teste | Pré-condições do TEST-CASE: script, seed, payload ou usuário de teste de homologação. | A PR aponta onde está a massa, ou declara "não precisa: _motivo_". A massa é **sempre sintética ou anonimizada**: nunca CPF, e-mail ou telefone real de cliente (LGPD). | 🔴 |
 | 9 | Documentação atualizada | Fim do desenvolvimento: toda documentação que descreve o sistema atual e foi afetada (README, docs do repositório, wiki, docs de as-is) é atualizada para o to-be. | A seção **Documentação** lista o que foi atualizado (no diff ou por link), ou declara que nenhuma doc descreve esse comportamento. | 🔴 |
 | 10 | Mocks e demais testes | Desenvolvimento: mocks, fixtures, testes de integração e E2E afetados são atualizados junto com o código. | A suíte completa do repositório passa (unitários, integração, E2E quando existir) e os mocks refletem o contrato novo. Falha de E2E causada por ambiente indisponível é registrada como ressalva, no mesmo padrão de RNF indeterminado de `skills/11-quality-gate`, e não vira reprovação automática. | 🔴 |
+| 12 | Validação de tela | `skills/48-screen-validation`: cada tela da US é aprovada pelo PO e pelo negócio, por versão, em `telas/SCREEN-VALIDATION.md`. O front pode começar antes da aprovação. | Vale para PR que mexe na interface de uma US com telas. A seção **Validação de tela** traz, por tela, a versão aprovada, o link do registro e o print da tela implementada ao lado da versão aprovada, na mesma escala. Tela ainda não aprovada: alerta, com "aguardando validação" e o estado. Tela implementada diferente da versão aprovada: achado na revisão; o front corrige ou a diferença vira mudança pedida (`skills/49-change-impact`). O bloqueio fica no fechamento da US (`process/05-definition-of-done.md`). | 🟡 |
 
 ### Transversal
 
@@ -70,6 +71,7 @@ Para o repositório como um todo, cobertura continua sendo indicador, não meta 
 - Relatório de revisão que aprova sem citar o resultado de cada trava.
 - Skill ou template repetindo um critério numérico deste arquivo em vez de apontar para ele.
 - Agente declarando 100% de cobertura sem relatório.
+- PR que mexe na interface de uma US com telas sem a seção Validação de tela, ou com "aguardando validação" sem o estado da tela.
 
 ## Procedimento em caso de falha
 - Trava 🔴 violada: a PR não é aberta (quando o kanon é o autor) ou recebe achado bloqueante no rascunho de comentários (quando o kanon revisa). O merge fica bloqueado até a correção. Exceção: a trava 8 não impede a abertura, porque só pode ser cumprida com a PR já aberta; ela é conferida no merge, pelos votos da PR.

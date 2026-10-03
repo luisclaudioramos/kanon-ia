@@ -20,6 +20,8 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 |---|---|
 | [USER-STORY.template.md](USER-STORY.template.md) | `skills/06-create-user-story-artifacts` |
 | [TASK.template.md](TASK.template.md) | `skills/08-create-task-artifacts` |
+| [SCREEN-VALIDATION.template.md](SCREEN-VALIDATION.template.md) | `skills/48-screen-validation` — índice, mudanças, anatomia, envios e registro de aprovações das telas, por tela e versão |
+| [CHANGE-IMPACT.template.md](CHANGE-IMPACT.template.md) | `skills/49-change-impact` — impacto, alternativas, o que falta validar e as duas mensagens de um pedido de mudança |
 | [USER-STORY-INSTRUCTIONS.template.md](USER-STORY-INSTRUCTIONS.template.md) | Guia para `skills/05-refine-user-stories` |
 | [FEATURE-INSTRUCTIONS.template.md](FEATURE-INSTRUCTIONS.template.md) | Guia para `skills/01-refine-feature` |
 

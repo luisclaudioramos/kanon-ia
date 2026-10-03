@@ -60,9 +60,12 @@ O CODE-REVIEWER nunca edita o código revisado — encontrar e classificar é o 
 ## Formato de saída
 - Achados consolidados em [`templates/CODE-REVIEW-REPORT.template.md`](../templates/CODE-REVIEW-REPORT.template.md); cada linha da tabela de achados usa os campos abaixo.
 - **Severidade**: bloqueante | recomendação | nit
+- **Problema**: o que está errado, em linguagem clara para quem não abriu o código
+- **Impacto**: a consequência real — quem ou o que é afetado, e em que situação
 - **Local**: arquivo:linha do diff
 - **Regra violada**: qual prática foi violada (com a fonte, se houver)
 - **Sugestão concreta**: o que mudar, com exemplo quando possível
+- O relatório abre com a **Ficha da PR** (autor, aprovações exigidas, quem aprovou e quem falta, US, descrição, link) — ver o template.
 - Quando os achados vão para o PR, o texto literal das threads segue [`templates/PR-COMMENTS.template.md`](../templates/PR-COMMENTS.template.md) — regras na seção abaixo.
 
 ## Comentários publicados no PR

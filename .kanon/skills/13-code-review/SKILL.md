@@ -11,6 +11,7 @@ Fase 3 — Governança, Qualidade e Transições. Roda depois da implementação
 
 ## Saídas
 - Relatório de achados em [`templates/CODE-REVIEW-REPORT.template.md`](../../templates/CODE-REVIEW-REPORT.template.md), envelopado no formato do return envelope (aprovação ou apontamentos com severidade).
+- **Consolidação para o revisor humano** (a resposta no chat, antes do envelope): sempre abre com a **Ficha da PR** do template (link, aberta por/em, repositório e branches, US/Bug com link, resumo da descrição, iteração revisada, aprovações exigidas, quem já aprovou e quem falta) e segue com os **Problemas encontrados**, cada um com problema em texto claro, impacto e sugestão de correção. Vale também quando não há iteração nova desde a última revisão: a ficha mostra o estado atual e os problemas que seguem abertos.
 - Quando o PR já existe: rascunho das threads em [`templates/PR-COMMENTS.template.md`](../../templates/PR-COMMENTS.template.md) — um comentário geral + um inline por achado, escrito para o leitor declarado (ex.: engenheiro frontend sem acesso ao BFF), com a lógica dos outros sistemas citada inline e linkada. O rascunho fica em `RASCUNHO` até a revisão humana; quem publica é [`34-pull-request-review`](../34-pull-request-review/SKILL.md).
 
 ## Regras principais

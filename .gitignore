@@ -3,3 +3,6 @@
 # desta máquina; RESUME.md é checkpoint de sessão interrompida.
 .claude/settings.local.json
 .claude/RESUME.md
+
+# Configuração local do Obsidian, que usa esta pasta como cofre — muda a cada uso e não descreve o harness.
+.obsidian/

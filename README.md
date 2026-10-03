@@ -62,6 +62,10 @@ hooks `PreToolUse` que barram de fato uma escrita fora do contrato, e o slash co
 Se amanhã o harness for adaptado para outra IA, `.kanon/` é copiado inteiro e só a camada
 de integração muda. A divisão é essa: `.kanon/` diz **o que** vale, `.claude/` faz valer.
 
+## Origem
+
+Os diagramas iniciais, cedidos por um Tech Lead, de julho de 2026, com a estrutura de pastas e o fluxo de trabalho, estão em [`docs/kanon/origem/`](docs/kanon/origem/README.md), como registro histórico.
+
 ## O que não está aqui
 
 O conteúdo produzido *com* o harness — documentação de projeto, transcrições de reunião,

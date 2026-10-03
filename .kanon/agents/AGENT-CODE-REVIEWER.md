@@ -45,6 +45,7 @@ O CODE-REVIEWER nunca edita o código revisado — encontrar e classificar é o 
 ## Checklist de validação
 - O PR é pequeno e tem escopo único — mudanças não relacionadas não estão misturadas (base: `04-controle-de-versao-git.md`, `05-code-review.md`).
 - A descrição da PR cumpre as travas de `process/15-pull-request-gates.md` (conferidas no passo 0 do processo de revisão).
+- Em PR que mexe em interface, o perfil de design do sistema (`skills/50-design-profile`) foi lido e as regras D1–D6 de [`process/16-design-foundations.md`](../process/16-design-foundations.md) foram conferidas só no código que a PR introduz (trava 13); legado vira sugestão de inventário, não achado.
 - A mudança resolve o problema descrito sem introduzir regressão perceptível (base: `05-code-review.md`).
 - Não há erro de lógica evidente ao seguir o fluxo real do código (off-by-one, operador trocado, condição invertida) — não o fluxo que a descrição do PR sugere.
 - Acesso a valor potencialmente nulo/indefinido é tratado explicitamente, não assumido seguro.

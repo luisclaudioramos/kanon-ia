@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Converte cada .html de uma pasta em PNG com o Chrome headless e recorta a altura útil.
 # Uso: render-screens.sh <pasta-entrada> <pasta-saida> [larguras=1920]  (ex.: 390,768,1920)
-# Com uma largura: <nome>.png. Com várias: <nome>.<largura>.png; com 390,768,1920 também <nome>.prancha.png.
+# Com uma largura: <nome>.png. Com várias: <nome>.<largura>.png; com 390, 768 e 1920 (em qualquer ordem) também <nome>.prancha.png.
 # Saída: 0 ok · 1 largura inválida · 2 Chrome ausente · 3 entrada inexistente ou sem .html · 4 Pillow ausente · 5 falha do Chrome ao renderizar
 # Avisa no stderr quando a página passa de 4000 px e foi cortada.
 set -euo pipefail
@@ -10,6 +10,9 @@ OUT="${2:?uso: render-screens.sh <pasta-entrada> <pasta-saida> [largura]}"
 WIDTHS="${3:-1920}"
 [[ "$WIDTHS" =~ ^[0-9]+(,[0-9]+)*$ ]] || { echo "larguras inválidas: $WIDTHS (ex.: 1920 ou 390,768,1920)" >&2; exit 1; }
 IFS=, read -r -a WLIST <<< "$WIDTHS"
+for W in "${WLIST[@]}"; do [ "$W" -gt 0 ] || { echo "largura deve ser maior que zero: $W" >&2; exit 1; }; done
+[ "$(printf '%s\n' "${WLIST[@]}" | sort -u | wc -l)" -eq ${#WLIST[@]} ] || { echo "larguras repetidas: $WIDTHS" >&2; exit 1; }
+SORTED="$(printf '%s\n' "${WLIST[@]}" | sort -n | paste -sd, -)"
 [ -d "$IN" ] || { echo "pasta de entrada não existe: $IN" >&2; exit 3; }
 CHROME="${CHROME_BIN:-$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)}"
 [ -n "$CHROME" ] && [ -x "$CHROME" ] || { echo "Chrome não encontrado ou não executável: ${CHROME:-nenhum} (defina CHROME_BIN)" >&2; exit 2; }
@@ -49,7 +52,7 @@ PY
     rm -f "$full"
     echo "$dst"
   done
-  if [ "$WIDTHS" = "390,768,1920" ]; then
+  if [ "$SORTED" = "390,768,1920" ]; then
     python3 "$(dirname "$0")/prancha.py" "$OUT/$name.prancha.png" "$OUT/$name.390.png" "$OUT/$name.768.png" "$OUT/$name.1920.png"
   fi
 done

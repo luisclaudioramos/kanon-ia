@@ -8,7 +8,7 @@ Definir, num lugar só, as seis regras de interface (D1 a D6) que todo trabalho 
 - Cobra **só o que é novo ou alterado**. O que já existia fora da regra (legado) vai para o inventário do perfil de design (`skills/50-design-profile`) e não bloqueia quem não o criou.
 
 ## Regras
-- **O perfil de design do sistema decide o modo.** Cada item estrutural (mobile first no código, design tokens, design system, Atomic Design, biblioteca de componentes) é `definido` ou `não definido` no `DESIGN-PROFILE.md` do sistema, confirmado pelo Tech Lead. `definido` → a regra é 🔴 (bloqueia). `não definido` → 🟡 (incentivo: a oportunidade é registrada e não bloqueia).
+- **O perfil de design do sistema decide o modo.** Cada item estrutural (mobile first no código, design tokens, design system, Atomic Design, biblioteca de componentes) é `definido` ou `não definido` no `DESIGN-PROFILE.md` do sistema, confirmado pelo Tech Lead. `definido` → a regra é 🔴 (bloqueia). `não definido` → 🟡 (incentivo: a oportunidade é registrada e não bloqueia). Exceto D4, que segue a regra abaixo: basta o sistema ter biblioteca de componentes.
 - **D1, D4 (quando o sistema tem biblioteca de componentes) e D6 são 🔴 sempre**, com ou sem perfil.
 - **Sistema sem perfil**: alerta 🟡 recomendando `skills/50-design-profile`; D1 continua 🔴; D4 continua 🔴 quando o manifesto de dependências mostra biblioteca de componentes; as demais viram 🟡; D6 compara com as telas que a própria mudança toca.
 - **Exceção com motivo**: qualquer regra aceita "Não se aplica: _motivo_" ou desvio com motivo em uma frase (ex.: "componente próprio porque a biblioteca não tem seletor de período por mês"). Sem motivo, é violação.
@@ -46,7 +46,8 @@ Definir, num lugar só, as seis regras de interface (D1 a D6) que todo trabalho 
 ## Procedimento em caso de falha
 - Regra 🔴 violada: achado bloqueante na revisão (trava 13) ou tela de volta a `rascunho` na validação (skill 48), citando o número e o nome da regra.
 - Regra 🟡: oportunidade registrada no inventário do perfil, com o ok do Tech Lead; não bloqueia.
-- Perfil inexistente ou com mais de 90 dias: segue o modo "sistema sem perfil" e recomenda `skills/50-design-profile`.
+- Perfil inexistente: segue o modo "sistema sem perfil" e recomenda `skills/50-design-profile`.
+- Perfil com mais de 90 dias: continua valendo como está, com alerta 🟡 para rodar `skills/50-design-profile` de novo.
 
 ## Exemplo concreto
 

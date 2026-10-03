@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Compõe as imagens de uma tela em 390, 768 e 1920 px lado a lado, com o rótulo de cada largura.
 
-Uso: prancha.py <saida.png> <img-390> <img-768> <img-1920>
-Saída: 0 ok · 1 uso errado ou imagem inexistente.
+Uso: prancha.py <saida.png> <img-390> <img-768> <img-1920>  (em qualquer ordem; ordena pela largura)
+Saída: 0 ok · 1 uso errado, imagem inexistente ou larguras diferentes de 390, 768 e 1920.
 """
 import os
 import sys
@@ -23,7 +23,11 @@ def main(args):
         if not os.path.isfile(caminho):
             print(f"imagem inexistente: {caminho}", file=sys.stderr)
             return 1
-    abertas = [Image.open(c).convert("RGB") for c in imagens]
+    abertas = sorted((Image.open(c).convert("RGB") for c in imagens), key=lambda i: i.width)
+    larguras = [i.width for i in abertas]
+    if larguras != [390, 768, 1920]:
+        print(f"larguras esperadas 390, 768 e 1920 px; recebidas {larguras}", file=sys.stderr)
+        return 1
     largura = sum(i.width for i in abertas) + MARGEM * (len(abertas) + 1)
     altura = max(i.height for i in abertas) + ROTULO + 2 * MARGEM
     prancha = Image.new("RGB", (largura, altura), (255, 255, 255))

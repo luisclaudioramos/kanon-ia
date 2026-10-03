@@ -61,7 +61,9 @@ _Só em PR que mexe em interface. Regras em `process/16-design-foundations.md`; 
 | D5 Reuso e Atomic Design | _[preencher]_ | _[preencher]_ |
 | D6 Consistência entre telas | _[preencher]_ | _[preencher: padrão por função do perfil]_ |
 
-_Trava 13. 🔴 ou 🟡 por regra, conforme o perfil. Itens do inventário corrigidos nesta PR: _[preencher: INV-XX, ou "nenhum"]__
+_Trava 13. 🔴 ou 🟡 por regra, conforme o perfil._
+
+**Itens do inventário corrigidos nesta PR**: _[preencher: INV-XX, ou "nenhum"]_
 
 ## Documentação atualizada
 _[preencher: docs do sistema atual alteradas para o to-be (README, docs do repositório, wiki), ou "Nenhuma doc descreve esse comportamento"]_ · _Trava 9._

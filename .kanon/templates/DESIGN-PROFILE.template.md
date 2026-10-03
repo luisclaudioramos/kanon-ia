@@ -49,7 +49,7 @@ _Referência da regra D6. Proposto pelo uso mais frequente no código e nas tela
 
 _Só o que já existia. Um bug visual por padrão divergente, com as ocorrências. Linha nova só com o ok do Tech Lead._
 
-| Código | Tipo | Regra | Padrão ou item | Ocorrências (tela, largura, `arquivo:linha`) | Gravidade | Bug no ADO | Estado |
+| Código | Tipo | Regra | Padrão ou item | Ocorrências (tela, largura, `arquivo:linha`) | Gravidade | Bug (work item) | Estado |
 |---|---|---|---|---|---|---|---|
 | _[preencher: INV-01]_ | _[preencher: bug visual / oportunidade técnica]_ | _[preencher: D1–D6]_ | _[preencher]_ | _[preencher]_ | _[preencher: alta / média / baixa]_ | _[preencher: link, ou "—"]_ | _[preencher: `aberto` / `em US-XX` / `corrigido` (PR)]_ |
 

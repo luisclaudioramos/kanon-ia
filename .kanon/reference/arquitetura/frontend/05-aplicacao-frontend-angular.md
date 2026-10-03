@@ -1,7 +1,7 @@
 # Aplicação Frontend (Angular)
 
 ## Estrutura
-Aplicação Angular consumindo o design system, os design tokens e a iconografia — como pacotes internos do workspace ou da pasta indicada no perfil de design do sistema — — não reimplementando componentes/estilos que já existem nesses pacotes. Preferir componentes standalone a NgModules em projetos novos (menos boilerplate, mais simples de fazer tree-shaking).
+Aplicação Angular consumindo o design system, os design tokens e a iconografia — como pacotes internos do workspace ou da pasta indicada no perfil de design do sistema — não reimplementando componentes/estilos que já existem nesses pacotes. Preferir componentes standalone a NgModules em projetos novos (menos boilerplate, mais simples de fazer tree-shaking).
 
 ## Estilo e responsividade
 - **Mobile first**: estilos partem do celular e crescem com `min-width` (regra D2 de [`process/16-design-foundations.md`](../../../process/16-design-foundations.md)). Nada de largura fixa em px nos contêineres.

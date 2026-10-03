@@ -36,7 +36,7 @@ Traduzir o requisito do PO em fluxos de interação, [wireframes](GLOSSARIO.md#w
 - A complexidade da interface é proporcional ao problema — nenhuma tela ou passo extra foi adicionado para um cenário hipotético (YAGNI) (base: `01-principios-gerais.md`).
 - A nomenclatura usada na especificação é a mesma usada depois no código, evitando divergência entre design e implementação (base: `02-estilo-de-codigo.md`).
 - Existe uma forma de validar a usabilidade antes do lançamento (teste com usuário, [revisão heurística](GLOSSARIO.md#heuristica) ou revisão cruzada com QA-ENGINEER).
-- Tela atual e proposta são comparadas na mesma escala (desktop: 1920 px de largura).
+- Tela atual e proposta são comparadas em 390, 768 e 1920 px, uma imagem por largura (`skills/48-screen-validation`).
 - Toda tela que mostra ou grava dados tem anatomia: a origem de cada elemento (API, fixo no código, calculado no front, campo novo no back), e cada campo novo virou pendência para o back-end.
 - O que o protótipo simplificou só para desenhar mais rápido está declarado como "não é mudança".
 - A tela segue as regras D1–D6 de [`process/16-design-foundations.md`](../process/16-design-foundations.md) conforme o perfil de design do sistema: validada em 390, 768 e 1920 px, cada elemento classificado (token, biblioteca, design system ou próprio) e no padrão por função.

@@ -1,6 +1,6 @@
 # Processos — Contrato Operacional do Time de Agentes
 
-Enquanto [`agents/`](../agents) define **quem** faz o quê (os 12 papéis), esta pasta define **como** qualquer um desses papéis deve operar: em que ordem, em que formato, o que fazer quando falta informação, e o que fazer quando algo dá errado. Os 16 processos abaixo se aplicam a **todos** os 12 agentes, sempre — não são específicos de um papel.
+Enquanto [`agents/`](../agents) define **quem** faz o quê (os 12 papéis), esta pasta define **como** qualquer um desses papéis deve operar: em que ordem, em que formato, o que fazer quando falta informação, e o que fazer quando algo dá errado. Os 17 processos abaixo se aplicam a **todos** os 12 agentes, sempre — não são específicos de um papel.
 
 Cada arquivo é autocontido e segue o mesmo template: Propósito, Quando se aplica, Regras, Sinais de violação, Procedimento em caso de falha, Exemplo concreto.
 
@@ -26,7 +26,7 @@ Cada arquivo é autocontido e segue o mesmo template: Propósito, Quando se apli
 | [15](15-pull-request-gates.md) | Pull Request Gates | As 13 travas que toda PR cumpre: onde cada uma nasce, o que a PR confere, o que bloqueia e as exceções |
 | [16](16-design-foundations.md) | Design Foundations | As regras D1–D6 de interface: obrigatórias quando o perfil de design as define, incentivo quando não; bug visual × oportunidade técnica |
 
-Este índice é a "Constituição" do sistema completo: harness (`.kanon/`) + skills numeradas + agentes + hooks + `seals.manifest.json` (neste mesmo diretório). Todas essas peças já existem neste repositório — os 16 processos abaixo são lidos e aplicados por elas.
+Este índice é a "Constituição" do sistema completo: harness (`.kanon/`) + skills numeradas + agentes + hooks + `seals.manifest.json` (neste mesmo diretório). Todas essas peças já existem neste repositório — os 17 processos abaixo são lidos e aplicados por elas.
 
 ## Como usar
 

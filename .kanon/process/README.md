@@ -24,6 +24,7 @@ Cada arquivo é autocontido e segue o mesmo template: Propósito, Quando se apli
 | [13](13-external-integration-prerequisite.md) | External Integration Prerequisite | Publicação e Pull Request exigem a ferramenta externa configurada — bloqueio orientado, exceção só com registro explícito |
 | [14](14-decision-segregation.md) | Decision Segregation | Quality Gate e Code Review não podem ser aprovados pela mesma janela de contexto que produziu o artefato |
 | [15](15-pull-request-gates.md) | Pull Request Gates | As 12 travas que toda PR cumpre: onde cada uma nasce, o que a PR confere, o que bloqueia e as exceções |
+| [16](16-design-foundations.md) | Design Foundations | As regras D1–D6 de interface: obrigatórias quando o perfil de design as define, incentivo quando não; bug visual × oportunidade técnica |
 
 Este índice é a "Constituição" do sistema completo: harness (`.kanon/`) + skills numeradas + agentes + hooks + `seals.manifest.json` (neste mesmo diretório). Todas essas peças já existem neste repositório — os 16 processos abaixo são lidos e aplicados por elas.
 

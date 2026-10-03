@@ -7,7 +7,7 @@ Implementa a etapa 0 da [`skills/48-screen-validation`](../../.kanon/skills/48-s
 | Fonte | Ferramenta | Como testar | Caminho alternativo |
 |---|---|---|---|
 | Print | leitura de imagem; `slack_read_file` para print enviado no Slack | — | — |
-| Acesso ao sistema | MCP `claude-in-chrome`, ou Playwright MCP | `list_connected_browsers` (lista vazia = nenhum navegador conectado) | instalar o Playwright MCP: `claude mcp add playwright -- npx @playwright/mcp@latest`; ou print |
+| Acesso ao sistema | MCP `claude-in-chrome`, ou Playwright MCP | `list_connected_browsers` (lista vazia = nenhum navegador conectado) | instalar o Playwright MCP (ver "Instalação" abaixo); ou print |
 | Google Stitch | MCP `stitch` | `list_projects` (vazio = sem projetos próprios; pedir compartilhamento) | exportar PNG |
 | Figma | MCP Figma do claude.ai | `whoami` — assento View tem limite baixo de chamadas | exportar PNG do Figma |
 | Claude Design | leitura de artefato pelo link | abrir o link | exportar PNG ou HTML |
@@ -18,7 +18,7 @@ Implementa a etapa 0 da [`skills/48-screen-validation`](../../.kanon/skills/48-s
 
 Comandos de instalação, pré-requisitos da máquina (Node, Chrome, Pillow, certificado da rede corporativa) e a configuração para outras IAs (Claude Desktop, Codex CLI, Gemini CLI, Cursor) estão em [`docs/kanon/integracoes/fontes-de-tela-instalacao.md`](../../docs/kanon/integracoes/fontes-de-tela-instalacao.md). Resumo no Claude Code:
 
-- Playwright MCP: `claude mcp add playwright -- npx @playwright/mcp@latest` (na rede da empresa, antes: `export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt`).
+- Playwright MCP: `claude mcp add -s user playwright -e NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt -- npx @playwright/mcp@latest` (a variável do certificado é necessária na rede da empresa).
 - Claude in Chrome: extensão **Claude** no Chrome e `claude --chrome`.
 - Stitch: `claude mcp add --transport http stitch https://stitch.googleapis.com/mcp --header "X-Goog-Api-Key: $STITCH_API_KEY"`.
 - Figma: conector do claude.ai, ou `claude mcp add --transport http figma https://mcp.figma.com/mcp`.

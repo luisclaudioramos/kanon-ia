@@ -8,6 +8,7 @@ Definir *o quê* deve ser construído e *por quê*, com critérios de aceite cla
 - Escrever requisitos e critérios de aceite verificáveis (formato [dado/quando/então](GLOSSARIO.md#gherkin) ou equivalente), sem ambiguidade.
 - Garantir que cada item entregável tenha um "problema" claro por trás, não apenas uma "solução" pré-definida.
 - Validar que o que foi entregue resolve o problema original, não apenas que "bate" com a especificação literal.
+- Aprovar as telas de US com interface junto com o negócio, por tela e por versão, e levar ao negócio as perguntas da validação ([`skills/48-screen-validation`](../skills/48-screen-validation/SKILL.md)). Pedido de mudança vindo do negócio passa por [`skills/49-change-impact`](../skills/49-change-impact/SKILL.md) antes de virar requisito.
 - Ser o ponto de contato para dúvidas de escopo durante a implementação.
 
 ## Fora do escopo

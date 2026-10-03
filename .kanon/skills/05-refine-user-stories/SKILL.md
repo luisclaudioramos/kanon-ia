@@ -21,11 +21,12 @@ Fase 2 — Refino de Usuário e Tarefas. Roda após a Fase 1 (arquitetura defini
 - Persona e Prioridade (MoSCoW) de cada US são definidas aqui, herdando o contexto de "Descrição" e "Priorização, Risco e Esforço" da `FEATURE.md` pai.
 - Dependências entre US ("Bloqueado por"/"Bloqueia") são mapeadas durante o refino, não descobertas só na execução (`07-refine-tasks`).
 - A seção "UI/UX" só é preenchida quando `agents/AGENT-UI-UX-DESIGNER.md` foi acionado para esta US (mesma condição de `skills/01-refine-feature`); caso contrário, é removida do arquivo em vez de ficar como placeholder vazio.
+- Em US com interface, depois do refino aciona [`48-screen-validation`](../48-screen-validation/SKILL.md). A validação não bloqueia `07-refine-tasks`: o front pode começar em paralelo, e a cobrança acontece na entrega (trava 12 de `process/15-pull-request-gates.md`) e no fechamento da US (`process/05-definition-of-done.md`).
 - A transição para `publicado` só ocorre depois de aprovado — nenhuma US pula direto de `refinado` para `publicado`.
 - Decisões de negócio/arquitetura tomadas durante o refino (ex.: escopo de uma US, resolução de conflito entre requisitos) são registradas na tabela "Decisões" do `FEATURE.md` — não apenas na cabeça de quem refinou.
 
 ## Depende de
-- `agents/AGENT-PO.md`, `agents/AGENT-QA-ENGINEER.md`, `process/15-pull-request-gates.md`.
+- `agents/AGENT-PO.md`, `agents/AGENT-QA-ENGINEER.md`, `process/15-pull-request-gates.md`, `48-screen-validation`.
 
 ## Procedimento em caso de falha
 Uma US sem AC testável não avança de `refinado` para `aprovado` — fica retida até o critério de aceite ser esclarecido, nunca aprovada "por prazo".

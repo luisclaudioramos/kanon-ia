@@ -124,8 +124,14 @@ _[preencher: quando mais estreito que o "Fora de escopo" da Feature — ver `REQ
 
 _[preencher apenas quando esta US envolve interface — ver `agents/AGENT-UI-UX-DESIGNER.md`, mesma condição de `skills/01-refine-feature`. Remover a seção quando não aplicável]_
 
-**Link de design**: _[preencher: Figma/protótipo]_
+**Validação de telas**: [`telas/SCREEN-VALIDATION.md`](./telas/SCREEN-VALIDATION.md) — `skills/48-screen-validation`
 **Estados da interface**: _[preencher: inicial / carregando / sucesso / erro]_
+
+| Tela | Versão aprovada | Registro |
+|---|---|---|
+| _[preencher: NN-nome]_ | _[preencher: vN, ou "aguardando validação"]_ | _[preencher: link da linha no registro de aprovações]_ |
+
+_O front pode começar antes da aprovação; a US só vai a `done` com todas as telas aprovadas e a versão aprovada igual à entregue (`process/05-definition-of-done.md`)._
 
 ## Dependências e riscos
 

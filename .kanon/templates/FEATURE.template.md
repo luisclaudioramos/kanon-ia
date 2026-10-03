@@ -4,6 +4,7 @@ _Breadcrumb: [Home](../README.md) > Feature_
 
 **ID**: _[preencher]_ · **Status**: `backlog` | `ready` | `doing` | `done` (ver `process/03-state-management.md`)
 **PO responsável**: _[preencher]_
+**Aprovadores de tela** (`skills/48-screen-validation`): PO _[preencher: nome]_ · Negócio _[preencher: nome; um representante vale pelo negócio quando listado aqui]_ — ou "Não se aplica: a Feature não tem interface"
 **Tags**: _[preencher: ano, produto, tema — repetidas nas US e Tasks da Feature]_
 
 _Linguagem clara (trava 2, `process/15-pull-request-gates.md`): toda sigla, jargão ou nome de sistema é explicado na primeira vez em que aparece, neste documento e no item publicado._

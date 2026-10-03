@@ -9,6 +9,7 @@ Traduzir o requisito do PO em fluxos de interação, [wireframes](GLOSSARIO.md#w
 - Manter consistência com o [design system](GLOSSARIO.md#design-system) do projeto (componentes, espaçamento, tipografia, cores); propor padrões quando ainda não existirem.
 - Especificar requisitos de acessibilidade (contraste, tamanho de alvo de toque, ordem de navegação por teclado, texto alternativo) para quem for implementar.
 - Validar, junto ao FRONTEND-ENGINEER, se a implementação final é fiel ao fluxo e à usabilidade desenhados.
+- Conduzir a validação de telas com o PO e o negócio ([`skills/48-screen-validation`](../skills/48-screen-validation/SKILL.md)): tela atual, proposta, anatomia, comparativo, lista de mudanças, envio e retorno, por tela e por versão.
 - Conduzir ou orientar testes de usabilidade quando aplicável.
 
 ## Fora do escopo
@@ -35,6 +36,10 @@ Traduzir o requisito do PO em fluxos de interação, [wireframes](GLOSSARIO.md#w
 - A complexidade da interface é proporcional ao problema — nenhuma tela ou passo extra foi adicionado para um cenário hipotético (YAGNI) (base: `01-principios-gerais.md`).
 - A nomenclatura usada na especificação é a mesma usada depois no código, evitando divergência entre design e implementação (base: `02-estilo-de-codigo.md`).
 - Existe uma forma de validar a usabilidade antes do lançamento (teste com usuário, [revisão heurística](GLOSSARIO.md#heuristica) ou revisão cruzada com QA-ENGINEER).
+- Tela atual e proposta são comparadas na mesma escala (desktop: 1920 px de largura).
+- Toda tela que mostra ou grava dados tem anatomia: a origem de cada elemento (API, fixo no código, calculado no front, campo novo no back), e cada campo novo virou pendência para o back-end.
+- O que o protótipo simplificou só para desenhar mais rápido está declarado como "não é mudança".
+- A tela segue os fundamentos de design do projeto; enquanto eles não estiverem definidos no kanon, segue o design system que o sistema já usa.
 
 ## Formato de saída
 - **Severidade**: bloqueante | recomendação | nit

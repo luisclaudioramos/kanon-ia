@@ -14,6 +14,17 @@ Implementa a etapa 0 da [`skills/48-screen-validation`](../../.kanon/skills/48-s
 | Link publicado (v0, Lovable e outros) | Chrome headless | `$CHROME_BIN`, ou `command -v google-chrome chromium chromium-browser` | print |
 | Protótipo gerado | `.claude/scripts/render-screens.sh` | o mesmo Chrome da linha acima e `python3 -c "import PIL"` | print |
 
+## Instalação
+
+Comandos de instalação, pré-requisitos da máquina (Node, Chrome, Pillow, certificado da rede corporativa) e a configuração para outras IAs (Claude Desktop, Codex CLI, Gemini CLI, Cursor) estão em [`docs/kanon/integracoes/fontes-de-tela-instalacao.md`](../../docs/kanon/integracoes/fontes-de-tela-instalacao.md). Resumo no Claude Code:
+
+- Playwright MCP: `claude mcp add playwright -- npx @playwright/mcp@latest` (na rede da empresa, antes: `export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt`).
+- Claude in Chrome: extensão **Claude** no Chrome e `claude --chrome`.
+- Stitch: `claude mcp add --transport http stitch https://stitch.googleapis.com/mcp --header "X-Goog-Api-Key: $STITCH_API_KEY"`.
+- Figma: conector do claude.ai, ou `claude mcp add --transport http figma https://mcp.figma.com/mcp`.
+
+Depois de instalar, abrir uma sessão nova: o servidor só carrega no início.
+
 ## Limitações
 
 - **Anexos no Slack**: o MCP do Slack não anexa arquivos. A skill cria um rascunho (`slack_send_message_draft`, um por canal); o Tech Lead anexa as imagens e envia; a skill lê o canal depois para registrar o link do envio.

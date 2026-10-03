@@ -9,6 +9,7 @@ Antes de qualquer artefato ser marcado como `done` na máquina de estados (`03-s
 ## Regras
 - Critérios globais e imutáveis, que não variam por agente nem por pressa de prazo: testes passando (suíte completa, incluindo integração e E2E quando existirem), cobertura de 100% do código novo ou alterado, documentação do sistema atual atualizada para o to-be, code review aprovado com o mínimo de aprovações de colegas, runbook gerado, sem achado bloqueante de segurança aberto. Critérios detalhados das travas de PR em [`15-pull-request-gates.md`](15-pull-request-gates.md).
 - **User Story com telas** (`skills/48-screen-validation`): só vai a `done` com todas as telas em `aprovada` ou `aprovada com ressalvas` — no desenho ou no teste — e a versão aprovada igual à entregue. A evidência é o índice e o registro de aprovações de `telas/SCREEN-VALIDATION.md`, conferidos por `11-quality-gate`. A trava 12 de [`15-pull-request-gates.md`](15-pull-request-gates.md) só alerta na PR; o bloqueio é aqui.
+- **User Story com interface** ([`16-design-foundations.md`](16-design-foundations.md)): além das telas aprovadas, o QA conferiu a tela em homologação nas larguras 390, 768 e 1920 (D1, com as pranchas da homologação); os bugs visuais ligados à US no refinamento estão corrigidos ou abertos por decisão registrada do PO; e nenhuma regra 🔴 da trava 13 está pendente.
 - Os critérios são objetivos e verificáveis — checagens binárias (passou/não passou), não uma impressão de "parece pronto".
 - A lista de critérios é a mesma para todo tipo de artefato (User Story, Task, Bug); tipos diferentes podem ter critérios *adicionais*, nunca menos exigentes.
 - Para uma **Feature** especificamente, o DoD inclui também: Pull Request real associado (`process/13-external-integration-prerequisite.md`, exceto exceção explícita registrada), TCO final registrado (`30-cost-of-ownership-tco`) e pacote de Audit Evidence gerado (`33-audit-evidence`).
@@ -24,6 +25,7 @@ Antes de qualquer artefato ser marcado como `done` na máquina de estados (`03-s
 - Um artefato marcado "pronto" com cobertura do diff abaixo de 100% sem exceção declarada, ou com documentação do sistema atual descrevendo o comportamento antigo.
 - Uma PR mergeada com menos aprovações de colegas do que `15-pull-request-gates.md` exige.
 - Uma User Story com telas em `done` com tela sem aprovação do PO e do negócio, ou com a versão entregue diferente da aprovada.
+- Uma User Story com interface em `done` sem a conferência nas três larguras, ou com bug visual ligado a ela aberto sem decisão registrada do PO.
 
 ## Procedimento em caso de falha
 Se um artefato precisar avançar sem satisfazer 100% do DoD (ex.: incidente crítico), isso é uma exceção explícita e registrada, com o item pendente listado — o artefato não é considerado `done` de fato até o item ser completado.

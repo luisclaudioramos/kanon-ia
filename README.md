@@ -10,24 +10,26 @@ Duas pastas, com papéis distintos: [`.kanon/`](.kanon) é a **especificação**
 ambiente; [`.claude/`](.claude) é a **integração real** com o Claude Code, que faz a
 especificação valer em tempo de execução.
 
-### `.kanon/` — o núcleo, 166 arquivos
+### `.kanon/` — o núcleo, 170 arquivos
 
 | Pasta | Papel | Volume |
 |---|---|---|
 | [`.kanon/agents/`](.kanon/agents) | **Quem** — papéis especializados (`AGENT-*.md`) que aplicam julgamento em cada etapa | 14 arquivos |
 | [`.kanon/process/`](.kanon/process) | **Como** — contratos comportamentais que regem o harness, mais `seals.manifest.json` | 19 arquivos |
-| [`.kanon/skills/`](.kanon/skills) | **O quê** — procedimentos executáveis, cada um uma pasta com `SKILL.md` | 50 arquivos |
-| [`.kanon/templates/`](.kanon/templates) | **Forma** — esqueletos de artefato, mais `evidence/` e `outline/` | 40 arquivos |
+| [`.kanon/skills/`](.kanon/skills) | **O quê** — procedimentos executáveis, cada um uma pasta com `SKILL.md` | 52 arquivos |
+| [`.kanon/templates/`](.kanon/templates) | **Forma** — esqueletos de artefato, mais `evidence/` e `outline/` | 42 arquivos |
 | [`.kanon/commands/`](.kanon/commands) | **Entrada** — especificação agnóstica do comando `kanon` | 1 arquivo |
 | [`.kanon/reference/`](.kanon/reference) | **Base de qualidade** — `boas-praticas-dev/`, consumida por agentes e skills | 41 arquivos |
 
-### `.claude/` — a integração, 15 arquivos
+### `.claude/` — a integração, 17 arquivos
 
 | Item | Papel |
 |---|---|
 | [`.claude/hooks/`](.claude/hooks) | Os 10 gates em JavaScript que rodam de verdade, todos ligados no `settings.json`: `identity-seals-gate`, `seal-registry-gate`, `seals-write-gate`, `seal-routing-gate`, `core-agnostic-gate`, `core-agnostic-commit-gate`, `design-gate-approval-gate`, `branch-delete-guard`, `develop-merge-squash-gate`, `pr-publish-consent-gate` — mais um README próprio |
 | [`.claude/settings.json`](.claude/settings.json) | Liga os hooks ao harness: 10 execuções em 3 matchers de `PreToolUse` |
 | [`.claude/commands/kanon.md`](.claude/commands/kanon.md) | O slash command `/kanon`, que implementa a especificação de `.kanon/commands/kanon.md` |
+| [`.claude/integrations/screen-sources.md`](.claude/integrations/screen-sources.md) | Fontes de tela da `skills/48-screen-validation`: ferramenta, teste de conexão e caminho alternativo de cada uma |
+| [`.claude/scripts/render-screens.sh`](.claude/scripts/render-screens.sh) | Converte protótipos HTML em PNG com o Chrome headless (largura padrão 1920) |
 > **Dois arquivos da pasta ficam fora do versionamento**, listados no
 > [`.gitignore`](.gitignore): `settings.local.json`, com as permissões acumuladas em
 > sessões passadas e caminhos absolutos da máquina, e `RESUME.md`, checkpoint de uma

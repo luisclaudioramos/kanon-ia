@@ -34,6 +34,7 @@ Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes 
 | [06-create-user-story-artifacts](06-create-user-story-artifacts/SKILL.md) | Materializa `USER-STORY-XX.md` |
 | [07-refine-tasks](07-refine-tasks/SKILL.md) | Divide User Stories em tasks técnicas atômicas (SPx6h) |
 | [08-create-task-artifacts](08-create-task-artifacts/SKILL.md) | Materializa `TASK-XX.md` |
+| [48-screen-validation](48-screen-validation/SKILL.md) | Valida as telas de uma US com o PO e o negócio, por tela e versão, e registra a aprovação — não bloqueia o front; cobra na entrega |
 
 ### Fase 3 — Governança, Qualidade e Transições
 | Skill | Propósito |
@@ -90,6 +91,7 @@ Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes 
 |---|---|
 | [17-navigable-links](17-navigable-links/SKILL.md) | Insere breadcrumbs e links bidirecionais entre artefatos |
 | [18-feature-context-back-propagation](18-feature-context-back-propagation/SKILL.md) | Propaga decisões/mudanças de volta aos documentos mestres; lacuna sem RF/RNF vira RF-X |
+| [49-change-impact](49-change-impact/SKILL.md) | Analisa um pedido de mudança antes da decisão: impacto, alternativas, o que falta validar e duas mensagens (negócio e time), sem prazo |
 | [19-runbook-authoring](19-runbook-authoring/SKILL.md) | Gera o runbook de produção que bloqueia/libera o deploy |
 | [20-diagram-authoring](20-diagram-authoring/SKILL.md) | Gera diagramas Mermaid para fluxos complexos |
 

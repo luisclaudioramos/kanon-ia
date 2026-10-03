@@ -17,6 +17,7 @@ _Gerado/gerenciado por `skills/34-pull-request-review`._
 - [ ] 9 — Documentação atualizada
 - [ ] 10 — Mocks e demais testes
 - [ ] 11 — Cobertura de 100% do diff
+- [ ] 12 — Validação de tela (🟡 — só alerta; o bloqueio é o DoD da US)
 
 ## Checklist de qualidade
 - [ ] Aderência aos Acceptance Criteria da User Story

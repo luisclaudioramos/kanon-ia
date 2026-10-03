@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Converte cada .html de uma pasta em PNG com o Chrome headless e recorta a altura útil.
 # Uso: render-screens.sh <pasta-entrada> <pasta-saida> [largura=1920]
-# Saída: 0 ok · 2 Chrome ausente · 3 nenhum .html na entrada · 4 Pillow ausente
+# Saída: 0 ok · 2 Chrome ausente · 3 nenhum .html na entrada · 4 Pillow ausente · 5 falha do Chrome ao renderizar
 set -euo pipefail
 IN="${1:?uso: render-screens.sh <pasta-entrada> <pasta-saida> [largura]}"
 OUT="${2:?uso: render-screens.sh <pasta-entrada> <pasta-saida> [largura]}"
 W="${3:-1920}"
 CHROME="${CHROME_BIN:-$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)}"
-[ -n "$CHROME" ] || { echo "Chrome não encontrado (defina CHROME_BIN)" >&2; exit 2; }
+[ -n "$CHROME" ] && [ -x "$CHROME" ] || { echo "Chrome não encontrado ou não executável: ${CHROME:-nenhum} (defina CHROME_BIN)" >&2; exit 2; }
 python3 -c "import PIL" 2>/dev/null || { echo "Pillow não instalado (pip install pillow)" >&2; exit 4; }
 shopt -s nullglob
 files=("$IN"/*.html)
@@ -16,9 +16,11 @@ mkdir -p "$OUT"
 for f in "${files[@]}"; do
   name="$(basename "${f%.html}")"
   full="$OUT/$name.full.png"
-  timeout 60 "$CHROME" --headless=new --disable-gpu --no-sandbox --hide-scrollbars \
+  if ! timeout 60 "$CHROME" --headless=new --disable-gpu --no-sandbox --hide-scrollbars \
     --force-device-scale-factor=1 --virtual-time-budget=4000 \
-    --window-size="$W",4000 --screenshot="$full" "file://$(realpath "$f")" >/dev/null 2>&1
+    --window-size="$W",4000 --screenshot="$full" "file://$(realpath "$f")" >/dev/null 2>&1 || [ ! -s "$full" ]; then
+    echo "falha do Chrome ao renderizar $f" >&2; rm -f "$full"; exit 5
+  fi
   python3 - "$full" "$OUT/$name.png" <<'PY'
 import sys
 from PIL import Image

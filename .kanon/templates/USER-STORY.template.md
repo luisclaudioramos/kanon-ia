@@ -124,7 +124,7 @@ _[preencher: quando mais estreito que o "Fora de escopo" da Feature — ver `REQ
 
 _[preencher apenas quando esta US envolve interface — ver `agents/AGENT-UI-UX-DESIGNER.md`, mesma condição de `skills/01-refine-feature`. Remover a seção quando não aplicável]_
 
-**Validação de telas**: [`telas/SCREEN-VALIDATION.md`](./telas/SCREEN-VALIDATION.md) — `skills/48-screen-validation`
+**Validação de telas**: [`telas/SCREEN-VALIDATION.md`](../telas/SCREEN-VALIDATION.md) — `skills/48-screen-validation`
 **Estados da interface**: _[preencher: inicial / carregando / sucesso / erro]_
 
 | Tela | Versão aprovada | Registro |

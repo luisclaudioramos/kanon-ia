@@ -34,6 +34,7 @@ Fase 2 — Refino de Usuário e Tarefas. Roda depois de [`05-refine-user-stories
 - Nome do arquivo: `NN-nome.vN.png`. `NN` é o número fixo da tela na Feature: nunca muda e nunca é reaproveitado. Cada tela pertence a uma US, indicada no índice.
 - Enquanto a tela não foi enviada, ajustes são feitos no lugar, sem versão nova.
 - Mudança visual em tela já enviada gera `vN+1`; a versão anterior vai para `telas/historico/` com a anatomia e o comparativo dela.
+- Aprovação no teste (`14-qa-validation`): o print da homologação entra como `vN+1`, com origem "teste", e a versão anterior vai para `telas/historico/`.
 - **A versão aprovada nunca é sobrescrita.** PR e teste comparam com ela. Se precisar mudar, a versão nova volta a `rascunho` e a aprovação anterior fica no histórico.
 
 ### Aprovação

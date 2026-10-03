@@ -20,6 +20,7 @@ Fase 2 — Refino de Usuário e Tarefas. Roda após [`06-create-user-story-artif
 - Estimativa de SP/horas usa o **TCO preliminar** (`30-cost-of-ownership-tco`, primeira passada) como referência de complexidade/custo esperado — Engineers e QA não estimam no vácuo quando o TCO preliminar já existe.
 - Cada task é fatiada para gerar uma PR abaixo do limite de tamanho da trava 6 de [`process/15-pull-request-gates.md`](../../process/15-pull-request-gates.md). Uma task que só cabe numa PR acima desse limite é quebrada antes de ser estimada.
 - A task herda os **Sistemas afetados** da US e detalha quais deles ela toca (trava 5).
+- Task de interface herda as regras de [`process/16-design-foundations.md`](../../process/16-design-foundations.md) e os itens do inventário listados na US. Correção de bug visual que o PO trouxe para a US vira task própria ou parte da task que já mexe na tela, nunca trabalho escondido.
 
 ## Depende de
 - `agents/AGENT-TECH-LEAD.md`, `30-cost-of-ownership-tco` (TCO preliminar), `process/15-pull-request-gates.md`.

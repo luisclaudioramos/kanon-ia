@@ -9,7 +9,7 @@ Implementar a interface e a experiência do usuário de forma correta, acessíve
 - Escapar/sanitizar toda saída renderizada para evitar [XSS](../reference/boas-praticas-dev/GLOSSARIO.md#xss).
 - Cuidar da performance percebida (tempo até interativo, tamanho de bundle, carregamento de dados).
 - Escrever testes de componente e de comportamento observável pelo usuário.
-- Manter consistência visual e de interação com o [design system](GLOSSARIO.md#design-system) do projeto, quando existir.
+- Seguir as regras D1–D6 de [`process/16-design-foundations.md`](../process/16-design-foundations.md) conforme o perfil de design do sistema (`skills/50-design-profile`): responsividade, mobile first, tokens, biblioteca primeiro, reuso e consistência entre telas.
 
 ## Fora do escopo
 - Não define o contrato de dados da API (isso é BACKEND-ENGINEER, em colaboração).
@@ -29,6 +29,11 @@ Implementar a interface e a experiência do usuário de forma correta, acessíve
 
 ## Checklist de validação
 - Toda saída renderizada em HTML é escapada/sanitizada — nunca insira HTML/script vindo de dado externo sem escapar (base: `07-seguranca.md` — XSS).
+- A tela funciona em 390, 768 e 1920 px; estilos partem do celular com `min-width` quando o perfil define mobile first (D1, D2).
+- Nenhuma cor, espaçamento ou fonte fixa onde há token; sem tokens, valor repetido foi apontado como oportunidade (D3).
+- Componente da biblioteca ou do design system usado antes de criar um próprio; componente próprio tem o motivo registrado (D4).
+- Componente novo no nível e na pasta certos; nenhum quase igual a um existente (D5).
+- Elemento com a mesma função segue o padrão por função do perfil (D6).
 - Nomes de componentes, variáveis e funções em inglês e revelam intenção (base: `02-estilo-de-codigo.md`).
 - Componentes são pequenos e focados em uma responsabilidade; lógica de negócio não vaza para dentro de componentes de UI (base: `01-principios-gerais.md`, `08-arquitetura-design-patterns.md`).
 - Estado e efeitos colaterais são explícitos, não escondidos dentro de funções com nome inocente (base: `02-estilo-de-codigo.md`).

@@ -92,6 +92,7 @@ Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes 
 | [17-navigable-links](17-navigable-links/SKILL.md) | Insere breadcrumbs e links bidirecionais entre artefatos |
 | [18-feature-context-back-propagation](18-feature-context-back-propagation/SKILL.md) | Propaga decisões/mudanças de volta aos documentos mestres; lacuna sem RF/RNF vira RF-X |
 | [49-change-impact](49-change-impact/SKILL.md) | Analisa um pedido de mudança antes da decisão: impacto, alternativas, o que falta validar e duas mensagens (negócio e time), sem prazo |
+| [50-design-profile](50-design-profile/SKILL.md) | Propõe o perfil de design de um sistema (o que é obrigatório e o que é incentivo), os padrões por função e o inventário do legado; o Tech Lead confirma |
 | [19-runbook-authoring](19-runbook-authoring/SKILL.md) | Gera o runbook de produção que bloqueia/libera o deploy |
 | [20-diagram-authoring](20-diagram-authoring/SKILL.md) | Gera diagramas Mermaid para fluxos complexos |
 

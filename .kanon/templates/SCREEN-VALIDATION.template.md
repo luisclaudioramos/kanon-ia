@@ -16,9 +16,9 @@ _Uma linha por tela. A tela só fica `aprovada` com PO **e** negócio na mesma v
 
 ## Fontes
 
-| Tela | Versão | Fonte | Sistema e rota | Estado mostrado | Escala | Data |
+| Tela | Versão | Largura | Fonte | Sistema e rota | Estado mostrado | Data |
 |---|---|---|---|---|---|---|
-| _[preencher: NN-nome]_ | _[preencher: atual / vN]_ | _[preencher: print / acesso ao sistema / ferramenta de design / link publicado / protótipo gerado]_ | _[preencher]_ | _[preencher: com dados / vazio / erro / carregando]_ | _[preencher: largura em px]_ | _[preencher: AAAA-MM-DD]_ |
+| _[preencher: NN-nome]_ | _[preencher: atual / vN]_ | _[preencher: 390 / 768 / 1920]_ | _[preencher: print / acesso ao sistema / ferramenta de design / link publicado / protótipo gerado / gerada a partir do desktop]_ | _[preencher]_ | _[preencher: com dados / vazio / erro / carregando]_ | _[preencher: AAAA-MM-DD]_ |
 
 ## Mudanças por tela
 
@@ -36,9 +36,15 @@ _Uma linha por tela. A tela só fica `aprovada` com PO **e** negócio na mesma v
 
 Legenda: 🟩 vem da API · ⬜ fixo no código · 🟨 calculado no front · 🟦 campo novo ou ajuste no back.
 
-| Tela | Elemento | Origem | Campo ou regra | Pendência no back |
+| Tela | Elemento | Origem | Campo ou regra | Classificação | Padrão por função | Pendência no back |
+|---|---|---|---|---|---|---|
+| _[preencher: NN-nome vN]_ | _[preencher]_ | _[preencher: 🟩 / ⬜ / 🟨 / 🟦]_ | _[preencher: campo da API, texto fixo ou regra de cálculo]_ | _[preencher: token / biblioteca / design system / próprio: motivo]_ | _[preencher: padrão do perfil, ou "diverge"]_ | _[preencher: só nos 🟦; "nenhuma" nos demais]_ |
+
+## Comportamento responsivo
+
+| Tela | Elemento | 390 | 768 | 1920 |
 |---|---|---|---|---|
-| _[preencher: NN-nome vN]_ | _[preencher]_ | _[preencher: 🟩 / ⬜ / 🟨 / 🟦]_ | _[preencher: campo da API, texto fixo ou regra de cálculo]_ | _[preencher: só nos 🟦; "nenhuma" nos demais]_ |
+| _[preencher: NN-nome vN]_ | _[preencher]_ | _[preencher: ex.: vira lista de cartões]_ | _[preencher: ex.: colunas Fim e Liberação somem]_ | _[preencher: ex.: tabela completa]_ |
 
 ## Simplificações do protótipo — não são mudanças
 
@@ -50,7 +56,7 @@ _O que o desenho simplificou só para ser feito mais rápido e deve continuar co
 
 | Data | Telas e versões | Para | Canal e link | Perguntas feitas |
 |---|---|---|---|---|
-| _[preencher]_ | _[preencher: NN vN, ...]_ | _[preencher: nomes]_ | _[preencher: link da mensagem]_ | _[preencher]_ |
+| _[preencher]_ | _[preencher: NN vN, ... (pranchas)]_ | _[preencher: nomes]_ | _[preencher: link da mensagem]_ | _[preencher]_ |
 
 ## Registro de aprovações
 

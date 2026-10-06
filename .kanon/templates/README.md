@@ -70,9 +70,9 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 | Arquivo | Propósito |
 |---|---|
 | [evidence/EVIDENCE.template.md](evidence/EVIDENCE.template.md) | Fonte Markdown do pacote de auditoria (`skills/33-audit-evidence`) — a geração do `.docx` final é ferramental futuro, fora do escopo desta pasta |
-| [outline/FIXED-PAGES.md](outline/FIXED-PAGES.md) | Hierarquia fixa de páginas do workspace Outline |
-| [outline/PAGE-MODELS.md](outline/PAGE-MODELS.md) | Modelos de página prontos para o Outline |
-| [outline/STANDARDS.md](outline/STANDARDS.md) | Padrões de formatação específicos do Outline |
+| [outline/FIXED-PAGES.md](outline/FIXED-PAGES.md) | Hierarquia do Outline: pasta Features obrigatória, em local informado por quem publica |
+| [outline/PAGE-MODELS.md](outline/PAGE-MODELS.md) | Modelos de página do Outline: Feature (ficha + filhos `NN — Nome`), ADR, relatório mensal |
+| [outline/STANDARDS.md](outline/STANDARDS.md) | Padrões de escrita do Outline: títulos, sem referência interna, fontes, situação e atualizações |
 | `outline/diagrams-taxonomia-uso-exemplo.png` | **Não criado** — é uma imagem de exemplo; geração de imagem está fora do escopo deste conjunto de arquivos Markdown |
 
 ## Convenções

@@ -42,6 +42,7 @@ _Um por linha, do mais grave ao mais leve. Escrito para quem decide o voto sem a
 - **Testes**: [PASS/FAIL] — _[preencher: N passando / N total]_
 - **Build**: [PASS/FAIL]
 - **Falhas pré-existentes sem relação com o diff revisado**: _[preencher ou "nenhuma"]_
+- **Teste de mutação no código alterado** (`AGENT-QA-ENGINEER`): _[preencher: comando; mutantes gerados / mortos / sobreviventes; cada sobrevivente com local, crítico (bloqueante) ou não (recomendação) e o teste sugerido — ou "não executado: motivo"]_
 
 ## Return Envelope final
 ```json

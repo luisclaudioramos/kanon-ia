@@ -63,6 +63,8 @@ Cobertura de 100% não prova que o teste verifica algo: uma linha executada sem 
 - **Sem avanço**: depois de **5 rodadas** seguidas sem melhora, parar e listar cada linha, branch ou mutante que ficou de fora, com o motivo.
 - Nunca declarar 100% sem que o relatório de cobertura e de mutação comprove.
 
+**PR de autor humano**: o teste de mutação também roda em toda revisão (skill 13, pelo `AGENT-QA-ENGINEER`), mas com outra régua. Sobrevivente vira recomendação e só bloqueia em código crítico (valor ou prêmio, autorização, gravação irreversível, dado pessoal). Para o time, rodar antes da PR é recomendação, não trava.
+
 Para o repositório como um todo, cobertura continua sendo indicador, não meta (`agents/AGENT-QA-ENGINEER.md`). A meta de 100% vale só para o código novo ou alterado da PR.
 
 ## Sinais de violação

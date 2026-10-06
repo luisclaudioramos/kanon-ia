@@ -25,6 +25,7 @@ Garantir que a qualidade seja construída desde o desenho ([shift-left](GLOSSARI
 ## Quando agir
 - **Automático/proativo**: ao ver um requisito sem critério de aceite testável, uma função com efeito colateral escondido difícil de testar, ou um bug corrigido sem teste de regressão.
 - **Sob demanda**: quando chamado para definir estratégia de testes ou validar uma entrega antes do deploy.
+- **Em toda revisão de PR**: acionado por [`skills/13-code-review`](../skills/13-code-review/SKILL.md) para rodar o teste de mutação no código alterado (seção abaixo).
 - **Integrado a pipeline/hook**: como gate de CI que bloqueia merge se testes falharem ou se a cobertura de lógica de negócio crítica cair (base: `10-ci-cd-deploy.md`).
 
 ## Checklist de validação
@@ -37,6 +38,18 @@ Garantir que a qualidade seja construída desde o desenho ([shift-left](GLOSSARI
 - Testes verificam comportamento observável (entrada → saída), não detalhes de implementação (base: `03-testes.md`).
 - Todo bug corrigido tem um teste de regressão comprovando que não volta (base: `03-testes.md`, `11-debugging.md`).
 - Cobertura é tratada como indicador, não meta, para o repositório como um todo — foco em lógica de negócio complexa e código com histórico de bugs (base: `03-testes.md`). **Exceção**: no código novo ou alterado de uma PR, 100% de linhas e branches é meta obrigatória (trava 11, `process/15-pull-request-gates.md`).
+
+## Teste de mutação na revisão de PR
+O teste de mutação altera o código em pequenos pontos e confere se algum teste falha. Mutante que nenhum teste pega ("sobrevivente") mostra uma linha coberta cujo resultado nenhum teste confere.
+
+1. **Escopo**: só os arquivos de código alterados pela PR, nunca o repositório inteiro. Ferramenta: Stryker.NET para .NET, StrykerJS para Angular.
+2. **Comando**: o do guia de testes do repositório-alvo. Sem guia, descobrir pelo próprio projeto (`process/11-subagent-anti-hallucination.md`) e registrar o comando usado. Nunca inventar.
+3. **Classificar cada sobrevivente**:
+   - **Crítico → bloqueante**: o código calcula valor ou prêmio (pontos, R$, quantidade); decide autorização ou acesso; grava ou apaga dado de forma irreversível (escrita em lote, migração, exclusão, publicação em fila com efeito externo); ou trata dado pessoal (mascara, filtra ou envia CPF, e-mail, telefone, token).
+   - **Demais → recomendação**, com o teste que mataria o mutante (entrada concreta e resultado esperado).
+   - **Equivalente** (a mudança não altera o comportamento): registrar e descartar, com o motivo.
+4. **Inviável** (ferramenta incompatível com a versão do projeto, tempo acima do limite, ambiente quebrado): registrar "não executado" e o motivo. Nunca relatar "sem sobreviventes" sem o relatório.
+5. Para código produzido pelo próprio kanon, vale a meta mais rígida do ciclo adversarial de [`process/15`](../process/15-pull-request-gates.md): zero sobreviventes.
 
 ## Formato de saída
 - **Severidade**: bloqueante | recomendação | nit

@@ -22,7 +22,17 @@ Raiz do harness Kanon. Tudo aqui é **neutro de ambiente** — nenhum arquivo de
 
 ## Fora de `.kanon/`
 
-- [`../.claude/`](../.claude) — a integração *real* com o Claude Code: `hooks/` (os 9 gates `PreToolUse`, código funcional) e `commands/kanon.md` (o slash command `/kanon` que implementa a spec de `commands/kanon.md` desta pasta).
+- [`../.claude/`](../.claude) — a integração *real* com o Claude Code: `hooks/` (os 10 gates `PreToolUse`, código funcional, ligados em `settings.json`), `commands/kanon.md` (o slash command `/kanon` que implementa a spec de `commands/kanon.md` desta pasta), `integrations/` (fontes de tela da `skills/48-screen-validation`) e `scripts/` (renderização de protótipos em PNG e montagem da prancha 390/768/1920).
+
+## O que o kanon não é
+
+- **Não é o conteúdo produzido com ele.** Documentação de projeto, transcrições de reunião, code reviews, assuntos e handoffs vivem em outro repositório, organizado por empresa. Aqui fica só o harness.
+- **Não é uma aplicação nem uma biblioteca.** Não há sistema a executar nem dependência a instalar: `.kanon/` é especificação; o único código são os hooks e scripts de apoio em `../.claude/`.
+- **Não é amarrado a uma IA.** `.kanon/` não carrega nada de ambiente (Selo I); trocar de ferramenta troca só a camada de integração.
+- **Não é só convenção escrita.** As regras críticas são barradas em tempo de execução pelos hooks — por exemplo, sem `DESIGN.md` aprovado a Feature Specification não produz artefato (`41-design-gate`).
+- **Não substitui a decisão humana.** Design Gate, aceite do PO e publicação de PR exigem aprovação ou consentimento explícito de uma pessoa.
+- **Não é um catálogo de skills avulsas.** Cada skill numerada tem posição no pipeline de [`process/02-sdd-flow.md`](process/02-sdd-flow.md); acionar fora de ordem exige justificativa registrada, e defeito encontrado vira bug (`32-report-bug`), não correção silenciosa.
+- **Não termina na implementação.** Uma Feature só chega a `done` com PR, TCO final, Audit Evidence e o aprendizado registrado em `MEMORY.md` ([`process/05-definition-of-done.md`](process/05-definition-of-done.md)).
 
 ## Por que a separação
 

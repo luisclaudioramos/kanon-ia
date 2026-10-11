@@ -6,3 +6,8 @@
 
 # Configuração local do Obsidian, que usa esta pasta como cofre — muda a cada uso e não descreve o harness.
 .obsidian/
+
+# Saída de ferramentas de sessão — snapshots e logs do Playwright MCP e rascunhos de
+# execução de planos do superpowers; não descrevem o harness.
+.playwright-mcp/
+.superpowers/

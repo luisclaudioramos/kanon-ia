@@ -15,14 +15,14 @@ Raiz do harness Kanon. Tudo aqui é **neutro de ambiente** — nenhum arquivo de
 | ------------------------- | ---------------------------------------------------------------------------------------------------- |
 | [`agents/`](agents)       | **Quem** — 12 papéis especializados (`AGENT-*.md`) que aplicam julgamento em cada etapa              |
 | [`process/`](process)     | **Como** — 18 contratos comportamentais + `seals.manifest.json`, regem todo o harness                |
-| [`skills/`](skills)       | **O quê** — 52 procedimentos executáveis (cada um uma pasta com `SKILL.md`) + `setup/`               |
-| [`templates/`](templates) | **Forma** — 40 esqueletos de artefato + `evidence/` e `outline/`                                     |
+| [`skills/`](skills)       | **O quê** — 51 procedimentos executáveis (cada um uma pasta com `SKILL.md`) + `setup/`               |
+| [`templates/`](templates) | **Forma** — 38 esqueletos de artefato + `evidence/` e `documentacao/`                                     |
 | [`commands/`](commands)   | **Entrada** — especificação agnóstica do comando único `kanon`                                       |
 | [`reference/`](reference) | **Base de qualidade** — `boas-praticas-dev/`, referência técnica consumida por `agents/` e `skills/` |
 
 ## Fora de `.kanon/`
 
-- [`../.claude/`](../.claude) — a integração *real* com o Claude Code: `hooks/` (os 10 gates `PreToolUse`, código funcional, ligados em `settings.json`), `commands/kanon.md` (o slash command `/kanon` que implementa a spec de `commands/kanon.md` desta pasta), `integrations/` (fontes de tela da `skills/48-screen-validation`) e `scripts/` (renderização de protótipos em PNG e montagem da prancha 390/768/1920).
+- [`../.claude/`](../.claude) — a integração *real* com o Claude Code: `hooks/` (os 10 gates `PreToolUse`, código funcional, ligados em `settings.json`), `commands/kanon.md` (o slash command `/kanon` que implementa a spec de `commands/kanon.md` desta pasta), `integrations/` (um adaptador por ferramenta, que atende as capacidades de `process/17-company-profile.md`, e as fontes de tela da `skills/48-screen-validation`) e `scripts/` (perfil efetivo e contexto ativo em `kanon-perfil.js`, renderização de protótipos em PNG e montagem da prancha 390/768/1920).
 
 ## O que o kanon não é
 

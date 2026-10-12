@@ -14,4 +14,4 @@ Toda mudança passa por build + lint + testes automatizados antes de poder ser m
 - Terraform (ou equivalente) para infraestrutura provisionada como código, com estado remoto — nunca infraestrutura criada manualmente num console sem registro versionado.
 
 ## Adequar à ferramenta de CI real do time
-Esta referência é agnóstica de provedor (GitHub Actions, Azure DevOps, GitLab CI, etc.) — a estrutura de jobs/gates se aplica a qualquer um; os detalhes de sintaxe de workflow são específicos da ferramenta realmente usada pelo projeto.
+Esta referência é agnóstica de provedor (GitHub Actions, GitLab CI, Jenkins, etc.) — a estrutura de jobs/gates se aplica a qualquer um; os detalhes de sintaxe de workflow são específicos da ferramenta realmente usada pelo projeto.

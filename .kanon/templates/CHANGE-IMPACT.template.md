@@ -67,4 +67,4 @@ _Prazo, divisão de entrega e estratégia de negociação. Nada desta seção en
 
 | # | Decisão | Quem decidiu | Data | Link | Propagado para |
 |---|---|---|---|---|---|
-| 1 | _[preencher]_ | _[preencher]_ | _[preencher]_ | _[preencher]_ | _[preencher: skill 18 (Feature e US) / skill 48 (telas NN) / ADO / Outline]_ |
+| 1 | _[preencher]_ | _[preencher]_ | _[preencher]_ | _[preencher]_ | _[preencher: skill 18 (Feature e US) / skill 48 (telas NN) / skill 16 (trabalho) / skill 21 (documentação)]_ |

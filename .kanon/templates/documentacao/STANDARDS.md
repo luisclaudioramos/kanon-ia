@@ -1,15 +1,13 @@
-# Outline — Padrões de Documentação
+# Documentação — Padrões de Escrita
 
-Regras de formatação específicas para conteúdo publicado no Outline, além do que já vale para todo Markdown do sistema (ver [`process/06-markdown-formatting-rules.md`](../../process/06-markdown-formatting-rules.md)). O leitor é quem não participou do trabalho: um engenheiro de outro time, o PO, alguém na primeira semana de empresa.
+Regras de escrita para conteúdo publicado na ferramenta de documentação, além do que já vale para todo Markdown do sistema (ver [`process/06-markdown-formatting-rules.md`](../../process/06-markdown-formatting-rules.md)). O leitor é quem não participou do trabalho: um engenheiro de outro time, o PO, alguém na primeira semana de empresa.
 
 ## Títulos
-- O título da página é o título do documento no Outline e conta como o nível `#`. O corpo **não repete o título** e começa em `##`.
+- Regras de título e quebra de linha próprias da ferramenta estão no adaptador da capacidade `documentacao`.
 - Documentos filhos de uma Feature são nomeados `NN — Nome` (dois dígitos, travessão, nome com iniciais maiúsculas): `01 — Contexto e Decisões`.
-- `##` para as seções; `###` só para subdividir uma seção longa. Nunca `####` — o Outline já tem navegação lateral, níveis mais profundos viram ruído.
-- Na cópia local (pasta `outline/` da Feature), o título fica no nome do arquivo e no resumo de publicação, não no corpo — por isso o corpo começar em `##` não é salto de nível.
+- `##` para as seções; `###` só para subdividir uma seção longa.
 
 ## Texto
-- **Desfazer a quebra de linha fixa** do Markdown local antes de publicar: o Outline mostra cada quebra como uma linha nova. Um parágrafo é uma linha só.
 - Sigla, jargão ou nome de sistema é explicado na primeira ocorrência (trava 2 de `process/15-pull-request-gates.md`). Termos que se repetem vão para o **Glossário** da ficha.
 - **Nada de referência interna**: link de wiki local (`[[...]]`), caminho de pasta local, nome de arquivo de anotação, memória ou transcrição. Outro documento da mesma Feature é citado pelo título entre crases (`` `05 — Virada e Histórico` ``).
 - Decisão de negócio entra como "combinado com _pessoa_ em _data_", ou numa tabela de decisões com a coluna **Origem** (pessoa, data).
@@ -25,6 +23,3 @@ Regras de formatação específicas para conteúdo publicado no Outline, além d
 - A ficha abre com a **situação** do documento: `Em validação`, `Aprovado` ou `Entregue`. Publicar em validação é permitido, desde que a situação diga isso e quem valida.
 - Mudança depois da publicação entra como aviso `> **Atualização de AAAA-MM-DD — _resumo_.**` no topo da ficha (o mais recente primeiro) e, se for o caso, no documento afetado. O texto superado fica marcado como superado, não apagado sem rastro.
 - Na entrega da Feature, a situação passa a `Entregue em AAAA-MM-DD` e o conteúdo é revisado para descrever o sistema como ficou (documentação do sistema atual atualizada para o to-be — `process/05-definition-of-done.md` e trava 9 de `process/15-pull-request-gates.md`).
-
-## Cópia local
-- A versão publicada fica numa pasta `outline/` da Feature, um arquivo por documento (`README.md` = ficha, `NN-nome.md` = filhos). Publicar e atualizar sempre a partir dela, para que a cópia local e o Outline não divirjam.

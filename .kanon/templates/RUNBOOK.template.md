@@ -24,7 +24,7 @@ _Gerado por `skills/19-runbook-authoring`. Bloqueia a transição para `done` em
 1. _[preencher: comando/ação de rollback]_
 2. _[preencher: como confirmar que o rollback funcionou]_
 
-## GMUD (Gestão de Mudança)
+## Gestão de mudança (_[preencher: nome local, do perfil]_)
 - Janela de mudança: _[preencher]_
 - Aprovadores: _[preencher]_
 - Risco declarado: _[preencher]_

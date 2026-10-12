@@ -6,7 +6,7 @@ _Gerado/gerenciado por `skills/13-code-review`, seguindo `agents/AGENT-CODE-REVI
 **Escopo**: _[preencher: PR/diff/commits revisados]_
 
 ## Ficha da PR
-_Lida da própria PR (GitHub ou Azure DevOps) no momento da revisão. É a primeira coisa que o revisor humano vê na consolidação._
+_Lida da própria PR (pela capacidade `repositorio` do perfil) no momento da revisão. É a primeira coisa que o revisor humano vê na consolidação._
 
 | Campo | Valor |
 |---|---|

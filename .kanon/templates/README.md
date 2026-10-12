@@ -55,10 +55,8 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 ### Grupo 5 — Publicação e Integração
 | Template | Gerado/usado por |
 |---|---|
-| [AZURE-PUBLISH-SUMMARY.template.md](AZURE-PUBLISH-SUMMARY.template.md) | `skills/16` e `skills/26` |
-| [SLACK-APPROVAL-SUMMARY.template.md](SLACK-APPROVAL-SUMMARY.template.md) | `skills/34-pull-request-review` — rastreia notificação de PR e sincronização com `#aprovacao-de-pr` |
-| [NOTION-PUBLISH-SUMMARY.template.md](NOTION-PUBLISH-SUMMARY.template.md) | `skills/21-documentation-publication` |
-| [OUTLINE-PUBLISH-SUMMARY.template.md](OUTLINE-PUBLISH-SUMMARY.template.md) | `skills/21-documentation-publication` |
+| [PUBLISH-SUMMARY.template.md](PUBLISH-SUMMARY.template.md) | `skills/16`, `skills/21` e `skills/26` — resumo de publicação por capacidade (`trabalho` ou `documentacao`) |
+| [APPROVAL-NOTIFICATION-SUMMARY.template.md](APPROVAL-NOTIFICATION-SUMMARY.template.md) | `skills/34-pull-request-review` — rastreia a notificação de PR pela capacidade `comunicacao` |
 | [SUBAGENT-DISPATCH.template.md](SUBAGENT-DISPATCH.template.md) | `skills/24-development-orchestration` |
 
 ### Grupo 6 — Padrões e Estilo
@@ -70,10 +68,9 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 | Arquivo | Propósito |
 |---|---|
 | [evidence/EVIDENCE.template.md](evidence/EVIDENCE.template.md) | Fonte Markdown do pacote de auditoria (`skills/33-audit-evidence`) — a geração do `.docx` final é ferramental futuro, fora do escopo desta pasta |
-| [outline/FIXED-PAGES.md](outline/FIXED-PAGES.md) | Hierarquia do Outline: pasta Features obrigatória, em local informado por quem publica |
-| [outline/PAGE-MODELS.md](outline/PAGE-MODELS.md) | Modelos de página do Outline: Feature (ficha + filhos `NN — Nome`), ADR, relatório mensal |
-| [outline/STANDARDS.md](outline/STANDARDS.md) | Padrões de escrita do Outline: títulos, sem referência interna, fontes, situação e atualizações |
-| `outline/diagrams-taxonomia-uso-exemplo.png` | **Não criado** — é uma imagem de exemplo; geração de imagem está fora do escopo deste conjunto de arquivos Markdown |
+| [documentacao/FIXED-PAGES.md](documentacao/FIXED-PAGES.md) | Hierarquia de páginas: pasta Features obrigatória, em local informado por quem publica |
+| [documentacao/PAGE-MODELS.md](documentacao/PAGE-MODELS.md) | Modelos de página: Feature (ficha + filhos `NN — Nome`), ADR, relatório mensal |
+| [documentacao/STANDARDS.md](documentacao/STANDARDS.md) | Padrões de escrita: títulos, sem referência interna, fontes, situação e atualizações |
 
 ### Grupo 8 — Perfil da empresa
 | Template | Gerado/usado por |

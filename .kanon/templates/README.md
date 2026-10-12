@@ -75,6 +75,12 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 | [outline/STANDARDS.md](outline/STANDARDS.md) | Padrões de escrita do Outline: títulos, sem referência interna, fontes, situação e atualizações |
 | `outline/diagrams-taxonomia-uso-exemplo.png` | **Não criado** — é uma imagem de exemplo; geração de imagem está fora do escopo deste conjunto de arquivos Markdown |
 
+### Grupo 8 — Perfil da empresa
+| Template | Gerado/usado por |
+|---|---|
+| [PERFIL.template.md](PERFIL.template.md) | `skills/51-company-profile` — perfil de uma empresa, área ou equipe (frontmatter estruturado + como comunicar, processos, regras locais) |
+| [HISTORICO-PERFIL.template.md](HISTORICO-PERFIL.template.md) | `skills/51-company-profile` — histórico de mudanças do perfil, uma entrada por proposta |
+
 ## Convenções
 
 - Campos a preencher aparecem como `_[preencher: descrição do que vai aqui]_`.

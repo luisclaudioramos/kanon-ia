@@ -1,0 +1,60 @@
+---
+nivel: _[preencher: empresa | area | equipe]_
+nome: _[preencher: nome de exibição do nível]_
+nomes_reservados: []
+papeis:
+  - papel: _[preencher: ex.: PO]_
+    pessoa: _[preencher]_
+    contato: _[preencher: contato de trabalho]_
+    desde: _[preencher: AAAA-MM-DD]_
+    confirmado_em: _[preencher: AAAA-MM-DD]_
+    fonte: _[preencher: onde foi confirmado]_
+ferramentas:
+  trabalho: _[preencher: nome do adaptador]_
+  documentacao: _[preencher: nome do adaptador]_
+  comunicacao: _[preencher: nome do adaptador]_
+  repositorio: _[preencher: nome do adaptador]_
+  mudanca: _[preencher: nome do adaptador]_
+  design: _[preencher: nome do adaptador]_
+  observabilidade: _[preencher: nome do adaptador]_
+ferramentas_confirmadas_em: _[preencher: AAAA-MM-DD]_
+branches:
+  protegidas: [main]
+  integracao: main
+validade:
+  papeis: 30
+  ferramentas: 180
+---
+
+# Perfil — _[preencher: nome do nível]_
+
+_Mantido por `skills/51-company-profile`. Contrato: `process/17-company-profile.md`. Escreva só o que difere do nível de cima; apague do frontmatter as chaves que este nível herda sem mudar._
+
+## Como comunicar
+
+| Assunto | Canal | Formato | Quem envia |
+|---|---|---|---|
+| Aprovação de PR | _[preencher]_ | _[preencher]_ | _[preencher: kanon só rascunha / kanon envia]_ |
+| Aviso de mudança | _[preencher]_ | _[preencher]_ | _[preencher]_ |
+| Incidente | _[preencher]_ | _[preencher]_ | _[preencher]_ |
+| Aceite do PO | _[preencher]_ | _[preencher]_ | _[preencher]_ |
+
+O que nunca vai em canal: _[preencher]_
+
+## Processos
+
+### Gestão de mudança
+Nome local: _[preencher]_ · Janela: _[preencher]_ · Aprovadores: _[preencher]_
+Etapas: _[preencher]_
+
+### Pull request e branches
+_[preencher: política de PR, aprovações exigidas, squash]_
+
+### Homologação e aceite
+_[preencher: quem aceita, em qual ambiente, como registrar]_
+
+### Impacto por ambiente
+_[preencher: o que registrar para cada ambiente]_
+
+## Regras locais
+- _[preencher: como o kanon age diferente neste nível]_

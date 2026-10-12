@@ -14,9 +14,9 @@ Raiz do harness Kanon. Tudo aqui é **neutro de ambiente** — nenhum arquivo de
 | Pasta                     | Papel                                                                                                |
 | ------------------------- | ---------------------------------------------------------------------------------------------------- |
 | [`agents/`](agents)       | **Quem** — 12 papéis especializados (`AGENT-*.md`) que aplicam julgamento em cada etapa              |
-| [`process/`](process)     | **Como** — 17 contratos comportamentais + `seals.manifest.json`, regem todo o harness                |
-| [`skills/`](skills)       | **O quê** — 51 procedimentos executáveis (cada um uma pasta com `SKILL.md`) + `setup/`               |
-| [`templates/`](templates) | **Forma** — 38 esqueletos de artefato + `evidence/` e `outline/`                                     |
+| [`process/`](process)     | **Como** — 18 contratos comportamentais + `seals.manifest.json`, regem todo o harness                |
+| [`skills/`](skills)       | **O quê** — 52 procedimentos executáveis (cada um uma pasta com `SKILL.md`) + `setup/`               |
+| [`templates/`](templates) | **Forma** — 40 esqueletos de artefato + `evidence/` e `outline/`                                     |
 | [`commands/`](commands)   | **Entrada** — especificação agnóstica do comando único `kanon`                                       |
 | [`reference/`](reference) | **Base de qualidade** — `boas-praticas-dev/`, referência técnica consumida por `agents/` e `skills/` |
 

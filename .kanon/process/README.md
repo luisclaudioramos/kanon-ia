@@ -1,6 +1,6 @@
 # Processos — Contrato Operacional do Time de Agentes
 
-Enquanto [`agents/`](../agents) define **quem** faz o quê (os 12 papéis), esta pasta define **como** qualquer um desses papéis deve operar: em que ordem, em que formato, o que fazer quando falta informação, e o que fazer quando algo dá errado. Os 17 processos abaixo se aplicam a **todos** os 12 agentes, sempre — não são específicos de um papel.
+Enquanto [`agents/`](../agents) define **quem** faz o quê (os 12 papéis), esta pasta define **como** qualquer um desses papéis deve operar: em que ordem, em que formato, o que fazer quando falta informação, e o que fazer quando algo dá errado. Os 18 processos abaixo se aplicam a **todos** os 12 agentes, sempre — não são específicos de um papel.
 
 Cada arquivo é autocontido e segue o mesmo template: Propósito, Quando se aplica, Regras, Sinais de violação, Procedimento em caso de falha, Exemplo concreto.
 
@@ -25,8 +25,9 @@ Cada arquivo é autocontido e segue o mesmo template: Propósito, Quando se apli
 | [14](14-decision-segregation.md) | Decision Segregation | Quality Gate e Code Review não podem ser aprovados pela mesma janela de contexto que produziu o artefato |
 | [15](15-pull-request-gates.md) | Pull Request Gates | As 13 travas que toda PR cumpre: onde cada uma nasce, o que a PR confere, o que bloqueia e as exceções |
 | [16](16-design-foundations.md) | Design Foundations | As regras D1–D6 de interface: obrigatórias quando o perfil de design as define, incentivo quando não; bug visual × oportunidade técnica |
+| [17](17-company-profile.md) | Company Profile | O núcleo fala em capacidades; o perfil vivo de cada empresa, área e equipe diz papéis, ferramentas, comunicação e processos, sempre com confirmação humana |
 
-Este índice é a "Constituição" do sistema completo: harness (`.kanon/`) + skills numeradas + agentes + hooks + `seals.manifest.json` (neste mesmo diretório). Todas essas peças já existem neste repositório — os 17 processos abaixo são lidos e aplicados por elas.
+Este índice é a "Constituição" do sistema completo: harness (`.kanon/`) + skills numeradas + agentes + hooks + `seals.manifest.json` (neste mesmo diretório). Todas essas peças já existem neste repositório — os 18 processos abaixo são lidos e aplicados por elas.
 
 ## Como usar
 
@@ -34,7 +35,7 @@ Este índice é a "Constituição" do sistema completo: harness (`.kanon/`) + sk
 
 **Como gate de revisão**: cada processo pode ser usado isoladamente como checklist de auditoria do próprio sistema de agentes — por exemplo, revisar se as respostas geradas realmente respeitam o `07-return-envelope`.
 
-**Como sistema completo**: as skills em [`../skills/`](../skills) e os hooks em [`../../.claude/hooks/`](../../.claude/hooks) leem e aplicam estes 16 arquivos automaticamente durante a execução do pipeline.
+**Como sistema completo**: as skills em [`../skills/`](../skills) e os hooks em [`../../.claude/hooks/`](../../.claude/hooks) leem e aplicam estes 18 arquivos automaticamente durante a execução do pipeline.
 
 ## Relação com `agents/` e `reference/boas-praticas-dev/`
 

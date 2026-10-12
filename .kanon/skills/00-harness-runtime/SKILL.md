@@ -13,14 +13,16 @@ Fase 0 — Inicialização. Executa antes de qualquer outra skill, inclusive ant
 ## Saídas
 - Harness inicializado e validado.
 - Menu interativo carregado e pronto para receber comandos.
+- Perfil efetivo da empresa montado e a linha "Atuando para" exibida (ou o aviso de modo neutro), com os dados vencidos listados.
 
 ## Regras principais
 - Implementa exatamente o contrato de [`process/00-runtime-contract.md`](../../process/00-runtime-contract.md) — nenhuma regra de boot é definida aqui além do que já está lá.
 - Verifica a integridade mínima dos 5 Selos de Identidade via [`process/09-identity-seals-gate.md`](../../process/09-identity-seals-gate.md) antes de liberar qualquer outra skill.
+- Monta o perfil efetivo (empresa → área → equipe) conforme [`process/17-company-profile.md`](../../process/17-company-profile.md), pela camada de integração (no Claude Code: `.claude/scripts/kanon-perfil.js`). Dado vencido é listado e não bloqueia a sessão; bloqueia só a skill que depender dele. Sem perfil, o harness segue em modo neutro.
 - Ao final, carrega o [`01-menu-map`](../../process/01-menu-map.md) para que o usuário possa emitir comandos.
 
 ## Depende de
-- `process/00-runtime-contract.md`, `process/09-identity-seals-gate.md`, `process/01-menu-map.md`.
+- `process/00-runtime-contract.md`, `process/09-identity-seals-gate.md`, `process/01-menu-map.md`, `process/17-company-profile.md`.
 
 ## Procedimento em caso de falha
 Se qualquer validação de ambiente ou selo falhar, o harness aborta antes de carregar o menu, reportando exatamente o que não pôde ser validado — nenhuma skill roda com o boot incompleto (ver `process/00-runtime-contract.md`).

@@ -11,6 +11,7 @@ No boot de qualquer sessão/execução do sistema, antes de qualquer skill, hook
 - Nenhuma skill ou agente pode assumir a existência de uma variável de ambiente ou caminho que não tenha sido declarado e validado por este contrato.
 - Caminhos usados internamente são absolutos, não relativos ao diretório de onde o comando foi disparado — evita comportamento diferente dependendo de onde o usuário está.
 - Este contrato define os limites do sistema (o que pode e não pode ser tocado) antes que qualquer agente comece a agir.
+- O perfil efetivo da empresa é montado no boot ([`process/17-company-profile.md`](17-company-profile.md)); a sessão nunca supõe para qual empresa trabalha.
 - **Repositório-alvo externo**: quando uma Feature mira um repositório fora de `.kanon/` (código real de um produto), o boot verifica a branch atual contra o conjunto padrão do projeto-alvo (`main`, `master`, `staging`, `qa`, `develop`, `release/*`, `hotfix/*`, ou o que o próprio repositório documentar em `CONTRIBUTING.md`/`AGENTS.md`) e a presença de mudanças não commitadas na árvore de trabalho. Encontrada uma anomalia (branch fora do padrão, árvore suja), o harness não segue como se nada tivesse acontecido: investiga a estratégia de branching já documentada no repositório-alvo ou propõe uma explicitamente, e considera `git worktree` como forma de isolar o trabalho do harness da árvore suja pré-existente do usuário, em vez de misturar mudanças.
 
 ## Sinais de violação

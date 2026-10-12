@@ -1,8 +1,10 @@
 # Estado local do Claude Code — não descreve o harness e não viaja entre máquinas.
 # settings.local.json acumula permissões de sessões passadas, com caminhos absolutos
-# desta máquina; RESUME.md é checkpoint de sessão interrompida.
+# desta máquina; RESUME.md é checkpoint de sessão interrompida; kanon.local.json guarda o
+# contexto ativo (para qual equipe o kanon trabalha nesta máquina).
 .claude/settings.local.json
 .claude/RESUME.md
+.claude/kanon.local.json
 
 # Configuração local do Obsidian, que usa esta pasta como cofre — muda a cada uso e não descreve o harness.
 .obsidian/

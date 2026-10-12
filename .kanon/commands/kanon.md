@@ -6,8 +6,10 @@
 ## Uso
 - `kanon` — abre o menu interativo (lista os comandos disponíveis e pergunta o que o usuário quer fazer).
 - `kanon <nome-do-comando> [contexto adicional]` — executa a skill correspondente diretamente, sem passar pelo menu.
+- `kanon contexto <empresa>/<area>/<equipe>` — define para quem o kanon trabalha nesta máquina; atalho de `kanon company-profile contexto` ([`skills/51-company-profile`](../skills/51-company-profile/SKILL.md)).
 
 ## Comportamento
+0. Montar o perfil efetivo da empresa ([`process/17-company-profile.md`](../process/17-company-profile.md)) pela camada de integração e mostrar a linha "Atuando para", ou o aviso de modo neutro.
 1. Sem argumento: ler [`process/01-menu-map.md`](../process/01-menu-map.md) e [`skills/README.md`](../skills/README.md), apresentar o menu de comandos (nome + propósito de uma linha) e perguntar o que o usuário quer fazer.
 2. Com argumento: o primeiro token é o `<nome-do-comando>`. Resolver para uma pasta em `skills/` comparando o nome ignorando o prefixo numérico (ex.: `refine-feature` → `skills/01-refine-feature/`; `setup` → `skills/setup/`).
 3. Ler o `SKILL.md` da pasta resolvida (Propósito, Fase, Entradas, Saídas, Regras, Depende de) e executá-lo, aplicando os agentes de [`agents/`](../agents) e os processos de [`process/`](../process) que ele referenciar.

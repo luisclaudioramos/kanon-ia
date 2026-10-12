@@ -5,9 +5,12 @@
 'use strict';
 const { politicaDeBranches } = require('./lib/perfil');
 
-let PROTECTED = [];
+let PROTECTED = null;
+let CONTEXTO = { projectDir: process.cwd(), cwd: process.cwd() };
 
+// O perfil só é lido quando o comando de fato exclui uma branch.
 function isProtected(branch) {
+  if (!PROTECTED) PROTECTED = politicaDeBranches(CONTEXTO).protegidas;
   return PROTECTED.some((re) => re.test(branch));
 }
 
@@ -33,10 +36,10 @@ process.stdin.on('data', (d) => (raw += d));
 process.stdin.on('end', () => {
   try {
     const input = JSON.parse(raw || '{}');
-    PROTECTED = politicaDeBranches({
+    CONTEXTO = {
       projectDir: process.env.CLAUDE_PROJECT_DIR || process.cwd(),
       cwd: input.cwd || process.cwd(),
-    }).protegidas;
+    };
     const command = (input.tool_input && input.tool_input.command) || '';
 
     let match = command.match(/git\s+branch\s+(?:-D|-d|--delete)\s+(.+)/);

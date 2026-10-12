@@ -80,6 +80,9 @@ process.stdin.on('end', () => {
     }
     allow();
   } catch (err) {
+    if (String(err.message).startsWith('perfil ilegível')) {
+      return deny(`core-agnostic-commit-gate: ${err.message}. Fail-closed: corrija esse perfil no repositório de empresas (process/17-company-profile.md, gramática do frontmatter) — o hook está certo.`);
+    }
     deny(`core-agnostic-commit-gate: erro interno no hook (${err.message}) — bloqueado por padrão (fail-closed). Corrija .claude/hooks/core-agnostic-commit-gate.js ou aprove manualmente se a ação for legítima.`);
   }
 });

@@ -15,8 +15,8 @@ Antes de qualquer skill de publicação (capacidades `trabalho` e `documentacao`
 - Se, mesmo orientado, o usuário decidir prosseguir sem configurar agora, isso é aceito como **exceção explícita e registrada** — mesmo padrão de `05-definition-of-done.md`: quem decidiu, quando, e o item pendente listado. Nunca um skip que não deixa rastro.
 - Pull Request deixa de ser opcional para o encerramento de uma Feature: `09-feature-state-management` não move uma Feature para `done` sem um PR real associado, a menos que a exceção acima tenha sido registrada.
 - **Uma exceção registrada por falta de integração/acesso é revalidada no início de cada nova sessão antes de ser tratada como ainda válida** — configurar uma ferramenta (ex.: adicionar um servidor MCP) numa sessão não garante que ela já esteja utilizável nessa mesma sessão (ex.: MCP só carrega numa reconexão); a exceção não é permanente por padrão, é "válida até a próxima checagem". Reabrir a checagem é barato (tentar a ferramenta de novo); deixar a exceção parada por sessões inteiras sem revisitar não é. _Origem: uma Feature real em que a integração de trabalho foi configurada numa sessão, mas o PR só foi aberto na sessão seguinte, porque ninguém tinha revisitado a exceção entre elas._
-
 - **Sem perfil da empresa**, nenhuma capacidade está configurada: as skills que dependem dela orientam a criação do perfil (`51-company-profile criar`) antes de orientar a ferramenta.
+
 ## Sinais de violação
 - Uma Feature em `done` sem PR e sem exceção registrada.
 - Uma skill de publicação relatando "pulado" sem ter oferecido o caminho de configuração primeiro.

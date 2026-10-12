@@ -63,3 +63,26 @@ test('sem contexto nem adaptadores: só os padrões de ambiente', () => {
   assert.strictEqual(rodarHook('core-agnostic-gate', escrita(dir, '.kanon/a.md', 'Publicar no Jira.'), { cwd: dir }).decisao, 'allow');
   assert.strictEqual(rodarHook('core-agnostic-gate', escrita(dir, '.kanon/a.md', 'ver /home/fulano/x'), { cwd: dir }).decisao, 'deny');
 });
+
+// --- Revisão final ---
+
+test('revisão: perfil ilegível bloqueia e aponta o arquivo do perfil, não o hook', () => {
+  const dir = projeto();
+  const empresas = JSON.parse(fs.readFileSync(path.join(dir, '.claude', 'kanon.local.json'), 'utf8')).empresas;
+  fs.mkdirSync(path.join(empresas, 'outra', 'kanon'), { recursive: true });
+  fs.writeFileSync(path.join(empresas, 'outra', 'kanon', 'perfil.md'), '---\nnome: Outra\n# comentário\n---\n');
+  const r = rodarHook('core-agnostic-gate', escrita(dir, '.kanon/skills/x/SKILL.md', 'texto neutro'), { cwd: dir });
+  assert.strictEqual(r.decisao, 'deny');
+  assert.match(r.motivo, /outra.*perfil\.md/);
+  assert.doesNotMatch(r.motivo, /Corrija \.claude\/hooks/);
+});
+
+test('revisão: pessoa de papel é barrada no núcleo', () => {
+  const dir = projeto();
+  const empresas = JSON.parse(fs.readFileSync(path.join(dir, '.claude', 'kanon.local.json'), 'utf8')).empresas;
+  fs.writeFileSync(
+    path.join(empresas, 'acme', 'kanon', 'perfil.md'),
+    '---\nnome: Acme\npapeis:\n  - papel: Dev\n    pessoa: Fulano\n---\n'
+  );
+  assert.strictEqual(rodarHook('core-agnostic-gate', escrita(dir, '.kanon/skills/x/SKILL.md', 'falar com o Fulano'), { cwd: dir }).decisao, 'deny');
+});

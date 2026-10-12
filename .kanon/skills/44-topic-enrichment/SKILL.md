@@ -8,7 +8,7 @@ Fase 0 — Inicialização e Contexto. Roda após `skills/43-meeting-intake` e a
 
 ## Entradas
 - Uma nota de assunto em `docs/assuntos/`, com `status: capturado` ou `em-levantamento`.
-- Opcionalmente, acesso ao banco de homologação do projeto e à ferramenta da capacidade `documentacao`, quando a lacuna for respondível por consulta. Ambos exigem VPN; a ausência deles não impede a skill de rodar.
+- Opcionalmente, acesso ao banco de homologação do projeto e à ferramenta da capacidade `documentacao`, quando a lacuna for respondível por consulta. Se o perfil exigir rede privada ou outro pré-requisito de acesso, ele vale aqui; a ausência deles não impede a skill de rodar.
 
 ## Saídas
 - A seção `## Dossiê` da nota preenchida, com duas listas separadas.

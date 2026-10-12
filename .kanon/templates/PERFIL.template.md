@@ -18,9 +18,6 @@ ferramentas:
   design: _[preencher: nome do adaptador]_
   observabilidade: _[preencher: nome do adaptador]_
 ferramentas_confirmadas_em: _[preencher: AAAA-MM-DD]_
-branches:
-  protegidas: [main]
-  integracao: main
 validade:
   papeis: 30
   ferramentas: 180
@@ -48,6 +45,7 @@ Nome local: _[preencher]_ · Janela: _[preencher]_ · Aprovadores: _[preencher]_
 Etapas: _[preencher]_
 
 ### Pull request e branches
+Só acrescente `branches:` ao frontmatter (com `protegidas: [...]` e `integracao: ...`) se este nível diferir do de cima; sem a chave, valem `main`, `master`, `develop`, `release/*`, `hotfix/*` e integração em `develop`.
 _[preencher: política de PR, aprovações exigidas, squash]_
 
 ### Homologação e aceite

@@ -23,13 +23,30 @@ function parseValue(raw) {
   const v = raw.trim();
   if (v.startsWith('[') && v.endsWith(']')) {
     const inner = v.slice(1, -1).trim();
-    return inner ? inner.split(',').map(parseScalar) : [];
+    if (!inner) return [];
+    const partes = [];
+    let atual = '';
+    let aspas = null;
+    for (const c of inner) {
+      if (aspas) {
+        if (c === aspas) aspas = null;
+      } else if (c === '"' || c === "'") {
+        aspas = c;
+      } else if (c === ',') {
+        partes.push(atual);
+        atual = '';
+        continue;
+      }
+      atual += c;
+    }
+    partes.push(atual);
+    return partes.map(parseScalar);
   }
   return parseScalar(v);
 }
 
 function parseFrontmatter(text) {
-  const m = String(text).match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+  const m = String(text).replace(/^\uFEFF/, '').match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
   if (!m) return {};
   const out = {};
   let key = null;
@@ -44,15 +61,15 @@ function parseFrontmatter(text) {
       continue;
     }
     if (key === null) throw new Error(`perfil: linha fora de chave: "${line}"`);
-    const itemDeMapa = line.match(new RegExp(`^ +- +${CHAVE}:\\s*(.*)$`));
+    const itemDeMapa = line.match(new RegExp(`^ *- +${CHAVE}:(?:\\s+(.*))?$`));
     if (itemDeMapa) {
       if (out[key] === null) out[key] = [];
       if (!Array.isArray(out[key])) throw new Error(`perfil: "${key}" mistura mapa e lista`);
-      item = { [itemDeMapa[1]]: parseValue(itemDeMapa[2]) };
+      item = { [itemDeMapa[1]]: parseValue(itemDeMapa[2] || '') };
       out[key].push(item);
       continue;
     }
-    const itemSimples = line.match(/^ +- +(.*)$/);
+    const itemSimples = line.match(/^ *- +(.*)$/);
     if (itemSimples) {
       if (out[key] === null) out[key] = [];
       if (!Array.isArray(out[key])) throw new Error(`perfil: "${key}" mistura mapa e lista`);
@@ -110,6 +127,11 @@ function mergeProfiles(perfis) {
     }
   }
   ef.validade = { ...VALIDADE_PADRAO, ...ef.validade };
+  for (const k of Object.keys(VALIDADE_PADRAO)) {
+    const n = Number(ef.validade[k]);
+    // "30 dias", vazio ou negativo não podem fazer nada vencer: volta ao padrão.
+    ef.validade[k] = typeof ef.validade[k] !== 'boolean' && Number.isFinite(n) && n >= 0 ? n : VALIDADE_PADRAO[k];
+  }
   ef.branches = { ...BRANCHES_PADRAO, ...ef.branches };
   return ef;
 }
@@ -119,6 +141,7 @@ function diasDesde(data, hoje) {
   const d = Date.parse(`${data}T00:00:00Z`);
   if (Number.isNaN(d)) return Infinity;
   const h = Date.UTC(hoje.getUTCFullYear(), hoje.getUTCMonth(), hoje.getUTCDate());
+  if (d > h) return Infinity; // confirmação no futuro é erro de digitação, não dado válido
   return Math.floor((h - d) / 86400000);
 }
 
@@ -166,11 +189,33 @@ function cadeiaSubindo(cwd) {
   return arquivos;
 }
 
+function lerPerfil(f) {
+  try {
+    return parseFrontmatter(fs.readFileSync(f, 'utf8'));
+  } catch (err) {
+    throw new Error(`perfil ilegível: ${f}: ${err.message}`);
+  }
+}
+
+// Entradas "## AAAA-MM-DD — resumo" do historico.md com "**Decisão:** pendente".
+function lerPendentes(historico) {
+  if (!fs.existsSync(historico)) return [];
+  const out = [];
+  for (const bloco of fs.readFileSync(historico, 'utf8').split(/^## /m).slice(1)) {
+    const titulo = bloco.split(/\r?\n/)[0].match(/^(\d{4}-\d{2}-\d{2})\s+—\s+(.*)$/);
+    if (titulo && /\*\*Decisão:\*\*\s*pendente/i.test(bloco)) {
+      out.push({ data: titulo[1], resumo: titulo[2].trim(), arquivo: historico });
+    }
+  }
+  return out;
+}
+
 function carregarPerfilEfetivo({ projectDir, cwd }) {
   const ctx = lerContextoLocal(projectDir);
   const arquivos = ctx ? cadeiaDoContexto(ctx.empresas, ctx.contexto) : cadeiaSubindo(cwd);
   if (!arquivos.length) return null;
-  const ef = mergeProfiles(arquivos.map((f) => parseFrontmatter(fs.readFileSync(f, 'utf8'))));
+  const ef = mergeProfiles(arquivos.map(lerPerfil));
+  ef.pendentes = arquivos.flatMap((f) => lerPendentes(path.join(path.dirname(f), 'historico.md')));
   ef.arquivos = arquivos;
   ef.origem = ctx ? 'contexto' : 'pasta';
   return ef;
@@ -189,11 +234,10 @@ function politicaDeBranches({ projectDir, cwd }) {
   } catch {
     b = BRANCHES_PADRAO;
   }
-  const protegidas = Array.isArray(b.protegidas) && b.protegidas.length ? b.protegidas : BRANCHES_PADRAO.protegidas;
-  return {
-    protegidas: protegidas.map(globParaRegex),
-    integracao: b.integracao ? String(b.integracao) : BRANCHES_PADRAO.integracao,
-  };
+  const lista = Array.isArray(b.protegidas) ? b.protegidas.filter((x) => typeof x === 'string' && x.trim()) : [];
+  const protegidas = lista.length ? lista : BRANCHES_PADRAO.protegidas;
+  const integracao = typeof b.integracao === 'string' && b.integracao.trim() ? b.integracao.trim() : BRANCHES_PADRAO.integracao;
+  return { protegidas: protegidas.map(globParaRegex), integracao };
 }
 
 function perfisConhecidos(empresas) {
@@ -222,12 +266,42 @@ function nomesReservados(projectDir) {
   if (!ctx) return [];
   const nomes = new Set();
   for (const f of perfisConhecidos(ctx.empresas)) {
-    const p = parseFrontmatter(fs.readFileSync(f, 'utf8'));
-    for (const n of [p.nome, ...(Array.isArray(p.nomes_reservados) ? p.nomes_reservados : [])]) {
-      if (n) nomes.add(String(n));
+    const p = lerPerfil(f);
+    const reservados = Array.isArray(p.nomes_reservados) ? p.nomes_reservados : [];
+    if (reservados.some((n) => typeof n === 'object' && n !== null)) {
+      throw new Error(`perfil ilegível: ${f}: item de nomes_reservados que não é texto (use aspas em valor com ": ")`);
+    }
+    const pessoas = Array.isArray(p.papeis) ? p.papeis.map((r) => r && r.pessoa) : [];
+    for (const n of [p.nome, ...reservados, ...pessoas]) {
+      // Menos de 3 letras ("PO", "QA") barraria vocabulário do próprio núcleo.
+      if (n && String(n).trim().length >= 3) nomes.add(String(n).trim());
     }
   }
   return [...nomes];
+}
+
+// Perfis de toda a árvore de empresas que não podem ser lidos — o boot avisa, porque
+// um só deles faz o Selo I bloquear toda escrita em .kanon/.
+function perfisIlegiveis(projectDir) {
+  let ctx;
+  try {
+    ctx = lerContextoLocal(projectDir);
+  } catch (err) {
+    return [`.claude/kanon.local.json: ${err.message}`];
+  }
+  if (!ctx) return [];
+  const out = [];
+  for (const f of perfisConhecidos(ctx.empresas)) {
+    try {
+      const p = lerPerfil(f);
+      if ((Array.isArray(p.nomes_reservados) ? p.nomes_reservados : []).some((n) => typeof n === 'object' && n !== null)) {
+        out.push(`perfil ilegível: ${f}: item de nomes_reservados que não é texto`);
+      }
+    } catch (err) {
+      out.push(err.message);
+    }
+  }
+  return out;
 }
 
 function nomesDeFerramentas(projectDir) {
@@ -261,6 +335,7 @@ module.exports = {
   carregarPerfilEfetivo,
   politicaDeBranches,
   nomesReservados,
+  perfisIlegiveis,
   nomesDeFerramentas,
   regexDeNome,
 };

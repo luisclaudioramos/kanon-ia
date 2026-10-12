@@ -18,7 +18,7 @@ Fase 0 — Inicialização. Executa antes de qualquer outra skill, inclusive ant
 ## Regras principais
 - Implementa exatamente o contrato de [`process/00-runtime-contract.md`](../../process/00-runtime-contract.md) — nenhuma regra de boot é definida aqui além do que já está lá.
 - Verifica a integridade mínima dos 5 Selos de Identidade via [`process/09-identity-seals-gate.md`](../../process/09-identity-seals-gate.md) antes de liberar qualquer outra skill.
-- Monta o perfil efetivo (empresa → área → equipe) conforme [`process/17-company-profile.md`](../../process/17-company-profile.md), pela camada de integração (no Claude Code: `.claude/scripts/kanon-perfil.js`). Dado vencido é listado e não bloqueia a sessão; bloqueia só a skill que depender dele. Sem perfil, o harness segue em modo neutro.
+- Monta o perfil efetivo (empresa → área → equipe) conforme [`process/17-company-profile.md`](../../process/17-company-profile.md), pela camada de integração (no Claude Code: `.claude/scripts/kanon-perfil.js`). Dado vencido e proposta pendente do histórico são listados e não bloqueiam a sessão; bloqueiam só a skill que depender deles (ela pergunta antes de agir). Perfil ilegível em qualquer empresa é avisado, porque trava o Selo I. Sem perfil, o harness segue em modo neutro.
 - Ao final, carrega o [`01-menu-map`](../../process/01-menu-map.md) para que o usuário possa emitir comandos.
 
 ## Depende de

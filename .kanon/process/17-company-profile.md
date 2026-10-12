@@ -49,7 +49,7 @@ No repositório de conteúdo, numa pasta `kanon/` em cada nível:
 - Perfil alterado sem entrada correspondente no `historico.md`.
 
 ## Procedimento em caso de falha
-Perfil ilegível (frontmatter fora da gramática) é tratado como ausente para os hooks — eles voltam ao padrão seguro — e a skill que precisava dele reporta a linha que não pôde ser lida e para. Contexto ativo apontando para pasta inexistente: o runtime avisa e pede um contexto válido.
+Perfil ilegível (frontmatter fora da gramática, arquivo sem permissão de leitura): os hooks de branch voltam ao padrão seguro; o Selo I, que lê os perfis de todas as empresas conhecidas, **bloqueia** toda escrita em `.kanon/` (fail-closed) com uma mensagem que nomeia o perfil a corrigir — tratá-lo como ausente abriria o núcleo aos nomes dele. O boot avisa os perfis ilegíveis da árvore inteira, não só os da cadeia ativa. A skill que precisava do perfil reporta a linha que não pôde ser lida e para. Contexto ativo apontando para pasta inexistente: o runtime avisa e pede um contexto válido.
 
 ## Exemplo concreto
 

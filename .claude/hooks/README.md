@@ -21,11 +21,11 @@ Scripts Node.js que rodam como hooks `PreToolUse` do Claude Code, interceptando 
 
 Alguns hooks já protegem este repositório **hoje** (`branch-delete-guard.js`, `pr-publish-consent-gate.js`) porque atuam sobre comandos Git/GitHub genéricos. Outros (`core-agnostic-gate.js`, `core-agnostic-commit-gate.js`, `seal-registry-gate.js`, `seals-write-gate.js`, `develop-merge-squash-gate.js`) ficam **dormentes** até que `.kanon/`, `seals.manifest.json` ou a branch de integração existam — a lógica está pronta e testada, só não encontra alvo ainda.
 
-**Importante**: `core-agnostic-gate.js`/`core-agnostic-commit-gate.js` verificam apenas `.kanon/`, nunca `agentes-ia/`, `process/`, `skills/` ou `templates/` — essas pastas contêm exemplos pedagógicos intencionais de "código errado" (segredos falsos, URLs de exemplo) que um scanner amplo bloquearia incorretamente. A checagem de nomes vale em todo `.kanon/`, inclusive `agents/` e `templates/`.
+**Importante**: `core-agnostic-gate.js`/`core-agnostic-commit-gate.js` verificam apenas `.kanon/`; a checagem de hardcode de ambiente pula `.kanon/agents/` e `.kanon/templates/`, que contêm exemplos pedagógicos intencionais de "código errado" (segredos falsos, URLs de exemplo) que um scanner amplo bloquearia incorretamente. A checagem de nomes vale em todo `.kanon/`, inclusive `agents/` e `templates/`.
 
 ## Perfil da empresa e testes
 
-Os hooks de branch e o Selo I ampliado leem o perfil da empresa por [`lib/perfil.js`](lib/perfil.js) (`.kanon/process/17-company-profile.md`). Sem perfil, ou com perfil ilegível, voltam ao padrão seguro. Testes: `node --test ".claude/hooks/test/*.test.js"`.
+Os hooks de branch e o Selo I ampliado leem o perfil da empresa por [`lib/perfil.js`](lib/perfil.js) (`.kanon/process/17-company-profile.md`). Sem perfil, todos voltam ao padrão seguro. Com perfil ilegível, os hooks de branch voltam ao padrão, mas o Selo I bloqueia (fail-closed) e a mensagem nomeia o perfil a corrigir; o boot (`kanon-perfil.js`) também avisa. As pessoas de `papeis` entram nos nomes barrados; nomes com menos de 3 letras não. Testes: `node --test ".claude/hooks/test/*.test.js"`.
 
 ## Comportamento em falha interna
 

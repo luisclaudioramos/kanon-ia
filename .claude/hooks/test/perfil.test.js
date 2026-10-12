@@ -145,7 +145,7 @@ test('politicaDeBranches converte glob', () => {
   assert.strictEqual(pol.integracao, 'main');
 });
 
-test('nomesReservados lê todos os perfis do repositório de empresas', () => {
+test('nomesReservados lê todos os perfis do repositório de empresas (inclusive as pessoas dos papéis)', () => {
   const raiz = tmp();
   const empresas = path.join(raiz, 'empresas');
   escrever(path.join(empresas, 'acme', 'kanon', 'perfil.md'), EMPRESA);
@@ -155,7 +155,7 @@ test('nomesReservados lê todos os perfis do repositório de empresas', () => {
   escrever(path.join(projectDir, '.claude', 'kanon.local.json'), JSON.stringify({ empresas, contexto: 'acme' }));
   assert.deepStrictEqual(
     P.nomesReservados(projectDir).sort(),
-    ['#aprovacoes-azul', 'Acme', 'Fulana Souza', 'Outra SA', 'Time Azul'].sort()
+    ['#aprovacoes-azul', 'Acme', 'Beltrano', 'Fulana Souza', 'Outra SA', 'Time Azul'].sort()
   );
 });
 
@@ -183,4 +183,81 @@ test('mergeProfiles: papel com várias pessoas no mesmo nível fica inteiro; ní
   const ef2 = P.mergeProfiles([area, equipe]);
   assert.deepStrictEqual(ef2.papeis.filter((r) => r.papel === 'Dev').map((r) => r.pessoa), ['C']);
   assert.deepStrictEqual(ef2.papeis.filter((r) => r.papel === 'PO').map((r) => r.pessoa), ['P']);
+});
+
+// --- Revisão final ---
+
+function arvore(perfis) {
+  const raiz = tmp();
+  const empresas = path.join(raiz, 'empresas');
+  for (const [rel, texto] of Object.entries(perfis)) escrever(path.join(empresas, rel), texto);
+  const projectDir = path.join(raiz, 'kanon');
+  escrever(path.join(projectDir, '.claude', 'kanon.local.json'), JSON.stringify({ empresas, contexto: 'acme' }));
+  return { empresas, projectDir };
+}
+
+test('revisão: perfil ilegível de qualquer empresa gera erro que nomeia o arquivo', () => {
+  const { projectDir } = arvore({
+    'acme/kanon/perfil.md': '---\nnome: Acme\n---\n',
+    'outra/kanon/perfil.md': '---\nnome: Outra\n# comentário solto\n---\n',
+  });
+  assert.throws(() => P.nomesReservados(projectDir), /perfil ilegível: .*outra.*perfil\.md/);
+  const ileg = P.perfisIlegiveis(projectDir);
+  assert.strictEqual(ileg.length, 1);
+  assert.match(ileg[0], /outra/);
+});
+
+test('revisão: pessoas dos papéis entram nos nomes reservados; nomes com menos de 3 letras não', () => {
+  const { projectDir } = arvore({
+    'acme/kanon/perfil.md': '---\nnome: Acme\nnomes_reservados: [PO, QA]\npapeis:\n  - papel: Dev\n    pessoa: Fulano\n---\n',
+  });
+  const nomes = P.nomesReservados(projectDir);
+  assert.ok(nomes.includes('Fulano'));
+  assert.ok(!nomes.includes('PO') && !nomes.includes('QA'));
+});
+
+test('revisão: validade não numérica volta ao padrão; papel sem data continua vencido', () => {
+  const ef = P.mergeProfiles([{ nome: 'A', validade: { papeis: '30 dias', ferramentas: -5 }, papeis: [{ papel: 'PO', pessoa: 'X' }] }]);
+  assert.strictEqual(ef.validade.papeis, 30);
+  assert.strictEqual(ef.validade.ferramentas, 180);
+  assert.strictEqual(P.vencidos(ef, new Date('2026-10-12T00:00:00Z')).length, 1);
+});
+
+test('revisão: confirmado_em no futuro conta como vencido', () => {
+  const ef = P.mergeProfiles([{ nome: 'A', papeis: [{ papel: 'PO', pessoa: 'X', confirmado_em: '2062-01-01' }] }]);
+  assert.strictEqual(P.vencidos(ef, new Date('2026-10-12T00:00:00Z')).length, 1);
+});
+
+test('revisão: parser aceita BOM, lista na coluna 0, vírgula entre aspas e item com URL', () => {
+  const p = P.parseFrontmatter('﻿---\nnome: Acme\ntags:\n- a\n- b\nnomes_reservados: ["B, C", D]\nlinks:\n  - https://x.example/y\n---\n');
+  assert.strictEqual(p.nome, 'Acme');
+  assert.deepStrictEqual(p.tags, ['a', 'b']);
+  assert.deepStrictEqual(p.nomes_reservados, ['B, C', 'D']);
+  assert.deepStrictEqual(p.links, ['https://x.example/y']);
+});
+
+test('revisão: item de nomes_reservados que não é texto torna o perfil ilegível', () => {
+  const { projectDir } = arvore({
+    'acme/kanon/perfil.md': '---\nnome: Acme\nnomes_reservados:\n  - Time: Alfa\n---\n',
+  });
+  assert.throws(() => P.nomesReservados(projectDir), /perfil ilegível/);
+});
+
+test('revisão: branches estranhas voltam ao padrão', () => {
+  const dir = tmp();
+  escrever(path.join(dir, 'kanon', 'perfil.md'), '---\nnome: A\nbranches:\n  protegidas: [,]\n  integracao: [a, b]\n---\n');
+  const b = P.politicaDeBranches({ projectDir: dir, cwd: dir });
+  assert.ok(b.protegidas.some((re) => re.test('develop')));
+  assert.strictEqual(b.integracao, 'develop');
+});
+
+test('revisão: propostas pendentes da cadeia são lidas do historico.md', () => {
+  const { empresas, projectDir } = arvore({
+    'acme/kanon/perfil.md': '---\nnome: Acme\n---\n',
+    'acme/kanon/historico.md':
+      '# Histórico\n\n## 2026-10-01 — Troca de PO: A → B\n- **Tipo:** pessoa\n- **Decisão:** pendente\n\n## 2026-09-01 — Canal novo\n- **Decisão:** confirmada por X em 2026-09-02\n',
+  });
+  void empresas;
+  const ef = P.carregarPerfilEfetivo({ projectDir, cwd: projectDir });
+  assert.deepStrictEqual(ef.pendentes.map((x) => x.resumo), ['Troca de PO: A → B']);
 });

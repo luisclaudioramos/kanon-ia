@@ -68,3 +68,35 @@ test('papel sem data aparece como sem data de confirmação', () => {
   const r = main([], { projectDir, cwd: projectDir, hoje: HOJE });
   assert.match(r.stdout, /PO \(sem data de confirmação\)/);
 });
+
+// --- Revisão final ---
+
+test('revisão: --contexto recusa ../ e reaproveita a raiz já gravada', () => {
+  const { empresas, projectDir } = montar();
+  assert.strictEqual(main(['--contexto', '../fora', '--empresas', empresas], { projectDir, cwd: projectDir, hoje: HOJE }).code, 1);
+  main(['--contexto', 'acme', '--empresas', empresas], { projectDir, cwd: projectDir, hoje: HOJE });
+  const r = main(['--contexto', 'acme/vendas/azul'], { projectDir, cwd: projectDir, hoje: HOJE });
+  assert.strictEqual(r.code, 0, r.stdout);
+});
+
+test('revisão: --contexto sem perfil na cadeia grava e avisa', () => {
+  const { empresas, projectDir } = montar();
+  fs.mkdirSync(path.join(empresas, 'nova'), { recursive: true });
+  const r = main(['--contexto', 'nova', '--empresas', empresas], { projectDir, cwd: projectDir, hoje: HOJE });
+  assert.strictEqual(r.code, 0);
+  assert.match(r.stdout, /nenhum perfil/i);
+});
+
+test('revisão: boot avisa proposta pendente e perfil ilegível de outra empresa', () => {
+  const { empresas, projectDir } = montar();
+  main(['--contexto', 'acme/vendas/azul', '--empresas', empresas], { projectDir, cwd: projectDir, hoje: HOJE });
+  fs.writeFileSync(
+    path.join(empresas, 'acme', 'vendas', 'azul', 'kanon', 'historico.md'),
+    '## 2026-10-10 — Troca de PO: Fulana → Beltrana\n- **Decisão:** pendente\n'
+  );
+  fs.mkdirSync(path.join(empresas, 'outra', 'kanon'), { recursive: true });
+  fs.writeFileSync(path.join(empresas, 'outra', 'kanon', 'perfil.md'), '---\nnome: Outra\n\tquebrado\n---\n');
+  const r = main([], { projectDir, cwd: projectDir, hoje: HOJE });
+  assert.match(r.stdout, /1 proposta pendente: Troca de PO: Fulana → Beltrana/);
+  assert.match(r.stdout, /perfil ilegível: .*outra/);
+});

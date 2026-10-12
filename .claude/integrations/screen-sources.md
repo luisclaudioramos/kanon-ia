@@ -1,3 +1,7 @@
+---
+nomes: [Figma, Stitch, Lovable]
+capacidades: [design]
+---
 # Fontes de tela — integração no Claude Code
 
 Implementa a etapa 0 da [`skills/48-screen-validation`](../../.kanon/skills/48-screen-validation/SKILL.md) e a regra de fontes de tela de [`process/13`](../../.kanon/process/13-external-integration-prerequisite.md). O núcleo `.kanon/` cita só o tipo de fonte; aqui ficam as ferramentas.

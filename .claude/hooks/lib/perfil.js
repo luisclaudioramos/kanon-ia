@@ -98,11 +98,10 @@ function mergeProfiles(perfis) {
       if (ehMapa(p[k])) Object.assign(ef[k], p[k]);
     }
     if (Array.isArray(p.papeis)) {
-      for (const r of p.papeis) {
-        const i = ef.papeis.findIndex((x) => x.papel === r.papel);
-        if (i >= 0) ef.papeis[i] = r;
-        else ef.papeis.push(r);
-      }
+      // Um papel pode ter várias pessoas no mesmo nível (ex.: devs); o nível mais
+      // específico que cita o papel troca o conjunto inteiro dele.
+      const doNivel = new Set(p.papeis.map((r) => r.papel));
+      ef.papeis = ef.papeis.filter((x) => !doNivel.has(x.papel)).concat(p.papeis);
     }
     if (p.ferramentas_confirmadas_em) ef.ferramentas_confirmadas_em = String(p.ferramentas_confirmadas_em);
     const nomes = [p.nome, ...(Array.isArray(p.nomes_reservados) ? p.nomes_reservados : [])];

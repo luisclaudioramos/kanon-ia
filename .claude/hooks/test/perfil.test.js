@@ -174,3 +174,13 @@ test('regexDeNome: sem diferenciar maiúsculas, com fronteira de palavra', () =>
   assert.ok(!re.test('aprovado'));
   assert.ok(P.regexDeNome('#aprovacoes-azul').test('canal #aprovacoes-azul hoje'));
 });
+
+test('mergeProfiles: papel com várias pessoas no mesmo nível fica inteiro; nível mais específico troca o conjunto', () => {
+  const area = { nome: 'Área', papeis: [{ papel: 'Dev', pessoa: 'A' }, { papel: 'Dev', pessoa: 'B' }, { papel: 'PO', pessoa: 'P' }] };
+  const ef1 = P.mergeProfiles([area]);
+  assert.deepStrictEqual(ef1.papeis.filter((r) => r.papel === 'Dev').map((r) => r.pessoa), ['A', 'B']);
+  const equipe = { nome: 'Equipe', papeis: [{ papel: 'Dev', pessoa: 'C' }] };
+  const ef2 = P.mergeProfiles([area, equipe]);
+  assert.deepStrictEqual(ef2.papeis.filter((r) => r.papel === 'Dev').map((r) => r.pessoa), ['C']);
+  assert.deepStrictEqual(ef2.papeis.filter((r) => r.papel === 'PO').map((r) => r.pessoa), ['P']);
+});

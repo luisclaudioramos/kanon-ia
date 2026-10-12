@@ -32,7 +32,7 @@ No repositório de conteúdo, numa pasta `kanon/` em cada nível:
 ```
 
 ## Regras
-- **Herança**: equipe herda da área, que herda da empresa. Cada nível escreve só o que difere; o mais específico prevalece. `papeis` se juntam pelo nome do papel; `ferramentas`, `branches` e `validade` se juntam chave a chave; `nomes_reservados` somam.
+- **Herança**: equipe herda da área, que herda da empresa. Cada nível escreve só o que difere; o mais específico prevalece. `papeis` se juntam pelo nome do papel (um papel pode ter várias pessoas no mesmo nível; o nível mais específico que cita o papel troca o conjunto inteiro dele); `ferramentas`, `branches` e `validade` se juntam chave a chave; `nomes_reservados` somam.
 - **Dados estruturados no frontmatter**, numa gramática restrita para ser lida sem biblioteca: `chave: valor`; `chave: [a, b]` ou lista em bloco (`  - a`); mapa de um nível (`  sub: valor`); lista de mapas (`  - papel: PO` seguido de `    pessoa: …`). Valor com `: ` vai entre aspas. Sem comentário na mesma linha do valor. O resto do perfil é Markdown.
 - **Validade padrão**: papéis 30 dias, ferramentas 180 dias, ajustável em `validade`. Papel sem `confirmado_em` conta como vencido.
 - **Dado ausente ou vencido não é suposto**: a skill que depende dele pergunta antes de agir e chama `51-company-profile propor`.

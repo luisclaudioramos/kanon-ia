@@ -1,6 +1,6 @@
 # Azure DevOps Publish Summary — _[preencher: nome da Feature]_
 
-_Gerado por `skills/16-azure-devops-integration-sm` e `skills/26-test-case-publication-ado`._
+_Gerado por `skills/16-work-tracking-publication` e `skills/26-test-case-publication`._
 
 ## Work Items sincronizados
 | Tipo | Título local | ID no ADO | Link | Status |

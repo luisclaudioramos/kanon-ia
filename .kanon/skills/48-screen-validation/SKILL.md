@@ -14,7 +14,7 @@ Fase 2 — Refino de Usuário e Tarefas. Roda depois de [`05-refine-user-stories
 - `telas/SCREEN-VALIDATION.md` na pasta da Feature (ver [`templates/SCREEN-VALIDATION.template.md`](../../templates/SCREEN-VALIDATION.template.md)).
 - As imagens em `telas/atual/`, `telas/proposta/`, `telas/anatomia/`, `telas/comparativo/` e `telas/historico/`; o protótipo e seus scripts, quando houver, em `telas/gerador/`.
 - A seção UI/UX da US com a versão aprovada de cada tela.
-- Comentário no work item da US com a aprovação (via [`16-azure-devops-integration-sm`](../16-azure-devops-integration-sm/SKILL.md)).
+- Comentário no work item da US com a aprovação (via [`16-work-tracking-publication`](../16-work-tracking-publication/SKILL.md)).
 
 ## Regras principais
 
@@ -47,7 +47,7 @@ Fase 2 — Refino de Usuário e Tarefas. Roda depois de [`05-refine-user-stories
 
 ## Depende de
 - `agents/AGENT-UI-UX-DESIGNER.md` (conduz), `agents/AGENT-FRONTEND-ENGINEER.md` e `agents/AGENT-BACKEND-ENGINEER.md` (anatomia), `agents/AGENT-PO.md` (envio e retorno).
-- `templates/SCREEN-VALIDATION.template.md`, `49-change-impact`, `16-azure-devops-integration-sm`, `50-design-profile`, `process/16-design-foundations.md`.
+- `templates/SCREEN-VALIDATION.template.md`, `49-change-impact`, `16-work-tracking-publication`, `50-design-profile`, `process/16-design-foundations.md`.
 - `process/05-definition-of-done.md`, `process/11-subagent-anti-hallucination.md`, `process/12-knowledge-retrieval.md`, `process/13-external-integration-prerequisite.md`, `process/15-pull-request-gates.md`.
 
 ## Procedimento em caso de falha

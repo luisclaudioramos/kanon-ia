@@ -1,7 +1,7 @@
 # 13 — External Integration Prerequisite
 
 ## Propósito
-Impedir que uma Feature alcance a etapa de Publicação (`skills/16`, `21`, `31`) ou de Pull Request (`skills/34`) sem que a ferramenta externa correspondente esteja configurada — e, quando não estiver, orientar ativamente a configuração em vez de pular a etapa em silêncio.
+Impedir que uma Feature alcance a etapa de Publicação (`skills/16`, `21`, `26`) ou de Pull Request (`skills/34`) sem que a ferramenta externa correspondente esteja configurada — e, quando não estiver, orientar ativamente a configuração em vez de pular a etapa em silêncio.
 
 ## Quando se aplica
 Antes de qualquer skill de publicação (Azure DevOps, Notion, Outline), antes de `34-pull-request-review` tentar criar um PR real ou notificar o Slack, e antes de `48-screen-validation` buscar telas numa fonte externa.

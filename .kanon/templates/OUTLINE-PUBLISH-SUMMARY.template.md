@@ -1,6 +1,6 @@
 # Outline Publish Summary — _[preencher: nome da Feature/artefato]_
 
-_Gerado por `skills/31-getoutline-integration`. Publica conhecimento consolidado ou em validação declarada na situação da ficha._
+_Gerado por `skills/21-documentation-publication`. Publica conhecimento consolidado ou em validação declarada na situação da ficha._
 
 Local da pasta Features: _[preencher: informado por quem publicou]_ · Situação: _[preencher: Em validação · Aprovado · Entregue]_ · Publicado em: _[preencher: AAAA-MM-DD]_
 
@@ -11,7 +11,7 @@ Local da pasta Features: _[preencher: informado por quem publicou]_ · Situaçã
 | 01 | _[preencher]_ | 01 — _[preencher]_ | _[preencher]_ | criado / atualizado / erro |
 
 ## Conferência
-| Item (`skills/31-getoutline-integration`, Conferência) | Resultado |
+| Item (`skills/21-documentation-publication`, Conferência) | Resultado |
 |---|---|
 | _[preencher]_ | atende / não atende: _motivo_ |
 

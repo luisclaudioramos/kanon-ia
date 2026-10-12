@@ -26,7 +26,7 @@ Transversal. Acionada por [`48-screen-validation`](../48-screen-validation/SKILL
 7. **Mensagens**: dois rascunhos.
    - **Negócio**: impacto concreto por pedido, sem jargão, **sem prazo**, com as perguntas.
    - **Time**: impacto, alternativas e o que falta validar, **sem prazo** e sem citar arquivo que o time não acessa.
-8. **Depois da decisão**: o Tech Lead registra a decisão de cada pedido em "Decisões". A skill então aciona `18-feature-context-back-propagation` (Feature e US), `48-screen-validation` (telas afetadas ganham nova versão em `rascunho`) e prepara as atualizações do work item ([`16-azure-devops-integration-sm`](../16-azure-devops-integration-sm/SKILL.md)) e da documentação ([`31-getoutline-integration`](../31-getoutline-integration/SKILL.md)).
+8. **Depois da decisão**: o Tech Lead registra a decisão de cada pedido em "Decisões". A skill então aciona `18-feature-context-back-propagation` (Feature e US), `48-screen-validation` (telas afetadas ganham nova versão em `rascunho`) e prepara as atualizações do work item ([`16-work-tracking-publication`](../16-work-tracking-publication/SKILL.md)) e da documentação ([`21-documentation-publication`](../21-documentation-publication/SKILL.md)).
 
 ### Comunicação
 - **Nada da seção "Uso interno" entra em mensagem.** Antes de propor um rascunho, a skill confere que ele não cita prazo, data de entrega nem divisão de entrega.
@@ -36,7 +36,7 @@ Transversal. Acionada por [`48-screen-validation`](../48-screen-validation/SKILL
 - Atualizações do work item e da documentação também esperam o ok do Tech Lead.
 
 ## Depende de
-- `templates/CHANGE-IMPACT.template.md`, `18-feature-context-back-propagation`, `48-screen-validation`, `16-azure-devops-integration-sm`, `31-getoutline-integration`.
+- `templates/CHANGE-IMPACT.template.md`, `18-feature-context-back-propagation`, `48-screen-validation`, `16-work-tracking-publication`, `21-documentation-publication`.
 - `agents/AGENT-PO.md`, `agents/AGENT-ARCHITECT.md`, `process/11-subagent-anti-hallucination.md`, `process/12-knowledge-retrieval.md`, `process/14-decision-segregation.md`.
 
 ## Procedimento em caso de falha

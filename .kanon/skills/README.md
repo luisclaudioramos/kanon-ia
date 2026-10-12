@@ -4,7 +4,7 @@ Enquanto [`process/`](../process/README.md) define **como** o sistema deve se co
 
 Cada skill é uma **pasta** contendo um `SKILL.md` (+ arquivos de apoio quando necessário) com: Propósito, Fase/Posição no fluxo, Entradas, Saídas, Regras principais, Depende de (processos/agentes/outras skills), Procedimento em caso de falha.
 
-Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes + hooks + integrações). Integrações externas (Azure DevOps/Notion/Outline) ainda não estão configuradas neste repositório — as skills abaixo já descrevem o papel delas para quando forem construídas (ver `.kanon/skills/setup/SKILL.md`). Publicação e Pull Request são obrigatórios por padrão (`process/13-external-integration-prerequisite.md`); rodar sem essas integrações exige uma exceção explícita e registrada, não um pulo silencioso.
+Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes + hooks + integrações). As integrações externas são escolhidas por capacidade no perfil da empresa (`process/17-company-profile.md`) e implementadas por adaptadores na camada de integração — as skills abaixo já descrevem o papel delas para quando forem construídas (ver `.kanon/skills/setup/SKILL.md`). Publicação e Pull Request são obrigatórios por padrão (`process/13-external-integration-prerequisite.md`); rodar sem essas integrações exige uma exceção explícita e registrada, não um pulo silencioso.
 
 ## Índice por fase
 
@@ -53,7 +53,7 @@ Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes 
 | [12-development-execution](12-development-execution/SKILL.md) | Aciona o engenheiro (Backend/Frontend/Data) para implementar uma Task |
 | [24-development-orchestration](24-development-orchestration/SKILL.md) | Orquestra fan-out de até 12 engenheiros em paralelo |
 | [25-test-case-authoring](25-test-case-authoring/SKILL.md) | Gera casos de teste em Gherkin a partir dos AC |
-| [26-test-case-publication-ado](26-test-case-publication-ado/SKILL.md) | Publica casos de teste no Azure DevOps |
+| [26-test-case-publication](26-test-case-publication/SKILL.md) | Publica casos de teste na ferramenta de trabalho do perfil |
 | [27-bug-task-management](27-bug-task-management/SKILL.md) | Gerencia tasks corretivas vinculadas a um Bug |
 | [28-test-report](28-test-report/SKILL.md) | Compila relatório de execução de testes com evidências |
 | [29-implementation-summary-update](29-implementation-summary-update/SKILL.md) | Mantém o resumo de implementação atualizado |
@@ -61,9 +61,10 @@ Esta pasta implementa o pipeline do sistema "Kanon" (harness + skills + agentes 
 ### Fase 5 — Publicação e Integrações
 | Skill | Propósito |
 |---|---|
-| [16-azure-devops-integration-sm](16-azure-devops-integration-sm/SKILL.md) | Sincroniza artefatos com Azure DevOps |
-| [21-notion-integration-sm](21-notion-integration-sm/SKILL.md) | Publica artefatos aprovados no Notion |
-| [31-getoutline-integration](31-getoutline-integration/SKILL.md) | Publica conhecimento de longo prazo no Outline |
+| [16-work-tracking-publication](16-work-tracking-publication/SKILL.md) | Sincroniza artefatos com a ferramenta de trabalho do perfil (capacidade `trabalho`) |
+| [21-documentation-publication](21-documentation-publication/SKILL.md) | Publica conhecimento de longo prazo na ferramenta de documentação do perfil (capacidade `documentacao`) |
+
+_A skill 31 foi aposentada em 2026-10-11 (absorvida pela 21); o número não é reaproveitado._
 
 ### Fase 6 — Memória, Custo e Encerramento
 | Skill | Propósito |

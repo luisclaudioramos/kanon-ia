@@ -1,6 +1,6 @@
 # Outline — Modelos de Página
 
-Templates prontos para criação de páginas no Outline, usados por `skills/31-getoutline-integration`. Regras de escrita em [`STANDARDS.md`](STANDARDS.md); onde a Feature fica em [`FIXED-PAGES.md`](FIXED-PAGES.md).
+Templates prontos para criação de páginas no Outline, usados por `skills/21-documentation-publication`. Regras de escrita em [`STANDARDS.md`](STANDARDS.md); onde a Feature fica em [`FIXED-PAGES.md`](FIXED-PAGES.md).
 
 ## Modelo de Feature
 

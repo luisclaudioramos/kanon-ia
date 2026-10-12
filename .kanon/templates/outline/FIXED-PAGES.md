@@ -1,6 +1,6 @@
 # Outline — Hierarquia de Páginas
 
-Onde cada tipo de página fica no workspace de documentação do Outline, publicada por `skills/31-getoutline-integration`.
+Onde cada tipo de página fica no workspace de documentação do Outline, publicada por `skills/21-documentation-publication`.
 
 ## Pasta Features (obrigatória)
 

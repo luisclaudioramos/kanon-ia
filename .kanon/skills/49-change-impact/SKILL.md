@@ -36,7 +36,7 @@ Transversal. Acionada por [`48-screen-validation`](../48-screen-validation/SKILL
 - Atualizações do work item e da documentação também esperam o ok do Tech Lead.
 
 ## Depende de
-- `templates/CHANGE-IMPACT.template.md`, `18-feature-context-back-propagation`, `48-screen-validation`, `16-work-tracking-publication`, `21-documentation-publication`.
+- `templates/CHANGE-IMPACT.template.md`, `18-feature-context-back-propagation`, `48-screen-validation`, `16-work-tracking-publication`, `21-documentation-publication`, `51-company-profile` (mudança de pessoa, processo ou ferramenta pedida no meio de uma Feature vira proposta de perfil).
 - `agents/AGENT-PO.md`, `agents/AGENT-ARCHITECT.md`, `process/11-subagent-anti-hallucination.md`, `process/12-knowledge-retrieval.md`, `process/14-decision-segregation.md`.
 
 ## Procedimento em caso de falha

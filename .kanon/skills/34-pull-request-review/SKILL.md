@@ -11,7 +11,7 @@ Fase 7 — Auditoria, Governança e Consolidação. Roda após [`13-code-review`
 
 ## Saídas
 - PR criado/atualizado, com revisores solicitados e status de votos.
-- Notificação do PR postada no canal Slack `#aprovacao-de-pr`, registrada em `SLACK-APPROVAL-SUMMARY.md`.
+- Notificação do PR pela capacidade `comunicacao`, no canal que o perfil registra para "aprovação de PR", registrada em `APPROVAL-NOTIFICATION-SUMMARY.md`.
 
 ## Regras principais
 - Solicita [`agents/AGENT-CODE-REVIEWER.md`](../../agents/AGENT-CODE-REVIEWER.md) e revisores humanos.
@@ -21,7 +21,7 @@ Fase 7 — Auditoria, Governança e Consolidação. Roda após [`13-code-review`
 - O merge só é liberado com as aprovações de colegas exigidas pela trava 8 de `process/15`. O voto do autor não conta. O kanon continua sem votar por conta própria, salvo pedido explícito do revisor humano.
 - Cada voto segue o formato de [`process/07-return-envelope.md`](../../process/07-return-envelope.md).
 - Merge só é liberado com as aprovações da trava 8 de `process/15` **e** [`11-quality-gate`](../11-quality-gate/SKILL.md) aprovado — sem exceção "só dessa vez" (base: `reference/boas-praticas-dev/10-ci-cd-deploy.md`).
-- PR é **mandatório** para uma Feature alcançar `done` — exige acesso funcional ao repositório remoto (MCP de git/DevOps, ou CLI autenticado como `gh`/`az repos`) como pré-requisito, regido por [`process/13-external-integration-prerequisite.md`](../../process/13-external-integration-prerequisite.md).
+- PR é **mandatório** para uma Feature alcançar `done` — exige acesso funcional ao repositório remoto (pelo adaptador da capacidade `repositorio` do perfil) como pré-requisito, regido por [`process/13-external-integration-prerequisite.md`](../../process/13-external-integration-prerequisite.md).
 - A revisão de `13-code-review` que alimenta este PR segue [`process/14-decision-segregation.md`](../../process/14-decision-segregation.md) — quem implementou não é quem aprova o próprio código.
 
 ### Publicação dos comentários de revisão no PR
@@ -32,16 +32,16 @@ Fase 7 — Auditoria, Governança e Consolidação. Roda após [`13-code-review`
 - Depois de publicar, os ids das threads e a data voltam para o cabeçalho do rascunho, que muda de `RASCUNHO` para `PUBLICADO`. É esse arquivo que a próxima rodada de revisão compara com a nova iteração do PR.
 - Comentário de PR não renderiza Mermaid; diagramas vão em texto, dentro de cerca de código.
 
-### Notificação de aprovação no Slack
-- A cada PR criado/atualizado, a skill prepara uma mensagem individual (uma por PR, nunca uma lista batida de vários PRs) para o canal fixo `#aprovacao-de-pr`, com título, branch de origem → destino e link, e a envia **sempre como rascunho** (`slack_send_message_draft`) — só vai ao canal depois de confirmação explícita do usuário. Isso vale mesmo com o processo já padronizado: postar num canal do time nunca é automático.
-- Depois de enviada, a mensagem recebe a reação inicial 👀 (em análise) e o par `{PR, channel_id, message_ts}` é gravado em `SLACK-APPROVAL-SUMMARY.md` (template em `templates/SLACK-APPROVAL-SUMMARY.template.md`), que passa a ser o estado de rastreamento PR ↔ mensagem.
-- **Nunca cria uma segunda mensagem de topo para o mesmo PR.** Como o MCP do Slack disponível não tem edição de mensagem, "atualizar" significa: trocar a reação de status (👀 → ✅ aprovada, ou 💬 se há comentário novo sem aprovação) e responder em thread (`thread_ts` = message_ts, sem `reply_broadcast`) resumindo o voto/comentário novo do ADO.
-- A sincronização com o ADO (ler votos/comentários novos e refletir na reação/thread) **não roda automaticamente nem em agenda** — só quando o usuário aciona explicitamente a checagem. Um mecanismo agendado/periódico é trabalho futuro, fora do escopo desta skill hoje.
-- Análise de sobreposição de arquivos entre PRs abertos do mesmo repositório (para sugerir ordem de aprovação) também só roda sob pedido explícito do usuário — nunca por padrão. Quando solicitada, o resultado é registrado na seção "Ordem de aprovação sugerida" de `SLACK-APPROVAL-SUMMARY.md` e postado como resposta em thread no(s) PR(s) afetado(s), em texto (ex.: "Aprovar depois do #000 — mesmo `participant.mock.ts`"), nunca como numeração por ícone.
-- Canal e formato de mensagem são fixos (`#aprovacao-de-pr`, formato `[projeto] : [branch-origem] para [branch-destino] [link]` já documentado no Purpose do canal) — não configuráveis por projeto nesta versão.
+### Notificação de aprovação
+- A cada PR criado ou atualizado, a skill prepara uma mensagem individual (uma por PR, nunca uma lista de vários PRs) para o canal e no formato que o perfil efetivo registra para "aprovação de PR" (`process/17-company-profile.md`), e segue a regra de envio do perfil ("quem envia"). Sem regra no perfil, só rascunho, enviado depois de confirmação explícita do usuário — postar num canal do time nunca é automático.
+- O estado PR ↔ mensagem fica em `APPROVAL-NOTIFICATION-SUMMARY.md` (template `templates/APPROVAL-NOTIFICATION-SUMMARY.template.md`).
+- **Nunca cria uma segunda mensagem de topo para o mesmo PR.** Como atualizar uma mensagem existente depende da ferramenta e está no adaptador da capacidade `comunicacao`.
+- A sincronização com os votos e comentários da PR **não roda automaticamente nem em agenda** — só quando o usuário aciona a checagem.
+- Análise de sobreposição de arquivos entre PRs abertos (ordem de aprovação sugerida) só roda sob pedido explícito; o resultado vai para a seção "Ordem de aprovação sugerida" do resumo e como resposta em texto no(s) PR(s) afetado(s), nunca como numeração por ícone.
+- Aprovação ou voto vindo de quem não está no perfil vira `51-company-profile propor`, além de ser registrado normalmente.
 
 ## Depende de
-- `agents/AGENT-CODE-REVIEWER.md`, `process/07-return-envelope.md`, `11-quality-gate`, `13-code-review`, `process/13-external-integration-prerequisite.md`, `process/14-decision-segregation.md`, `process/15-pull-request-gates.md`, `templates/PR-COMMENTS.template.md`, `templates/PR-DESCRIPTION.template.md`, `templates/SLACK-APPROVAL-SUMMARY.template.md`.
+- `agents/AGENT-CODE-REVIEWER.md`, `process/07-return-envelope.md`, `11-quality-gate`, `13-code-review`, `process/13-external-integration-prerequisite.md`, `process/14-decision-segregation.md`, `process/15-pull-request-gates.md`, `templates/PR-COMMENTS.template.md`, `templates/PR-DESCRIPTION.template.md`, `templates/APPROVAL-NOTIFICATION-SUMMARY.template.md`, `process/17-company-profile.md`.
 
 ## Procedimento em caso de falha
-Enquanto houver voto pendente ou o Quality Gate não estiver aprovado, o PR permanece bloqueado para merge — a skill nunca libera por pressão de prazo. Se o acesso ao repositório remoto não estiver configurado, segue `process/13`: orienta a configuração do MCP/CLI e só aceita prosseguir sem PR com exceção explícita e registrada. Se o MCP do Slack não estiver disponível/configurado, a notificação fica pendente e é registrada como falha de sincronização em `SLACK-APPROVAL-SUMMARY.md` — nunca é tratada como enviada silenciosamente, mas também não bloqueia o PR em si (a notificação no Slack não é pré-requisito para `done`, diferente do PR real).
+Enquanto houver voto pendente ou o Quality Gate não estiver aprovado, o PR permanece bloqueado para merge — a skill nunca libera por pressão de prazo. Se o acesso ao repositório remoto não estiver configurado, segue `process/13`: orienta a configuração do MCP/CLI e só aceita prosseguir sem PR com exceção explícita e registrada. Se a capacidade `comunicacao` não estiver disponível ou configurada, a notificação fica pendente e é registrada como falha de sincronização em `APPROVAL-NOTIFICATION-SUMMARY.md` — nunca é tratada como enviada silenciosamente, mas também não bloqueia o PR em si (a notificação não é pré-requisito para `done`, diferente do PR real).

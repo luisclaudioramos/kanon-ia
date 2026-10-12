@@ -4,8 +4,8 @@
       "id": "I",
       "name": "Guardião da Integridade",
       "role": "soberano",
-      "description": "Nenhum artefato/código do núcleo contém hardcode de ambiente (URLs de produção, chaves de API, paths absolutos de usuário). O núcleo .kanon/ conhece apenas nomes de configuração, nunca valores.",
-      "sources": ["process/10-core-agnosticism-gate.md"],
+      "description": "Nenhum artefato/código do núcleo contém hardcode de ambiente (URLs de produção, chaves de API, paths absolutos de usuário) nem nome de empresa, área, equipe, pessoa, canal ou ferramenta. O núcleo .kanon/ conhece apenas nomes de configuração e capacidades, nunca valores.",
+      "sources": ["process/10-core-agnosticism-gate.md", "process/17-company-profile.md"],
       "hooks": [".claude/hooks/core-agnostic-gate.js", ".claude/hooks/core-agnostic-commit-gate.js"]
     },
     {

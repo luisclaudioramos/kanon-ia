@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-// Bloqueia hardcode de ambiente (URLs de produção, chaves de API, paths absolutos de usuário)
-// em qualquer arquivo criado/editado dentro da raiz .kanon/.
-// Exclusão deliberada: .kanon/agents/ e .kanon/templates/ contêm exemplos pedagógicos
-// intencionais de "código errado" (ex.: AGENT-SECURITY-ENGINEER.md tem uma chave falsa
-// de propósito) — escanear esses exemplos geraria falso positivo a cada edição futura
-// desses documentos. Ver .kanon/process/10-core-agnosticism-gate.md.
+// Selo I em todo arquivo criado/editado dentro de .kanon/:
+// 1. hardcode de ambiente (URL de produção, chave, path absoluto de usuário, segredo) — fora
+//    de .kanon/agents/ e .kanon/templates/, que têm exemplos pedagógicos de "código errado";
+// 2. nome próprio de empresa, área, equipe, pessoa ou canal (nomes dos perfis conhecidos) e
+//    nome de ferramenta com adaptador em .claude/integrations/ — em todo .kanon/.
+// Ver .kanon/process/10-core-agnosticism-gate.md e .kanon/process/17-company-profile.md.
 'use strict';
 const path = require('path');
+const { nomesReservados, nomesDeFerramentas, regexDeNome } = require('./lib/perfil');
 
 const EXCLUDED_SUBDIRS = ['.kanon/agents', '.kanon/templates'];
 
@@ -40,16 +41,23 @@ process.stdin.on('end', () => {
   try {
     const input = JSON.parse(raw || '{}');
     const toolInput = input.tool_input || {};
+    const projectDir = process.env.CLAUDE_PROJECT_DIR || process.cwd();
     const filePath = toolInput.file_path || '';
-    const rel = path.relative(process.cwd(), filePath).split(path.sep).join('/');
+    const rel = path.relative(projectDir, filePath).split(path.sep).join('/');
     if (!(rel === '.kanon' || rel.startsWith('.kanon/'))) return allow();
-    if (EXCLUDED_SUBDIRS.some((dir) => rel === dir || rel.startsWith(dir + '/'))) return allow();
 
     const content = toolInput.content || toolInput.new_string || '';
-    for (const { name, re } of PATTERNS) {
-      const match = content.match(re);
-      if (match) {
-        return deny(`core-agnostic-gate: hardcode de ambiente detectado (${name}: "${match[0]}") em ${filePath}. Parametrize via variável de ambiente.`);
+    if (!EXCLUDED_SUBDIRS.some((dir) => rel === dir || rel.startsWith(dir + '/'))) {
+      for (const { name, re } of PATTERNS) {
+        const match = content.match(re);
+        if (match) {
+          return deny(`core-agnostic-gate: hardcode de ambiente detectado (${name}: "${match[0]}") em ${filePath}. Parametrize via variável de ambiente.`);
+        }
+      }
+    }
+    for (const nome of [...nomesReservados(projectDir), ...nomesDeFerramentas(projectDir)]) {
+      if (regexDeNome(nome).test(content)) {
+        return deny(`core-agnostic-gate: "${nome}" é nome de empresa, pessoa, canal ou ferramenta e não pode aparecer em ${rel}. Fale em capacidade ou papel (process/17-company-profile.md).`);
       }
     }
     allow();

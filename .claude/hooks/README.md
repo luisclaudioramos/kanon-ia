@@ -10,8 +10,8 @@ Scripts Node.js que rodam como hooks `PreToolUse` do Claude Code, interceptando 
 | [seal-registry-gate.js](seal-registry-gate.js) | Selos e Identidade | `seals.manifest.json` resultante inválido (não é JSON, ou sem chave `seals[]`) |
 | [seal-routing-gate.js](seal-routing-gate.js) | Selos e Identidade | Fan-out (tool `Agent`) sem `description` ou com prompt curto demais |
 | [seals-write-gate.js](seals-write-gate.js) | Selos e Identidade | Qualquer escrita em `seals.manifest.json` sem o marcador `.kanon/.seals-write-authorized` |
-| [core-agnostic-gate.js](core-agnostic-gate.js) | Agnosticismo (Selo I) | Hardcode de ambiente (chave AWS, URL de produção, path absoluto, segredo) em arquivos dentro de `.kanon/` |
-| [core-agnostic-commit-gate.js](core-agnostic-commit-gate.js) | Agnosticismo (Selo I) | `git commit` com hardcode de ambiente staged dentro de `.kanon/` |
+| [core-agnostic-gate.js](core-agnostic-gate.js) | Agnosticismo (Selo I) | Hardcode de ambiente (chave AWS, URL de produção, path absoluto, segredo) em arquivos dentro de `.kanon/`; nome de empresa, pessoa, canal ou ferramenta (perfis e adaptadores) em todo `.kanon/` |
+| [core-agnostic-commit-gate.js](core-agnostic-commit-gate.js) | Agnosticismo (Selo I) | `git commit` com hardcode de ambiente staged dentro de `.kanon/`; nome de empresa, pessoa, canal ou ferramenta (perfis e adaptadores) em todo `.kanon/` |
 | [design-gate-approval-gate.js](design-gate-approval-gate.js) | SDD Flow (`skills/41-design-gate`) | Escrita de `FEATURE.md`/`PLAN-vx.md`/`INSTRUCTIONS.md` sem um `DESIGN.md` irmão com `Status: APPROVED` e `Aprovado por` preenchido |
 | [pr-publish-consent-gate.js](pr-publish-consent-gate.js) | SCM | `gh pr create` / `az repos pr create` sem confirmação explícita (força o prompt de permissão nativo) |
 | [branch-delete-guard.js](branch-delete-guard.js) | SCM | Exclusão local ou remota das branches protegidas do perfil da empresa (padrão: `main`, `master`, `develop`, `release/*`, `hotfix/*`) |
@@ -21,7 +21,7 @@ Scripts Node.js que rodam como hooks `PreToolUse` do Claude Code, interceptando 
 
 Alguns hooks já protegem este repositório **hoje** (`branch-delete-guard.js`, `pr-publish-consent-gate.js`) porque atuam sobre comandos Git/GitHub genéricos. Outros (`core-agnostic-gate.js`, `core-agnostic-commit-gate.js`, `seal-registry-gate.js`, `seals-write-gate.js`, `develop-merge-squash-gate.js`) ficam **dormentes** até que `.kanon/`, `seals.manifest.json` ou a branch de integração existam — a lógica está pronta e testada, só não encontra alvo ainda.
 
-**Importante**: `core-agnostic-gate.js`/`core-agnostic-commit-gate.js` verificam apenas `.kanon/`, nunca `agentes-ia/`, `process/`, `skills/` ou `templates/` — essas pastas contêm exemplos pedagógicos intencionais de "código errado" (segredos falsos, URLs de exemplo) que um scanner amplo bloquearia incorretamente.
+**Importante**: `core-agnostic-gate.js`/`core-agnostic-commit-gate.js` verificam apenas `.kanon/`, nunca `agentes-ia/`, `process/`, `skills/` ou `templates/` — essas pastas contêm exemplos pedagógicos intencionais de "código errado" (segredos falsos, URLs de exemplo) que um scanner amplo bloquearia incorretamente. A checagem de nomes vale em todo `.kanon/`, inclusive `agents/` e `templates/`.
 
 ## Perfil da empresa e testes
 

@@ -1,9 +1,11 @@
 #!/usr/bin/env node
-// Impede exclusão de branches protegidas (main, master, develop, release/*, hotfix/*),
-// local ou remotamente. Ver process/04-handoff-protocol.md
+// Impede exclusão de branches protegidas, local ou remotamente. A lista vem do perfil da
+// empresa (branches.protegidas, process/17-company-profile.md); sem perfil, ou com perfil
+// ilegível, vale o padrão main, master, develop, release/*, hotfix/*. Ver process/04-handoff-protocol.md
 'use strict';
+const { politicaDeBranches } = require('./lib/perfil');
 
-const PROTECTED = [/^main$/, /^master$/, /^develop$/, /^release\//, /^hotfix\//];
+let PROTECTED = [];
 
 function isProtected(branch) {
   return PROTECTED.some((re) => re.test(branch));
@@ -31,6 +33,10 @@ process.stdin.on('data', (d) => (raw += d));
 process.stdin.on('end', () => {
   try {
     const input = JSON.parse(raw || '{}');
+    PROTECTED = politicaDeBranches({
+      projectDir: process.env.CLAUDE_PROJECT_DIR || process.cwd(),
+      cwd: input.cwd || process.cwd(),
+    }).protegidas;
     const command = (input.tool_input && input.tool_input.command) || '';
 
     let match = command.match(/git\s+branch\s+(?:-D|-d|--delete)\s+(.+)/);

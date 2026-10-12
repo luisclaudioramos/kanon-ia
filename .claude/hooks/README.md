@@ -14,14 +14,18 @@ Scripts Node.js que rodam como hooks `PreToolUse` do Claude Code, interceptando 
 | [core-agnostic-commit-gate.js](core-agnostic-commit-gate.js) | Agnosticismo (Selo I) | `git commit` com hardcode de ambiente staged dentro de `.kanon/` |
 | [design-gate-approval-gate.js](design-gate-approval-gate.js) | SDD Flow (`skills/41-design-gate`) | Escrita de `FEATURE.md`/`PLAN-vx.md`/`INSTRUCTIONS.md` sem um `DESIGN.md` irmão com `Status: APPROVED` e `Aprovado por` preenchido |
 | [pr-publish-consent-gate.js](pr-publish-consent-gate.js) | SCM | `gh pr create` / `az repos pr create` sem confirmação explícita (força o prompt de permissão nativo) |
-| [branch-delete-guard.js](branch-delete-guard.js) | SCM | Exclusão local ou remota de `main`, `master`, `develop`, `release/*`, `hotfix/*` |
-| [develop-merge-squash-gate.js](develop-merge-squash-gate.js) | SCM | `git merge` para dentro de `develop` sem `--squash` |
+| [branch-delete-guard.js](branch-delete-guard.js) | SCM | Exclusão local ou remota das branches protegidas do perfil da empresa (padrão: `main`, `master`, `develop`, `release/*`, `hotfix/*`) |
+| [develop-merge-squash-gate.js](develop-merge-squash-gate.js) | SCM | `git merge` para dentro da branch de integração do perfil (padrão: `develop`) sem `--squash` |
 
 ## Escopo real vs. futuro
 
-Alguns hooks já protegem este repositório **hoje** (`branch-delete-guard.js`, `pr-publish-consent-gate.js`) porque atuam sobre comandos Git/GitHub genéricos. Outros (`core-agnostic-gate.js`, `core-agnostic-commit-gate.js`, `seal-registry-gate.js`, `seals-write-gate.js`, `develop-merge-squash-gate.js`) ficam **dormentes** até que `.kanon/`, `seals.manifest.json` ou a branch `develop` existam — a lógica está pronta e testada, só não encontra alvo ainda.
+Alguns hooks já protegem este repositório **hoje** (`branch-delete-guard.js`, `pr-publish-consent-gate.js`) porque atuam sobre comandos Git/GitHub genéricos. Outros (`core-agnostic-gate.js`, `core-agnostic-commit-gate.js`, `seal-registry-gate.js`, `seals-write-gate.js`, `develop-merge-squash-gate.js`) ficam **dormentes** até que `.kanon/`, `seals.manifest.json` ou a branch de integração existam — a lógica está pronta e testada, só não encontra alvo ainda.
 
 **Importante**: `core-agnostic-gate.js`/`core-agnostic-commit-gate.js` verificam apenas `.kanon/`, nunca `agentes-ia/`, `process/`, `skills/` ou `templates/` — essas pastas contêm exemplos pedagógicos intencionais de "código errado" (segredos falsos, URLs de exemplo) que um scanner amplo bloquearia incorretamente.
+
+## Perfil da empresa e testes
+
+Os hooks de branch e o Selo I ampliado leem o perfil da empresa por [`lib/perfil.js`](lib/perfil.js) (`.kanon/process/17-company-profile.md`). Sem perfil, ou com perfil ilegível, voltam ao padrão seguro. Testes: `node --test ".claude/hooks/test/*.test.js"`.
 
 ## Comportamento em falha interna
 

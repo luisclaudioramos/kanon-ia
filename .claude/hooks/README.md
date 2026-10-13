@@ -40,4 +40,4 @@ echo '{"tool_name":"Bash","tool_input":{"command":"git branch -D main"}}' | node
 
 ## Comandos (`commands/`)
 
-A camada de interface do usuário é um único comando de entrada (`/kanon`), implementado como slash command real do Claude Code em [`.claude/commands/kanon.md`](../commands/kanon.md). Sem argumento, ele abre o menu (`.kanon/process/01-menu-map.md`); com um nome de comando, roteia direto para a skill correspondente em [`skills/`](../../.kanon/skills).
+A camada de interface do usuário é um único comando de entrada (`/kanon`), implementado como slash command real do Claude Code em [`.claude/commands/kanon.md`](../commands/kanon.md). Sem argumento ou com `--help`, ele mostra a ajuda (comandos e agentes); com `skills`, lista as skills por fase — as duas saem de [`.claude/scripts/kanon-help.js`](../scripts/kanon-help.js); com um nome de skill, roteia direto para ela em [`skills/`](../../.kanon/skills).

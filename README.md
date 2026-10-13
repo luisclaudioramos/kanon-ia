@@ -22,7 +22,7 @@ especificação valer em tempo de execução.
 | [`.kanon/commands/`](.kanon/commands) | **Entrada** — especificação agnóstica do comando `kanon` | 1 arquivo |
 | [`.kanon/reference/`](.kanon/reference) | **Base de qualidade** — `boas-praticas-dev/`, consumida por agentes e skills | 41 arquivos |
 
-### `.claude/` — a integração, 27 arquivos
+### `.claude/` — a integração, 29 arquivos
 
 | Item | Papel |
 |---|---|
@@ -31,6 +31,7 @@ especificação valer em tempo de execução.
 | [`.claude/commands/kanon.md`](.claude/commands/kanon.md) | O slash command `/kanon`, que implementa a especificação de `.kanon/commands/kanon.md` |
 | [`.claude/hooks/lib/perfil.js`](.claude/hooks/lib/perfil.js) | Lê o perfil da empresa (herança empresa › área › equipe, validade, política de branches, nomes reservados) para os hooks e o script de perfil |
 | [`.claude/hooks/test/`](.claude/hooks/test) | Testes dos hooks e do perfil, com `node --test ".claude/hooks/test/*.test.js"` (sem dependências) |
+| [`.claude/scripts/kanon-help.js`](.claude/scripts/kanon-help.js) | Gera a ajuda do `/kanon` (comandos e agentes) e a lista de skills do `/kanon skills`, a partir dos índices de `.kanon/agents/` e `.kanon/skills/` |
 | [`.claude/scripts/kanon-perfil.js`](.claude/scripts/kanon-perfil.js) | Mostra o perfil efetivo no boot ("Atuando para: …", dados vencidos) e grava o contexto ativo da máquina |
 | [`.claude/integrations/azure-devops.md`](.claude/integrations/azure-devops.md), [`outline.md`](.claude/integrations/outline.md), [`notion.md`](.claude/integrations/notion.md), [`slack.md`](.claude/integrations/slack.md) | Adaptadores: cada um atende capacidades de `process/17-company-profile.md` (trabalho, repositório, documentação, comunicação) para uma ferramenta |
 | [`.claude/integrations/screen-sources.md`](.claude/integrations/screen-sources.md) | Fontes de tela da `skills/48-screen-validation`: ferramenta, teste de conexão e caminho alternativo de cada uma |

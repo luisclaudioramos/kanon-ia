@@ -22,16 +22,18 @@ especificação valer em tempo de execução.
 | [`.kanon/commands/`](.kanon/commands) | **Entrada** — especificação agnóstica do comando `kanon` | 1 arquivo |
 | [`.kanon/reference/`](.kanon/reference) | **Base de qualidade** — `boas-praticas-dev/`, consumida por agentes e skills | 41 arquivos |
 
-### `.claude/` — a integração, 29 arquivos
+### `.claude/` — a integração, 32 arquivos
 
 | Item | Papel |
 |---|---|
 | [`.claude/hooks/`](.claude/hooks) | Os 10 gates em JavaScript que rodam de verdade, todos ligados no `settings.json`: `identity-seals-gate`, `seal-registry-gate`, `seals-write-gate`, `seal-routing-gate`, `core-agnostic-gate`, `core-agnostic-commit-gate`, `design-gate-approval-gate`, `branch-delete-guard`, `develop-merge-squash-gate`, `pr-publish-consent-gate` — mais um README próprio |
 | [`.claude/settings.json`](.claude/settings.json) | Liga os hooks ao harness: 10 execuções em 3 matchers de `PreToolUse` |
 | [`.claude/commands/kanon.md`](.claude/commands/kanon.md) | O slash command `/kanon`, que implementa a especificação de `.kanon/commands/kanon.md` |
+| [`.claude/hooks/lib/design.js`](.claude/hooks/lib/design.js) | A regra de `DESIGN.md` aprovado, usada pelo `design-gate-approval-gate` e pelo `/kanon status` |
 | [`.claude/hooks/lib/perfil.js`](.claude/hooks/lib/perfil.js) | Lê o perfil da empresa (herança empresa › área › equipe, validade, política de branches, nomes reservados) para os hooks e o script de perfil |
 | [`.claude/hooks/test/`](.claude/hooks/test) | Testes dos hooks e do perfil, com `node --test ".claude/hooks/test/*.test.js"` (sem dependências) |
 | [`.claude/scripts/kanon-help.js`](.claude/scripts/kanon-help.js) | Gera a ajuda do `/kanon` (comandos e agentes) e a lista de skills do `/kanon skills`, a partir dos índices de `.kanon/agents/` e `.kanon/skills/` |
+| [`.claude/scripts/kanon-status.js`](.claude/scripts/kanon-status.js) | Responde o `/kanon status <projeto\|feature>`: etapa e próximo passo de cada Feature, pelos artefatos da pasta (marcos de `.kanon/process/03`) |
 | [`.claude/scripts/kanon-perfil.js`](.claude/scripts/kanon-perfil.js) | Mostra o perfil efetivo no boot ("Atuando para: …", dados vencidos) e grava o contexto ativo da máquina |
 | [`.claude/integrations/azure-devops.md`](.claude/integrations/azure-devops.md), [`outline.md`](.claude/integrations/outline.md), [`notion.md`](.claude/integrations/notion.md), [`slack.md`](.claude/integrations/slack.md) | Adaptadores: cada um atende capacidades de `process/17-company-profile.md` (trabalho, repositório, documentação, comunicação) para uma ferramenta |
 | [`.claude/integrations/screen-sources.md`](.claude/integrations/screen-sources.md) | Fontes de tela da `skills/48-screen-validation`: ferramenta, teste de conexão e caminho alternativo de cada uma |

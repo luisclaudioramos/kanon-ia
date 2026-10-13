@@ -15,7 +15,7 @@ function vazio() {
 test('ajuda lista os comandos e os 12 agentes, sem nenhuma skill', () => {
   const r = main([], { projectDir: RAIZ, cwd: RAIZ });
   assert.strictEqual(r.code, 0);
-  for (const c of ['/kanon --help', '/kanon contexto', '/kanon skills', '/kanon <skill>']) {
+  for (const c of ['/kanon --help', '/kanon contexto', '/kanon skills', '/kanon status', '/kanon <skill>']) {
     assert.ok(r.stdout.includes(c), c);
   }
   const ag = agentes(RAIZ);

@@ -25,7 +25,7 @@ Alguns hooks já protegem este repositório **hoje** (`branch-delete-guard.js`, 
 
 ## Perfil da empresa e testes
 
-Os hooks de branch e o Selo I ampliado leem o perfil da empresa por [`lib/perfil.js`](lib/perfil.js) (`.kanon/process/17-company-profile.md`). Sem perfil, todos voltam ao padrão seguro. Com perfil ilegível, os hooks de branch voltam ao padrão, mas o Selo I bloqueia (fail-closed) e a mensagem nomeia o perfil a corrigir; o boot (`kanon-perfil.js`) também avisa. As pessoas de `papeis` entram nos nomes barrados; nomes com menos de 3 letras não. Testes: `node --test ".claude/hooks/test/*.test.js"`.
+Os hooks de branch e o Selo I ampliado leem o perfil da empresa por [`lib/perfil.js`](lib/perfil.js) (`.kanon/process/17-company-profile.md`). Sem perfil, todos voltam ao padrão seguro. Com perfil ilegível, os hooks de branch voltam ao padrão, mas o Selo I bloqueia (fail-closed) e a mensagem nomeia o perfil a corrigir; o boot (`kanon-perfil.js`) também avisa. As pessoas de `papeis` entram nos nomes barrados; nomes com menos de 3 letras não. O `design-gate-approval-gate` e a consulta `/kanon status` usam a mesma regra de `DESIGN.md` aprovado, em [`lib/design.js`](lib/design.js). Testes: `node --test ".claude/hooks/test/*.test.js"`.
 
 ## Comportamento em falha interna
 

@@ -12,6 +12,30 @@ Em qualquer feature ou tarefa rastreada pelo sistema, do momento em que é criad
 - Regras de rollback são explícitas: uma feature em `doing` que precisa recuar por bloqueio volta para `ready` (não para `backlog`, salvo se o próprio requisito for invalidado — nesse caso volta para `backlog`).
 - O estado atual de cada feature é sempre consultável a partir dos artefatos reais; nenhum agente assume o estado sem verificar.
 
+## Marcos da consulta de estado
+A consulta de estado (`kanon status <projeto|feature>`, modo consulta de [`skills/09-feature-state-management`](../skills/09-feature-state-management/SKILL.md)) lê só os artefatos da pasta da Feature, na ordem de [`02-sdd-flow.md`](02-sdd-flow.md):
+
+| # | Marco | Artefato que comprova | Se faltar, próximo passo |
+|---|---|---|---|
+| 1 | Requisito | `REQUIREMENT-SUMMARY.md` | `generate-requirement-summary` |
+| 2 | Design Gate | `DESIGN.md` com Status `APPROVED` e "Aprovado por" preenchido | `design-gate` (aguardando aprovação humana, se o `DESIGN.md` já existe) |
+| 3 | Especificação | `FEATURE.md`, `PLAN-v*.md` e `INSTRUCTIONS.md` | `create-feature-artifacts` |
+| 4 | Arquitetura | `ARCHITECTURE.md` ou `reports/architecture-assessment.md` | `architecture-assessment` |
+| 5 | TCO preliminar | `TCO.md` | `cost-of-ownership-tco` |
+| 6 | User Stories | `USER-STORY-*.md` (ou `US-NN-*.md`) ou `user-stories/` | `refine-user-stories` |
+| 7 | Tasks | `TASK-*.md` ou `tasks/` | `refine-tasks` |
+| 8 | Casos de teste | `TEST-CASE*.md` ou `test-cases/` | `test-case-authoring` |
+| 9 | Code review / PR | `REVIEW-PR*`, `PR-REVIEW*` ou `CODE-REVIEW*` | `pull-request-review` |
+| 10 | Quality gate | `quality-gate-feature.md` ou `TEST-REPORT*.md` | `quality-gate` |
+| 11 | Runbook | `RUNBOOK*.md` | `runbook-authoring` |
+| 12 | Auditoria | `AUDIT-EVIDENCE*` ou `Evidence-*` | `audit-evidence` |
+| 13 | Memória | `MEMORY.md` | `memory-update` |
+
+- A etapa atual é o último marco cumprido sem buraco antes dele; o próximo passo é o primeiro marco que falta.
+- Marco que falta enquanto um posterior existe é **lacuna**, nunca etapa cumprida — o fluxo não avança como se ela tivesse sido feita (`02-sdd-flow.md`, procedimento em caso de falha).
+- Pasta sem nenhum artefato do pipeline é declarada fora do formato; o próximo passo é o Requirement Summary.
+- Treze marcos cumpridos tornam a Feature candidata a `done`, não `done`: estado da PR, do work item e do deploy fica fora da pasta, e a consulta diz que não os verificou.
+
 ## Sinais de violação
 - Uma feature marcada `done` sem o runbook/checklist "verde".
 - Uma feature que "some" do rastreamento sem passar por uma transição de estado válida.

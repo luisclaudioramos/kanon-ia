@@ -6,6 +6,7 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const { isApproved } = require('./lib/design');
 
 const GATED_BASENAMES = new Set(['FEATURE.md', 'INSTRUCTIONS.md']);
 const GATED_PATTERN = /^PLAN-v.*\.md$/i;
@@ -30,15 +31,6 @@ function deny(reason) {
 function isGated(filePath) {
   const base = path.basename(filePath || '');
   return GATED_BASENAMES.has(base) || GATED_PATTERN.test(base);
-}
-
-function isApproved(designMdContent) {
-  const statusLine = designMdContent.split('\n').find((l) => l.includes('**Status**'));
-  const approvedByLine = designMdContent.split('\n').find((l) => l.includes('Aprovado por'));
-  if (!statusLine || !approvedByLine) return false;
-  const statusOk = statusLine.includes('APPROVED') && !statusLine.includes('DRAFT') && !statusLine.includes('[preencher');
-  const approverOk = !approvedByLine.includes('[preencher');
-  return statusOk && approverOk;
 }
 
 let raw = '';

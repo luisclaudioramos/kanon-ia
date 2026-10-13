@@ -16,6 +16,9 @@ Fase 3 — Governança, Qualidade e Transições. Acionada continuamente ao long
 - Implementa exatamente [`process/03-state-management.md`](../../process/03-state-management.md) — vocabulário fixo de estados, pré-condições de transição e regras de rollback.
 - A transição para `done` depende do runbook gerado por [`19-runbook-authoring`](../19-runbook-authoring/SKILL.md) estar "ready".
 
+## Modo consulta (`status`)
+`kanon status <projeto|feature>` responde em que etapa a Feature está e qual é o próximo passo, sem mudar estado nenhum. Procura o nome na pasta do contexto ativo; um projeto (pasta com `feature/`, `features/` ou `to-be/feature/`) sai com uma linha por Feature. A etapa vem dos marcos de [`process/03-state-management.md`](../../process/03-state-management.md) ("Marcos da consulta de estado"), só pelos artefatos da pasta. Nome que corresponde a mais de uma pasta lista as candidatas e não escolhe.
+
 ## Depende de
 - `process/03-state-management.md`, `19-runbook-authoring`.
 

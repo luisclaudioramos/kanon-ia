@@ -22,7 +22,7 @@ Raiz do harness Kanon. Tudo aqui é **neutro de ambiente** — nenhum arquivo de
 
 ## Fora de `.kanon/`
 
-- [`../.claude/`](../.claude) — a integração *real* com o Claude Code: `hooks/` (os 10 gates `PreToolUse`, código funcional, ligados em `settings.json`), `commands/kanon.md` (o slash command `/kanon` que implementa a spec de `commands/kanon.md` desta pasta), `integrations/` (um adaptador por ferramenta, que atende as capacidades de `process/17-company-profile.md`, e as fontes de tela da `skills/48-screen-validation`) e `scripts/` (ajuda do `/kanon` e lista de skills em `kanon-help.js`, perfil efetivo e contexto ativo em `kanon-perfil.js`, renderização de protótipos em PNG e montagem da prancha 390/768/1920).
+- [`../.claude/`](../.claude) — a integração *real* com o Claude Code: `hooks/` (os 10 gates `PreToolUse`, código funcional, ligados em `settings.json`), `commands/kanon.md` (o slash command `/kanon` que implementa a spec de `commands/kanon.md` desta pasta), `integrations/` (um adaptador por ferramenta, que atende as capacidades de `process/17-company-profile.md`, e as fontes de tela da `skills/48-screen-validation`) e `scripts/` (ajuda do `/kanon` e lista de skills em `kanon-help.js`, consulta de estado em `kanon-status.js`, perfil efetivo e contexto ativo em `kanon-perfil.js`, renderização de protótipos em PNG e montagem da prancha 390/768/1920).
 
 ## O que o kanon não é
 

@@ -14,6 +14,7 @@ const COMANDOS = [
   ['/kanon', 'mostra esta ajuda'],
   ['/kanon --help | help | -h', 'mostra esta ajuda'],
   ['/kanon skills', 'lista as skills por fase'],
+  ['/kanon status <projeto|feature>', 'em que etapa está e qual é o próximo passo'],
   ['/kanon <skill> [contexto]', 'executa uma skill (nomes em /kanon skills)'],
   ['/kanon contexto <empresa>/<area>/<equipe>', 'troca para quem o kanon trabalha nesta máquina'],
 ];

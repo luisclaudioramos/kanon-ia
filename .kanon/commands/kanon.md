@@ -6,7 +6,7 @@
 ## Uso
 - `kanon`, `kanon --help`, `kanon help`, `kanon -h` — mostra a ajuda: a linha "Atuando para", os comandos desta lista e os agentes de [`agents/`](../agents/README.md) com a missão de cada um. Não lista as skills nem pergunta nada.
 - `kanon skills` — lista as skills por fase (nome sem o número + propósito de uma linha), tirada de [`skills/README.md`](../skills/README.md).
-- `kanon status <projeto|feature>` — diz em que etapa a Feature está e qual é o próximo passo, pelos artefatos da pasta; com um projeto, uma linha por Feature. Atalho do modo consulta de [`skills/09-feature-state-management`](../skills/09-feature-state-management/SKILL.md).
+- `kanon status <projeto|feature>` — diz em que etapa a Feature está e qual é o próximo passo, pelos artefatos da pasta, com os comandos de cada marco prontos para rodar; com um projeto, uma linha por Feature. Atalho do modo consulta de [`skills/09-feature-state-management`](../skills/09-feature-state-management/SKILL.md).
 - `kanon <nome-da-skill> [contexto adicional]` — executa a skill correspondente diretamente.
 - `kanon contexto <empresa>/<area>/<equipe>` — define para quem o kanon trabalha nesta máquina; atalho de `kanon company-profile contexto` ([`skills/51-company-profile`](../skills/51-company-profile/SKILL.md)).
 

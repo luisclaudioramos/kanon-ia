@@ -50,6 +50,25 @@ test('feature com especificação pronta: etapa 3 e próximo é a arquitetura', 
   assert.match(r.stdout, /não verificado/);
 });
 
+test('cada marco traz embaixo o comando que o gera, já com o nome da feature', () => {
+  const { dir } = arvore(ESPEC);
+  const r = rodar(dir, 'f');
+  assert.match(r.stdout, /\[x\]  5 TCO preliminar|\[ \]  5 TCO preliminar/);
+  assert.match(r.stdout, /TCO\.md\n {9}\/kanon cost-of-ownership-tco f\n/);
+  assert.match(r.stdout, /user-stories\/\n {9}\/kanon refine-user-stories f\n {9}\/kanon create-user-story-artifacts f\n/);
+  assert.match(r.stdout, /tasks\/\n {9}\/kanon refine-tasks f\n {9}\/kanon create-task-artifacts f\n/);
+  assert.match(r.stdout, /\n {9}\/kanon code-review f\n {9}\/kanon pull-request-review f\n/);
+  assert.match(r.stdout, /\n {9}\/kanon test-report f\n {9}\/kanon quality-gate f\n/);
+});
+
+test('todo comando dos marcos tem pasta em .kanon/skills', () => {
+  const skills = fs.readdirSync(path.join(__dirname, '..', '..', '..', '.kanon', 'skills')).map((n) => n.replace(/^\d+-/, ''));
+  for (const m of MARCOS) {
+    assert.ok(m.comandos.length > 0, m.nome);
+    for (const c of m.comandos) assert.ok(skills.includes(c), `${m.nome}: ${c}`);
+  }
+});
+
 test('DESIGN.md em rascunho: etapa 1 e próximo é a aprovação humana', () => {
   const { dir } = arvore({ 'f/REQUIREMENT-SUMMARY.md': 'x', 'f/DESIGN.md': RASCUNHO });
   const r = rodar(dir, 'f');

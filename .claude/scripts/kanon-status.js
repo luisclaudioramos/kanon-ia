@@ -11,31 +11,32 @@ const { isApproved } = require('../hooks/lib/design');
 
 const algum = (re) => (nomes) => nomes.some((n) => re.test(n));
 
-// Ordem de process/03-state-management.md, seção "Marcos da consulta de estado".
+// Ordem de process/03-state-management.md, seção "Marcos da consulta de estado". `comandos` são as skills
+// que geram o marco, na ordem em que rodam; a primeira é o próximo passo quando o marco falta.
 const MARCOS = [
-  { nome: 'Requisito', skill: 'generate-requirement-summary', prova: 'REQUIREMENT-SUMMARY.md', ok: algum(/^REQUIREMENT-SUMMARY\.md$/i) },
-  { nome: 'Design Gate', skill: 'design-gate', prova: 'DESIGN.md aprovado', ok: (_, dir) => designAprovado(dir) },
+  { nome: 'Requisito', comandos: ['generate-requirement-summary'], prova: 'REQUIREMENT-SUMMARY.md', ok: algum(/^REQUIREMENT-SUMMARY\.md$/i) },
+  { nome: 'Design Gate', comandos: ['design-gate'], prova: 'DESIGN.md aprovado', ok: (_, dir) => designAprovado(dir) },
   {
     nome: 'Especificação',
-    skill: 'create-feature-artifacts',
+    comandos: ['create-feature-artifacts'],
     prova: 'FEATURE.md, PLAN-v*.md e INSTRUCTIONS.md',
     ok: (n) => algum(/^FEATURE\.md$/i)(n) && algum(/^PLAN-v.*\.md$/i)(n) && algum(/^INSTRUCTIONS\.md$/i)(n),
   },
   {
     nome: 'Arquitetura',
-    skill: 'architecture-assessment',
+    comandos: ['architecture-assessment'],
     prova: 'ARCHITECTURE.md ou reports/architecture-assessment.md',
     ok: (n, dir) => algum(/^ARCHITECTURE\.md$/i)(n) || fs.existsSync(path.join(dir, 'reports', 'architecture-assessment.md')),
   },
-  { nome: 'TCO preliminar', skill: 'cost-of-ownership-tco', prova: 'TCO.md', ok: algum(/^(TCO|COST-OF-OWNERSHIP).*\.md$/i) },
-  { nome: 'User Stories', skill: 'refine-user-stories', prova: 'USER-STORY-*.md ou user-stories/', ok: algum(/^(USER-STORY-.*\.md|US-\d+.*\.md|user-stories)$/i) },
-  { nome: 'Tasks', skill: 'refine-tasks', prova: 'TASK-*.md ou tasks/', ok: algum(/^(TASK-.*\.md|tasks)$/i) },
-  { nome: 'Casos de teste', skill: 'test-case-authoring', prova: 'TEST-CASE*.md ou test-cases/', ok: algum(/^(TEST-CASE.*\.md|test-cases)$/i) },
-  { nome: 'Code review / PR', skill: 'pull-request-review', prova: 'REVIEW-PR*, PR-REVIEW* ou CODE-REVIEW*', ok: algum(/^(.*REVIEW-PR|PR-REVIEW|CODE-REVIEW).*\.md$/i) },
-  { nome: 'Quality gate', skill: 'quality-gate', prova: 'quality-gate-feature.md ou TEST-REPORT*.md', ok: algum(/^(quality-gate-feature|TEST-REPORT).*\.md$/i) },
-  { nome: 'Runbook', skill: 'runbook-authoring', prova: 'RUNBOOK*.md', ok: algum(/^RUNBOOK.*\.md$/i) },
-  { nome: 'Auditoria', skill: 'audit-evidence', prova: 'AUDIT-EVIDENCE* ou Evidence-*', ok: algum(/^(AUDIT-EVIDENCE|Evidence-)/i) },
-  { nome: 'Memória', skill: 'memory-update', prova: 'MEMORY.md', ok: algum(/^MEMORY\.md$/i) },
+  { nome: 'TCO preliminar', comandos: ['cost-of-ownership-tco'], prova: 'TCO.md', ok: algum(/^(TCO|COST-OF-OWNERSHIP).*\.md$/i) },
+  { nome: 'User Stories', comandos: ['refine-user-stories', 'create-user-story-artifacts'], prova: 'USER-STORY-*.md ou user-stories/', ok: algum(/^(USER-STORY-.*\.md|US-\d+.*\.md|user-stories)$/i) },
+  { nome: 'Tasks', comandos: ['refine-tasks', 'create-task-artifacts'], prova: 'TASK-*.md ou tasks/', ok: algum(/^(TASK-.*\.md|tasks)$/i) },
+  { nome: 'Casos de teste', comandos: ['test-case-authoring'], prova: 'TEST-CASE*.md ou test-cases/', ok: algum(/^(TEST-CASE.*\.md|test-cases)$/i) },
+  { nome: 'Code review / PR', comandos: ['code-review', 'pull-request-review'], prova: 'REVIEW-PR*, PR-REVIEW* ou CODE-REVIEW*', ok: algum(/^(.*REVIEW-PR|PR-REVIEW|CODE-REVIEW).*\.md$/i) },
+  { nome: 'Quality gate', comandos: ['test-report', 'quality-gate'], prova: 'quality-gate-feature.md ou TEST-REPORT*.md', ok: algum(/^(quality-gate-feature|TEST-REPORT).*\.md$/i) },
+  { nome: 'Runbook', comandos: ['runbook-authoring'], prova: 'RUNBOOK*.md', ok: algum(/^RUNBOOK.*\.md$/i) },
+  { nome: 'Auditoria', comandos: ['audit-evidence'], prova: 'AUDIT-EVIDENCE* ou Evidence-*', ok: algum(/^(AUDIT-EVIDENCE|Evidence-)/i) },
+  { nome: 'Memória', comandos: ['memory-update'], prova: 'MEMORY.md', ok: algum(/^MEMORY\.md$/i) },
 ];
 
 const CONTEINERES = [['feature'], ['features'], ['to-be', 'feature']];
@@ -55,7 +56,7 @@ function avaliarFeature(dir) {
   const ultimo = cumpridos.lastIndexOf(true);
   const lacunas = MARCOS.filter((_, i) => i > etapa && i < ultimo && !cumpridos[i]).map((m) => m.nome);
   const proximo = MARCOS[etapa] || null;
-  const designRascunho = proximo && proximo.skill === 'design-gate' && fs.existsSync(path.join(dir, 'DESIGN.md'));
+  const designRascunho = proximo && proximo.comandos[0] === 'design-gate' && fs.existsSync(path.join(dir, 'DESIGN.md'));
   return { dir, cumpridos, etapa, lacunas, proximo, designRascunho, foraDoFormato: ultimo < 0 };
 }
 
@@ -103,7 +104,7 @@ function etapaCurta(a) {
 
 function proximoCurto(a) {
   if (!a.proximo) return 'candidata a done';
-  return a.designRascunho ? 'design-gate (aguardando aprovação humana)' : a.proximo.skill;
+  return a.designRascunho ? 'design-gate (aguardando aprovação humana)' : a.proximo.comandos[0];
 }
 
 function relatorioFeature(a, raiz) {
@@ -120,11 +121,15 @@ function relatorioFeature(a, raiz) {
   } else if (a.designRascunho) {
     linhas.push('Próximo: /kanon design-gate — DESIGN.md existe, aguardando aprovação humana (Status APPROVED e "Aprovado por")');
   } else {
-    linhas.push(`Próximo: /kanon ${a.proximo.skill} — falta ${a.proximo.prova}`);
+    linhas.push(`Próximo: /kanon ${a.proximo.comandos[0]} — falta ${a.proximo.prova}`);
   }
   if (a.lacunas.length) linhas.push(`Lacunas: ${a.lacunas.join(', ')} (há marco posterior sem estes)`);
   linhas.push('', 'Marcos');
-  MARCOS.forEach((m, i) => linhas.push(`  [${a.cumpridos[i] ? 'x' : ' '}] ${String(i + 1).padStart(2)} ${m.nome.padEnd(17)} ${m.prova}`));
+  const feature = path.basename(a.dir);
+  MARCOS.forEach((m, i) => {
+    linhas.push(`  [${a.cumpridos[i] ? 'x' : ' '}] ${String(i + 1).padStart(2)} ${m.nome.padEnd(17)} ${m.prova}`);
+    for (const c of m.comandos) linhas.push(`         /kanon ${c} ${feature}`);
+  });
   linhas.push('', NAO_VERIFICADO);
   return linhas.join('\n');
 }

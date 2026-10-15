@@ -66,14 +66,14 @@ O CODE-REVIEWER nunca edita o código revisado — encontrar e classificar é o 
 - **Regra violada**: qual prática foi violada (com a fonte, se houver)
 - **Sugestão concreta**: o que mudar, com exemplo quando possível
 - O relatório abre com a **Ficha da PR** (autor, aprovações exigidas, quem aprovou e quem falta, US, descrição, link) — ver o template.
-- Quando os achados vão para o PR, o texto literal das threads segue [`templates/PR-COMMENTS.template.md`](../templates/PR-COMMENTS.template.md) — regras na seção abaixo.
+- Quando os achados vão para o PR, o texto literal segue [`templates/PR-REVIEW-ROUND.template.md`](../templates/PR-REVIEW-ROUND.template.md) — regras na seção abaixo.
 
 ## Comentários publicados no PR
 
 O relatório é para o time; o comentário no PR é para **uma pessoa**, que muitas vezes só tem acesso ao repositório que está revisando. Um achado que depende de lógica de outro sistema (BFF, API, worker, banco) só é útil se o leitor conseguir verificá-lo sem sair da thread. Por isso:
 
 1. **Declarar o leitor** antes de escrever (ex.: engenheiro frontend sem acesso ao repositório do BFF) e escrever para ele.
-2. **Um comentário geral + um inline por achado**, ordenados por severidade (`bloqueia` · `ajuste` · `pergunta` · `registro`). O geral resume em uma linha por item; o inline prova.
+2. **Parecer da rodada + voto curto + uma thread por achado**, no formato de [`templates/PR-REVIEW-ROUND.template.md`](../templates/PR-REVIEW-ROUND.template.md): o parecer (comentário na conversa da PR) traz o veredito, a distância para a aprovação, a matriz da história e as auditorias; o voto aponta para ele; cada achado 🔴/🟠 tem a própria thread com o critério que a fecha, e os 🟡/⚪ vão numa thread única `QLD-01`.
 3. **Abrir cada inline com a afirmação em uma frase, em negrito.** O leitor decide em uma linha se precisa do resto.
 4. **Citar a lógica do outro sistema inline**: trecho literal de 3 a 8 linhas, com `arquivo:linha` e link para a linha no repositório. Nunca "ver o arquivo X do back" — o leitor pode não ter o back.
 5. **Mostrar, não descrever**: diagrama em texto (dentro de cerca de código) com o caminho que funciona ao lado do que quebra, e exemplo com valores concretos (nome, data, hora) em vez de abstração. Comentário de PR não renderiza Mermaid.
@@ -90,14 +90,15 @@ O relatório é para o time; o comentário no PR é para **uma pessoa**, que mui
 
 **Certo** — comentário acionável, focado no código, com severidade explícita:
 ```
-[bloqueante] Esta função mistura validação de input com persistência (linhas 12-30).
-Isso dificulta testar a validação sem banco real. Sugestão: extrair `validateOrder(order)`
+🟠 [DEF] — Esta função mistura validação de input com persistência (OrderService.ts:12-30).
+Isso impede testar a validação sem banco real. O que fazer: extrair `validateOrder(order)`
 como função pura e chamar antes de `orderRepository.save(order)`.
+✅ O que fecha esta thread: `validateOrder` existe e tem teste de unidade sem banco.
 ```
 
 **Errado** — achado que depende de outro sistema, escrito para quem tem acesso a ele:
 ```
-[bloqueante] Está mandando `product.name` no POST. Confere no serviço de reserva do back,
+🔴 [DEF] — Está mandando `product.name` no POST. Confere no serviço de reserva do back,
 ele busca por marca. Vai dar BrandNotFound.
 ```
 
@@ -125,6 +126,8 @@ A API de campanha procura a marca por nome exato na fase
 **Correção.** Enviar `item.brand`, deixando `name` só como fallback; o mesmo valor em
 `reservationName` (l.534). O spec não pega porque o fixture é `{ name: 'Voucher' }` —
 sugiro um teste com `{ name: 'Vale-presente R$ 50', brand: 'Uber' }` afirmando `brand: 'Uber'`.
+
+✅ O que fecha esta thread: o POST envia `item.brand` e o teste acima existe e passa.
 ```
 
 ## Processos

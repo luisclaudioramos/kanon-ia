@@ -25,10 +25,10 @@ Fase 7 — Auditoria, Governança e Consolidação. Roda após [`13-code-review`
 - A revisão de `13-code-review` que alimenta este PR segue [`process/14-decision-segregation.md`](../../process/14-decision-segregation.md) — quem implementou não é quem aprova o próprio código.
 
 ### Publicação dos comentários de revisão no PR
-- O texto das threads vem pronto de `13-code-review`, no formato de [`templates/PR-COMMENTS.template.md`](../../templates/PR-COMMENTS.template.md). Esta skill **não reescreve** o conteúdo; ela publica o que o revisor humano aprovou.
+- O texto vem pronto de `13-code-review`, no formato de [`templates/PR-REVIEW-ROUND.template.md`](../../templates/PR-REVIEW-ROUND.template.md). Esta skill **não reescreve** o conteúdo; ela publica o que o revisor humano aprovou.
 - **Rascunho → revisão humana → publicação, nesta ordem, sempre.** O rascunho completo é apresentado ao revisor humano (no chat e no arquivo), que aprova, edita ou corta itens. Nada é publicado antes dessa aprovação explícita — vale mesmo com o padrão já estabelecido.
-- Publicação pela conta do revisor humano, via a integração configurada (`process/13-external-integration-prerequisite.md`): um thread geral sem arquivo + um thread inline por achado, cada inline ancorado em `arquivo:linha` da **última iteração** do PR. Antes de publicar, um dry-run confere quantidade de threads, âncoras e tamanho de cada texto.
-- **Sem voto** (aprovar / aguardando autor / rejeitar) salvo pedido explícito do revisor humano. Comentar e votar são decisões separadas.
+- Publicação pela conta do revisor humano, via a integração configurada (`process/13-external-integration-prerequisite.md`): o parecer da rodada como comentário na conversa da PR, uma thread por achado 🔴/🟠 e a thread consolidada `QLD-01`, cada thread ancorada em `arquivo:linha` da **última iteração** do PR. Antes de publicar, um dry-run confere quantidade de threads, âncoras e tamanho de cada texto. Na rodada seguinte, a resposta vai na própria thread (aceito, recusado ou reaberto) e o parecer novo é outro comentário na conversa.
+- **Sem voto** (aprovar / aguardando autor / rejeitar) salvo pedido explícito do revisor humano. Comentar e votar são decisões separadas. Quando o voto vai, o corpo é o da seção "Voto" do rascunho: uma a três linhas que apontam para o parecer.
 - Depois de publicar, os ids das threads e a data voltam para o cabeçalho do rascunho, que muda de `RASCUNHO` para `PUBLICADO`. É esse arquivo que a próxima rodada de revisão compara com a nova iteração do PR.
 - Comentário de PR não renderiza Mermaid; diagramas vão em texto, dentro de cerca de código.
 
@@ -41,7 +41,7 @@ Fase 7 — Auditoria, Governança e Consolidação. Roda após [`13-code-review`
 - Aprovação ou voto vindo de quem não está no perfil vira `51-company-profile propor`, além de ser registrado normalmente.
 
 ## Depende de
-- `agents/AGENT-CODE-REVIEWER.md`, `process/07-return-envelope.md`, `11-quality-gate`, `13-code-review`, `process/13-external-integration-prerequisite.md`, `process/14-decision-segregation.md`, `process/15-pull-request-gates.md`, `templates/PR-COMMENTS.template.md`, `templates/PR-DESCRIPTION.template.md`, `templates/APPROVAL-NOTIFICATION-SUMMARY.template.md`, `process/17-company-profile.md`.
+- `agents/AGENT-CODE-REVIEWER.md`, `process/07-return-envelope.md`, `11-quality-gate`, `13-code-review`, `process/13-external-integration-prerequisite.md`, `process/14-decision-segregation.md`, `process/15-pull-request-gates.md`, `templates/PR-REVIEW-ROUND.template.md`, `templates/PR-DESCRIPTION.template.md`, `templates/APPROVAL-NOTIFICATION-SUMMARY.template.md`, `process/17-company-profile.md`.
 
 ## Procedimento em caso de falha
 Enquanto houver voto pendente ou o Quality Gate não estiver aprovado, o PR permanece bloqueado para merge — a skill nunca libera por pressão de prazo. Se o acesso ao repositório remoto não estiver configurado, segue `process/13`: orienta a configuração do MCP/CLI e só aceita prosseguir sem PR com exceção explícita e registrada. Se a capacidade `comunicacao` não estiver disponível ou configurada, a notificação fica pendente e é registrada como falha de sincronização em `APPROVAL-NOTIFICATION-SUMMARY.md` — nunca é tratada como enviada silenciosamente, mas também não bloqueia o PR em si (a notificação não é pré-requisito para `done`, diferente do PR real).

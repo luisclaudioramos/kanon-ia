@@ -41,7 +41,7 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 |---|---|
 | [CODE-REVIEW-REPORT.template.md](CODE-REVIEW-REPORT.template.md) | `skills/13-code-review`, via `agents/AGENT-CODE-REVIEWER.md` — relatório detalhado que alimenta o `PR-REVIEW.template.md` |
 | [PR-REVIEW.template.md](PR-REVIEW.template.md) | `skills/34-pull-request-review` |
-| [PR-COMMENTS.template.md](PR-COMMENTS.template.md) | `skills/13-code-review` (redação) e `skills/34-pull-request-review` (publicação) — o texto literal das threads do PR: um comentário geral + um inline por achado, autossuficiente para quem não acessa os outros repositórios |
+| [PR-REVIEW-ROUND.template.md](PR-REVIEW-ROUND.template.md) | `skills/13-code-review` (redação) e `skills/34-pull-request-review` (publicação) — o texto literal que vai para a PR em cada rodada: parecer na conversa, voto curto e uma thread por achado com o critério que a fecha |
 | [PR-DESCRIPTION.template.md](PR-DESCRIPTION.template.md) | `skills/12-development-execution` (preenche) e `skills/34-pull-request-review` (usa ao criar a PR) — descrição de PR com as seções exigidas por `process/15-pull-request-gates.md` |
 | [RUNBOOK.template.md](RUNBOOK.template.md) | `skills/19-runbook-authoring` |
 | [HANDOFF.template.md](HANDOFF.template.md) | `skills/10-handoff-management`, `process/04` e `process/07` |

@@ -35,7 +35,7 @@ _Um por linha, do mais grave ao mais leve. Escrito para quem decide o voto sem a
 
 | # | Severidade | Problema | Impacto | Sugestão de correção | Local (arquivo:linha) | Regra violada |
 |---|---|---|---|---|---|---|
-| 1 | bloqueante / recomendação / nit | _[preencher: o que está errado, sem jargão]_ | _[preencher: consequência real — ex.: "quem for desativado continua disparando resgate pela API"]_ | _[preencher: o que mudar e onde]_ | _[preencher]_ | _[preencher: trava, AC ou prática, com fonte]_ |
+| 1 | 🔴 crítico / 🟠 importante / 🟡 menor / ⚪ nitpick (`PR-REVIEW-ROUND.template.md`) | _[preencher: o que está errado, sem jargão]_ | _[preencher: consequência real — ex.: "quem for desativado continua disparando resgate pela API"]_ | _[preencher: o que mudar e onde]_ | _[preencher]_ | _[preencher: trava, AC ou prática, com fonte]_ |
 
 ## Resultado dos Quality Checks
 - **Comandos executados**: _[preencher: comandos de teste/build já existentes no projeto-alvo, nunca inventados — `process/11-subagent-anti-hallucination.md`]_

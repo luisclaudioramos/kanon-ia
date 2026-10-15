@@ -29,7 +29,7 @@ _Gerado/gerenciado por `skills/34-pull-request-review`._
 ## Apontamentos
 | Severidade | Local | Descrição | Sugestão |
 |---|---|---|---|
-| bloqueante / recomendação / nit | _[preencher]_ | _[preencher]_ | _[preencher]_ |
+| 🔴 crítico / 🟠 importante / 🟡 menor / ⚪ nitpick (`PR-REVIEW-ROUND.template.md`) | _[preencher]_ | _[preencher]_ | _[preencher]_ |
 
 ## Voto final
 - [ ] `APPROVED`

@@ -31,6 +31,7 @@ Fase 7 — Auditoria, Governança e Consolidação. Roda após [`13-code-review`
 - **Sem voto** (aprovar / aguardando autor / rejeitar) salvo pedido explícito do revisor humano. Comentar e votar são decisões separadas. Quando o voto vai, o corpo é o da seção "Voto" do rascunho: uma a três linhas que apontam para o parecer.
 - Depois de publicar, os ids das threads e a data voltam para o cabeçalho do rascunho, que muda de `RASCUNHO` para `PUBLICADO`. É esse arquivo que a próxima rodada de revisão compara com a nova iteração do PR.
 - Comentário de PR não renderiza Mermaid; diagramas vão em texto, dentro de cerca de código.
+- **Depois do merge**: quando o merge é o próprio deploy ou abre a mudança automaticamente (o perfil diz em quais repositórios), a skill acompanha os passos do deploy, e não só o resultado final, e a validação no ambiente listada na seção "Depois do merge" do parecer; o resultado vai como resposta no parecer da última rodada, depois da revisão humana.
 
 ### Notificação de aprovação
 - A cada PR criado ou atualizado, a skill prepara uma mensagem individual (uma por PR, nunca uma lista de vários PRs) para o canal e no formato que o perfil efetivo registra para "aprovação de PR" (`process/17-company-profile.md`), e segue a regra de envio do perfil ("quem envia"). Sem regra no perfil, só rascunho, enviado depois de confirmação explícita do usuário — postar num canal do time nunca é automático.

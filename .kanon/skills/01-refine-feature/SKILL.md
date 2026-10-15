@@ -19,7 +19,7 @@ Fase 0 — Inicialização e Contexto. Roda após [`39-generate-requirement-summ
 - Todo requisito extraído precisa vir com critério de aceite no formato Dado/Quando/Então (ver `agents/GLOSSARIO.md#gherkin`) — nunca um requisito vago sem forma de verificação.
 - Todo requisito extraído inclui explicitamente o que **não** será feito, quando aplicável — não deixa o "fora de escopo" implícito (`reference/levantamento-de-requisitos/05-delimitacao-de-escopo.md`).
 - Se o `REQUIREMENT-SUMMARY.md` de entrada não tiver evidência, hipótese de sucesso ou métrica (KPI) registradas para o problema, a skill sinaliza a lacuna explicitamente ao extrair o RF correspondente, em vez de assumir que o problema está bem fundamentado (`reference/levantamento-de-requisitos/03-evidencias-e-metricas.md`).
-- Prioridade, risco e a estimativa inicial de esforço da Feature (seção "Priorização, Risco e Esforço" do `FEATURE.md`) já nascem aqui, mesmo que refinados depois pelas skills 04/05/06.
+- Prioridade, risco e a estimativa inicial de esforço da Feature (seções "Priority", "Risk" e "Effort" do `FEATURE.md`) já nascem aqui, mesmo que refinados depois pelas skills 04/05/06.
 
 ## Depende de
 - `agents/AGENT-PO.md`, `agents/AGENT-UI-UX-DESIGNER.md`, `process/02-sdd-flow.md`, `41-design-gate`, `reference/levantamento-de-requisitos/01-processo-de-elicitacao.md`, `reference/levantamento-de-requisitos/05-delimitacao-de-escopo.md`.

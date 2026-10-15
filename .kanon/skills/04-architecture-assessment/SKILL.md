@@ -11,7 +11,7 @@ Fase 1 — Arquitetura e Especificação. Roda após [`03-create-feature-artifac
 
 ## Saídas
 - `reports/architecture-assessment.md` com as 2 alternativas avaliadas, a decisão e o tech-stack final.
-- Tabela "Sistemas impactados" do `FEATURE.md` preenchida (repositórios/serviços tocados, tipo, impacto, ambiente/projeto de deploy).
+- Tabela "Impacted Systems" do `FEATURE.md` preenchida (repositórios/serviços tocados, tipo, impacto, ambiente/projeto de deploy).
 
 ## Regras principais
 - Aciona [`agents/AGENT-ARCHITECT.md`](../../agents/AGENT-ARCHITECT.md) para propor as alternativas e [`agents/AGENT-TECH-LEAD.md`](../../agents/AGENT-TECH-LEAD.md) para validar/desempatar.

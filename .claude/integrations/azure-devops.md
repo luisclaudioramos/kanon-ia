@@ -14,6 +14,17 @@ MCP `azure-devops` ou CLI `az` autenticado (`az devops login`). Organização, p
 
 ## Como publicar
 - **Work items**: cria e vincula Feature → US → Task/Bug; atualiza pelo identificador, nunca duplica.
+- **Feature e User Story, com a trava de publicação** ([`.kanon/process/18-work-item-publication-gate.md`](../../.kanon/process/18-work-item-publication-gate.md)): o pacote passa por `node .claude/scripts/kanon-publicacao.js <pacote.json>` antes de qualquer escrita. Recusado, nenhuma chamada de escrita é feita. Aprovado, a publicação segue esta ordem (REST 7.1):
+  1. Upload de cada anexo e de cada diagrama (PNG gerado do Mermaid) em `_apis/wit/attachments?fileName=<nome>`; troca `{{ATT:nome}}` e `{{DIAGRAM:nome}}` da descrição pela `url` devolvida (`<url>?fileName=<nome>` nos anexos; imagem `![...](<url>)` nos diagramas). Depois da troca, não pode sobrar nenhum `{{ATT:` nem `{{DIAGRAM:`.
+  2. Um único PATCH (`application/json-patch+json`) que começa com `{"op":"test","path":"/rev","value":<rev lida>}`, para não sobrescrever edição feita por outra pessoa no meio do caminho, e traz:
+     - `/multilineFieldsFormat/System.Description` = `Markdown` e, na User Story, `/multilineFieldsFormat/Microsoft.VSTS.Common.AcceptanceCriteria` = `Markdown`;
+     - `System.Title`, `System.Description`, `Microsoft.VSTS.Common.AcceptanceCriteria` (User Story), `System.Tags`, `System.AssignedTo`;
+     - `Microsoft.VSTS.Scheduling.Effort` (SP) e `System.IterationPath` só quando o pacote traz valor; vazios com motivo ficam sem a operação, e o motivo vai para o resumo;
+     - `Microsoft.VSTS.Common.Priority` e `Microsoft.VSTS.Common.ValueArea` quando o modelo do time os preenche;
+     - uma relação `AttachedFile` por anexo (`attributes.name` = nome do anexo).
+  3. User Story nova: `POST _apis/wit/workitems/$User%20Story` com a relação `System.LinkTypes.Hierarchy-Reverse` apontando para a Feature.
+  4. Confere a resposta (revisão nova, tags, responsável, anexos) e registra no resumo da publicação.
+- **Token**: `az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798`, guardado só durante a sessão, fora do repositório. Com VPN de túnel corporativo ligada, o `az` pode falhar; desligar e tentar de novo.
 - **Test cases**: cria ou atualiza Test Plans e Suites pelo identificador existente, nunca duplica.
 - **PR**: `az repos pr create` passa pelo `pr-publish-consent-gate`; threads de revisão pela conta do revisor humano.
 - **Comentário de handoff**: o Azure DevOps remove comentário HTML do texto armazenado (verificado em 2026-08-31), por isso o marcador `<!-- handoff:<id> -->` não localiza comentário — a localização é pelo id gravado em `comentario_ado`.

@@ -5,11 +5,14 @@ _Breadcrumb: [Feature](../FEATURE.md) > User Story XX_
 **Estado**: `refinado` | `aprovado` | `publicado` (regra 1-1-1, ver `skills/05-refine-user-stories`)
 **Story Points**: _[preencher]_ · **Aprovado por (PO)**: _[preencher]_
 **Persona**: _[preencher: ex. "Cliente Premium não logado"]_ · **Prioridade (MoSCoW)**: `Must` | `Should` | `Could` | `Won't`
-**Tags**: _[preencher: as tags da Feature + `US-XX`]_
+**Tags**: _[preencher: as tags da Feature + `USXX` por último]_
+**Título no item publicado**: `USXX - camada: título` (ex.: `US01 - API do cadastro: aceitar celular opcional`) — trava de publicação, `process/18-work-item-publication-gate.md`
 
 > **Dependências:** _[preencher: US ou contratos de que esta US precisa para começar, com link, ou "nenhuma"]_
 
 _Linguagem clara (trava 2, `process/15-pull-request-gates.md`): toda sigla, jargão ou nome de sistema é explicado na primeira vez em que aparece, neste documento e no item publicado._
+
+_Publicação (`process/18-work-item-publication-gate.md`): descrição e critérios de aceite vão em campos separados, os dois em Markdown; cada diagrama vira imagem anexada; o item publicado não leva o cabeçalho acima, link relativo nem referência a `skills/`._
 
 ---
 

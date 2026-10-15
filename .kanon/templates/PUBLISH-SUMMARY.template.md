@@ -15,6 +15,11 @@ Local (documentação): _[preencher: informado por quem publicou]_ · Situação
 |---|---|
 | _[preencher]_ | atende / não atende: _motivo_ |
 
+## Trava de publicação (`process/18-work-item-publication-gate.md`)
+| Item | Resultado | Anexos | Fora, de propósito (motivo) | Revisado por pessoa | Campos vazios (motivo) |
+|---|---|---|---|---|---|
+| _[preencher]_ | pode publicar / recusada | _[preencher]_ | _[preencher, ou "nenhum"]_ | _[preencher, ou "nenhum"]_ | _[preencher, ou "nenhum"]_ |
+
 ## Falhas e pendências
 | Item | Motivo | Ação |
 |---|---|---|

@@ -30,6 +30,14 @@ const MARCOS = [
   },
   { nome: 'TCO preliminar', comandos: ['cost-of-ownership-tco'], prova: 'TCO.md', ok: algum(/^(TCO|COST-OF-OWNERSHIP).*\.md$/i) },
   { nome: 'User Stories', comandos: ['refine-user-stories', 'create-user-story-artifacts'], prova: 'USER-STORY-*.md ou user-stories/', ok: algum(/^(USER-STORY-.*\.md|US-\d+.*\.md|user-stories)$/i) },
+  {
+    nome: 'Validação de telas',
+    comandos: ['screen-validation'],
+    prova: 'telas/SCREEN-VALIDATION.md com as telas aprovadas',
+    ok: (_, dir) => telas(dir).ok,
+    naoSeAplica: (dir) => telas(dir).naoSeAplica,
+    detalhe: (dir) => telas(dir).detalhe,
+  },
   { nome: 'Tasks', comandos: ['refine-tasks', 'create-task-artifacts'], prova: 'TASK-*.md ou tasks/', ok: algum(/^(TASK-.*\.md|tasks)$/i) },
   { nome: 'Casos de teste', comandos: ['test-case-authoring'], prova: 'TEST-CASE*.md ou test-cases/', ok: algum(/^(TEST-CASE.*\.md|test-cases)$/i) },
   { nome: 'Code review / PR', comandos: ['code-review', 'pull-request-review'], prova: 'REVIEW-PR*, PR-REVIEW* ou CODE-REVIEW*', ok: algum(/^(.*REVIEW-PR|PR-REVIEW|CODE-REVIEW).*\.md$/i) },
@@ -46,6 +54,24 @@ const NAO_VERIFICADO = 'Fora da pasta (não verificado): estado da PR, do work i
 function designAprovado(dir) {
   const f = path.join(dir, 'DESIGN.md');
   return fs.existsSync(f) && isApproved(fs.readFileSync(f, 'utf8'));
+}
+
+// skills/48-screen-validation: vale para Feature com interface. A FEATURE.md declara "Não se aplica" na linha
+// "Aprovadores de tela" quando não há tela; senão, o marco só fecha com todas as telas do índice em `aprovada`
+// ou `aprovada com ressalvas` (process/05-definition-of-done).
+function telas(dir) {
+  const feature = path.join(dir, 'FEATURE.md');
+  const linha = fs.existsSync(feature) ? fs.readFileSync(feature, 'utf8').split('\n').find((l) => /Aprovadores de tela/i.test(l)) : null;
+  if (linha && /Não se aplica/i.test(linha)) return { ok: true, naoSeAplica: true, detalhe: 'não se aplica: a Feature não tem interface' };
+  const f = path.join(dir, 'telas', 'SCREEN-VALIDATION.md');
+  if (!fs.existsSync(f)) return { ok: false, naoSeAplica: false, detalhe: null };
+  const indice = (fs.readFileSync(f, 'utf8').split(/^## Índice\s*$/m)[1] || '').split(/^## /m)[0];
+  const linhas = indice.split('\n').filter((l) => l.startsWith('|') && !/^\|[\s|:-]+$/.test(l) && !l.includes('[preencher'));
+  const estados = linhas.slice(1).map((l) => (l.split('|')[4] || '').replace(/`/g, '').trim());
+  const aprovadas = estados.filter((e) => /^aprovada/i.test(e)).length;
+  if (!estados.length) return { ok: false, naoSeAplica: false, detalhe: 'índice sem telas' };
+  if (aprovadas === estados.length) return { ok: true, naoSeAplica: false, detalhe: null };
+  return { ok: false, naoSeAplica: false, detalhe: `${aprovadas} de ${estados.length} telas aprovadas` };
 }
 
 function avaliarFeature(dir) {
@@ -121,13 +147,17 @@ function relatorioFeature(a, raiz) {
   } else if (a.designRascunho) {
     linhas.push('Próximo: /kanon design-gate — DESIGN.md existe, aguardando aprovação humana (Status APPROVED e "Aprovado por")');
   } else {
-    linhas.push(`Próximo: /kanon ${a.proximo.comandos[0]} — falta ${a.proximo.prova}`);
+    const det = a.proximo.detalhe && a.proximo.detalhe(a.dir);
+    linhas.push(`Próximo: /kanon ${a.proximo.comandos[0]} — falta ${a.proximo.prova}${det ? ` (${det})` : ''}`);
   }
   if (a.lacunas.length) linhas.push(`Lacunas: ${a.lacunas.join(', ')} (há marco posterior sem estes)`);
   linhas.push('', 'Marcos');
   const feature = path.basename(a.dir);
   MARCOS.forEach((m, i) => {
-    linhas.push(`  [${a.cumpridos[i] ? 'x' : ' '}] ${String(i + 1).padStart(2)} ${m.nome.padEnd(17)} ${m.prova}`);
+    const na = m.naoSeAplica && m.naoSeAplica(a.dir);
+    const det = m.detalhe && m.detalhe(a.dir);
+    const marca = na ? '-' : a.cumpridos[i] ? 'x' : ' ';
+    linhas.push(`  [${marca}] ${String(i + 1).padStart(2)} ${m.nome.padEnd(18)} ${m.prova}${det ? ` — ${det}` : ''}`);
     for (const c of m.comandos) linhas.push(`         /kanon ${c} ${feature}`);
   });
   linhas.push('', NAO_VERIFICADO);

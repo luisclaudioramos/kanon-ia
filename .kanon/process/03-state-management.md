@@ -23,19 +23,21 @@ A consulta de estado (`kanon status <projeto|feature>`, modo consulta de [`skill
 | 4 | Arquitetura | `ARCHITECTURE.md` ou `reports/architecture-assessment.md` | `architecture-assessment` |
 | 5 | TCO preliminar | `TCO.md` | `cost-of-ownership-tco` |
 | 6 | User Stories | `USER-STORY-*.md` (ou `US-NN-*.md`) ou `user-stories/` | `refine-user-stories` → `create-user-story-artifacts` |
-| 7 | Tasks | `TASK-*.md` ou `tasks/` | `refine-tasks` → `create-task-artifacts` |
-| 8 | Casos de teste | `TEST-CASE*.md` ou `test-cases/` | `test-case-authoring` |
-| 9 | Code review / PR | `REVIEW-PR*`, `PR-REVIEW*` ou `CODE-REVIEW*` | `code-review` → `pull-request-review` |
-| 10 | Quality gate | `quality-gate-feature.md` ou `TEST-REPORT*.md` | `test-report` → `quality-gate` |
-| 11 | Runbook | `RUNBOOK*.md` | `runbook-authoring` |
-| 12 | Auditoria | `AUDIT-EVIDENCE*` ou `Evidence-*` | `audit-evidence` |
-| 13 | Memória | `MEMORY.md` | `memory-update` |
+| 7 | Validação de telas | `telas/SCREEN-VALIDATION.md` com todas as telas do índice em `aprovada` ou `aprovada com ressalvas`; ou "Não se aplica" na linha "Aprovadores de tela" da `FEATURE.md` (marco mostrado como `[-]`) | `screen-validation` |
+| 8 | Tasks | `TASK-*.md` ou `tasks/` | `refine-tasks` → `create-task-artifacts` |
+| 9 | Casos de teste | `TEST-CASE*.md` ou `test-cases/` | `test-case-authoring` |
+| 10 | Code review / PR | `REVIEW-PR*`, `PR-REVIEW*` ou `CODE-REVIEW*` | `code-review` → `pull-request-review` |
+| 11 | Quality gate | `quality-gate-feature.md` ou `TEST-REPORT*.md` | `test-report` → `quality-gate` |
+| 12 | Runbook | `RUNBOOK*.md` | `runbook-authoring` |
+| 13 | Auditoria | `AUDIT-EVIDENCE*` ou `Evidence-*` | `audit-evidence` |
+| 14 | Memória | `MEMORY.md` | `memory-update` |
 
 - A etapa atual é o último marco cumprido sem buraco antes dele; o próximo passo é o primeiro marco que falta.
 - A lista de marcos traz, embaixo de cada um, os comandos que o geram, já com o nome da Feature, prontos para rodar ou para refazer uma etapa.
 - Marco que falta enquanto um posterior existe é **lacuna**, nunca etapa cumprida — o fluxo não avança como se ela tivesse sido feita (`02-sdd-flow.md`, procedimento em caso de falha).
 - Pasta sem nenhum artefato do pipeline é declarada fora do formato; o próximo passo é o Requirement Summary.
-- Treze marcos cumpridos tornam a Feature candidata a `done`, não `done`: estado da PR, do work item e do deploy fica fora da pasta, e a consulta diz que não os verificou.
+- Validação de telas com tela pendente não fecha o marco: a consulta diz quantas telas do índice estão aprovadas. Feature sem a linha "Aprovadores de tela" e sem `telas/` aparece com o marco em aberto até declarar "Não se aplica" ou validar as telas.
+- Catorze marcos cumpridos tornam a Feature candidata a `done`, não `done`: estado da PR, do work item e do deploy fica fora da pasta, e a consulta diz que não os verificou.
 
 ## Sinais de violação
 - Uma feature marcada `done` sem o runbook/checklist "verde".

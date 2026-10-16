@@ -32,6 +32,12 @@ function rodar(dir, ...argv) {
   return main(argv, { projectDir: dir, cwd: dir });
 }
 
+const indice = (...estados) =>
+  `# Validação de telas\n\n## Índice\n\n| Tela | US | Versão vigente | Estado | Versão aprovada | PO | Negócio |\n|---|---|---|---|---|---|---|\n${estados
+    .map((e, i) => `| 0${i + 1}-tela | US-01 | v1 | \`${e}\` | v1 | ✓ | ✓ |`)
+    .join('\n')}\n\n## Fontes\n\n| Tela | x |\n|---|---|\n| 01-tela | \`enviada\` |\n`;
+const TELAS_APROVADAS = indice('aprovada', 'aprovada com ressalvas');
+
 const ESPEC = {
   'p/feature/f/REQUIREMENT-SUMMARY.md': 'x',
   'p/feature/f/DESIGN.md': APROVADO,
@@ -44,7 +50,7 @@ test('feature com especificação pronta: etapa 3 e próximo é a arquitetura', 
   const { dir } = arvore(ESPEC);
   const r = rodar(dir, 'f');
   assert.strictEqual(r.code, 0);
-  assert.match(r.stdout, /Etapa: 3\/13 — Especificação/);
+  assert.match(r.stdout, /Etapa: 3\/14 — Especificação/);
   assert.match(r.stdout, /Próximo: \/kanon architecture-assessment/);
   assert.doesNotMatch(r.stdout, /Lacunas/);
   assert.match(r.stdout, /não verificado/);
@@ -72,15 +78,15 @@ test('todo comando dos marcos tem pasta em .kanon/skills', () => {
 test('DESIGN.md em rascunho: etapa 1 e próximo é a aprovação humana', () => {
   const { dir } = arvore({ 'f/REQUIREMENT-SUMMARY.md': 'x', 'f/DESIGN.md': RASCUNHO });
   const r = rodar(dir, 'f');
-  assert.match(r.stdout, /Etapa: 1\/13 — Requisito/);
+  assert.match(r.stdout, /Etapa: 1\/14 — Requisito/);
   assert.match(r.stdout, /aguardando aprovação humana/);
 });
 
 test('marco posterior sem o anterior vira lacuna, não etapa', () => {
   const { dir } = arvore({ ...ESPEC, 'p/feature/f/MEMORY.md': 'x', 'p/feature/f/tasks/': '' });
   const r = rodar(dir, 'f');
-  assert.match(r.stdout, /Etapa: 3\/13/);
-  assert.match(r.stdout, /Lacunas: TCO preliminar, User Stories, Casos de teste.*Runbook, Auditoria \(/);
+  assert.match(r.stdout, /Etapa: 3\/14/);
+  assert.match(r.stdout, /Lacunas: TCO preliminar, User Stories, Validação de telas, Casos de teste.*Runbook, Auditoria \(/);
   assert.doesNotMatch(r.stdout, /Lacunas: .*(Arquitetura|Tasks|Memória)/);
 });
 
@@ -90,6 +96,7 @@ test('reconhece variações de nome dos artefatos', () => {
     'p/feature/f/reports/architecture-assessment.md': 'x',
     'p/feature/f/TCO.md': 'x',
     'p/feature/f/US-01-algo.md': 'x',
+    'p/feature/f/telas/SCREEN-VALIDATION.md': TELAS_APROVADAS,
     'p/feature/f/TASK-01.md': 'x',
     'p/feature/f/test-cases/': '',
     'p/feature/f/REVIEW-PR-123.md': 'x',
@@ -108,9 +115,11 @@ test('feature completa: candidata a done, com o aviso do que não foi verificado
   for (const f of ['ARCHITECTURE.md', 'TCO.md', 'USER-STORY-01.md', 'TASK-01.md', 'TEST-CASE-01.md', 'CODE-REVIEW-REPORT.md', 'TEST-REPORT.md', 'RUNBOOK.md', 'AUDIT-EVIDENCE.md', 'MEMORY.md']) {
     todos[`p/feature/f/${f}`] = 'x';
   }
+  todos['p/feature/f/FEATURE.md'] = '**Aprovadores de tela** (`skills/48-screen-validation`): Não se aplica: a Feature não tem interface\n';
   const { dir } = arvore(todos);
   const r = rodar(dir, 'f');
-  assert.match(r.stdout, /13\/13/);
+  assert.match(r.stdout, /14\/14/);
+  assert.match(r.stdout, /\[-\]  7 Validação de telas .*não se aplica/);
   assert.match(r.stdout, /candidata a done/);
 });
 
@@ -131,9 +140,9 @@ test('projeto: uma linha por feature, de feature/, features/ e to-be/feature/', 
   const r = rodar(dir, 'p');
   assert.strictEqual(r.code, 0);
   assert.match(r.stdout, /p — projeto com 3 features/);
-  assert.match(r.stdout, /f\s+3\/13 Especificação · próximo: architecture-assessment/);
-  assert.match(r.stdout, /h\s+1\/13 Requisito · próximo: design-gate/);
-  assert.match(r.stdout, /g\s+0\/13 fora do formato · próximo: generate-requirement-summary/);
+  assert.match(r.stdout, /f\s+3\/14 Especificação · próximo: architecture-assessment/);
+  assert.match(r.stdout, /h\s+1\/14 Requisito · próximo: design-gate/);
+  assert.match(r.stdout, /g\s+0\/14 fora do formato · próximo: generate-requirement-summary/);
 });
 
 test('nome parcial com uma só correspondência é aceito', () => {
@@ -161,4 +170,36 @@ test('sem contexto ativo pede o contexto', () => {
   const r = rodar(dir, 'f');
   assert.strictEqual(r.code, 1);
   assert.match(r.stdout, /\/kanon contexto/);
+});
+
+test('validação de telas: marco 7, entre User Stories e Tasks, gerado pela screen-validation', () => {
+  const nomes = MARCOS.map((m) => m.nome);
+  assert.strictEqual(nomes.indexOf('Validação de telas'), nomes.indexOf('User Stories') + 1);
+  const { dir } = arvore({ ...ESPEC, 'p/feature/f/ARCHITECTURE.md': 'x', 'p/feature/f/TCO.md': 'x', 'p/feature/f/user-stories/': '' });
+  const r = rodar(dir, 'f');
+  assert.match(r.stdout, /Etapa: 6\/14 — User Stories/);
+  assert.match(r.stdout, /Próximo: \/kanon screen-validation — falta telas\/SCREEN-VALIDATION\.md/);
+  assert.match(r.stdout, /\[ \]  7 Validação de telas .*\n {9}\/kanon screen-validation f\n/);
+});
+
+test('validação de telas com tela pendente não fecha o marco e diz quantas faltam', () => {
+  const { dir } = arvore({
+    ...ESPEC,
+    'p/feature/f/ARCHITECTURE.md': 'x',
+    'p/feature/f/TCO.md': 'x',
+    'p/feature/f/user-stories/': '',
+    'p/feature/f/telas/SCREEN-VALIDATION.md': indice('aprovada', 'enviada', 'mudança pedida'),
+  });
+  const r = rodar(dir, 'f');
+  assert.match(r.stdout, /Etapa: 6\/14/);
+  assert.match(r.stdout, /Próximo: \/kanon screen-validation — .*\(1 de 3 telas aprovadas\)/);
+});
+
+test('validação de telas com todas aprovadas fecha o marco; o índice do template vazio não conta', () => {
+  const base = { ...ESPEC, 'p/feature/f/ARCHITECTURE.md': 'x', 'p/feature/f/TCO.md': 'x', 'p/feature/f/user-stories/': '' };
+  const ok = arvore({ ...base, 'p/feature/f/telas/SCREEN-VALIDATION.md': TELAS_APROVADAS });
+  assert.match(rodar(ok.dir, 'f').stdout, /Etapa: 7\/14 — Validação de telas/);
+  const tpl = fs.readFileSync(path.join(__dirname, '..', '..', '..', '.kanon', 'templates', 'SCREEN-VALIDATION.template.md'), 'utf8');
+  const vazio = arvore({ ...base, 'p/feature/f/telas/SCREEN-VALIDATION.md': tpl });
+  assert.match(rodar(vazio.dir, 'f').stdout, /\(índice sem telas\)/);
 });

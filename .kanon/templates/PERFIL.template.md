@@ -17,6 +17,8 @@ ferramentas:
   mudanca: _[preencher: nome do adaptador]_
   design: _[preencher: nome do adaptador]_
   observabilidade: _[preencher: nome do adaptador]_
+  dados: _[preencher: nome do adaptador]_
+  implantacao: _[preencher: nome do adaptador, ou lista]_
 ferramentas_confirmadas_em: _[preencher: AAAA-MM-DD]_
 validade:
   papeis: 30

@@ -106,3 +106,49 @@ test('quem encontra defeito aponta para a triagem da skill 32', () => {
     assert.match(ler(rel), /32-report-bug[^\n]*[Tt]riagem|[Tt]riagem[^\n]*32-report-bug/, rel);
   }
 });
+
+const INTEGRACOES = path.join(__dirname, '..', '..', 'integrations');
+const { parseFrontmatter } = require('../lib/perfil');
+
+function capacidadesDoProcesso() {
+  const p17 = ler('process/17-company-profile.md');
+  const tabela = p17.split('## Capacidades')[1].split('\n## ')[0];
+  return [...tabela.matchAll(/^\| [^|]+ \| `([a-z]+)` \|/gm)].map((m) => m[1]);
+}
+
+test('capacidades: process/17, o template de perfil e os adaptadores usam as mesmas chaves', () => {
+  const caps = capacidadesDoProcesso();
+  for (const c of ['dados', 'implantacao', 'observabilidade', 'mudanca', 'repositorio']) assert.ok(caps.includes(c), c);
+  const tpl = ler('templates/PERFIL.template.md');
+  for (const c of caps) assert.match(tpl, new RegExp(`^  ${c}: `, 'm'), `template de perfil sem ${c}`);
+  for (const a of fs.readdirSync(INTEGRACOES).filter((f) => f.endsWith('.md'))) {
+    const fm = parseFrontmatter(fs.readFileSync(path.join(INTEGRACOES, a), 'utf8'));
+    for (const c of fm.capacidades || []) assert.ok(caps.includes(c), `${a}: capacidade ${c} fora do process/17`);
+  }
+});
+
+test('levantamento de evidências: cada pergunta da triagem cita só capacidades do process/17', () => {
+  const caps = capacidadesDoProcesso();
+  const sec = ler('skills/32-report-bug/SKILL.md').split('### Como levantar cada evidência')[1].split('\n### ')[0];
+  for (let n = 1; n <= 6; n += 1) {
+    const linha = sec.split('\n').find((l) => l.startsWith(`| ${n} |`));
+    assert.ok(linha, `pergunta ${n} sem linha`);
+    const citadas = [...linha.split('|')[2].matchAll(/`([a-z]+)`/g)].map((m) => m[1]);
+    assert.ok(citadas.length, `pergunta ${n} sem capacidade`);
+    for (const c of citadas) assert.ok(caps.includes(c), `pergunta ${n}: ${c}`);
+  }
+});
+
+test('todo adaptador de investigação tem Como consultar e Restrições de acesso, e há um para cada capacidade de investigação', () => {
+  const investigar = new Set(['observabilidade', 'dados', 'implantacao', 'mudanca', 'repositorio', 'trabalho', 'documentacao']);
+  const cobertas = new Set();
+  for (const a of fs.readdirSync(INTEGRACOES).filter((f) => f.endsWith('.md'))) {
+    const texto = fs.readFileSync(path.join(INTEGRACOES, a), 'utf8');
+    const caps = (parseFrontmatter(texto).capacidades || []).filter((c) => investigar.has(c));
+    if (!caps.length || a === 'notion.md') continue;
+    caps.forEach((c) => cobertas.add(c));
+    assert.ok(texto.includes('## Como consultar'), `${a}: falta Como consultar`);
+    assert.ok(texto.includes('## Restrições de acesso'), `${a}: falta Restrições de acesso`);
+  }
+  for (const c of investigar) assert.ok(cobertas.has(c), `nenhum adaptador de investigação para ${c}`);
+});

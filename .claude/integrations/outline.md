@@ -34,6 +34,12 @@ Antes de publicar, confere e reporta cada item como atende / não atende:
 - [ ] Nenhum dado real de cliente (CPF, CNPJ, e-mail, telefone, nome).
 - [ ] Nenhum parágrafo quebrado em várias linhas.
 
+## Como consultar
+Usado pela triagem de `skills/32-report-bug` (pergunta 1) para achar a regra documentada: `POST /api/documents.search` com o termo e `POST /api/documents.info` com o id, com o token da empresa. A cópia local (`outline-export/` da Feature) vem antes, quando existe; o remoto confirma se ela está atual (`updatedAt`).
+
+## Restrições de acesso
+Token no `.env` da empresa. Se a instância estiver atrás da VPN, o teste de conexão mostra; o `warp-cli` pede `--accept-tos` em toda chamada fora de terminal interativo.
+
 ## Caminho alternativo
 Outline temporariamente indisponível: a documentação permanece local e a pendência é registrada no `PUBLISH-SUMMARY` — não é considerada publicada sem confirmação. Nunca configurado: `process/13`.
 

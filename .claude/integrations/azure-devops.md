@@ -24,10 +24,22 @@ MCP `azure-devops` ou CLI `az` autenticado (`az devops login`). Organização, p
      - uma relação `AttachedFile` por anexo (`attributes.name` = nome do anexo).
   3. User Story nova: `POST _apis/wit/workitems/$User%20Story` com a relação `System.LinkTypes.Hierarchy-Reverse` apontando para a Feature.
   4. Confere a resposta (revisão nova, tags, responsável, anexos) e registra no resumo da publicação.
-- **Token**: `az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798`, guardado só durante a sessão, fora do repositório. Com VPN de túnel corporativo ligada, o `az` pode falhar; desligar e tentar de novo.
+- **Token**: `az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798`, guardado só durante a sessão, fora do repositório. Com VPN de túnel corporativo ligada, o `az` falha com `CERTIFICATE_VERIFY_FAILED`: exportar `REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` em vez de desligar a VPN, que outras sessões podem estar usando.
 - **Test cases**: cria ou atualiza Test Plans e Suites pelo identificador existente, nunca duplica.
 - **PR**: `az repos pr create` passa pelo `pr-publish-consent-gate`; threads de revisão pela conta do revisor humano.
 - **Comentário de handoff**: o Azure DevOps remove comentário HTML do texto armazenado (verificado em 2026-08-31), por isso o marcador `<!-- handoff:<id> -->` não localiza comentário — a localização é pelo id gravado em `comentario_ado`.
+
+## Como consultar
+Usado pela triagem de `skills/32-report-bug` (perguntas 1, 3 e 6). Em ordem de preferência:
+- **Work item e regra** (pergunta 1): `az boards query --wiql "<WIQL>"` e `az boards work-item show --id <id>`, ou o REST `_apis/wit/workitems?ids=<ids>&$expand=all`. O MCP é a primeira opção quando carregou na sessão.
+- **PR e histórico** (pergunta 6): `az repos pr list/show` e `az devops invoke --area git --resource pullRequestThreads|pullRequestIterations`.
+- **Código** (pergunta 3): a cópia local registrada em `<empresa>/kanon/investigacao.md`, com `git fetch`; o MCP de repositório só quando não há cópia.
+
+## Restrições de acesso
+- O MCP só carrega no início da sessão; se falhou, usar o `az`, sem tentar religar.
+- As ferramentas de repositório do MCP já caíram para a organização inteira enquanto as de work item funcionavam: antes de depender delas, um teste barato (`repo_repository action=list`) num repositório conhecido.
+- Alguns repositórios não são legíveis pela identidade do `az` (`TF401019`): pedir a cópia local ou o acesso, sem insistir.
+- VPN ligada: `REQUESTS_CA_BUNDLE` (ver Token, acima).
 
 ## Caminho alternativo
 API temporariamente indisponível: enfileira a sincronização pendente e reporta o atraso — nunca marca como sincronizado sem confirmação. Nunca configurado: `process/13` — orienta a configuração ou registra exceção.

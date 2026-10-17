@@ -27,6 +27,27 @@ Antes de criar o `BUG.md`, o relato passa por seis perguntas, na ordem. Cada res
 5. **É defeito ou ambiente e configuração?** Versão implantada, configuração do sistema, serviço fora do ar, escala e fila parada. Problema real, mas a correção é operacional, não de código.
 6. **É regressão?** Se já funcionou, qual mudança (PR, versão, mudança em produção) alterou o comportamento: isso define quem corrige e a urgência.
 
+### Como levantar cada evidência
+Cada pergunta tem uma fonte no perfil da empresa (capacidades de [`process/17-company-profile.md`](../../process/17-company-profile.md)). O adaptador de cada capacidade diz como consultar, por mais de um caminho, e quais restrições de acesso valem.
+
+| # | Capacidade | O que medir | Evidência registrada | Sem acesso |
+|---|---|---|---|---|
+| 1 | pasta da Feature, `trabalho`, `documentacao`; contrato da API em `repositorio` | o critério de aceite, a regra ou o contrato que vale para o caso, na versão vigente | trecho literal, link e data | perguntar ao PO qual é a regra; a resposta vira a evidência, com autor e data |
+| 2 | ambiente de homologação (API, tela por `design`), `observabilidade` | os passos executados em homologação; em produção, a ocorrência nos logs pelo horário e pelo identificador | passos, requisição e resposta sem dado pessoal, ou a consulta de log com o filtro e o total | pedir ao relator horário, identificador e print; ou escrever a consulta de log para uma pessoa rodar |
+| 3 | `repositorio` (cópia local atualizada) | a linha que produz o comportamento, **na versão implantada** (pergunta 5), não só na branch principal | `arquivo:linha` e o commit lido | pedir a cópia ou o acesso; sem código, a pergunta fica "não medido" |
+| 4 | `dados` | consulta só de leitura no ambiente afetado | a consulta e o resultado agregado, sem dado pessoal | escrever a consulta para uma pessoa rodar e registrar o resultado com autor e data |
+| 5 | `implantacao`, `mudanca`, `observabilidade`; configuração em `dados` | versão implantada × versão do código lido; mudanças recentes; instâncias, escala e filas; a configuração usada pelo caso | versão ou commit implantado, id da mudança, métrica com horário | idem |
+| 6 | histórico em `repositorio`, `implantacao`, `mudanca` | o que mudou entre a última versão boa e a atual | PR, commit ou mudança em produção | "não sei" é resposta válida |
+
+- **Antes de investigar, testar o acesso** só às capacidades que o caso usa, pelo teste de conexão do adaptador, e listar as restrições encontradas (rede privada, credencial, login interativo). Acesso que falta segue [`process/13-external-integration-prerequisite.md`](../../process/13-external-integration-prerequisite.md): registra a exceção e usa o caminho alternativo, nunca "pulado".
+- **Ordem das fontes**: a que não depende de pessoa (API com a credencial da configuração) → a ferramenta com a sessão de uma pessoa (navegador logado) → uma pessoa roda a consulta escrita pela skill e devolve o resultado.
+- **Produção é só leitura e só com pedido explícito** de quem usa o kanon, para aquela investigação. Quando o perfil registra que produção é operada por uma pessoa, a skill escreve a consulta e pede que ela rode (como em `skills/44-topic-enrichment`).
+- **Investigar não muda estado**: não reinicia serviço, não dispara implantação nem reprocessamento, não altera dado, e não desliga acesso (rede, sessão) que outra pessoa ou sessão está usando.
+- **Dado pessoal fica fora da evidência**: contagens, identificadores internos e valores mascarados.
+- Pergunta sem evidência fica "não medido: _motivo_ · pedido a _quem_ em _data_". A triagem com pergunta 1 a 5 não medida termina como **inconclusivo**, com os pedidos em aberto, e não gera `BUG.md`.
+- **Quem investiga**: o agente da camada do sistema (`agents/AGENT-BACKEND-ENGINEER.md`, `agents/AGENT-FRONTEND-ENGINEER.md`, `agents/AGENT-DATA-ENGINEER.md`), com `agents/AGENT-QA-ENGINEER.md` na reprodução e `agents/AGENT-SRE.md` na pergunta 5.
+
+### Resultado
 | Resultado da triagem | O que é | Destino |
 |---|---|---|
 | Regra escrita, reproduz e causa no código | Bug | `BUG.md` desta skill, com a triagem preenchida |
@@ -42,7 +63,7 @@ Antes de criar o `BUG.md`, o relato passa por seis perguntas, na ordem. Cada res
 - O acionamento automático da regra acima passa pela mesma triagem: a skill que achou o defeito entrega o que já mediu, e esta skill completa o que falta.
 
 ## Depende de
-- `reference/boas-praticas-dev/11-debugging.md`, `27-bug-task-management`, `49-change-impact`, `process/12-knowledge-retrieval.md`, `process/16-design-foundations.md`.
+- `reference/boas-praticas-dev/11-debugging.md`, `27-bug-task-management`, `49-change-impact`, `process/13-external-integration-prerequisite.md`, `process/17-company-profile.md`, `process/12-knowledge-retrieval.md`, `process/16-design-foundations.md`.
 
 ## Procedimento em caso de falha
 Se os Repro Steps estiverem incompletos ou não reprodutíveis, a skill pede mais informação antes de criar o artefato — não cria um `BUG.md` que ninguém consegue reproduzir depois. Triagem que termina em pedido de mudança, ajuste operacional ou inconclusivo é reportada com o resultado e a evidência, e não gera `BUG.md`.

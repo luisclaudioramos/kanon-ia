@@ -13,12 +13,14 @@ Em toda sessão (o runtime monta o perfil efetivo) e em toda skill que precise d
 | Trabalho | `trabalho` | work items, test cases, comentários de work item |
 | Documentação | `documentacao` | documentação de longo prazo publicada |
 | Comunicação | `comunicacao` | mensagens, canais, rascunhos de aviso |
-| Repositório e PR | `repositorio` | repositório remoto, pull requests, votos |
+| Repositório e PR | `repositorio` | repositório remoto, pull requests, votos, histórico do código e as cópias locais usadas para ler código |
 | Gestão de mudança | `mudanca` | pedido, aprovação e fechamento de mudança em produção |
 | Fonte de design | `design` | telas e protótipos (ver `skills/48-screen-validation`) |
 | Observabilidade | `observabilidade` | logs, métricas e consulta de produção |
+| Dados | `dados` | banco de dados por ambiente, para consulta só de leitura |
+| Implantação | `implantacao` | versão implantada em cada ambiente, esteira de implantação e estado do ambiente (instâncias, escala, filas) |
 
-Cada capacidade aponta para um **adaptador** da camada de integração (no Claude Code: `.claude/integrations/<adaptador>.md`), que diz como conectar, testar, publicar e o caminho alternativo. Nenhum arquivo de `.kanon/` cita ferramenta, empresa, pessoa ou canal pelo nome.
+Cada capacidade aponta para um ou mais **adaptadores** da camada de integração (no Claude Code: `.claude/integrations/<adaptador>.md`; vários como lista, ex.: `implantacao: [a, b]`), que dizem como conectar, testar, publicar, **consultar** e o caminho alternativo. Todo adaptador usado para investigar tem as seções **Como consultar**, com mais de um caminho em ordem de preferência, e **Restrições de acesso** (rede, credencial, login interativo, limites), conferidas na data registrada. Os valores da empresa (endereços, identificadores de conexão, nomes de job) ficam em `<empresa>/kanon/investigacao.md`, e as credenciais no `.env` da empresa. Nenhum arquivo de `.kanon/` cita ferramenta, empresa, pessoa ou canal pelo nome.
 
 ## Onde fica o perfil
 No repositório de conteúdo, numa pasta `kanon/` em cada nível:

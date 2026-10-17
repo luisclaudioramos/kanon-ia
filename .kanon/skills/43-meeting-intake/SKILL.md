@@ -26,6 +26,7 @@ Fase 0 — Inicialização e Contexto, antes de `skills/39-generate-requirement-
 - A data de uma transcrição vem do nome da pasta e do cabeçalho do documento, **nunca** do `eid` do link de convite — em evento recorrente o `eid` aponta para uma ocorrência da série, não para a data da gravação. Divergência entre pasta e cabeçalho vira pergunta na rodada de esclarecimento, não correção automática.
 - Reuniões distintas no mesmo dia são identificadas pelo id do documento de transcrição, não pelo nome do arquivo.
 - **Rodada de esclarecimento (obrigatória).** Após a varredura, apresenta ao usuário três listas, cada item citando arquivo e timestamp: (1) o que a skill entendeu, para confirmação ou correção; (2) o que não entendeu — trecho ambíguo, sigla, termo, sistema ou pessoa ausente do corpus; (3) o que parece aberto ou contraditório — pergunta feita na reunião sem resposta, falas que se contradizem, decisão sem dono.
+- **Defeito relatado em reunião** é capturado como assunto, com o trecho e o timestamp, nunca como Bug: quem confirma é a triagem de [`32-report-bug`](../32-report-bug/SKILL.md) ("Triagem: é bug de verdade?"), que usa o relato como ponto de partida e mede o resto.
 - **Sinais de mudança na empresa.** Frases como "o novo PO é…", "a partir de agora…", "vamos migrar para…" ou uma pessoa num papel diferente do registrado no perfil efetivo viram proposta em `51-company-profile propor`, com `arquivo:timestamp` como fonte. A skill não altera o perfil; só propõe.
 - A rodada tem no máximo 7 perguntas, ordenadas por bloqueio: o que trava um assunto vem antes do que é curiosidade. Rodada longa não é respondida.
 - Nunca preenche uma resposta que o usuário não deu. Pergunta não respondida vira lacuna com dono nomeado na nota de assunto correspondente.
@@ -40,7 +41,7 @@ Fase 0 — Inicialização e Contexto, antes de `skills/39-generate-requirement-
 - **Balde vazio aparece dizendo que está vazio.** Seção ausente é erro, não economia.
 
 ## Depende de
-- `templates/ASSUNTO.template.md`, `skills/45-knowledge-promotion`, `process/06-markdown-formatting-rules.md`, `process/11-subagent-anti-hallucination.md`.
+- `templates/ASSUNTO.template.md`, `skills/45-knowledge-promotion`, `skills/32-report-bug`, `process/06-markdown-formatting-rules.md`, `process/11-subagent-anti-hallucination.md`.
 - `tools/fase_assunto.py` (formato do `historico.md`), `tools/valida_pasta_assunto.py` (coerência da pasta).
 - `tools/extrato.py`, `tools/descartes.py`.
 

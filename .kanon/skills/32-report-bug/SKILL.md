@@ -37,6 +37,8 @@ Antes de criar o `BUG.md`, o relato passa por seis perguntas, na ordem. Cada res
 
 - **Nada de "é bug" ou "corrigido" pelo relato.** A afirmação vem depois da pergunta 4; "corrigido" só depois de conferir no dado, no mesmo ambiente.
 - **Um Bug por causa, não por ocorrência.** Dez ocorrências da mesma causa são um Bug com a lista das dez.
+- **Trava**: `bug-triage-gate` recusa gravar um `BUG.md` (ou `BUG-NN-*.md`) novo sem a seção Triagem ou com as perguntas 1 a 5 sem resposta; a 6 é opcional. Bug antigo, sem a seção, não é cobrado ao ser editado.
+- Quem encontra defeitos aponta para esta triagem: `12-development-execution`, `13-code-review`, `14-qa-validation`, `43-meeting-intake`, `AGENT-QA-ENGINEER` e `AGENT-CODE-REVIEWER`.
 - O acionamento automático da regra acima passa pela mesma triagem: a skill que achou o defeito entrega o que já mediu, e esta skill completa o que falta.
 
 ## Depende de

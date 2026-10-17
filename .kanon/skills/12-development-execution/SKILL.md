@@ -21,10 +21,11 @@ Fase 4 — Desenvolvimento e Testes. Roda após [`08-create-task-artifacts`](../
   2. Executa o "Ciclo adversarial" de `process/15` até a condição de parada ali definida (trava 11). Nunca declara 100% sem relatório de cobertura e de mutação que comprove.
   3. Atualiza a documentação do sistema atual afetada para o to-be (trava 9): a documentação da Feature via [`18-feature-context-back-propagation`](../18-feature-context-back-propagation/SKILL.md); README, docs do repositório e wiki diretamente.
   4. Preenche o `PR-DESCRIPTION` com todas as seções, usando "Não se aplica: _motivo_" onde couber.
+- **Defeito encontrado fora da task** (no código existente, no dado ou em outro sistema): passa pela triagem de [`32-report-bug`](../32-report-bug/SKILL.md) ("Triagem: é bug de verdade?") antes de ser chamado de bug ou corrigido. A skill entrega o que já mediu (passos, `arquivo:linha`, consulta); correção sem `BUG.md` não é caminho válido.
 - Em task de interface, antes da PR, confere as regras D1–D6 de [`process/16-design-foundations.md`](../../process/16-design-foundations.md) contra o perfil de design do sistema, só no que a task introduz, e gera as pranchas 390/768/1920 das telas alteradas.
 
 ## Depende de
-- `agents/AGENT-BACKEND-ENGINEER.md`, `agents/AGENT-FRONTEND-ENGINEER.md`, `agents/AGENT-DATA-ENGINEER.md`, `process/10-core-agnosticism-gate.md`, `process/15-pull-request-gates.md`, `templates/PR-DESCRIPTION.template.md`, `18-feature-context-back-propagation`.
+- `agents/AGENT-BACKEND-ENGINEER.md`, `agents/AGENT-FRONTEND-ENGINEER.md`, `agents/AGENT-DATA-ENGINEER.md`, `process/10-core-agnosticism-gate.md`, `process/15-pull-request-gates.md`, `templates/PR-DESCRIPTION.template.md`, `18-feature-context-back-propagation`, `32-report-bug`.
 
 ## Procedimento em caso de falha
 Se a task tiver ambiguidade que impeça a implementação, a skill bloqueia e devolve para [`07-refine-tasks`](../07-refine-tasks/SKILL.md) via handoff reverso, em vez de implementar algo baseado em suposição.

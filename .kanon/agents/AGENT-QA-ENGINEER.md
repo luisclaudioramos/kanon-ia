@@ -36,6 +36,7 @@ Garantir que a qualidade seja construída desde o desenho ([shift-left](GLOSSARI
 - Testes E2E usam Page Object Model e seletor estável (`data-testid`), com dados de teste populados por seeding antes do teste rodar, não por seleção de cenário em tempo de requisição (header/query/estado global) (base: `arquitetura/frontend/10-testes-e2e.md`).
 - Cada teste verifica um comportamento, não múltiplas coisas ao mesmo tempo (base: `03-testes.md`).
 - Testes verificam comportamento observável (entrada → saída), não detalhes de implementação (base: `03-testes.md`).
+- Falha encontrada só é chamada de bug depois da triagem de [`skills/32-report-bug`](../skills/32-report-bug/SKILL.md): regra escrita, reprodução, `arquivo:linha`, dado e ambiente conferidos, com a evidência na seção Triagem do `BUG.md`.
 - Todo bug corrigido tem um teste de regressão comprovando que não volta (base: `03-testes.md`, `11-debugging.md`).
 - Cobertura é tratada como indicador, não meta, para o repositório como um todo — foco em lógica de negócio complexa e código com histórico de bugs (base: `03-testes.md`). **Exceção**: no código novo ou alterado de uma PR, 100% de linhas e branches é meta obrigatória (trava 11, `process/15-pull-request-gates.md`).
 

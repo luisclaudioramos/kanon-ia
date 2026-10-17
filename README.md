@@ -26,7 +26,7 @@ especificação valer em tempo de execução.
 
 | Item | Papel |
 |---|---|
-| [`.claude/hooks/`](.claude/hooks) | Os 10 gates em JavaScript que rodam de verdade, todos ligados no `settings.json`: `identity-seals-gate`, `seal-registry-gate`, `seals-write-gate`, `seal-routing-gate`, `core-agnostic-gate`, `core-agnostic-commit-gate`, `design-gate-approval-gate`, `branch-delete-guard`, `develop-merge-squash-gate`, `pr-publish-consent-gate` — mais um README próprio |
+| [`.claude/hooks/`](.claude/hooks) | Os 11 gates em JavaScript que rodam de verdade, todos ligados no `settings.json`: `identity-seals-gate`, `seal-registry-gate`, `seals-write-gate`, `seal-routing-gate`, `core-agnostic-gate`, `core-agnostic-commit-gate`, `design-gate-approval-gate`, `bug-triage-gate`, `branch-delete-guard`, `develop-merge-squash-gate`, `pr-publish-consent-gate` — mais um README próprio |
 | [`.claude/settings.json`](.claude/settings.json) | Liga os hooks ao harness: 10 execuções em 3 matchers de `PreToolUse` |
 | [`.claude/commands/kanon.md`](.claude/commands/kanon.md) | O slash command `/kanon`, que implementa a especificação de `.kanon/commands/kanon.md` |
 | [`.claude/hooks/lib/design.js`](.claude/hooks/lib/design.js) | A regra de `DESIGN.md` aprovado, usada pelo `design-gate-approval-gate` e pelo `/kanon status` |

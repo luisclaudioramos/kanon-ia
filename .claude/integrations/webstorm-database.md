@@ -21,6 +21,7 @@ Em ordem de preferência:
 
 ## Restrições de acesso
 - Banco em rede privada: só com a VPN ligada, e a rota pode mudar quando o banco migra; o teste de conexão vem antes de qualquer consulta.
+- VPN que captura faixas privadas (ex.: 172.16.0.0/12) também corta a rede do Docker: o host não alcança o contêiner, nem pelo IP nem pela porta publicada ("Não há rota" ou conexão encerrada no handshake). Para banco descartável local, use `--network host` com uma porta livre, sem desligar a VPN.
 - Produção: só leitura e só com pedido explícito. Escrita em produção nunca é feita pela skill: vai como script para a pessoa rodar, um comando por vez.
 - Consulta longa: o MCP desiste por volta de 60 s, mas a consulta continua no servidor. Acompanhe pelo `information_schema.processlist`. O `cancel_sql_query` só acha a sessão que o próprio MCP abriu, não o id do `processlist`; e `KILL QUERY` é ação sobre recurso compartilhado, que a skill não executa. Se for preciso parar, peça à pessoa que cancele no WebStorm. Senão, deixe terminar e não repita a consulta enquanto ela roda.
 - Antes de consulta pesada em produção: `EXPLAIN` com índice em todas as junções não garante menos de 60 s. Em tabela grande, rode antes uma fatia (um status, um período ou `LIMIT`) e meça; só então rode o resto, em partes.

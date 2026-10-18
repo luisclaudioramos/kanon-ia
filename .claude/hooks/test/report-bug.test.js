@@ -161,3 +161,36 @@ test('triagem replicável: a skill exige registrar como refazer e o template tem
   assert.ok(tpl.includes('## Como refazer a triagem'), 'template sem a seção Como refazer a triagem');
   assert.ok(tpl.indexOf('## Como refazer a triagem') < tpl.indexOf('## Repro Steps'), 'a seção vem antes dos Repro Steps');
 });
+
+const LATENTE = TRIAGEM_OK.replace('homologação: SELECT ... = 0 linhas', 'latente: o caminho roda em produção, mas o banco não guarda o valor anterior');
+
+test('Bug latente: a skill restringe a item já registrado e com análise; item novo continua sem BUG.md', () => {
+  const triagem = ler('skills/32-report-bug/SKILL.md').split('## Triagem: é bug de verdade?')[1];
+  assert.match(triagem, /\| Bug latente \|/);
+  assert.match(triagem, /\*\*Bug latente\*\*.*já registrado/);
+  assert.match(triagem, /\*\*Item novo\*\*.*não gera `BUG.md`/);
+  const tpl = ler('templates/BUG.template.md');
+  assert.match(tpl, /^\*\*Classificação\*\*: Bug \| Bug latente/m);
+  assert.match(tpl, /^\*\*Item de origem\*\*:/m);
+});
+
+test('trava: pergunta 1 a 5 "não medido" é recusada', () => {
+  const d = pasta();
+  const f = path.join(d, 'BUG.md');
+  const nm = TRIAGEM_OK.replace('homologação: SELECT ... = 0 linhas', 'não medido: banco sem rota · pedido à infra em 18/10');
+  const r = rodarHook('bug-triage-gate', gravar(f, nm), { cwd: d });
+  assert.strictEqual(r.decisao, 'deny');
+  assert.match(r.motivo, /pergunta 4 não medida/);
+});
+
+test('trava: pergunta 4 "latente" só passa com o item de origem preenchido', () => {
+  const d = pasta();
+  const f = path.join(d, 'BUG.md');
+  const sem = rodarHook('bug-triage-gate', gravar(f, LATENTE), { cwd: d });
+  assert.strictEqual(sem.decisao, 'deny');
+  assert.match(sem.motivo, /Bug latente sem o item de origem/);
+  const vazio = LATENTE.replace('## Triagem', '**Item de origem**: _[preencher: id]_\n\n## Triagem');
+  assert.strictEqual(rodarHook('bug-triage-gate', gravar(f, vazio), { cwd: d }).decisao, 'deny');
+  const com = LATENTE.replace('## Triagem', '**Item de origem**: [177964](https://exemplo/177964)\n\n## Triagem');
+  assert.strictEqual(rodarHook('bug-triage-gate', gravar(f, com), { cwd: d }).decisao, 'allow');
+});

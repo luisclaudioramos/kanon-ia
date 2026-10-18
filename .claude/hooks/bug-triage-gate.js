@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // Triagem de bug (skills/32-report-bug, seção "Triagem: é bug de verdade?"): bloqueia a gravação de um
 // BUG.md (ou BUG-NN-*.md) novo sem a seção Triagem, ou com as perguntas 1 a 5 sem resposta. A pergunta 6
-// (regressão) é opcional. Bug antigo, já gravado sem a seção, não é cobrado ao ser editado.
+// (regressão) é opcional. Resposta "não medido" é inconclusivo, não Bug. A pergunta 4 "latente" (Bug latente)
+// só vale para item já registrado na ferramenta de trabalho, com o campo **Item de origem** preenchido.
+// Bug antigo, já gravado sem a seção, não é cobrado ao ser editado.
 // Ver .kanon/skills/32-report-bug/SKILL.md e .kanon/templates/BUG.template.md
 'use strict';
 const fs = require('fs');
@@ -20,6 +22,11 @@ function temTriagem(texto) {
   return /^## Triagem\s*$/m.test(texto);
 }
 
+function temItemDeOrigem(texto) {
+  const m = texto.match(/^\*\*Item de origem\*\*:\s*(.*)$/m);
+  return Boolean(m && m[1].trim() && !/\[preencher/i.test(m[1]));
+}
+
 // Devolve a lista de problemas da seção Triagem; vazia quando está completa.
 function problemas(texto) {
   if (!temTriagem(texto)) return ['falta a seção "## Triagem"'];
@@ -30,6 +37,10 @@ function problemas(texto) {
     const resposta = linha ? (linha.split('|')[3] || '').trim() : '';
     if (!linha) out.push(`pergunta ${n} sem linha`);
     else if (!resposta || /\[preencher/i.test(resposta)) out.push(`pergunta ${n} sem resposta`);
+    else if (/^n[ãa]o medid/i.test(resposta)) out.push(`pergunta ${n} não medida (inconclusivo, não Bug)`);
+    else if (n === 4 && /^latente\b/i.test(resposta) && !temItemDeOrigem(texto)) {
+      out.push('Bug latente sem o item de origem (só vale para item já registrado na ferramenta de trabalho)');
+    }
   }
   return out;
 }
@@ -63,7 +74,7 @@ process.stdin.on('end', () => {
     if (!lista.length) return responder('allow');
     responder(
       'deny',
-      `bug-triage-gate: ${path.basename(filePath)} sem a triagem completa (${lista.join('; ')}). Responda as perguntas 1 a 5 da seção Triagem com a evidência (skills/32-report-bug, "Triagem: é bug de verdade?"; modelo em .kanon/templates/BUG.template.md). Se a triagem não terminou em Bug, não crie o BUG.md: reporte o resultado.`
+      `bug-triage-gate: ${path.basename(filePath)} sem a triagem completa (${lista.join('; ')}). Responda as perguntas 1 a 5 da seção Triagem com a evidência (skills/32-report-bug, "Triagem: é bug de verdade?"; modelo em .kanon/templates/BUG.template.md). Se a triagem não terminou em Bug, não crie o BUG.md: reporte o resultado. Bug latente só para item já registrado, com **Item de origem**.`
     );
   } catch (err) {
     responder('deny', `bug-triage-gate: erro interno no hook (${err.message}) — bloqueado por padrão (fail-closed). Corrija .claude/hooks/bug-triage-gate.js.`);

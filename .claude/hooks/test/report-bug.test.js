@@ -152,3 +152,12 @@ test('todo adaptador de investigação tem Como consultar e Restrições de aces
   }
   for (const c of investigar) assert.ok(cobertas.has(c), `nenhum adaptador de investigação para ${c}`);
 });
+
+test('triagem replicável: a skill exige registrar como refazer e o template tem a seção', () => {
+  const sec = ler('skills/32-report-bug/SKILL.md').split('### Como levantar cada evidência')[1].split('\n### ')[0];
+  assert.match(sec, /\*\*Triagem replicável\*\*/);
+  assert.match(sec, /roteiro de reprodução/);
+  const tpl = ler('templates/BUG.template.md');
+  assert.ok(tpl.includes('## Como refazer a triagem'), 'template sem a seção Como refazer a triagem');
+  assert.ok(tpl.indexOf('## Como refazer a triagem') < tpl.indexOf('## Repro Steps'), 'a seção vem antes dos Repro Steps');
+});

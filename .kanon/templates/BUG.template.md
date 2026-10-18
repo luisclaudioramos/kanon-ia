@@ -17,6 +17,18 @@ _Seis perguntas de `skills/32-report-bug`, cada uma com a evidência. Só é Bug
 | 5 | Ambiente e configuração descartados | _[preencher: versão implantada, configuração, serviços e filas conferidos]_ |
 | 6 | Regressão? | _[preencher: "não" · ou a mudança (PR, versão) que alterou o comportamento]_ |
 
+## Como refazer a triagem
+_Uma linha por pergunta: ferramenta, conexão (nome do valor no perfil, sem credencial) e o comando ou a consulta exata. Scripts ao lado deste arquivo; nunca só na área temporária da sessão._
+
+| # | Ferramenta e conexão | Comando, consulta ou script |
+|---|---|---|
+| 1 | _[preencher]_ | _[preencher]_ |
+| 2 | _[preencher]_ | _[preencher: inclui o script de reprodução local, se houver]_ |
+| 3 | _[preencher]_ | _[preencher]_ |
+| 4 | _[preencher]_ | _[preencher]_ |
+| 5 | _[preencher]_ | _[preencher]_ |
+| 6 | _[preencher]_ | _[preencher]_ |
+
 ## Repro Steps
 1. _[preencher]_
 2. _[preencher]_

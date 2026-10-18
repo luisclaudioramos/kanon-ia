@@ -194,3 +194,13 @@ test('trava: pergunta 4 "latente" só passa com o item de origem preenchido', ()
   const com = LATENTE.replace('## Triagem', '**Item de origem**: [177964](https://exemplo/177964)\n\n## Triagem');
   assert.strictEqual(rodarHook('bug-triage-gate', gravar(f, com), { cwd: d }).decisao, 'allow');
 });
+
+test('reprodução: local primeiro, homologação depois e produção só se nenhum dos dois der resultado, com aprovação', () => {
+  const sec = ler('skills/32-report-bug/SKILL.md').split('### Como levantar cada evidência')[1].split('\n### ')[0];
+  assert.match(sec, /\*\*Ordem da reprodução\*\*/);
+  const ordem = sec.split('**Ordem da reprodução**')[1].split('\n- ')[0];
+  const [l, h, p] = ['local', 'homologação', 'produção'].map((x) => ordem.indexOf(x));
+  assert.ok(l >= 0 && l < h && h < p, 'ordem local → homologação → produção');
+  assert.match(ordem, /aprovação/);
+  assert.match(ler('templates/BUG.template.md'), /local primeiro/);
+});

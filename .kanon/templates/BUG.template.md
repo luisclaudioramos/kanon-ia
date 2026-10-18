@@ -25,7 +25,7 @@ _Uma linha por pergunta: ferramenta, conexão (nome do valor no perfil, sem cred
 | # | Ferramenta e conexão | Comando, consulta ou script |
 |---|---|---|
 | 1 | _[preencher]_ | _[preencher]_ |
-| 2 | _[preencher]_ | _[preencher: inclui o script de reprodução local, se houver]_ |
+| 2 | _[preencher]_ | _[preencher: reprodução local primeiro (script), depois homologação; produção só se as duas não derem resultado, com aprovação]_ |
 | 3 | _[preencher]_ | _[preencher]_ |
 | 4 | _[preencher]_ | _[preencher]_ |
 | 5 | _[preencher]_ | _[preencher]_ |

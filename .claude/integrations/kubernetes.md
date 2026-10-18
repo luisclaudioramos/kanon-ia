@@ -21,7 +21,7 @@ Só verbos de leitura (`get`, `describe`, `logs`, `top`, `rollout history`):
 Alternativa sem cluster: a versão implantada pela esteira ([`jenkins.md`](jenkins.md), [`github.md`](github.md)) e o log centralizado ([`kibana.md`](kibana.md)).
 
 ## Restrições de acesso
-- Login interativo no provedor, que expira: a skill não consegue renovar sozinha.
+- Login interativo no provedor, que expira em horas (na prática, de um dia para o outro): a skill não consegue renovar sozinha. Teste o acesso no começo de cada investigação, e não só uma vez na configuração; quando falhar, peça à pessoa que entre de novo.
 - Pode exigir a VPN para alcançar o endereço do cluster.
 - Nunca `delete`, `scale`, `rollout restart`, `edit` ou `exec` para investigar.
 - Produção: só leitura e só com pedido explícito.

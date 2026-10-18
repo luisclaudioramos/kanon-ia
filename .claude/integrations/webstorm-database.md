@@ -16,13 +16,14 @@ Conexões cadastradas no WebStorm como **somente leitura**, lidas pelo MCP do We
 Em ordem de preferência:
 1. **MCP do WebStorm**, conexão somente leitura: só `SELECT`, `SHOW` e `information_schema`; consulta agregada sempre que possível.
 2. **Cliente de linha de comando num contêiner descartável** (`docker --context default run --rm mysql:<versão> mysql …`), com a credencial de leitura do `.env` passada por variável de ambiente, nunca na linha de comando. Serve também para validar script de migração contra a DDL real (`SHOW CREATE TABLE`) nas versões de cada ambiente.
-3. **Proxy de banco gerenciado na nuvem** (`cloud-sql-proxy`), quando o banco é gerenciado e a rede privada não alcança: exige login interativo da pessoa no provedor e permissão de cliente no projeto.
+3. **Proxy de banco gerenciado na nuvem** (`cloud-sql-proxy`), quando o banco é gerenciado e a rede privada não alcança: exige login interativo da pessoa no provedor e permissão de cliente no projeto. Não resolve quando a instância só tem IP privado: o proxy usa a mesma rota que falta.
 4. **Uma pessoa roda a consulta** escrita pela skill na ferramenta de produção dela (ex.: SQLPad) e devolve o resultado.
 
 ## Restrições de acesso
 - Banco em rede privada: só com a VPN ligada, e a rota pode mudar quando o banco migra; o teste de conexão vem antes de qualquer consulta.
 - Produção: só leitura e só com pedido explícito. Escrita em produção nunca é feita pela skill: vai como script para a pessoa rodar, um comando por vez.
-- Consulta longa: o MCP desiste por volta de 60 s, mas a consulta continua no servidor. Acompanhar por `information_schema.processlist` e cancelar com `cancel_sql_query` antes de repetir.
+- Consulta longa: o MCP desiste por volta de 60 s, mas a consulta continua no servidor. Acompanhe pelo `information_schema.processlist`. O `cancel_sql_query` só acha a sessão que o próprio MCP abriu, não o id do `processlist`; e `KILL QUERY` é ação sobre recurso compartilhado, que a skill não executa. Se for preciso parar, peça à pessoa que cancele no WebStorm. Senão, deixe terminar e não repita a consulta enquanto ela roda.
+- Antes de consulta pesada em produção: `EXPLAIN` com índice em todas as junções não garante menos de 60 s. Em tabela grande, rode antes uma fatia (um status, um período ou `LIMIT`) e meça; só então rode o resto, em partes.
 - Colunas com segredo (cadeia de conexão, token) nunca entram no `SELECT`. Documento e nome de cliente ficam fora da evidência.
 
 ## Caminho alternativo

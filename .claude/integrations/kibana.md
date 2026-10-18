@@ -22,7 +22,7 @@ Para o que não chega ao Elastic (falha antes de a instrumentação iniciar, log
 
 ## Restrições de acesso
 - Endereço em rede privada: só responde com a VPN da empresa ligada. Sem ela, a página pode abrir do cache e o login falha por tempo esgotado.
-- Certificado da VPN fora da cadeia padrão das ferramentas de linha de comando: `curl -k`, ou apontar o pacote de certificados do sistema.
+- Certificado assinado por uma CA interna da empresa, fora da cadeia padrão das ferramentas de linha de comando: aponte para o certificado da CA (`curl --cacert <ca-da-empresa>`; o caminho fica no perfil da empresa). Não use `curl -k`/`--insecure`: ele aceita qualquer certificado e esconde um intermediário falso. O pacote de certificados do sistema só resolve se a CA interna tiver sido incorporada a ele.
 - Produção: só leitura e só com pedido explícito (regra da triagem da `skills/32-report-bug`).
 - Retenção limitada: ocorrência mais antiga que a retenção do índice não aparece; registrar "fora da retenção", não "não ocorreu".
 

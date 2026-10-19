@@ -92,3 +92,15 @@ test('PR que corrige Bug é revisada contra a triagem do BUG.md: regra vigente, 
   assert.match(ler(SKILL13), /PR que corrige um Bug/);
   assert.match(ler('skills/32-report-bug/SKILL.md'), /PR que corrige o Bug é revisada contra esta triagem/);
 });
+
+test('reprodução local na revisão: Bug pelo roteiro da triagem com DDL real; código crítico opcional; UAT fora da revisão', () => {
+  const ag = ler(AGENTE);
+  assert.match(ag, /Como refazer a triagem/);
+  assert.match(ag, /teste unitário não substitui/);
+  assert.ok(ag.includes('**Reprodução local em código crítico**'));
+  assert.ok(ag.includes('**UAT fica fora da revisão**'));
+  const t = ler(TEMPLATE);
+  assert.match(t, /- \*\*Reprodução local:\*\*/);
+  assert.match(t, /- \*\*Fica para UAT:\*\*/);
+  assert.match(ler(SKILL13), /UAT fica fora da revisão/);
+});

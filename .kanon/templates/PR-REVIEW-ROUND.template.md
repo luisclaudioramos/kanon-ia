@@ -97,7 +97,7 @@ _Redigido por `skills/13-code-review` e publicado por `skills/34-pull-request-re
 > | Conferência | Fonte na triagem | Verificado no head `_[preencher]_` | Veredito |
 > |---|---|---|---|
 > | Regra vigente | _[preencher: pergunta 1 — regra, autor, data; se mudou depois da PR, as duas]_ | _[preencher: arquivo:linha que aplica a regra]_ | ✅ / ❌ → `REQ-NN` (🔴 se a PR segue a regra anterior) |
-> | Repro Steps | _[preencher: os passos e o esperado]_ | _[preencher: teste ou reprodução local, com o resultado]_ | ✅ / ❌ → `ID` |
+> | Repro Steps | _[preencher: os passos e o esperado, pelo roteiro "Como refazer a triagem"]_ | _[preencher: reprodução local — versão implantada dá o obtido, head dá o esperado; DDL real, banco descartável]_ | ✅ / ❌ → `ID` / ⚠️ não executado: _motivo_ |
 > | Causa raiz coberta | _[preencher: cada caminho listado]_ | _[preencher: arquivo:linha corrigido por caminho]_ | ✅ / ❌ → `ID` por caminho sem correção |
 > | Validação | _[preencher: cada item]_ | _[preencher: teste que prova, ou pendência declarada]_ | ✅ / ⚠️ pendente: _motivo_ / ❌ → `ID` |
 >
@@ -185,6 +185,8 @@ _Redigido por `skills/13-code-review` e publicado por `skills/34-pull-request-re
 >
 > - **Build e testes:** _[preencher: rodados localmente no head (comando e resultado) ou não rodados, com o motivo e a evidência usada no lugar]_
 > - **Esteira:** _[preencher: o que o check do head prova e o que não prova (ex.: "com base X, o workflow não executa a suíte, então esse verde não prova os testes")]_
+> - **Reprodução local:** _[preencher: o que rodou (sistema, versão implantada e head, DDL de qual ambiente, dado fictício) e o resultado; "não executada" com o motivo; "não se aplica" quando não é Bug nem código crítico]_
+> - **Fica para UAT:** _[preencher: o que só se prova em homologação e quem confere (`qa-validation` ou depois do merge); "nada"]_
 > - **Verificação dos 🔴:** _[preencher: como cada achado 🔴 foi conferido de novo antes de publicar (segunda leitura independente, reprodução, teste)]_
 >
 > ## 🔍 Declaração de varredura

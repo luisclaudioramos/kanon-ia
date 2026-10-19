@@ -213,3 +213,17 @@ test('bug é fluxo paralelo: o status mostra o report-bug fora dos marcos, na fe
   const p = rodar(dir, 'p');
   assert.match(p.stdout, /Bug em qualquer etapa: \/kanon report-bug <feature> <relato do problema>/);
 });
+
+test('projeto no layout as-is/execution/to-be: proposta em to-be/proposals/<nome> conta como feature', () => {
+  const { dir } = arvore({
+    'core/as-is/x.md': 'x',
+    'core/execution/progress/y.md': 'x',
+    'core/to-be/proposals/piloto/REQUIREMENT-SUMMARY.md': 'x',
+    'core/to-be/proposals/piloto/DESIGN.md': RASCUNHO,
+  });
+  const p = rodar(dir, 'core');
+  assert.match(p.stdout, /piloto +1\/14 Requisito · próximo: design-gate \(aguardando aprovação humana\)/);
+  const f = rodar(dir, 'piloto');
+  assert.match(f.stdout, /Etapa: 1\/14 — Requisito/);
+  assert.match(f.stdout, /Próximo: \/kanon design-gate — DESIGN.md existe, aguardando aprovação humana/);
+});

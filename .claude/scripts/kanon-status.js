@@ -47,7 +47,8 @@ const MARCOS = [
   { nome: 'Memória', comandos: ['memory-update'], prova: 'MEMORY.md', ok: algum(/^MEMORY\.md$/i) },
 ];
 
-const CONTEINERES = [['feature'], ['features'], ['to-be', 'feature']];
+// to-be/feature e to-be/proposals: layout as-is / execution / to-be dos projetos (proposta ainda sem feature no board).
+const CONTEINERES = [['feature'], ['features'], ['to-be', 'feature'], ['to-be', 'proposals']];
 const IGNORAR = new Set(['.git', 'node_modules', '.obsidian', 'kanon']);
 const NAO_VERIFICADO = 'Fora da pasta (não verificado): estado da PR, do work item e do deploy.';
 // skills/32-report-bug corre em paralelo e pode ser disparada em qualquer etapa: não é marco, aparece à parte.

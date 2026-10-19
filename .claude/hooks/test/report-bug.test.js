@@ -204,3 +204,13 @@ test('reprodução: local primeiro, homologação depois e produção só se nen
   assert.match(ordem, /aprovação/);
   assert.match(ler('templates/BUG.template.md'), /local primeiro/);
 });
+
+test('trava: rascunho e espelho de item da ferramenta de trabalho (BUG-<id>) não são bug local', () => {
+  const d = pasta();
+  for (const nome of ['BUG-177964.md', 'BUG-177964-descricao.md', 'BUG-177964-campos.md']) {
+    assert.strictEqual(rodarHook('bug-triage-gate', gravar(path.join(d, nome), 'x'), { cwd: d }).decisao, 'allow', nome);
+  }
+  for (const nome of ['BUG.md', 'BUG-01.md', 'BUG-02-importacao.md', 'BUG-123-x.md']) {
+    assert.strictEqual(rodarHook('bug-triage-gate', gravar(path.join(d, nome), 'x'), { cwd: d }).decisao, 'deny', nome);
+  }
+});

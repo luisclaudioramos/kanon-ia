@@ -64,7 +64,7 @@ Cada pergunta tem uma fonte no perfil da empresa (capacidades de [`process/17-co
 - **Item novo** (sem registro na ferramenta de trabalho, encontrado na revisão de código, na conversa ou nesta triagem): a pergunta 4 precisa confirmar no dado. Sem isso o resultado é inconclusivo, e não gera `BUG.md`; o defeito vai como achado com a evidência para quem decide abrir o item.
 - **Nada de "é bug" ou "corrigido" pelo relato.** A afirmação vem depois da pergunta 4; "corrigido" só depois de conferir no dado, no mesmo ambiente.
 - **Um Bug por causa, não por ocorrência.** Dez ocorrências da mesma causa são um Bug com a lista das dez.
-- **Trava**: `bug-triage-gate` recusa gravar um `BUG.md` (ou `BUG-NN-*.md`) novo sem a seção Triagem, com as perguntas 1 a 5 sem resposta ou "não medido", ou com a pergunta 4 "latente" sem o **Item de origem**; a 6 é opcional. Bug antigo, sem a seção, não é cobrado ao ser editado.
+- **Trava**: `bug-triage-gate` recusa gravar um `BUG.md` (ou `BUG-NN-*.md`, com até 3 dígitos) novo sem a seção Triagem, com as perguntas 1 a 5 sem resposta ou "não medido", ou com a pergunta 4 "latente" sem o **Item de origem**; a 6 é opcional. Bug antigo, sem a seção, não é cobrado ao ser editado. Espelho ou rascunho de item da ferramenta de trabalho, com o id do item no nome (`BUG-177964.md`), não é bug local e não passa pela trava.
 - Quem encontra defeitos aponta para esta triagem: `12-development-execution`, `13-code-review`, `14-qa-validation`, `43-meeting-intake`, `AGENT-QA-ENGINEER` e `AGENT-CODE-REVIEWER`.
 - O acionamento automático da regra acima passa pela mesma triagem: a skill que achou o defeito entrega o que já mediu, e esta skill completa o que falta.
 

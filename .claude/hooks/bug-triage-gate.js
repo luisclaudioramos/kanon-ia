@@ -15,7 +15,9 @@ function ehBug(filePath) {
   const base = path.basename(filePath || '');
   if (/\.template\.md$/i.test(base)) return false;
   if (/^BUG-(TASK|INSTRUCTIONS)/i.test(base)) return false;
-  return /^BUG(-\d+[^/]*)?\.md$/i.test(base);
+  // BUG-NN (até 3 dígitos) é bug local; BUG-<id do item> (ex.: BUG-177964.md) é espelho ou rascunho da
+  // ferramenta de trabalho, não passa pela triagem.
+  return /^BUG(-\d{1,3}(-[^/]*)?)?\.md$/i.test(base);
 }
 
 function temTriagem(texto) {

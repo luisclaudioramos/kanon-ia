@@ -203,3 +203,13 @@ test('validação de telas com todas aprovadas fecha o marco; o índice do templ
   const vazio = arvore({ ...base, 'p/feature/f/telas/SCREEN-VALIDATION.md': tpl });
   assert.match(rodar(vazio.dir, 'f').stdout, /\(índice sem telas\)/);
 });
+
+test('bug é fluxo paralelo: o status mostra o report-bug fora dos marcos, na feature e no projeto', () => {
+  const { dir } = arvore({ ...ESPEC, 'p/feature/g/REQUIREMENT-SUMMARY.md': 'x' });
+  const f = rodar(dir, 'f');
+  assert.match(f.stdout, /Fluxo paralelo \(a qualquer momento\)\n {2}Bug: \/kanon report-bug f <relato do problema>/);
+  assert.ok(f.stdout.indexOf('Fluxo paralelo') > f.stdout.indexOf('Marcos'));
+  assert.strictEqual(MARCOS.some((m) => m.comandos.includes('report-bug')), false);
+  const p = rodar(dir, 'p');
+  assert.match(p.stdout, /Bug em qualquer etapa: \/kanon report-bug <feature> <relato do problema>/);
+});

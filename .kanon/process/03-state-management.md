@@ -34,6 +34,7 @@ A consulta de estado (`kanon status <projeto|feature>`, modo consulta de [`skill
 
 - A etapa atual é o último marco cumprido sem buraco antes dele; o próximo passo é o primeiro marco que falta.
 - A lista de marcos traz, embaixo de cada um, os comandos que o geram, já com o nome da Feature, prontos para rodar ou para refazer uma etapa.
+- O Bug não é marco: `report-bug` ([`skills/32-report-bug`](../skills/32-report-bug/SKILL.md)) corre em paralelo e aparece à parte, em "Fluxo paralelo (a qualquer momento)", com o nome da Feature e o lugar do relato.
 - Marco que falta enquanto um posterior existe é **lacuna**, nunca etapa cumprida — o fluxo não avança como se ela tivesse sido feita (`02-sdd-flow.md`, procedimento em caso de falha).
 - Pasta sem nenhum artefato do pipeline é declarada fora do formato; o próximo passo é o Requirement Summary.
 - Validação de telas com tela pendente não fecha o marco: a consulta diz quantas telas do índice estão aprovadas. Feature sem a linha "Aprovadores de tela" e sem `telas/` aparece com o marco em aberto até declarar "Não se aplica" ou validar as telas.

@@ -50,6 +50,8 @@ const MARCOS = [
 const CONTEINERES = [['feature'], ['features'], ['to-be', 'feature']];
 const IGNORAR = new Set(['.git', 'node_modules', '.obsidian', 'kanon']);
 const NAO_VERIFICADO = 'Fora da pasta (não verificado): estado da PR, do work item e do deploy.';
+// skills/32-report-bug corre em paralelo e pode ser disparada em qualquer etapa: não é marco, aparece à parte.
+const RELATO_BUG = '<relato do problema>';
 
 function designAprovado(dir) {
   const f = path.join(dir, 'DESIGN.md');
@@ -160,6 +162,7 @@ function relatorioFeature(a, raiz) {
     linhas.push(`  [${marca}] ${String(i + 1).padStart(2)} ${m.nome.padEnd(18)} ${m.prova}${det ? ` — ${det}` : ''}`);
     for (const c of m.comandos) linhas.push(`         /kanon ${c} ${feature}`);
   });
+  linhas.push('', 'Fluxo paralelo (a qualquer momento)', `  Bug: /kanon report-bug ${feature} ${RELATO_BUG}`);
   linhas.push('', NAO_VERIFICADO);
   return linhas.join('\n');
 }
@@ -172,7 +175,7 @@ function relatorioProjeto(dir, features, raiz) {
     const lac = a.lacunas.length ? ` · ${a.lacunas.length} lacuna${a.lacunas.length > 1 ? 's' : ''}` : '';
     linhas.push(`  ${path.basename(a.dir).padEnd(largura)}  ${etapaCurta(a)} · próximo: ${proximoCurto(a)}${lac}`);
   }
-  linhas.push('', 'Detalhe de uma feature: /kanon status <feature>', NAO_VERIFICADO);
+  linhas.push('', 'Detalhe de uma feature: /kanon status <feature>', `Bug em qualquer etapa: /kanon report-bug <feature> ${RELATO_BUG}`, NAO_VERIFICADO);
   return linhas.join('\n');
 }
 

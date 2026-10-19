@@ -16,6 +16,7 @@ Fase 4 — Desenvolvimento e Testes. Roda em paralelo à implementação, alimen
 - Aciona [`agents/AGENT-QA-ENGINEER.md`](../../agents/AGENT-QA-ENGINEER.md).
 - Cobertura de 100% dos AC é obrigatória para esta skill. Cobertura de código é indicador para o repositório como um todo, **exceto** no código novo ou alterado de uma PR, onde 100% é meta obrigatória com ciclo adversarial (trava 11 de [`process/15-pull-request-gates.md`](../../process/15-pull-request-gates.md)).
 - Usa o formato Gherkin descrito em `agents/GLOSSARIO.md#gherkin`.
+- Cada caso declara **Onde roda**: homologação, com a massa que monta o cenário lá, ou local na versão de homologação, com o motivo concreto de homologação não montar o cenário ([`14-qa-validation`](../14-qa-validation/SKILL.md)).
 - Todo TEST-CASE traz **Passos para testar** executáveis por alguém de fora da PR (trava 4) e a **Massa de teste** que reproduz o cenário, sempre sintética ou anonimizada (trava 7).
 - Quando o código foi produzido pelo kanon, a skill alimenta o "Ciclo adversarial" de `process/15` escrevendo os casos de teste adversariais; quem o executa antes de abrir a PR é `12-development-execution`. Nunca declara 100% sem relatório de cobertura e de mutação que comprove.
 

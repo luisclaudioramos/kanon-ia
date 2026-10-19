@@ -7,6 +7,18 @@ _Gerado por `skills/28-test-report`, consolidando todos os TEST-CASE.md da Featu
 |---|---|---|---|---|
 | _[preencher]_ | _[preencher]_ | _[preencher]_ | _[preencher]_ | _[preencher]_% |
 
+## Execução por caso
+| Test Case | Ambiente | Versão | Resultado |
+|---|---|---|---|
+| _[preencher]_ | homologação · atestado local | _[preencher: commit ou tag]_ | passou · falhou · não executado |
+
+## Cenários que homologação não monta
+_Casos "atestado local": rodaram local na versão de homologação porque o ambiente não monta o cenário. É o backlog de preparação de homologação; o quality gate sai com ressalva enquanto houver algum._
+
+| Test Case | Por que homologação não monta | O que falta para rodar lá | Dono |
+|---|---|---|---|
+| _[preencher]_ | _[preencher: motivo concreto]_ | _[preencher: massa, integração, configuração]_ | _[preencher ou "sem dono"]_ |
+
 ## Falhas detalhadas
 | Test Case | Motivo da falha | Bug vinculado |
 |---|---|---|

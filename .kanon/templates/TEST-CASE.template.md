@@ -8,6 +8,8 @@ _Breadcrumb: [User Story](../USER-STORY-XX.md) > Test Case XX (ou [Bug](../BUG.m
 ## Pré-condições
 - _[preencher: ambiente e estado necessários]_
 
+**Onde roda**: _[preencher: homologação · local na versão de homologação — motivo concreto de homologação não montar o cenário (ex.: arquivo que só o parceiro envia)]_
+
 ## Massa de teste
 _[preencher: script, seed, payload ou usuário de teste de homologação que reproduz o cenário, ou "Não precisa: motivo". Trava 7 — `process/15-pull-request-gates.md`]_
 **Sempre sintética ou anonimizada. Nunca CPF, e-mail ou telefone real de cliente (LGPD).**
@@ -34,5 +36,6 @@ Então _[preencher]_
 
 ## Evidência de execução
 - Data/hora: _[preencher]_
+- Ambiente e versão: _[preencher: homologação ou local na versão de homologação · commit ou tag; local registra a DDL usada]_
 - Resultado: passou | falhou | não executado
 - Print/log: _[preencher: anexo ou caminho]_

@@ -185,7 +185,7 @@ _Redigido por `skills/13-code-review` e publicado por `skills/34-pull-request-re
 >
 > - **Build e testes:** _[preencher: rodados localmente no head (comando e resultado) ou não rodados, com o motivo e a evidência usada no lugar]_
 > - **Esteira:** _[preencher: o que o check do head prova e o que não prova (ex.: "com base X, o workflow não executa a suíte, então esse verde não prova os testes")]_
-> - **Reprodução local:** _[preencher: o que rodou (sistema, versão implantada e head, DDL de qual ambiente, dado fictício) e o resultado; "não executada" com o motivo; "não se aplica" quando não é Bug nem código crítico]_
+> - **Reprodução local:** _[preencher: o que rodou (sistema, versão implantada e head, DDL de qual ambiente, dado fictício) e o resultado, por critério de aceite; "não executada" com o motivo (alerta da `QLD-01`); "não se aplica" só em PR de promoção com árvore igual ou sem código executável, com o motivo]_
 > - **Fica para UAT:** _[preencher: o que só se prova em homologação e quem confere (`qa-validation` ou depois do merge); "nada"]_
 > - **Verificação dos 🔴:** _[preencher: como cada achado 🔴 foi conferido de novo antes de publicar (segunda leitura independente, reprodução, teste)]_
 >

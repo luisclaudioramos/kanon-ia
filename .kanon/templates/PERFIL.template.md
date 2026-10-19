@@ -44,6 +44,7 @@ O que nunca vai em canal: _[preencher]_
 
 ### Gestão de mudança
 Nome local: _[preencher]_ · Janela: _[preencher]_ · Aprovadores: _[preencher]_
+Pasta do item: _[preencher: pasta da mudança dentro da feature ou do bug]_ · Índice por data: _[preencher: arquivo na área de execução do projeto]_
 Etapas: _[preencher]_
 
 ### Pull request e branches

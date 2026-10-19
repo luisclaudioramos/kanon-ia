@@ -246,3 +246,27 @@ test('layout por US e bug: tasks só em bugs/<bug>/tasks/ ou user-stories/<us>/b
   assert.strictEqual(tasks({ [`${f}/user-stories/us01-cadastro/bugs/177965-tela/tasks/`]: '' }), true);
   assert.strictEqual(tasks({ [`${f}/bugs/177964-saldo/BUG-177964.md`]: 'x' }), false);
 });
+
+test('revisão de PR no item: reviews/ na raiz, na US, no bug da Feature ou no bug da US fecha o marco Code review', () => {
+  const f = 'p/feature/f';
+  const revisao = (arq) => {
+    const { equipe } = arvore({ ...ESPEC, [`${f}/user-stories/177001-us01-cadastro/US-177001.md`]: 'x', ...arq });
+    return avaliarFeature(path.join(equipe, 'p', 'feature', 'f')).cumpridos[MARCOS.findIndex((m) => m.nome === 'Code review / PR')];
+  };
+  assert.strictEqual(revisao({ [`${f}/reviews/REVIEW-PR-521.md`]: 'x' }), true);
+  assert.strictEqual(revisao({ [`${f}/user-stories/177001-us01-cadastro/reviews/REVIEW-PR-26772-comentarios.md`]: 'x' }), true);
+  assert.strictEqual(revisao({ [`${f}/bugs/177964-saldo/reviews/REVIEW-PR-526-comentarios.md`]: 'x' }), true);
+  assert.strictEqual(revisao({ [`${f}/user-stories/177001-us01-cadastro/bugs/177965-tela/reviews/PR-REVIEW-1.md`]: 'x' }), true);
+  assert.strictEqual(revisao({ [`${f}/REVIEW-PR-1.md`]: 'x' }), true);
+});
+
+test('revisão de PR: reviews/ vazia ou só com anexos não fecha o marco; reviews/ fora de US e bug também não', () => {
+  const f = 'p/feature/f';
+  const revisao = (arq) => {
+    const { equipe } = arvore({ ...ESPEC, ...arq });
+    return avaliarFeature(path.join(equipe, 'p', 'feature', 'f')).cumpridos[MARCOS.findIndex((m) => m.nome === 'Code review / PR')];
+  };
+  assert.strictEqual(revisao({ [`${f}/reviews/`]: '' }), false);
+  assert.strictEqual(revisao({ [`${f}/reviews/verificacao-sql-pr-1/saida.txt`]: 'x' }), false);
+  assert.strictEqual(revisao({ [`${f}/validacao/reviews/REVIEW-PR-1.md`]: 'x' }), false);
+});

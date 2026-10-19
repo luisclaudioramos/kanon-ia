@@ -40,7 +40,12 @@ const MARCOS = [
   },
   { nome: 'Tasks', comandos: ['refine-tasks', 'create-task-artifacts'], prova: 'TASK-*.md ou tasks/', ok: (n, dir) => temTasks(n) || tasksAninhadas(dir) },
   { nome: 'Casos de teste', comandos: ['test-case-authoring'], prova: 'TEST-CASE*.md ou test-cases/', ok: algum(/^(TEST-CASE.*\.md|test-cases)$/i) },
-  { nome: 'Code review / PR', comandos: ['code-review', 'pull-request-review'], prova: 'REVIEW-PR*, PR-REVIEW* ou CODE-REVIEW*', ok: algum(/^(.*REVIEW-PR|PR-REVIEW|CODE-REVIEW).*\.md$/i) },
+  {
+    nome: 'Code review / PR',
+    comandos: ['code-review', 'pull-request-review'],
+    prova: 'REVIEW-PR*, PR-REVIEW* ou CODE-REVIEW*, ou reviews/ na raiz, nas US ou nos bugs',
+    ok: (n, dir) => temRevisao(n) || revisoesAninhadas(dir),
+  },
   { nome: 'Quality gate', comandos: ['test-report', 'quality-gate'], prova: 'quality-gate-feature.md ou TEST-REPORT*.md', ok: algum(/^(quality-gate-feature|TEST-REPORT).*\.md$/i) },
   { nome: 'Runbook', comandos: ['runbook-authoring'], prova: 'RUNBOOK*.md', ok: algum(/^RUNBOOK.*\.md$/i) },
   { nome: 'Auditoria', comandos: ['audit-evidence'], prova: 'AUDIT-EVIDENCE* ou Evidence-*', ok: algum(/^(AUDIT-EVIDENCE|Evidence-)/i) },
@@ -65,10 +70,28 @@ function subpastas(dir) {
   }
 }
 
-function tasksAninhadas(dir) {
+function pastasDeItem(dir) {
   const us = subpastas(path.join(dir, 'user-stories'));
   const bugs = [path.join(dir, 'bugs'), ...us.map((u) => path.join(u, 'bugs'))].flatMap(subpastas);
-  return [...us, ...bugs].some((p) => temTasks(fs.readdirSync(p)));
+  return [...us, ...bugs];
+}
+
+function tasksAninhadas(dir) {
+  return pastasDeItem(dir).some((p) => temTasks(fs.readdirSync(p)));
+}
+
+// Revisão de PR no item que a PR entrega: reviews/ na raiz (PR de várias US), na US ou no bug.
+const temRevisao = algum(/^(.*REVIEW-PR|PR-REVIEW|CODE-REVIEW).*\.md$/i);
+
+function revisoesAninhadas(dir) {
+  return [dir, ...pastasDeItem(dir)].some((p) => {
+    const r = path.join(p, 'reviews');
+    try {
+      return fs.readdirSync(r).some((n) => /\.md$/i.test(n));
+    } catch {
+      return false;
+    }
+  });
 }
 
 function designAprovado(dir) {

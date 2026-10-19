@@ -38,7 +38,7 @@ const MARCOS = [
     naoSeAplica: (dir) => telas(dir).naoSeAplica,
     detalhe: (dir) => telas(dir).detalhe,
   },
-  { nome: 'Tasks', comandos: ['refine-tasks', 'create-task-artifacts'], prova: 'TASK-*.md ou tasks/', ok: algum(/^(TASK-.*\.md|tasks)$/i) },
+  { nome: 'Tasks', comandos: ['refine-tasks', 'create-task-artifacts'], prova: 'TASK-*.md ou tasks/', ok: (n, dir) => temTasks(n) || tasksAninhadas(dir) },
   { nome: 'Casos de teste', comandos: ['test-case-authoring'], prova: 'TEST-CASE*.md ou test-cases/', ok: algum(/^(TEST-CASE.*\.md|test-cases)$/i) },
   { nome: 'Code review / PR', comandos: ['code-review', 'pull-request-review'], prova: 'REVIEW-PR*, PR-REVIEW* ou CODE-REVIEW*', ok: algum(/^(.*REVIEW-PR|PR-REVIEW|CODE-REVIEW).*\.md$/i) },
   { nome: 'Quality gate', comandos: ['test-report', 'quality-gate'], prova: 'quality-gate-feature.md ou TEST-REPORT*.md', ok: algum(/^(quality-gate-feature|TEST-REPORT).*\.md$/i) },
@@ -53,6 +53,23 @@ const IGNORAR = new Set(['.git', 'node_modules', '.obsidian', 'kanon']);
 const NAO_VERIFICADO = 'Fora da pasta (não verificado): estado da PR, do work item e do deploy.';
 // skills/32-report-bug corre em paralelo e pode ser disparada em qualquer etapa: não é marco, aparece à parte.
 const RELATO_BUG = '<relato do problema>';
+
+const temTasks = algum(/^(TASK-.*\.md|tasks)$/i);
+
+// Layout por US e bug: tasks dentro de user-stories/<us>/, bugs/<bug>/ e user-stories/<us>/bugs/<bug>/.
+function subpastas(dir) {
+  try {
+    return fs.readdirSync(dir, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => path.join(dir, e.name));
+  } catch {
+    return [];
+  }
+}
+
+function tasksAninhadas(dir) {
+  const us = subpastas(path.join(dir, 'user-stories'));
+  const bugs = [path.join(dir, 'bugs'), ...us.map((u) => path.join(u, 'bugs'))].flatMap(subpastas);
+  return [...us, ...bugs].some((p) => temTasks(fs.readdirSync(p)));
+}
 
 function designAprovado(dir) {
   const f = path.join(dir, 'DESIGN.md');

@@ -13,6 +13,7 @@ Fase 5 — Publicação e Integrações. Roda continuamente conforme artefatos s
 ## Saídas
 - Work items criados/atualizados na ferramenta de trabalho, vinculados entre si.
 - `templates/PUBLISH-SUMMARY.template.md` preenchido com a capacidade `trabalho`.
+- Espelho de cada item junto dele ([layout da pasta da Feature](../../process/03-state-management.md#layout-da-pasta-da-feature)): `FEATURE-<id>.md` na raiz da Feature, `US-<id>.md` na pasta da US, `TASK-<id>.md` em `tasks/`, `BUG-<id>.md` na pasta do bug. Ao publicar uma US ou um bug, o id entra no começo do nome da pasta (`usNN-<nome>` → `<id>-usNN-<nome>`).
 
 ## Regras principais
 - Aciona [`agents/AGENT-SCRUM-MASTER.md`](../../agents/AGENT-SCRUM-MASTER.md) como responsável pela sincronização de processo.

@@ -227,3 +227,22 @@ test('projeto no layout as-is/execution/to-be: proposta em to-be/proposals/<nome
   assert.match(f.stdout, /Etapa: 1\/14 — Requisito/);
   assert.match(f.stdout, /Próximo: \/kanon design-gate — DESIGN.md existe, aguardando aprovação humana/);
 });
+
+test('layout por US e bug: tasks só em user-stories/<us>/tasks/ fecham o marco Tasks', () => {
+  const base = { ...ESPEC, 'p/feature/f/ARCHITECTURE.md': 'x', 'p/feature/f/TCO.md': 'x', 'p/feature/f/telas/SCREEN-VALIDATION.md': TELAS_APROVADAS };
+  const { equipe } = arvore({ ...base, 'p/feature/f/user-stories/177001-us01-cadastro/US-177001.md': 'x', 'p/feature/f/user-stories/177001-us01-cadastro/tasks/TASK-US01-01-api.md': 'x' });
+  const a = avaliarFeature(path.join(equipe, 'p', 'feature', 'f'));
+  assert.strictEqual(a.etapa, 8);
+  assert.strictEqual(MARCOS[a.etapa - 1].nome, 'Tasks');
+});
+
+test('layout por US e bug: tasks só em bugs/<bug>/tasks/ ou user-stories/<us>/bugs/<bug>/tasks/ contam; pasta da US sem tasks não', () => {
+  const f = 'p/feature/f';
+  const tasks = (arq) => {
+    const { equipe } = arvore({ ...ESPEC, [`${f}/user-stories/us01-cadastro/USER-STORY-01.md`]: 'x', ...arq });
+    return avaliarFeature(path.join(equipe, 'p', 'feature', 'f')).cumpridos[MARCOS.findIndex((m) => m.nome === 'Tasks')];
+  };
+  assert.strictEqual(tasks({ [`${f}/bugs/177964-saldo/tasks/TASK-177970.md`]: 'x' }), true);
+  assert.strictEqual(tasks({ [`${f}/user-stories/us01-cadastro/bugs/177965-tela/tasks/`]: '' }), true);
+  assert.strictEqual(tasks({ [`${f}/bugs/177964-saldo/BUG-177964.md`]: 'x' }), false);
+});

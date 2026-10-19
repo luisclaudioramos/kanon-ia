@@ -12,6 +12,28 @@ Em qualquer feature ou tarefa rastreada pelo sistema, do momento em que é criad
 - Regras de rollback são explícitas: uma feature em `doing` que precisa recuar por bloqueio volta para `ready` (não para `backlog`, salvo se o próprio requisito for invalidado — nesse caso volta para `backlog`).
 - O estado atual de cada feature é sempre consultável a partir dos artefatos reais; nenhum agente assume o estado sem verificar.
 
+## Layout da pasta da Feature
+Vale para toda Feature. A Feature se organiza por US e por bug, e o espelho do item na ferramenta de trabalho fica junto do item (não há pasta separada de espelhos nem `tasks/` solta na raiz):
+
+```
+<feature>/
+  README.md                         índice: artefatos, US, bugs, validação, histórico
+  FEATURE.md, REQUIREMENT-SUMMARY.md, DESIGN.md, ARCHITECTURE.md, INSTRUCTIONS.md, PLAN-v1.md, TCO.md
+  FEATURE-<id>.md                   espelho da Feature
+  user-stories/<id>-usNN-<nome>/    uma pasta por US
+    US-<id>.md                      espelho da US (USER-STORY-NN.md enquanto não há id)
+    tasks/                          TASK-USNN-*.md locais e espelhos TASK-<id>.md
+    bugs/<id>-<nome>/               bug ligado à US (mesmo conteúdo do bug sem US)
+  bugs/<id>-<nome>/                 bug filho da Feature sem US
+    BUG-<id>.md (espelho), BUG-NN-*.md (local), triagem/, rascunhos/, tasks/
+  validacao/                        validações, impactos, perguntas ao time, apresentações
+  telas/                            SCREEN-VALIDATION.md e as imagens
+  reports/, historico/
+```
+
+- Nome de pasta só com minúsculas e hífen. Antes de existir o id na ferramenta de trabalho, a pasta é `usNN-<nome>` (ou `bugs/NN-<nome>`); ao publicar, o id entra no começo.
+- `BUG-NN` (até 3 dígitos) é o bug local e `BUG-<id>` o espelho: o `bug-triage-gate` depende desses nomes.
+
 ## Marcos da consulta de estado
 A consulta de estado (`kanon status <projeto|feature>`, modo consulta de [`skills/09-feature-state-management`](../skills/09-feature-state-management/SKILL.md)) lê só os artefatos da pasta da Feature, na ordem de [`02-sdd-flow.md`](02-sdd-flow.md):
 
@@ -24,7 +46,7 @@ A consulta de estado (`kanon status <projeto|feature>`, modo consulta de [`skill
 | 5 | TCO preliminar | `TCO.md` | `cost-of-ownership-tco` |
 | 6 | User Stories | `USER-STORY-*.md` (ou `US-NN-*.md`) ou `user-stories/` | `refine-user-stories` → `create-user-story-artifacts` |
 | 7 | Validação de telas | `telas/SCREEN-VALIDATION.md` com todas as telas do índice em `aprovada` ou `aprovada com ressalvas`; ou "Não se aplica" na linha "Aprovadores de tela" da `FEATURE.md` (marco mostrado como `[-]`) | `screen-validation` |
-| 8 | Tasks | `TASK-*.md` ou `tasks/` | `refine-tasks` → `create-task-artifacts` |
+| 8 | Tasks | `TASK-*.md` ou `tasks/`, na raiz (forma antiga) ou em `user-stories/*/`, `bugs/*/` e `user-stories/*/bugs/*/` | `refine-tasks` → `create-task-artifacts` |
 | 9 | Casos de teste | `TEST-CASE*.md` ou `test-cases/` | `test-case-authoring` |
 | 10 | Code review / PR | `REVIEW-PR*`, `PR-REVIEW*` ou `CODE-REVIEW*` | `code-review` → `pull-request-review` |
 | 11 | Quality gate | `quality-gate-feature.md` ou `TEST-REPORT*.md` | `test-report` → `quality-gate` |

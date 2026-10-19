@@ -10,7 +10,7 @@ Fase 6 — Memória, Custo e Encerramento (classificada aqui, mas pode ser dispa
 - Relato do problema: passos de reprodução, informação do sistema/ambiente.
 
 ## Saídas
-- `BUG.md` estruturado.
+- `BUG.md` estruturado, na pasta do bug: `bugs/<id>-<nome>/` (bug sem US) ou `user-stories/<id>-usNN-<nome>/bugs/<id>-<nome>/` (bug da US), com a triagem em `triagem/` e as tasks em `tasks/`. Antes do id, a pasta usa `NN-<nome>` ([layout da pasta da Feature](../../process/03-state-management.md#layout-da-pasta-da-feature)).
 
 ## Regras principais
 - Um bug só é aceito como `BUG.md` válido se tiver Repro Steps reprodutíveis (base: `reference/boas-praticas-dev/11-debugging.md` — reproduzir antes de corrigir).

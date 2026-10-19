@@ -10,7 +10,7 @@ Fase 4 — Desenvolvimento e Testes. Roda em paralelo ao fluxo principal de Feat
 - `BUG.md` (skill 32).
 
 ## Saídas
-- Tasks de correção vinculadas ao Bug de origem.
+- Tasks de correção vinculadas ao Bug de origem, em `tasks/` dentro da pasta do bug ([layout da pasta da Feature](../../process/03-state-management.md#layout-da-pasta-da-feature)).
 
 ## Regras principais
 - Fluxo paralelo ao pipeline principal descrito em [`process/02-sdd-flow.md`](../../process/02-sdd-flow.md) — não interrompe o desenvolvimento em curso de outras Features.

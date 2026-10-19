@@ -10,7 +10,7 @@ Fase 2 — Refino de Usuário e Tarefas. Roda após [`05-refine-user-stories`](.
 - User Stories no estado `aprovado` (skill 05).
 
 ## Saídas
-- Arquivos `USER-STORY-XX.md`.
+- Arquivos `USER-STORY-XX.md`, cada um na pasta da US: `user-stories/usNN-<nome>/` (vira `<id>-usNN-<nome>/` ao publicar), com `tasks/` e `bugs/` dentro ([layout da pasta da Feature](../../process/03-state-management.md#layout-da-pasta-da-feature)).
 - Seção "User Stories" do `FEATURE.md` pai atualizada com o link e o status (estado/SP/horas) de cada US materializada.
 
 ## Regras principais

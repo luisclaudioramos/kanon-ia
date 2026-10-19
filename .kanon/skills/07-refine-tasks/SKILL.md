@@ -7,7 +7,7 @@ Dividir cada User Story em tarefas técnicas atômicas e estimar cada uma em hor
 Fase 2 — Refino de Usuário e Tarefas. Roda após [`06-create-user-story-artifacts`](../06-create-user-story-artifacts/SKILL.md) e antes de [`08-create-task-artifacts`](../08-create-task-artifacts/SKILL.md).
 
 ## Entradas
-- `USER-STORY-XX.md` (skill 06).
+- `USER-STORY-XX.md` (skill 06), na pasta da US em `user-stories/`.
 
 ## Saídas
 - Lista de tasks técnicas atômicas, cada uma com atividade (Development, Testing ou Documentation) e estimativa em horas.

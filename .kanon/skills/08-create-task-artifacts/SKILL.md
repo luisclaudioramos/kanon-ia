@@ -10,7 +10,7 @@ Fase 2 — Refino de Usuário e Tarefas. Roda após [`07-refine-tasks`](../07-re
 - Tasks refinadas e estimadas (skill 07).
 
 ## Saídas
-- Arquivos `TASK-XX.md` com checklist de implementação.
+- Arquivos `TASK-XX.md` com checklist de implementação, em `tasks/` dentro da pasta da US (`user-stories/<id>-usNN-<nome>/tasks/`) ou do bug ([layout da pasta da Feature](../../process/03-state-management.md#layout-da-pasta-da-feature)).
 
 ## Regras principais
 - Segue [`process/06-markdown-formatting-rules.md`](../../process/06-markdown-formatting-rules.md).

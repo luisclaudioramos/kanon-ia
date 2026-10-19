@@ -14,6 +14,7 @@ _Lida da própria PR (pela capacidade `repositorio` do perfil) no momento da rev
 | Repositório e branches | _[preencher: repositório · `origem` → `destino`]_ |
 | Aberta por / em | _[preencher: autor · data de abertura]_ |
 | US / Bug | _[preencher: número e título, com link do work item; "nenhum vinculado" se não houver]_ |
+| Triagem do Bug | _[preencher: só quando a história é Bug — `BUG.md` com a classificação e a data da triagem, e a regra vigente em uma linha; "sem triagem" quando não há; "não se aplica" para US]_ |
 | Descrição | _[preencher: resumo em 1–3 linhas do que a descrição diz, ou "vazia" / "template sem preencher"]_ |
 | Iteração revisada | _[preencher: commit/iteração e data do último push]_ |
 | Aprovações exigidas | _[preencher: número, pela trava 8 de `process/15-pull-request-gates.md`, com o motivo — ex.: "2: destino master" ou "não cobrada: aberta antes da vigência e sem push depois"]_ |

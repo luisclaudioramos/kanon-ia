@@ -91,6 +91,16 @@ _Redigido por `skills/13-code-review` e publicado por `skills/34-pull-request-re
 > | O merge não reverte nada da base | `git merge-tree --write-tree <base> <head>` = árvore do head; commits só da base sem conteúdo próprio | ✅ / ❌ |
 > | Delta declarado | `git diff --stat <base> <head>` contra o corpo | ✅ / ❌ |
 >
+> ## 🐞 Correção de Bug
+> _Só quando a história da PR é um Bug. O critério é a triagem do `BUG.md` (`skills/32-report-bug`); sem triagem, a linha "Regra vigente" registra "sem triagem" e a aderência fica sem veredito até ela terminar._
+>
+> | Conferência | Fonte na triagem | Verificado no head `_[preencher]_` | Veredito |
+> |---|---|---|---|
+> | Regra vigente | _[preencher: pergunta 1 — regra, autor, data; se mudou depois da PR, as duas]_ | _[preencher: arquivo:linha que aplica a regra]_ | ✅ / ❌ → `REQ-NN` (🔴 se a PR segue a regra anterior) |
+> | Repro Steps | _[preencher: os passos e o esperado]_ | _[preencher: teste ou reprodução local, com o resultado]_ | ✅ / ❌ → `ID` |
+> | Causa raiz coberta | _[preencher: cada caminho listado]_ | _[preencher: arquivo:linha corrigido por caminho]_ | ✅ / ❌ → `ID` por caminho sem correção |
+> | Validação | _[preencher: cada item]_ | _[preencher: teste que prova, ou pendência declarada]_ | ✅ / ⚠️ pendente: _motivo_ / ❌ → `ID` |
+>
 > ## 🎯 Rastreabilidade — _[preencher: N de M critérios atendidos]_
 >
 > ### _[preencher: US/Bug — título]_

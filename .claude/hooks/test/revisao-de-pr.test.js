@@ -81,3 +81,14 @@ test('skills 13 e 34 apontam para o template da rodada e para o depois do merge'
   assert.match(ler(SKILL34), /PR-REVIEW-ROUND\.template\.md/);
   assert.match(ler(SKILL34), /Depois do merge/);
 });
+
+test('PR que corrige Bug é revisada contra a triagem do BUG.md: regra vigente, repro, causa raiz e validação', () => {
+  const ag = ler(AGENTE);
+  assert.ok(ag.includes('**PR de correção de Bug**'), 'passo no AGENT-CODE-REVIEWER');
+  for (const item of ['regra vigente', 'Repro Steps', 'causa raiz', 'Validação']) assert.ok(ag.includes(item), `${item} no passo do revisor`);
+  assert.match(ag, /regra mudou depois[^\n]*🔴/);
+  assert.match(ler(TEMPLATE), /## 🐞 Correção de Bug/);
+  assert.match(ler('templates/CODE-REVIEW-REPORT.template.md'), /\| Triagem do Bug \|/);
+  assert.match(ler(SKILL13), /PR que corrige um Bug/);
+  assert.match(ler('skills/32-report-bug/SKILL.md'), /PR que corrige o Bug é revisada contra esta triagem/);
+});

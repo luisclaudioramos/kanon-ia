@@ -10,7 +10,7 @@ Fase 4 — Desenvolvimento e Testes. Roda em paralelo à implementação, alimen
 - Acceptance Criteria da User Story (skill 05) ou Repro Steps do Bug (skill 32).
 
 ## Saídas
-- Arquivos `TEST-CASE.md` em Gherkin.
+- Arquivos `TEST-CASE.md` em Gherkin, na pasta `test-cases/` do item que verificam: `user-stories/<id>-usNN-<nome>/test-cases/` para a US, `bugs/<id>-<nome>/test-cases/` para o bug ([layout da pasta da Feature](../../process/03-state-management.md#layout-da-pasta-da-feature)).
 
 ## Regras principais
 - Aciona [`agents/AGENT-QA-ENGINEER.md`](../../agents/AGENT-QA-ENGINEER.md).

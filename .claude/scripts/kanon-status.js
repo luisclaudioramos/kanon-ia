@@ -39,7 +39,7 @@ const MARCOS = [
     detalhe: (dir) => telas(dir).detalhe,
   },
   { nome: 'Tasks', comandos: ['refine-tasks', 'create-task-artifacts'], prova: 'TASK-*.md ou tasks/', ok: (n, dir) => temTasks(n) || tasksAninhadas(dir) },
-  { nome: 'Casos de teste', comandos: ['test-case-authoring'], prova: 'TEST-CASE*.md ou test-cases/', ok: algum(/^(TEST-CASE.*\.md|test-cases)$/i) },
+  { nome: 'Casos de teste', comandos: ['test-case-authoring'], prova: 'TEST-CASE*.md ou test-cases/, na raiz, nas US ou nos bugs', ok: (n, dir) => temCasos(n) || casosAninhados(dir) },
   {
     nome: 'Code review / PR',
     comandos: ['code-review', 'pull-request-review'],
@@ -78,6 +78,13 @@ function pastasDeItem(dir) {
 
 function tasksAninhadas(dir) {
   return pastasDeItem(dir).some((p) => temTasks(fs.readdirSync(p)));
+}
+
+// Casos de teste no item que eles verificam: test-cases/ da US ou do bug, como as tasks.
+const temCasos = algum(/^(TEST-CASE.*\.md|test-cases)$/i);
+
+function casosAninhados(dir) {
+  return pastasDeItem(dir).some((p) => temCasos(fs.readdirSync(p)));
 }
 
 // Revisão de PR no item que a PR entrega: reviews/ na raiz (PR de várias US), na US ou no bug.

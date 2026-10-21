@@ -23,10 +23,11 @@ Vale para toda Feature. A Feature se organiza por US e por bug, e o espelho do i
   user-stories/<id>-usNN-<nome>/    uma pasta por US
     US-<id>.md                      espelho da US (USER-STORY-NN.md enquanto não há id)
     tasks/                          TASK-USNN-*.md locais e espelhos TASK-<id>.md
+    test-cases/                     TEST-CASE-USNN-*.md, casos de teste da US (skills/25)
     reviews/                        revisão das PRs que entregam só esta US
     bugs/<id>-<nome>/               bug ligado à US (mesmo conteúdo do bug sem US)
   bugs/<id>-<nome>/                 bug filho da Feature sem US
-    BUG-<id>.md (espelho), BUG-NN-*.md (local), triagem/, rascunhos/, tasks/, reviews/ e a pasta de mudança
+    BUG-<id>.md (espelho), BUG-NN-*.md (local), triagem/, rascunhos/, tasks/, test-cases/, reviews/ e a pasta de mudança
   reviews/                          revisão das PRs que entregam várias US
   <pasta de mudança>/               texto e prints da mudança em produção (nome no perfil)
   validacao/                        validações, impactos, perguntas ao time, apresentações
@@ -53,7 +54,7 @@ A consulta de estado (`kanon status <projeto|feature>`, modo consulta de [`skill
 | 6 | User Stories | `USER-STORY-*.md` (ou `US-NN-*.md`) ou `user-stories/` | `refine-user-stories` → `create-user-story-artifacts` |
 | 7 | Validação de telas | `telas/SCREEN-VALIDATION.md` com todas as telas do índice em `aprovada` ou `aprovada com ressalvas`; ou "Não se aplica" na linha "Aprovadores de tela" da `FEATURE.md` (marco mostrado como `[-]`) | `screen-validation` |
 | 8 | Tasks | `TASK-*.md` ou `tasks/`, na raiz (forma antiga) ou em `user-stories/*/`, `bugs/*/` e `user-stories/*/bugs/*/` | `refine-tasks` → `create-task-artifacts` |
-| 9 | Casos de teste | `TEST-CASE*.md` ou `test-cases/` | `test-case-authoring` |
+| 9 | Casos de teste | `TEST-CASE*.md` ou `test-cases/`, na raiz (forma antiga) ou em `user-stories/*/`, `bugs/*/` e `user-stories/*/bugs/*/` | `test-case-authoring` |
 | 10 | Code review / PR | `REVIEW-PR*`, `PR-REVIEW*` ou `CODE-REVIEW*` na raiz (forma antiga), ou um `.md` em `reviews/` da raiz, de `user-stories/*/`, `bugs/*/` ou `user-stories/*/bugs/*/` | `code-review` → `pull-request-review` |
 | 11 | Quality gate | `quality-gate-feature.md` ou `TEST-REPORT*.md` | `test-report` → `quality-gate` |
 | 12 | Runbook | `RUNBOOK*.md` | `runbook-authoring` |

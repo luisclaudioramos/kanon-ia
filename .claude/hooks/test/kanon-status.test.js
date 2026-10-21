@@ -247,6 +247,19 @@ test('layout por US e bug: tasks só em bugs/<bug>/tasks/ ou user-stories/<us>/b
   assert.strictEqual(tasks({ [`${f}/bugs/177964-saldo/BUG-177964.md`]: 'x' }), false);
 });
 
+test('layout por US e bug: test-cases/ na US ou no bug fecha o marco Casos de teste; pasta da US sem casos não', () => {
+  const f = 'p/feature/f';
+  const casos = (arq) => {
+    const { equipe } = arvore({ ...ESPEC, [`${f}/user-stories/us01-cadastro/USER-STORY-01.md`]: 'x', ...arq });
+    return avaliarFeature(path.join(equipe, 'p', 'feature', 'f')).cumpridos[MARCOS.findIndex((m) => m.nome === 'Casos de teste')];
+  };
+  assert.strictEqual(casos({ [`${f}/user-stories/us01-cadastro/test-cases/TEST-CASE-US01-01.md`]: 'x' }), true);
+  assert.strictEqual(casos({ [`${f}/bugs/177964-saldo/test-cases/TEST-CASE-01.md`]: 'x' }), true);
+  assert.strictEqual(casos({ [`${f}/user-stories/us01-cadastro/bugs/177965-tela/TEST-CASE-01.md`]: 'x' }), true);
+  assert.strictEqual(casos({ [`${f}/test-cases/TEST-CASE-01.md`]: 'x' }), true);
+  assert.strictEqual(casos({ [`${f}/user-stories/us01-cadastro/tasks/TASK-US01-01.md`]: 'x' }), false);
+});
+
 test('revisão de PR no item: reviews/ na raiz, na US, no bug da Feature ou no bug da US fecha o marco Code review', () => {
   const f = 'p/feature/f';
   const revisao = (arq) => {

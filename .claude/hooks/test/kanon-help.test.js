@@ -12,14 +12,14 @@ function vazio() {
   return fs.mkdtempSync(path.join(os.tmpdir(), 'kanon-help-'));
 }
 
-test('ajuda lista os comandos e os 12 agentes, sem nenhuma skill', () => {
+test('ajuda lista os comandos e os 13 agentes, sem nenhuma skill', () => {
   const r = main([], { projectDir: RAIZ, cwd: RAIZ });
   assert.strictEqual(r.code, 0);
   for (const c of ['/kanon --help', '/kanon contexto', '/kanon skills', '/kanon status', '/kanon <skill>']) {
     assert.ok(r.stdout.includes(c), c);
   }
   const ag = agentes(RAIZ);
-  assert.strictEqual(ag.length, 12);
+  assert.strictEqual(ag.length, 13);
   for (const a of ag) assert.ok(r.stdout.includes(a.nome), a.nome);
   for (const s of skills(RAIZ).flatMap((f) => f.itens)) {
     assert.ok(!new RegExp(`\\b${s.nome}\\b`).test(r.stdout), `skill ${s.nome} não deveria aparecer na ajuda`);

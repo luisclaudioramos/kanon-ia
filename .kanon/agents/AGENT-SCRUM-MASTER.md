@@ -58,4 +58,4 @@ e definir um horário fixo do time para revisões pendentes até o fim do dia.
 ```
 
 ## Processos
-Este papel opera sob os processos cross-cutting definidos em [`process/`](../process/README.md) — aplicam-se a todos os 12 papéis do time, sempre.
+Este papel opera sob os processos cross-cutting definidos em [`process/`](../process/README.md) — aplicam-se a todos os 13 papéis do time, sempre.

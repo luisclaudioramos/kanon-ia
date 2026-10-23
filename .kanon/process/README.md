@@ -1,6 +1,6 @@
 # Processos — Contrato Operacional do Time de Agentes
 
-Enquanto [`agents/`](../agents) define **quem** faz o quê (os 12 papéis), esta pasta define **como** qualquer um desses papéis deve operar: em que ordem, em que formato, o que fazer quando falta informação, e o que fazer quando algo dá errado. Os 19 processos abaixo se aplicam a **todos** os 12 agentes, sempre — não são específicos de um papel.
+Enquanto [`agents/`](../agents) define **quem** faz o quê (os 13 papéis), esta pasta define **como** qualquer um desses papéis deve operar: em que ordem, em que formato, o que fazer quando falta informação, e o que fazer quando algo dá errado. Os 19 processos abaixo se aplicam a **todos** os 13 agentes, sempre — não são específicos de um papel.
 
 Cada arquivo é autocontido e segue o mesmo template: Propósito, Quando se aplica, Regras, Sinais de violação, Procedimento em caso de falha, Exemplo concreto.
 
@@ -32,7 +32,7 @@ Este índice é a "Constituição" do sistema completo: harness (`.kanon/`) + sk
 
 ## Como usar
 
-**Com os 12 agentes de `agents/`**: ao copiar um arquivo de papel (ex.: `AGENT-BACKEND-ENGINEER.md`) para usar em qualquer IA, cole também o conteúdo desta pasta (ou ao menos os processos 00, 05, 07 e 09, que afetam diretamente o formato e o comportamento de toda resposta) como parte do prompt de sistema.
+**Com os 13 agentes de `agents/`**: ao copiar um arquivo de papel (ex.: `AGENT-BACKEND-ENGINEER.md`) para usar em qualquer IA, cole também o conteúdo desta pasta (ou ao menos os processos 00, 05, 07 e 09, que afetam diretamente o formato e o comportamento de toda resposta) como parte do prompt de sistema.
 
 **Como gate de revisão**: cada processo pode ser usado isoladamente como checklist de auditoria do próprio sistema de agentes — por exemplo, revisar se as respostas geradas realmente respeitam o `07-return-envelope`.
 

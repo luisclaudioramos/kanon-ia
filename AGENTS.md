@@ -88,6 +88,13 @@ Vale para todo texto que sai do repositório para alguém: Slack, e-mail, coment
 para a mensagem avulsa. Canais, pessoas e regras locais de cada empresa ficam no perfil dela e no repositório de
 conteúdo.
 
+O catálogo completo está em [`.kanon/reference/comunicacao/`](.kanon/reference/comunicacao/README.md): regras gerais,
+os 13 públicos (QA, UI/UX, liderança executiva, comitê de mudança, outro time interno, parceiro externo, segurança e
+suporte, além dos cinco abaixo) e os tipos de mensagem. O papel
+[`COMMUNICATOR`](.kanon/agents/AGENT-COMMUNICATOR.md) revisa o texto contra ele antes da aprovação, e o esqueleto é o
+[`MENSAGEM.template.md`](.kanon/templates/MENSAGEM.template.md). A tabela abaixo é o resumo dos públicos mais
+frequentes.
+
 ### Antes de escrever
 
 1. **Leia o canal ou a thread desde o último envio** e incorpore o que chegou. Pergunta que já foi respondida sai.

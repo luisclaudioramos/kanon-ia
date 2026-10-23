@@ -1,14 +1,14 @@
 # Agentes de IA — Time Virtual de Engenharia
 
-Coleção de 12 personas de IA que representam papéis de um time de engenharia de software. Cada uma valida o trabalho sob sua lente (arquitetura, segurança, testes, processo, etc.), com base nos princípios de [`reference/boas-praticas-dev/`](../reference/boas-praticas-dev), mas sem se limitar a eles — cada persona também traz conhecimento geral consolidado da sua função.
+Coleção de 13 personas de IA que representam papéis de um time de engenharia de software. Cada uma valida o trabalho sob sua lente (arquitetura, segurança, testes, processo, etc.), com base nos princípios de [`reference/boas-praticas-dev/`](../reference/boas-praticas-dev), mas sem se limitar a eles — cada persona também traz conhecimento geral consolidado da sua função.
 
 Cada arquivo é **autocontido**: pode ser copiado e colado como prompt de sistema em qualquer IA de chat (ChatGPT, Gemini, Cursor, Claude, etc.) ou usado como subagente no Claude Code, sem depender dos outros arquivos desta pasta. Termos técnicos estão linkados ao [Glossário](GLOSSARIO.md) na primeira ocorrência em cada arquivo.
 
-Todos os 12 papéis operam sob o contrato operacional comum definido em [`../process/`](../process/README.md) — como agir em sequência previsível, como formatar saída, como fazer [handoff](../process/GLOSSARIO.md#handoff), e o que fazer quando algo falha.
+Todos os 13 papéis operam sob o contrato operacional comum definido em [`../process/`](../process/README.md) — como agir em sequência previsível, como formatar saída, como fazer [handoff](../process/GLOSSARIO.md#handoff), e o que fazer quando algo falha.
 
 ## O time e o fluxo de trabalho
 
-O fluxo abaixo é sequencial por padrão, mas com dois tipos de papel que atravessam todas as fases: **TECH-LEAD** e **SCRUM-MASTER** (cross-cutting), e um shift-left explícito do **QA-ENGINEER**, que entra desde a arquitetura — não só no final.
+O fluxo abaixo é sequencial por padrão, mas com dois tipos de papel que atravessam todas as fases: **TECH-LEAD**, **SCRUM-MASTER** e **COMMUNICATOR** (cross-cutting), e um shift-left explícito do **QA-ENGINEER**, que entra desde a arquitetura — não só no final.
 
 Antes mesmo deste fluxo, o **Design Gate** (`skills/41-design-gate`) já aciona ARCHITECT — e UI-UX-DESIGNER quando a Feature envolve interface — para um esboço de alto nível com aprovação humana obrigatória; só depois disso a sequência abaixo começa a produzir os artefatos detalhados.
 
@@ -21,7 +21,7 @@ PO → UI-UX-DESIGNER → ARCHITECT → TECH-LEAD ─┬→ BACKEND-ENGINEER  �
              define estratégia de testes e critérios de aceite testáveis
              junto com ARCHITECT/TECH-LEAD, antes de qualquer código existir
 
-Cruzando todas as fases: TECH-LEAD (autoridade técnica/desempate) e SCRUM-MASTER (cadência e processo)
+Cruzando todas as fases: TECH-LEAD (autoridade técnica/desempate), SCRUM-MASTER (cadência e processo) e COMMUNICATOR (revisão de todo texto que sai para alguém)
 ```
 
 ## Papéis
@@ -40,6 +40,7 @@ Cruzando todas as fases: TECH-LEAD (autoridade técnica/desempate) e SCRUM-MASTE
 | [SECURITY-ENGINEER](AGENT-SECURITY-ENGINEER.md) | Identificar e mitigar riscos de segurança | Pull request / contínuo |
 | [SRE](AGENT-SRE.md) | Garantir deploy seguro e operação confiável em produção | Deploy / operação |
 | [SCRUM-MASTER](AGENT-SCRUM-MASTER.md) | Facilitar processo, cadência e remoção de impedimentos | Transversal |
+| [COMMUNICATOR](AGENT-COMMUNICATOR.md) | Revisar todo texto que sai do repositório para o público que vai lê-lo | Transversal, antes de qualquer envio |
 
 ## Como usar
 

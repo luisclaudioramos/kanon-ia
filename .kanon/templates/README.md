@@ -47,6 +47,7 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 | [HANDOFF-DEV.template.md](HANDOFF-DEV.template.md) | `skills/46-handoff-authoring` — passagem de bastão para engenharia |
 | [HANDOFF-PO.template.md](HANDOFF-PO.template.md) | `skills/46-handoff-authoring` — passagem de bastão para PO |
 | [HANDOFF-NEGOCIOS.template.md](HANDOFF-NEGOCIOS.template.md) | `skills/46-handoff-authoring` — passagem de bastão para Negócios |
+| [MENSAGEM.template.md](MENSAGEM.template.md) | Mensagem avulsa para um público (`reference/comunicacao/`), revisada por `agents/AGENT-COMMUNICATOR.md`: público, tipo, destino, fontes, texto e aprovação |
 | [MEMORY.template.md](MEMORY.template.md) | `skills/15-memory-update` |
 | [COST-OF-OWNERSHIP.template.md](COST-OF-OWNERSHIP.template.md) | `skills/30-cost-of-ownership-tco` |
 | [AGENT-REPORT.template.md](AGENT-REPORT.template.md) | Auditoria de execução de agentes |

@@ -80,3 +80,51 @@ BigQuery de D-1, ainda com o arquivo de 19/10.
 
 **Posso criar o rascunho no canal?** → Texto acima; falta o seu ok no texto e no canal.
 ```
+
+## Mensagens por público
+
+Vale para todo texto que sai do repositório para alguém: Slack, e-mail, comentário em work item, canvas. As skills
+46 e 47 (handoff), 48 (validação de telas) e 49 (impacto de mudança) já escrevem por público; esta seção vale também
+para a mensagem avulsa. Canais, pessoas e regras locais de cada empresa ficam no perfil dela e no repositório de
+conteúdo.
+
+### Antes de escrever
+
+1. **Leia o canal ou a thread desde o último envio** e incorpore o que chegou. Pergunta que já foi respondida sai.
+2. **Identifique o público** pelo canal e pelo destinatário (o perfil da empresa diz quem é PO, negócio, time).
+3. **Confira no sistema o que vai afirmar.** "Corrigimos" só depois de ver a correção aplicada; senão, "vamos corrigir".
+4. **Rascunho só com aprovação do texto e do canal**, a cada envio. O texto é o final já na primeira chamada.
+
+### O que cada público recebe
+
+| Público | Sai da mensagem capaz de | Entra | Não entra |
+|---|---|---|---|
+| **Time técnico** (dev, QA, infra) | escolher a abordagem, estimar, reproduzir | `arquivo:linha`, commit, PR, SQL, log, hipótese marcada como hipótese | prazo e estratégia internos, assunto de outro canal |
+| **PO** | decidir ou encaminhar cada pendência e priorizar | impacto concreto, as opções que já existem, uma pergunta por pendência; evidência técnica só quando ela é o argumento | detalhe de implementação, nome de quem investigou, prazo interno |
+| **Negócio** | responder a pergunta que trava e saber o que muda para ele | causa em linguagem simples, o que foi feito e conferido, o próximo passo dele, uma pergunta curta por ponto ambíguo | jargão, nome de dev, opção ou cenário que ele não citou, recomendação no lugar da decisão dele, prazo e estratégia |
+| **Dados e analistas** | reproduzir o número do lado deles | consulta pronta para copiar, resultado esperado, fonte e momento do dado, o que cada filtro faz | caminho do repositório, dado pessoal |
+| **Gestão** | acompanhar e decidir | situação em uma frase, risco, o que precisa deles | detalhe técnico |
+
+### Regras para todos os públicos
+
+- **O pedido ou a conclusão na primeira linha.** Quem lê só a prévia já sabe do que se trata.
+- **Nada de dado pessoal, segredo ou caminho interno** (repositório, máquina). Use o link que o leitor consegue abrir.
+- **Fato separado de hipótese**, e número com a fonte e o momento.
+- **Assuntos separados ficam separados:** a mensagem de um canal não cita o que foi tratado em outro.
+- **Pergunta ao time vai para o time.** Marcar uma pessoa só quando o usuário pedir.
+- **Prazo, divisão de entrega e estratégia** ficam no repositório de conteúdo, como uso interno.
+- **Material grande** (casos de teste, evidências, telas) vai num documento compartilhável e a mensagem leva o link.
+- **Pergunta ao negócio parte só do que ele disse.** "Hoje é assim?" se responde com o que o sistema faz hoje, e a
+  decisão volta para ele.
+
+### Exemplo: o mesmo fato para dois públicos
+
+```
+Negócio: "Os elegíveis de outubro batem com os arquivos do banco: 7,3 milhões. A diferença
+da análise vinha de olhar só uma das duas tabelas onde eles ficam. Seguem as consultas
+para vocês replicarem."
+
+Time: "PROD = arquivos: participant_eligible (1.200.000) + participant_stage (40.000)
+− 5.433 nas duas = 1.234.567. Consultas em sql/03; a cópia da eligible_challenge no BQ
+está incompleta (hipótese: carga incremental), conferir."
+```

@@ -10,6 +10,9 @@ repete as regras. Em especial, a seção "Respostas no chat" define o padrão de
 - conclusão em 1–2 frases, depois blocos "**Pergunta?** → resposta curta";
 - SQL, `arquivo:linha`, logs e tabelas longas no arquivo gerado, com o caminho relativo no chat.
 
+A seção "Mensagens por público" define como escrever para time, PO, negócio, dados e gestão (Slack, e-mail,
+work item): o que cada um precisa, o que entra e o que nunca entra.
+
 ## Claude Code
 
 - Comando de entrada: `/kanon` (`.claude/commands/kanon.md`).

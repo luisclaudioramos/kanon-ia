@@ -4,7 +4,7 @@
 Escrever uma mensagem avulsa para um público — pergunta, aviso, pedido de decisão, fechamento, incidente, entrega de material ou pedido a outro time — no formato que **quem lê** precisa para agir, com cada afirmação conferida e sem nada que não podia sair. Sem isso, cada mensagem sai no tom de quem pediu, com número sem fonte e pergunta já respondida, e o retrabalho aparece na resposta.
 
 ## Fase / Posição no fluxo
-Transversal. Sob demanda (`kanon mensagem` ou `kanon audience-message`) para qualquer texto que sai do repositório para uma pessoa e não tem skill própria. As skills que já rascunham mensagens — `34-pull-request-review`, `47-handoff-delivery`, `48-screen-validation`, `49-change-impact` — podem acionar esta a partir da etapa 5.
+Transversal. Sob demanda (`kanon mensagem` ou `kanon audience-message`) para qualquer texto que sai do repositório para uma pessoa e não tem skill própria. As skills que já rascunham mensagens — `34-pull-request-review`, `47-handoff-delivery`, `48-screen-validation`, `49-change-impact` — passam pelas etapas 3 a 6 desta antes de cada rascunho.
 
 ## Entradas
 - O que comunicar: o fato, a pergunta ou o pedido, com a origem (conversa, item, consulta).

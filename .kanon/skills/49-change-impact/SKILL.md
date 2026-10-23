@@ -23,7 +23,7 @@ Transversal. Acionada por [`48-screen-validation`](../48-screen-validation/SKILL
 4. **Alternativas**: de 2 a 3 quando há escolha real, com a recomendação. "Sem alternativa: motivo" quando há um caminho só.
 5. **A validar**: perguntas por pedido, em duas listas — negócio, em linguagem simples, e time, técnica.
 6. **Uso interno**: prazo, divisão de entrega e estratégia de negociação ficam na seção "Uso interno — não vai para mensagem".
-7. **Mensagens**: dois rascunhos.
+7. **Mensagens**: dois rascunhos. Antes de cada um, o texto passa pela revisão de [`52-audience-message`](../52-audience-message/SKILL.md) (etapas 3 a 6: ler o destino, conferir as afirmações, revisar com o [`COMMUNICATOR`](../../agents/AGENT-COMMUNICATOR.md) e pelo validador de mensagens), com os públicos "Negócio" e "Time técnico".
    - **Negócio**: impacto concreto por pedido, sem jargão, **sem prazo**, com as perguntas.
    - **Time**: impacto, alternativas e o que falta validar, **sem prazo** e sem citar arquivo que o time não acessa.
 8. **Depois da decisão**: o Tech Lead registra a decisão de cada pedido em "Decisões". A skill então aciona `18-feature-context-back-propagation` (Feature e US), `48-screen-validation` (telas afetadas ganham nova versão em `rascunho`) e prepara as atualizações do work item ([`16-work-tracking-publication`](../16-work-tracking-publication/SKILL.md)) e da documentação ([`21-documentation-publication`](../21-documentation-publication/SKILL.md)).
@@ -37,7 +37,7 @@ Transversal. Acionada por [`48-screen-validation`](../48-screen-validation/SKILL
 
 ## Depende de
 - `templates/CHANGE-IMPACT.template.md`, `18-feature-context-back-propagation`, `48-screen-validation`, `16-work-tracking-publication`, `21-documentation-publication`, `51-company-profile` (mudança de pessoa, processo ou ferramenta pedida no meio de uma Feature vira proposta de perfil).
-- `agents/AGENT-PO.md`, `agents/AGENT-ARCHITECT.md`, `process/11-subagent-anti-hallucination.md`, `process/12-knowledge-retrieval.md`, `process/14-decision-segregation.md`.
+- `agents/AGENT-PO.md`, `agents/AGENT-ARCHITECT.md`, `agents/AGENT-COMMUNICATOR.md`, `52-audience-message`, `process/11-subagent-anti-hallucination.md`, `process/12-knowledge-retrieval.md`, `process/14-decision-segregation.md`.
 
 ## Procedimento em caso de falha
 Pedido que não pode ser conferido no código (repositório inacessível) entra com "Como é hoje: não verificado — motivo", nunca com uma suposição. Se o Tech Lead não decidir um pedido, ele continua em `enviado` e nada é propagado. Se uma propagação falhar (US, telas, work item, documentação), a skill lista exatamente o que ficou desatualizado em vez de declarar o pedido `decidido` por inteiro.

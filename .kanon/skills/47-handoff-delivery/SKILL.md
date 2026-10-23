@@ -15,7 +15,7 @@ Fase 5 — Publicação e Integrações. Roda depois que `skills/46-handoff-auth
 ## Saídas
 - Um comentário no work item, com o handoff de engenharia inteiro e o bloco do que está travado.
 - Três mensagens gravadas em `docs/handoffs/<id-do-assunto>/mensagens/{dev,po,negocios}.md`, versionadas junto do handoff que encaminham.
-- Três rascunhos de mensagem pela capacidade `comunicacao`, um por perfil, cada um com o link do work item.
+- Três rascunhos de mensagem pela capacidade `comunicacao`, um por perfil, cada um com o link do work item. Antes de cada rascunho, o texto passa pela revisão de [`52-audience-message`](../52-audience-message/SKILL.md) (etapas 3 a 6: ler o destino, conferir as afirmações, revisar com o [`COMMUNICATOR`](../../agents/AGENT-COMMUNICATOR.md) e pelo validador de mensagens), com o público de cada perfil: "Time técnico", "PO" e "Negócio". O validador roda na pasta do handoff, não em `mensagens/`: a mensagem de encaminhamento leva o nome do destinatário por desenho, e a revisão dela é a do COMMUNICATOR.
 - No assunto, `rascunho_criado: <data>`.
 
 ## Regras principais
@@ -35,7 +35,7 @@ Fase 5 — Publicação e Integrações. Roda depois que `skills/46-handoff-auth
 - **A mensagem é o único artefato do vault que carrega nome de pessoa**, e isso é desenho, não descuido. O validador de mensagens e handoffs lê só os três arquivos da pasta do handoff e não entra em `mensagens/`; a regra de papéis vale para o handoff, não para o convite a lê-lo.
 
 ## Depende de
-- `skills/46-handoff-authoring`, `skills/16-work-tracking-publication`, `tools/compor_comentario.py`, o validador de mensagens e handoffs da camada de integração (no Claude Code: `.claude/scripts/kanon-mensagem.js`), `process/11-subagent-anti-hallucination.md`.
+- `skills/46-handoff-authoring`, `skills/16-work-tracking-publication`, `tools/compor_comentario.py`, o validador de mensagens e handoffs da camada de integração (no Claude Code: `.claude/scripts/kanon-mensagem.js`), `process/11-subagent-anti-hallucination.md`, `52-audience-message`, `agents/AGENT-COMMUNICATOR.md`.
 - Ferramentas externas: a capacidade `comunicacao` para os rascunhos (só rascunho); a capacidade `trabalho` para ler, criar e editar comentário.
 
 ## Procedimento em caso de falha

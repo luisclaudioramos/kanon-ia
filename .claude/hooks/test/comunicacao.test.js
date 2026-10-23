@@ -61,3 +61,11 @@ test('template de mensagem guarda público, tipo, destino, fontes e estado', () 
     assert.ok(new RegExp(`^${chave}:`, 'm').test(fm), chave);
   }
 });
+
+test('skills que rascunham mensagem passam pela revisão da 52 e do COMMUNICATOR', () => {
+  for (const s of ['34-pull-request-review', '47-handoff-delivery', '48-screen-validation', '49-change-impact']) {
+    const md = ler(`.kanon/skills/${s}/SKILL.md`);
+    assert.ok(md.includes('52-audience-message'), `${s} cita a skill 52`);
+    assert.ok(md.includes('AGENT-COMMUNICATOR'), `${s} cita o COMMUNICATOR`);
+  }
+});

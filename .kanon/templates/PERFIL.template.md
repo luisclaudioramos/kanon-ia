@@ -33,7 +33,7 @@ _Mantido por `skills/51-company-profile`. Contrato: `process/17-company-profile.
 
 | Assunto | Público | Canal | Formato | Quem envia |
 |---|---|---|---|---|
-| Aprovação de PR | Time técnico | _[preencher]_ | _[preencher]_ | _[preencher: kanon só rascunha / kanon envia]_ |
+| Aprovação de PR | Time técnico | _[preencher]_ | _[preencher]_ | _[preencher: quem envia — o kanon só rascunha]_ |
 | Aviso de mudança | Comitê de mudança | _[preencher]_ | _[preencher]_ | _[preencher]_ |
 | Incidente | _[preencher]_ | _[preencher]_ | _[preencher]_ | _[preencher]_ |
 | Aceite do PO | PO | _[preencher]_ | _[preencher]_ | _[preencher]_ |

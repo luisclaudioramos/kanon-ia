@@ -32,10 +32,10 @@ Fase 5 — Publicação e Integrações. Roda depois que `skills/46-handoff-auth
 - **A skill nunca registra que a mensagem foi enviada.** O conhecimento dela termina no rascunho: o assunto grava `rascunho_criado`, e nada além. Quem envia sabe que enviou.
 - **Cada mensagem passa por `tools/validate_mensagem.py` antes de virar rascunho.** Erro bloqueia.
 - **A mensagem é gravada antes de virar rascunho**, no caminho que `validate_mensagem.caminho_da_mensagem` monta. O lugar não se improvisa a cada execução.
-- **A mensagem é o único artefato do vault que carrega nome de pessoa**, e isso é desenho, não descuido. `validate_handoffs.py` lê só os três arquivos de perfil e ignora `mensagens/`; a regra de papéis vale para o handoff, não para o convite a lê-lo.
+- **A mensagem é o único artefato do vault que carrega nome de pessoa**, e isso é desenho, não descuido. O validador de mensagens e handoffs lê só os três arquivos da pasta do handoff e não entra em `mensagens/`; a regra de papéis vale para o handoff, não para o convite a lê-lo.
 
 ## Depende de
-- `skills/46-handoff-authoring`, `skills/16-work-tracking-publication`, `tools/compor_comentario.py`, `tools/validate_mensagem.py`, `tools/validate_handoffs.py`, `process/11-subagent-anti-hallucination.md`.
+- `skills/46-handoff-authoring`, `skills/16-work-tracking-publication`, `tools/compor_comentario.py`, o validador de mensagens e handoffs da camada de integração (no Claude Code: `.claude/scripts/kanon-mensagem.js`), `process/11-subagent-anti-hallucination.md`.
 - Ferramentas externas: a capacidade `comunicacao` para os rascunhos (só rascunho); a capacidade `trabalho` para ler, criar e editar comentário.
 
 ## Procedimento em caso de falha

@@ -15,6 +15,7 @@ Scripts Node.js que rodam como hooks `PreToolUse` do Claude Code, interceptando 
 | [design-gate-approval-gate.js](design-gate-approval-gate.js) | SDD Flow (`skills/41-design-gate`) | Escrita de `FEATURE.md`/`PLAN-vx.md`/`INSTRUCTIONS.md` sem um `DESIGN.md` irmão com `Status: APPROVED` e `Aprovado por` preenchido |
 | [bug-triage-gate.js](bug-triage-gate.js) | Bug (`skills/32-report-bug`) | Gravação de `BUG.md`/`BUG-NN-*.md` (até 3 dígitos; `BUG-<id do item>` é espelho e passa) novo sem a seção Triagem ou com as perguntas 1 a 5 sem resposta (bug antigo sem a seção não é cobrado) |
 | [pr-publish-consent-gate.js](pr-publish-consent-gate.js) | SCM | `gh pr create` / `az repos pr create` sem confirmação explícita (força o prompt de permissão nativo) |
+| [message-send-gate.js](message-send-gate.js) | Comunicação (`skills/52-audience-message`) | Todo envio direto de mensagem (Slack, agendado ou e-mail): o kanon só rascunha. Rascunho ou canvas com CPF, CNPJ, documento ou telefone sem máscara, caminho da máquina, token ou credencial. Canvas limpo pede confirmação |
 | [branch-delete-guard.js](branch-delete-guard.js) | SCM | Exclusão local ou remota das branches protegidas do perfil da empresa (padrão: `main`, `master`, `develop`, `release/*`, `hotfix/*`) |
 | [develop-merge-squash-gate.js](develop-merge-squash-gate.js) | SCM | `git merge` para dentro da branch de integração do perfil (padrão: `develop`) sem `--squash` |
 
@@ -26,7 +27,7 @@ Alguns hooks já protegem este repositório **hoje** (`branch-delete-guard.js`, 
 
 ## Perfil da empresa e testes
 
-Os hooks de branch e o Selo I ampliado leem o perfil da empresa por [`lib/perfil.js`](lib/perfil.js) (`.kanon/process/17-company-profile.md`). Sem perfil, todos voltam ao padrão seguro. Com perfil ilegível, os hooks de branch voltam ao padrão, mas o Selo I bloqueia (fail-closed) e a mensagem nomeia o perfil a corrigir; o boot (`kanon-perfil.js`) também avisa. As pessoas de `papeis` entram nos nomes barrados; nomes com menos de 3 letras não. O `design-gate-approval-gate` e a consulta `/kanon status` usam a mesma regra de `DESIGN.md` aprovado, em [`lib/design.js`](lib/design.js). Testes: `node --test ".claude/hooks/test/*.test.js"`.
+Os hooks de branch e o Selo I ampliado leem o perfil da empresa por [`lib/perfil.js`](lib/perfil.js) (`.kanon/process/17-company-profile.md`). Sem perfil, todos voltam ao padrão seguro. Com perfil ilegível, os hooks de branch voltam ao padrão, mas o Selo I bloqueia (fail-closed) e a mensagem nomeia o perfil a corrigir; o boot (`kanon-perfil.js`) também avisa. As pessoas de `papeis` entram nos nomes barrados; nomes com menos de 3 letras não. Os padrões de dado proibido ficam em [`lib/mensagem.js`](lib/mensagem.js), usados pelo `message-send-gate` e pelo validador de mensagens e handoffs ([`scripts/kanon-mensagem.js`](../scripts/kanon-mensagem.js)). O `design-gate-approval-gate` e a consulta `/kanon status` usam a mesma regra de `DESIGN.md` aprovado, em [`lib/design.js`](lib/design.js). Testes: `node --test ".claude/hooks/test/*.test.js"`.
 
 ## Comportamento em falha interna
 

@@ -24,13 +24,13 @@ Transversal. Sob demanda (`kanon mensagem` ou `kanon audience-message`) para qua
 3. **Ler antes.** Pela capacidade `comunicacao`, lê o destino desde o último envio sobre o assunto. Pergunta já respondida sai; resposta que chegou muda o texto. O que foi lido entra em "Lido antes de escrever".
 4. **Verificar.** Cada afirmação de estado ("corrigido", "em produção", "aprovado") e cada número é conferido na capacidade certa (`dados`, `repositorio`, `trabalho`, `implantacao`, `observabilidade`) e anotado em `fontes` com a data. O que não pôde ser conferido vira hipótese explícita ou sai do texto ([`process/11-subagent-anti-hallucination.md`](../../process/11-subagent-anti-hallucination.md)).
 5. **Escrever.** Estrutura do tipo ([`reference/comunicacao/03-tipos-de-mensagem.md`](../../reference/comunicacao/03-tipos-de-mensagem.md)), conteúdo e tom do público ([`02-publicos.md`](../../reference/comunicacao/02-publicos.md)), regras gerais ([`01-regras-gerais.md`](../../reference/comunicacao/01-regras-gerais.md)) e as regras locais do canal no perfil. Texto final, nada provisório.
-6. **Revisar.** O papel [`COMMUNICATOR`](../../agents/AGENT-COMMUNICATOR.md) confere o texto. Achado bloqueante volta para a etapa 5; o texto só segue sem bloqueante.
+6. **Revisar.** O papel [`COMMUNICATOR`](../../agents/AGENT-COMMUNICATOR.md) confere o texto e o validador de mensagens e handoffs da camada de integração (no Claude Code: `node .claude/scripts/kanon-mensagem.js <arquivo>`) confere o arquivo: público e tipo do catálogo, destino, estado, dado proibido, nome de dev para quem não é do time. Achado bloqueante ou erro do validador volta para a etapa 5; aviso vai junto do texto para a pessoa decidir.
 7. **Aprovar.** O texto vai ao chat com o destino proposto, e a skill para. Aprovação vale para este texto e este destino; mudou um dos dois, pede de novo.
 8. **Rascunhar.** Com o ok, cria o rascunho pela capacidade `comunicacao` (resposta numa conversa só com o identificador lido do destino) e grava `status: aprovado` e `aprovado_em`.
 9. **Fechar.** Quando a pessoa envia, grava `status: enviado` e `enviado_em`. A resposta que chegar reabre a skill na etapa 3, numa mensagem nova.
 
 ### Limites
-- **A skill nunca envia.** A ferramenta de envio não consta do `Depende de`, e essa ausência é o mecanismo.
+- **A skill nunca envia.** A ferramenta de envio não consta do `Depende de`, e a camada de integração reforça: a trava de envio nega todo envio direto e todo rascunho com dado proibido (no Claude Code: `.claude/hooks/message-send-gate.js`).
 - **Uma mensagem, um público, um tipo.** Pedido de decisão escondido num aviso é dividido.
 - **Nada da área de uso interno** (prazo, divisão de entrega, estratégia) entra no texto, mesmo que esteja no item.
 - **Nenhum nome de pessoa, canal ou ferramenta** fica nesta skill: vêm do perfil.

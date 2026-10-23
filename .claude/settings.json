@@ -63,6 +63,15 @@
             "if": "Bash(gh *)"
           }
         ]
+      },
+      {
+        "matcher": "mcp__.*(send_message|schedule_message|send_email|send_mail|reply_message|create_draft|create_canvas|update_canvas).*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/message-send-gate.js\""
+          }
+        ]
       }
     ]
   }

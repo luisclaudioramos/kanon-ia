@@ -34,7 +34,7 @@ Fase 7 — Auditoria, Governança e Consolidação. Roda após [`13-code-review`
 - **Depois do merge**: quando o merge é o próprio deploy ou abre a mudança automaticamente (o perfil diz em quais repositórios), a skill acompanha os passos do deploy, e não só o resultado final, e a validação no ambiente listada na seção "Depois do merge" do parecer; o resultado vai como resposta no parecer da última rodada, depois da revisão humana.
 
 ### Notificação de aprovação
-- A cada PR criado ou atualizado, a skill prepara uma mensagem individual (uma por PR, nunca uma lista de vários PRs) para o canal e no formato que o perfil efetivo registra para "aprovação de PR" (`process/17-company-profile.md`), e segue a regra de envio do perfil ("quem envia"). Sem regra no perfil, só rascunho, enviado depois de confirmação explícita do usuário — postar num canal do time nunca é automático.
+- A cada PR criado ou atualizado, a skill prepara uma mensagem individual (uma por PR, nunca uma lista de vários PRs) para o canal e no formato que o perfil efetivo registra para "aprovação de PR" (`process/17-company-profile.md`), como rascunho: quem envia é uma pessoa, depois de revisar (`52-audience-message`, "A skill nunca envia"). Resposta na conversa do PR também é rascunho — postar num canal do time nunca é automático.
 - O estado PR ↔ mensagem fica em `APPROVAL-NOTIFICATION-SUMMARY.md` (template `templates/APPROVAL-NOTIFICATION-SUMMARY.template.md`).
 - **Nunca cria uma segunda mensagem de topo para o mesmo PR.** Como atualizar uma mensagem existente depende da ferramenta e está no adaptador da capacidade `comunicacao`.
 - A sincronização com os votos e comentários da PR **não roda automaticamente nem em agenda** — só quando o usuário aciona a checagem.

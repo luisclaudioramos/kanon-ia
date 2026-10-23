@@ -14,11 +14,11 @@ MCP do Slack do claude.ai, autenticado com a conta de quem usa o kanon.
 
 ## Como publicar
 ### Notificação de aprovação de PR (`skills/34`)
-- A cada PR criado ou atualizado, uma mensagem individual (uma por PR, nunca uma lista de vários PRs) no canal que o perfil efetivo registra para *aprovação de PR*, no formato registrado no perfil, enviada **sempre como rascunho** (`slack_send_message_draft`) — só vai ao canal depois de confirmação explícita do usuário, mesmo com o processo já padronizado.
-- Depois de enviada, a mensagem recebe a reação inicial 👀 (em análise) e o par `{PR, channel_id, message_ts}` é gravado em `APPROVAL-NOTIFICATION-SUMMARY.md`, que passa a ser o estado de rastreamento PR ↔ mensagem.
-- **Nunca cria uma segunda mensagem de topo para o mesmo PR.** "Atualizar" significa trocar a reação de status (👀 → ✅ aprovada, ou 💬 se há comentário novo sem aprovação) e responder em thread (`thread_ts` = message_ts, sem `reply_broadcast`) resumindo o voto ou comentário novo da PR.
+- A cada PR criado ou atualizado, uma mensagem individual (uma por PR, nunca uma lista de vários PRs) no canal que o perfil efetivo registra para *aprovação de PR*, no formato registrado no perfil, criada **sempre como rascunho** (`slack_send_message_draft`); quem envia é a pessoa, pelo Slack.
+- Depois que a pessoa envia, a mensagem recebe a reação inicial 👀 (em análise) e o par `{PR, channel_id, message_ts}` é gravado em `APPROVAL-NOTIFICATION-SUMMARY.md`, que passa a ser o estado de rastreamento PR ↔ mensagem.
+- **Nunca cria uma segunda mensagem de topo para o mesmo PR.** "Atualizar" significa trocar a reação de status (👀 → ✅ aprovada, ou 💬 se há comentário novo sem aprovação) e um rascunho de resposta em thread (`thread_ts` = message_ts, sem `reply_broadcast`) resumindo o voto ou comentário novo da PR.
 - A sincronização com os votos da PR não roda automaticamente nem em agenda — só quando o usuário aciona a checagem.
-- Ordem de aprovação sugerida (sob pedido): resposta em thread no(s) PR(s) afetado(s), em texto (ex.: "Aprovar depois do #000 — mesmo `participant.mock.ts`"), nunca como numeração por ícone.
+- Ordem de aprovação sugerida (sob pedido): rascunho de resposta em thread no(s) PR(s) afetado(s), em texto (ex.: "Aprovar depois do #000 — mesmo `participant.mock.ts`"), nunca como numeração por ícone.
 
 ### Rascunhos de handoff (`skills/47`)
 `slack_send_message_draft` para os rascunhos — a skill nunca envia.
@@ -27,6 +27,9 @@ MCP do Slack do claude.ai, autenticado com a conta de quem usa o kanon.
 - **Ler antes**: `slack_read_channel` (ou `slack_read_thread` quando a mensagem é resposta) desde o último envio sobre o assunto; a busca (`slack_search_public_and_private`) só para achar a conversa, nunca no lugar da leitura.
 - **Rascunho**: `slack_send_message_draft`, com o texto final. Resposta em conversa só com o `thread_ts` lido no formato detalhado.
 - O MCP põe sozinho a assinatura de envio pelo Claude: o texto não a repete.
+
+### Trava de envio
+`.claude/hooks/message-send-gate.js` nega `slack_send_message` e `slack_schedule_message` sempre, nega rascunho e canvas com dado proibido (documento, telefone, caminho da máquina, segredo) e pede confirmação para criar ou alterar canvas. Reações (`slack_add_reaction`) e leituras não passam por ela.
 
 ## Caminho alternativo
 MCP indisponível ou não configurado: a notificação fica pendente e é registrada como falha de sincronização no resumo — nunca tratada como enviada. Não bloqueia o PR.

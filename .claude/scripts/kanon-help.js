@@ -17,6 +17,7 @@ const COMANDOS = [
   ['/kanon status <projeto|feature>', 'em que etapa está e qual é o próximo passo'],
   ['/kanon <skill> [contexto]', 'executa uma skill (nomes em /kanon skills)'],
   ['/kanon contexto <empresa>/<area>/<equipe>', 'troca para quem o kanon trabalha nesta máquina'],
+  ['/kanon mensagem [destino] [assunto]', 'escreve uma mensagem para um público e para no rascunho'],
 ];
 
 function limpar(texto) {

@@ -9,11 +9,13 @@
 - `kanon status <projeto|feature>` — diz em que etapa a Feature está e qual é o próximo passo, pelos artefatos da pasta, com os comandos de cada marco prontos para rodar; com um projeto, uma linha por Feature. Atalho do modo consulta de [`skills/09-feature-state-management`](../skills/09-feature-state-management/SKILL.md).
 - `kanon <nome-da-skill> [contexto adicional]` — executa a skill correspondente diretamente.
 - `kanon contexto <empresa>/<area>/<equipe>` — define para quem o kanon trabalha nesta máquina; atalho de `kanon company-profile contexto` ([`skills/51-company-profile`](../skills/51-company-profile/SKILL.md)).
+- `kanon mensagem [destino] [assunto]` — escreve uma mensagem para um público e para no rascunho; atalho de `kanon audience-message` ([`skills/52-audience-message`](../skills/52-audience-message/SKILL.md)).
 
 ## Comportamento
 0. Montar o perfil efetivo da empresa ([`process/17-company-profile.md`](../process/17-company-profile.md)) pela camada de integração e mostrar a linha "Atuando para", ou o aviso de modo neutro.
 1. Sem argumento, com `--help`, `help`, `-h` ou `skills`: mostrar a ajuda ou a lista de skills descrita em Uso e parar. As duas derivam dos índices (`agents/README.md` e `skills/README.md`), nunca o contrário ([`process/01-menu-map.md`](../process/01-menu-map.md)).
 1a. Com `status <nome>`: responder pela consulta de estado de [`process/03-state-management.md`](../process/03-state-management.md) e parar.
+1b. Com `mensagem`: tratar como `audience-message` com o resto dos argumentos e seguir no passo 3.
 2. Com outro argumento: o primeiro token é o `<nome-da-skill>`. Resolver para uma pasta em `skills/` comparando o nome ignorando o prefixo numérico (ex.: `refine-feature` → `skills/01-refine-feature/`; `setup` → `skills/setup/`).
 3. Ler o `SKILL.md` da pasta resolvida (Propósito, Fase, Entradas, Saídas, Regras, Depende de) e executá-lo, aplicando os agentes de [`agents/`](../agents) e os processos de [`process/`](../process) que ele referenciar.
 4. Usar os templates aplicáveis em [`templates/`](../templates) para os artefatos gerados.

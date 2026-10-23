@@ -4,7 +4,7 @@ capacidades: [comunicacao]
 ---
 # Slack — adaptador
 
-Atende a capacidade `comunicacao` de [`.kanon/process/17-company-profile.md`](../../.kanon/process/17-company-profile.md). Usado por `skills/34-pull-request-review`, `47-handoff-delivery`, `48-screen-validation` e `51-company-profile`. Canais, formato e quem envia vêm sempre do perfil da empresa.
+Atende a capacidade `comunicacao` de [`.kanon/process/17-company-profile.md`](../../.kanon/process/17-company-profile.md). Usado por `skills/34-pull-request-review`, `47-handoff-delivery`, `48-screen-validation`, `51-company-profile` e `52-audience-message`. Canais, formato e quem envia vêm sempre do perfil da empresa.
 
 ## Como conectar
 MCP do Slack do claude.ai, autenticado com a conta de quem usa o kanon.
@@ -22,6 +22,11 @@ MCP do Slack do claude.ai, autenticado com a conta de quem usa o kanon.
 
 ### Rascunhos de handoff (`skills/47`)
 `slack_send_message_draft` para os rascunhos — a skill nunca envia.
+
+### Mensagem por público (`skills/52`)
+- **Ler antes**: `slack_read_channel` (ou `slack_read_thread` quando a mensagem é resposta) desde o último envio sobre o assunto; a busca (`slack_search_public_and_private`) só para achar a conversa, nunca no lugar da leitura.
+- **Rascunho**: `slack_send_message_draft`, com o texto final. Resposta em conversa só com o `thread_ts` lido no formato detalhado.
+- O MCP põe sozinho a assinatura de envio pelo Claude: o texto não a repete.
 
 ## Caminho alternativo
 MCP indisponível ou não configurado: a notificação fica pendente e é registrada como falha de sincronização no resumo — nunca tratada como enviada. Não bloqueia o PR.

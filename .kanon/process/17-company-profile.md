@@ -41,6 +41,7 @@ No repositório de conteúdo, numa pasta `kanon/` em cada nível:
 - **Só a skill 51 escreve no perfil.** As demais leem o perfil efetivo e propõem.
 - **Nada entra sem confirmação humana.** Proposta recusada também vai para o histórico.
 - **Regra local × melhoria do núcleo**: pedido para o kanon agir diferente que só vale para aquele nível vai para "Regras locais" do perfil; pedido que valeria para qualquer empresa vira proposta de mudança no núcleo, registrada para decisão do mantenedor do kanon.
+- **Públicos**: a seção "Públicos" do perfil liga cada público de `reference/comunicacao/02-publicos.md` a um papel ou grupo e a um canal. Herda como as tabelas de comunicação: o nível mais específico que cita um público troca a linha inteira dele. Público ausente em toda a cadeia é "não registrado" e a skill que precisar dele pergunta.
 - **`nomes_reservados`** lista os nomes próprios do nível (empresa, área, equipe, pessoas, canais) que nunca podem aparecer em `.kanon/` — a lista alimenta o Selo I ampliado (`process/10`). A skill 51 acrescenta cada pessoa e canal que registra.
 - **Nunca no perfil**: segredo, token, credencial, dado pessoal além de nome e contato de trabalho, procedimento técnico de ferramenta (vai no adaptador).
 - **Sem perfil**: modo neutro. Skills que não dependem da empresa rodam; as que dependem (publicar, notificar, pedir aceite) param e orientam a criação do perfil, como `process/13` faz para integração ausente.

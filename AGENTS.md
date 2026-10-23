@@ -92,8 +92,9 @@ O catálogo completo está em [`.kanon/reference/comunicacao/`](.kanon/reference
 os 13 públicos (QA, UI/UX, liderança executiva, comitê de mudança, outro time interno, parceiro externo, segurança e
 suporte, além dos cinco abaixo) e os tipos de mensagem. O papel
 [`COMMUNICATOR`](.kanon/agents/AGENT-COMMUNICATOR.md) revisa o texto contra ele antes da aprovação, e o esqueleto é o
-[`MENSAGEM.template.md`](.kanon/templates/MENSAGEM.template.md). A tabela abaixo é o resumo dos públicos mais
-frequentes.
+[`MENSAGEM.template.md`](.kanon/templates/MENSAGEM.template.md). O fluxo completo (ler o destino, conferir,
+revisar, aprovar, rascunhar) é a skill [`52-audience-message`](.kanon/skills/52-audience-message/SKILL.md), pelo
+comando `/kanon mensagem`. A tabela abaixo é o resumo dos públicos mais frequentes.
 
 ### Antes de escrever
 

@@ -25,7 +25,7 @@ erro mais comum desta disciplina.
 - **Fato separado de hipótese.** O que não foi conferido aparece como hipótese, nunca com a confiança de um fato
   (`process/11-subagent-anti-hallucination.md`).
 - **Nível técnico proporcional ao leitor.** Nem jargão de código para quem decide produto, nem abstração vaga para
-  quem vai implementar.
+  quem vai implementar. Como traduzir o achado e testar o texto antes de propor: [04](04-escrita-clara.md).
 - **Material grande vai num documento compartilhável** (casos de teste, evidências, telas, consultas longas) e a
   mensagem leva o link.
 - **Pergunta parte só do que o leitor disse.** Não se inventam opções nem cenários que ele não citou; a decisão

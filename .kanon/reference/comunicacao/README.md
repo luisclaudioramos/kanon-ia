@@ -16,10 +16,11 @@ Canais, pessoas e regras locais de cada empresa não ficam aqui: ficam no perfil
 1. [Regras Gerais](01-regras-gerais.md): o que vale para qualquer público, antes, durante e depois de escrever.
 2. [Públicos](02-publicos.md): os 13 públicos, com o que cada um precisa conseguir fazer depois de ler, o que entra e o que nunca entra.
 3. [Tipos de Mensagem](03-tipos-de-mensagem.md): a estrutura de cada tipo (pedido de decisão, pergunta, aviso, fechamento, incidente, entrega de material, pedido a outro time).
+4. [Escrita Clara](04-escrita-clara.md): como escrever cada frase para quem não vê o sistema: o achado em quatro partes, os três testes de leitura e o que cortar.
 
 ## Como usar
 
-- **Escrever:** escolha o público em `02`, o tipo em `03` e aplique as regras de `01`. O esqueleto está em
+- **Escrever:** escolha o público em `02`, o tipo em `03`, aplique as regras de `01` e escreva cada frase como diz `04`. O esqueleto está em
   [`templates/MENSAGEM.template.md`](../../templates/MENSAGEM.template.md).
 - **Revisar:** o papel [`COMMUNICATOR`](../../agents/AGENT-COMMUNICATOR.md) confere o texto contra esta pasta antes
   de ele ir para aprovação humana.

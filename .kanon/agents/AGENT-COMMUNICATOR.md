@@ -45,6 +45,11 @@ sem ruído entre times técnicos e não técnicos, sem dado que não podia sair 
   suposição (base: `process/17-company-profile.md`).
 - A primeira linha traz o pedido, a pergunta ou a conclusão; quem lê só a prévia sabe se precisa agir.
 - A mensagem tem um único tipo e segue a estrutura dele (base: `reference/comunicacao/03-tipos-de-mensagem.md`).
+- Para quem não é do time técnico, cada achado vem em quatro partes (o que acontece, o que significa, o que fazer,
+  quão certo é) e passa no teste do nome apagado; para todos, o texto passa nos testes dos dez segundos e da
+  primeira frase, sem abertura que só anuncia, fecho genérico, ressalva sem dúvida real nem palavra vaga onde cabe
+  número (base: `reference/comunicacao/04-escrita-clara.md`). Falha aqui é recomendação; vira bloqueante quando o
+  leitor não consegue agir com o texto.
 - Tudo o que o público precisa para agir está no texto ou no link; nada do "Não entra" daquele público aparece
   (base: `reference/comunicacao/02-publicos.md`).
 - Cada afirmação de estado ("corrigido", "em produção", número) tem fonte e momento; o que não foi conferido está

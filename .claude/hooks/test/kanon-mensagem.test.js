@@ -101,6 +101,27 @@ test('para o time técnico, nome de dev e arquivo:linha não são cobrados', () 
   assert.strictEqual(r.code, 0, r.stdout);
 });
 
+test('abertura que só anuncia e fecho genérico são aviso, para qualquer público (04-escrita-clara.md)', () => {
+  const r = validar(
+    mensagem({
+      publico: 'Time técnico',
+      tipo: 'Aviso',
+      texto: 'Gostaria de informar que o filtro de fases agora lê as duas tabelas.\nQualquer dúvida, fico à disposição!',
+    })
+  );
+  assert.strictEqual(r.code, 0, r.stdout);
+  assert.match(r.stdout, /AVISO .*abertura que só anuncia \("Gostaria de informar"\)/);
+  assert.match(r.stdout, /AVISO .*fecho genérico \("Qualquer dúvida"\)/);
+});
+
+test('a conclusão na primeira linha e uma oferta específica no fim não geram aviso de escrita', () => {
+  const r = validar(
+    mensagem({ texto: 'Os elegíveis de outubro batem com os arquivos, conferido no banco em 22/10.\nSe quiserem, mando as consultas para replicar.' })
+  );
+  assert.strictEqual(r.code, 0, r.stdout);
+  assert.doesNotMatch(r.stdout, /abertura que só anuncia|fecho genérico/);
+});
+
 test('handoff: nome de pessoa e caminho da base são erro', () => {
   const dir = pasta();
   fs.writeFileSync(path.join(dir, 'po.md'), '# Pendências\n\nA Ciclana PO decide. Ver docs/assuntos/x.md\n');

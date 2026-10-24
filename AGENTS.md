@@ -61,6 +61,8 @@ relatórios. Termos técnicos, comandos e nomes de código ficam no original (`p
 - **Sem narrar o processo:** não liste os passos que você executou nem repita o pedido. Conte só o que muda a
   leitura do resultado.
 - **Termo novo, explicação curta:** se o leitor pode não conhecer o termo, explique numa frase na primeira vez.
+- **Sem abertura que só anuncia nem fecho genérico**, e número no lugar do vago: os cortes de
+  [`04-escrita-clara.md`](.kanon/reference/comunicacao/04-escrita-clara.md) valem também no chat.
 - **Caminhos relativos:** nada de caminho absoluto da máquina (`/home/...`) no chat, em notas ou mensagens.
 - **Mensagem de progresso:** uma frase, em português, dizendo o que está sendo feito agora.
 
@@ -89,7 +91,7 @@ para a mensagem avulsa. Canais, pessoas e regras locais de cada empresa ficam no
 conteúdo.
 
 O catálogo completo está em [`.kanon/reference/comunicacao/`](.kanon/reference/comunicacao/README.md): regras gerais,
-os 13 públicos (QA, UI/UX, liderança executiva, comitê de mudança, outro time interno, parceiro externo, segurança e
+escrita clara (o achado em quatro partes e os testes de leitura), os 13 públicos (QA, UI/UX, liderança executiva, comitê de mudança, outro time interno, parceiro externo, segurança e
 suporte, além dos cinco abaixo) e os tipos de mensagem. O papel
 [`COMMUNICATOR`](.kanon/agents/AGENT-COMMUNICATOR.md) revisa o texto contra ele antes da aprovação, e o esqueleto é o
 [`MENSAGEM.template.md`](.kanon/templates/MENSAGEM.template.md). O fluxo completo (ler o destino, conferir,

@@ -23,6 +23,9 @@ const CAMINHO_DA_BASE = /\/home\/|(?:^|[\s(`])\.kanon\/|(?:^|[\s(`])docs\/|\[\[/
 const NAO_TECNICOS = ['PO', 'Negócio', 'Gestão de entrega', 'Liderança executiva', 'Parceiro ou fornecedor externo', 'Suporte e operação'];
 const SEM_NOME_DE_DEV = ['Negócio', 'Liderança executiva', 'Parceiro ou fornecedor externo', 'Suporte e operação'];
 const PAPEL_DEV = /\bdev\b|desenvolvedor|engenheir/i;
+// Cortes de reference/comunicacao/04-escrita-clara.md: valem para todos os públicos.
+const ABERTURA_QUE_ANUNCIA = /gostaria de (?:informar|avisar|comunicar|compartilhar)|venho por meio desta|segue abaixo|espero que (?:estejam|esteja|você esteja) bem|passando (?:aqui )?para (?:informar|avisar)|desculp[ae] (?:o|pelo) incômodo|desculpe incomodar/i;
+const FECHO_GENERICO = /qualquer (?:coisa|dúvida)|fico à disposição|estou à disposição|espero ter ajudado/i;
 
 function secao(md, titulo) {
   const m = md.match(new RegExp(`^## ${titulo}\\s*$`, 'm'));
@@ -85,6 +88,11 @@ function validarMensagem(arquivo, md, projectDir) {
     const m = texto.match(re);
     if (m) avisos.push(`possível ${nome} ("${m[0]}"): prazo e estratégia internos ficam no repositório de conteúdo`);
   }
+  const linhas = texto.split('\n').map((l) => l.trim()).filter(Boolean);
+  const abertura = (linhas[0] || '').match(ABERTURA_QUE_ANUNCIA);
+  if (abertura) avisos.push(`abertura que só anuncia ("${abertura[0]}"): a primeira linha é o pedido, a pergunta ou a conclusão`);
+  const fecho = linhas.length > 1 && linhas[linhas.length - 1].match(FECHO_GENERICO);
+  if (fecho) avisos.push(`fecho genérico ("${fecho[0]}"): termine quando o conteúdo acabar ou ofereça algo específico`);
   return { erros, avisos };
 }
 

@@ -92,7 +92,7 @@ Engineering manager, coordenação, Tech Lead no papel de gestão.
 - **Entra:** situação em uma frase, risco, gargalo, o que precisa deles (alocação, desbloqueio, decisão),
   capacidade e esforço quando vierem do time.
 - **Não entra:** detalhe técnico que não muda a decisão deles, estimativa feita sem o time.
-- **Tom:** gestor. **Formato:** situação + risco + pedido.
+- **Tom:** gestor. **Formato:** situação + risco + pedido. O acompanhamento periódico usa o tipo "Status" (`templates/STATUS-REPORT.template.md`); aqui o dono do marco pode ser a pessoa.
 - **Exemplo:** "Projeto de cadastro: tela 01 aprovada, 3 dúvidas de regra abertas com o PO. Risco: sem resposta até quinta,
   a US-05 para. Precisamos de ajuda para priorizar com o PO."
 
@@ -102,7 +102,7 @@ CTO, diretoria, quem decide investimento e direção.
 - **Entra:** a decisão pedida, o impacto no negócio, custo e risco em ordem de grandeza, as alternativas com o
   trade-off (custo × tempo × qualidade × escala), o que acontece se nada for feito.
 - **Não entra:** detalhe técnico, histórico do problema, lista de tarefas.
-- **Tom:** estratégico. **Formato:** resumo executivo de até 5 linhas + anexo para quem quiser o detalhe.
+- **Tom:** estratégico. **Formato:** resumo executivo de até 5 linhas + anexo para quem quiser o detalhe. O acompanhamento periódico usa o tipo "Status" (`templates/STATUS-REPORT.template.md`), com o dono do marco sempre como papel.
 - **Exemplo:** "Pedimos decisão sobre manter a cópia analítica diária ou passar a horária: a diária atrasa relatórios
   em 1 dia; a horária custa ~3x de processamento. Sem decisão, seguimos com a diária."
 

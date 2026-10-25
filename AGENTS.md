@@ -125,7 +125,7 @@ comando `/kanon mensagem`. A tabela abaixo é o resumo dos públicos mais freque
 - **Fato separado de hipótese**, e número com a fonte e o momento.
 - **Assuntos separados ficam separados:** a mensagem de um canal não cita o que foi tratado em outro.
 - **Pergunta ao time vai para o time.** Marcar uma pessoa só quando o usuário pedir.
-- **Prazo, divisão de entrega e estratégia** ficam no repositório de conteúdo, como uso interno.
+- **Prazo, divisão de entrega e estratégia** ficam no repositório de conteúdo, como uso interno. Exceção: no status report (tipo "Status"), a data de um marco que saiu da estimativa do time técnico, com a fonte, entra; folga, margem e estratégia continuam fora.
 - **Material grande** (casos de teste, evidências, telas) vai num documento compartilhável e a mensagem leva o link.
 - **Pergunta ao negócio parte só do que ele disse.** "Hoje é assim?" se responde com o que o sistema faz hoje, e a
   decisão volta para ele.

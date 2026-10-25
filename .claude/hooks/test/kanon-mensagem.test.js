@@ -122,6 +122,17 @@ test('a conclusão na primeira linha e uma oferta específica no fim não geram 
   assert.doesNotMatch(r.stdout, /abertura que só anuncia|fecho genérico/);
 });
 
+test('status para a liderança com a data da estimativa do time passa sem erro (STATUS-REPORT)', () => {
+  const r = validar(
+    mensagem({
+      publico: 'Liderança executiva',
+      tipo: 'Status',
+      texto: '### Estado: 🟡 Amarelo\nUma decisão de escopo está pendente e ainda não trava a entrega.\n| Revisão de público | 2026-11-26 | Time técnico | estimativa do time de 2026-10-21 |',
+    })
+  );
+  assert.strictEqual(r.code, 0, r.stdout);
+});
+
 test('handoff: nome de pessoa e caminho da base são erro', () => {
   const dir = pasta();
   fs.writeFileSync(path.join(dir, 'po.md'), '# Pendências\n\nA Ciclana PO decide. Ver docs/assuntos/x.md\n');

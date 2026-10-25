@@ -49,6 +49,7 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 | [HANDOFF-DEV.template.md](HANDOFF-DEV.template.md) | `skills/46-handoff-authoring` — passagem de bastão para engenharia |
 | [HANDOFF-PO.template.md](HANDOFF-PO.template.md) | `skills/46-handoff-authoring` — passagem de bastão para PO |
 | [HANDOFF-NEGOCIOS.template.md](HANDOFF-NEGOCIOS.template.md) | `skills/46-handoff-authoring` — passagem de bastão para Negócios |
+| [STATUS-REPORT.template.md](STATUS-REPORT.template.md) | Mensagem do tipo "Status" para liderança executiva ou gestão de entrega: estado com a régua de cor, progresso desde o último report, riscos e bloqueios, decisões necessárias e próximos marcos (data só da estimativa do time) |
 | [MENSAGEM.template.md](MENSAGEM.template.md) | Mensagem avulsa para um público (`reference/comunicacao/`), revisada por `agents/AGENT-COMMUNICATOR.md`: público, tipo, destino, fontes, texto e aprovação |
 | [MEMORY.template.md](MEMORY.template.md) | `skills/15-memory-update` |
 | [COST-OF-OWNERSHIP.template.md](COST-OF-OWNERSHIP.template.md) | `skills/30-cost-of-ownership-tco` |

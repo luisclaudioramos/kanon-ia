@@ -38,7 +38,7 @@ erro mais comum desta disciplina.
 - Dado pessoal de cliente (documento, e-mail, telefone, nome). Se o caso exige identificar alguém, usar um
   identificador técnico ou o documento mascarado, e só para quem tem direito de ver.
 - Caminho interno (pasta da máquina, caminho do repositório de conteúdo) que o leitor não consegue abrir.
-- Prazo interno, divisão de entrega e estratégia: ficam no repositório de conteúdo, como uso interno.
+- Prazo interno, divisão de entrega e estratégia: ficam no repositório de conteúdo, como uso interno. Exceção: no status report (tipo "Status"), a data de um marco que saiu da estimativa do time técnico, com a fonte, entra; folga, margem e estratégia continuam fora.
 - Estimativa que não saiu do time que vai executar.
 - Nome de quem investigou ou errou, para quem não é do time técnico.
 

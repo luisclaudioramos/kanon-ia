@@ -15,6 +15,7 @@ Fase 7 — Auditoria, Governança e Consolidação. Roda continuamente ao longo 
 ## Regras principais
 - Aciona [`agents/AGENT-SCRUM-MASTER.md`](../../agents/AGENT-SCRUM-MASTER.md) e serve como insumo para [`agents/AGENT-PO.md`](../../agents/AGENT-PO.md).
 - Todo dado do dashboard vem do estado real registrado em `09-feature-state-management`, nunca de estimativa otimista.
+- O dashboard é a fonte do status report para liderança (`templates/STATUS-REPORT.template.md`, tipo "Status"): o report leva o estado, o que mudou e o que precisa do leitor; o dashboard fica como anexo. O desvio de cronograma só aparece no report quando a data comparada saiu da estimativa do time.
 - **Risco/lacuna identificado vira RF-X, não fica só no dashboard.** Mesmo mecanismo de `18-feature-context-back-propagation`: um risco ou lacuna de escopo que o dashboard revela e que nenhum RF/RNF existente cobre é convertido em RF-X em `FEATURE.md`, com referência de origem no relatório de progresso. Motivo: um dashboard é lido e esquecido; um RF-X é cobrado pelo DoD até ser resolvido.
 
 ## Depende de

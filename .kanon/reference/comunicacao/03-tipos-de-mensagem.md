@@ -11,6 +11,7 @@ mensagem tem um único tipo; se precisar de dois (avisar e pedir decisão), são
 | Fechamento | o que foi resolvido | como foi conferido (fonte e momento), o que muda para o leitor | o que ficou de fora, se algo ficou |
 | Incidente | o sintoma e o alcance | o que se sabe, o que é hipótese, o que já foi contido | a próxima atualização (o fato que virá, não um horário inventado) |
 | Entrega de material | o que está sendo entregue e para quê | link do documento, resumo, como ler | o que se espera do leitor |
+| Status | o estado (🟢, 🟡 ou 🔴) e o motivo, começando pela mudança de cor | progresso desde o último report, riscos e bloqueios, decisões necessárias | os próximos marcos, com data, dono e fonte da data |
 | Pedido a outro time | o pedido | contexto mínimo, ambiente, evidência, urgência real | o que muda quando o pedido for atendido |
 
 ## Regras por tipo
@@ -26,6 +27,7 @@ mensagem tem um único tipo; se precisar de dois (avisar e pedir decisão), são
   mudou desde a anterior.
 - **Entrega de material:** o material fica no documento; a mensagem não o reproduz.
 - **Pedido a outro time:** um pedido por mensagem, atendível sem reunião.
+- **Status:** modelo em `templates/STATUS-REPORT.template.md`, com a régua da cor. Só o que mudou desde o report anterior, que vai linkado. Data de marco só a da estimativa do time ou de um compromisso já agendado, com a fonte; sem ela, "sem data: aguardando estimativa do time". A decisão pedida segue as regras do pedido de decisão.
 
 ## Exemplo concreto
 

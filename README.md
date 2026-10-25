@@ -75,9 +75,9 @@ de integração muda. A divisão é essa: `.kanon/` diz **o que** vale, `.claude
 
 ## Origem
 
-Os diagramas iniciais, cedidos por um Tech Lead, de julho de 2026, com a estrutura de pastas e o fluxo de trabalho, estão em [`docs/kanon/origem/`](docs/kanon/origem/README.md), como registro histórico.
+O kanon foi criado e é mantido por **Luis Cláudio da Silva Ramos**. Este repositório junta as duas fases do projeto: a primeira versão (agosto a setembro de 2026) e a reescrita do núcleo (desde setembro de 2026). Os diagramas iniciais de estrutura e de fluxo e os primeiros modelos de work item do Azure DevOps e de pull request foram cedidos por um Tech Lead, colega de trabalho.
 
-Nasceu para os projetos da empresa; desde outubro de 2026 o núcleo é independente de empresa ([`docs/kanon/specs/2026-10-11-kanon-multiempresa-design.md`](docs/kanon/specs/2026-10-11-kanon-multiempresa-design.md)). Quem a empresa é — pessoas, ferramentas, canais e processos — fica no perfil dela, no repositório de conteúdo.
+Nasceu para o trabalho com um cliente; desde outubro de 2026 o núcleo é independente de empresa. Quem a empresa é — pessoas, ferramentas, canais e processos — fica no perfil dela, no repositório de conteúdo.
 
 ## O que não está aqui
 

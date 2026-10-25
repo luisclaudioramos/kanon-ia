@@ -23,7 +23,7 @@ Cada arquivo é autocontido e segue o mesmo template: Propósito, Quando se apli
 | [12](12-knowledge-retrieval.md) | Knowledge Retrieval | O mecanismo obrigatório de busca (RAG) e a regra de citar `path:line` antes de afirmar |
 | [13](13-external-integration-prerequisite.md) | External Integration Prerequisite | Publicação e Pull Request exigem a ferramenta externa configurada — bloqueio orientado, exceção só com registro explícito |
 | [14](14-decision-segregation.md) | Decision Segregation | Quality Gate e Code Review não podem ser aprovados pela mesma janela de contexto que produziu o artefato |
-| [15](15-pull-request-gates.md) | Pull Request Gates | As 13 travas que toda PR cumpre: onde cada uma nasce, o que a PR confere, o que bloqueia e as exceções |
+| [15](15-pull-request-gates.md) | Pull Request Gates | As 14 travas que toda PR cumpre: onde cada uma nasce, o que a PR confere, o que bloqueia e as exceções |
 | [16](16-design-foundations.md) | Design Foundations | As regras D1–D6 de interface: obrigatórias quando o perfil de design as define, incentivo quando não; bug visual × oportunidade técnica |
 | [17](17-company-profile.md) | Company Profile | O núcleo fala em capacidades; o perfil vivo de cada empresa, área e equipe diz papéis, ferramentas, comunicação e processos, sempre com confirmação humana |
 | [18](18-work-item-publication-gate.md) | Work Item Publication Gate | Feature e User Story só vão para a ferramenta de trabalho no modelo do template, com os documentos anexados, sem link relativo e sem prazo ou estratégia interna |

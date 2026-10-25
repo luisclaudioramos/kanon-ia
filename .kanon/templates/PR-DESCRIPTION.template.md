@@ -19,6 +19,11 @@ _[preencher: o que passa a fazer. Trava 1]_
 
 _Trava 5._
 
+## Decisão técnica
+_Só em PR que muda contrato entre sistemas ou API pública, modelo de dados, traz dependência nova ou toca mais de um sistema. Senão: "Não se aplica: motivo"._
+
+**ADR**: _[preencher: ADR-NNNN (estado) que esta PR segue ou cria, ou "Não precisa de ADR: motivo"]_ · _Trava 14._
+
 ## Como testar
 1. **Ambiente**: _[preencher]_
 2. **Pré-condição**: _[preencher]_

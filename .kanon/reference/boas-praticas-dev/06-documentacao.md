@@ -30,6 +30,8 @@ Para decisões importantes e não óbvias, registre um [ADR](GLOSSARIO.md#adr) c
 - **Quando fazer uma análise antes da RFC:** quando ainda não se sabem as opções. A análise aprovada vira a RFC.
 - **Estados:** `proposta` → `aceita` ou `rejeitada`; uma decisão aceita que deixa de valer fica `substituída`, com `substituida_por` apontando para o ADR novo, que aponta de volta em `substitui`. ADR aceito não é reescrito: a mudança vira um ADR novo.
 - **Quem decide é uma pessoa:** o `AGENT-ARCHITECT` escreve, o `AGENT-TECH-LEAD` revisa e o estado `aceita` só vale com `aprovado_em` e o papel em `quem_decide`.
+- **Revisão antes de aceitar:** cada rodada segue [`templates/DESIGN-REVIEW.template.md`](../../templates/DESIGN-REVIEW.template.md) (veredicto, problemas críticos, melhorias, riscos, testes em falta, perguntas ao autor), com o checklist de "Revisão de RFC e ADR" do `AGENT-TECH-LEAD`, e ganha uma linha em "Revisões" do ADR. `aceita` só com a última rodada aprovada e nenhum problema crítico aberto.
+- **Na PR:** mudança que pede ADR cita o ADR na descrição (trava 14 de `process/15-pull-request-gates.md`).
 - **Número e pasta:** `ADR-NNNN`, sequencial por projeto, nunca reutilizado (rejeitada e substituída guardam o número). O arquivo é `ADR-NNNN-<nome-curto>.md`, na pasta de decisões que o perfil da empresa registra em "Processos > Decisões técnicas"; sem valor no perfil, `decisions/` na pasta do projeto.
 - **Alternativas só as reais**, cada uma com o motivo do descarte. O plano de migração e rollback separa homologação e produção.
 

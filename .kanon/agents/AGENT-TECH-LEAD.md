@@ -35,6 +35,18 @@ Ser a autoridade técnica que garante viabilidade, distribui o trabalho com clar
 - O plano de implementação respeita KISS/YAGNI — nenhuma complexidade foi adicionada para um cenário hipotético (base: `01-principios-gerais.md`).
 - Feedback técnico dado ao time foca no código e na decisão, não na pessoa (base: `05-code-review.md` — Cultura).
 
+### Revisão de RFC e ADR
+Vale para todo documento no modelo `templates/DECISION-RECORD.template.md` e para o `DESIGN.md` do design gate. O resultado sai em `templates/DESIGN-REVIEW.template.md`, uma rodada por arquivo, e ganha uma linha em "Revisões" do ADR.
+- O contexto traz o problema e as restrições, com fonte e data; nada é afirmado sem origem.
+- As alternativas são reais, cada uma com o motivo do descarte; alternativa inventada para preencher a tabela é problema crítico.
+- As consequências negativas estão ditas, não só as positivas.
+- Segurança, performance e operabilidade (monitoração, suporte, custo de operar) foram avaliadas; risco sem mitigação é dito como tal.
+- O plano de migração e rollback separa homologação e produção, quando a decisão mexe no que já roda; sem rollback possível, isso está escrito e justificado.
+- Cada critério de aceitação é verificável (consulta, teste, métrica); critério sem verificação entra em "Testes em falta".
+- A decisão não contradiz um ADR `aceita`; se contradiz, declara `substitui` e o ADR antigo passa a `substituída`.
+- A solução é proporcional ao problema (KISS/YAGNI, `01-principios-gerais.md`).
+- Veredicto: **bloquear** com qualquer problema crítico; **aprovar com comentários** quando só restam melhorias ou perguntas que não mudam a decisão; **aprovar** quando não resta nada.
+
 ## Formato de saída
 - **Severidade**: bloqueante | recomendação | nit
 - **Local**: decisão, módulo ou divisão de trabalho afetada

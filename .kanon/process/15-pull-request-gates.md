@@ -1,7 +1,7 @@
 # 15 — Pull Request Gates
 
 ## Propósito
-Definir, num lugar só, as 13 travas que toda Pull Request precisa cumprir: onde cada uma nasce no fluxo, o que a PR confere, se bloqueia ou só alerta, e quais exceções valem. Skills e templates apontam para este arquivo em vez de copiar os critérios.
+Definir, num lugar só, as 14 travas que toda Pull Request precisa cumprir: onde cada uma nasce no fluxo, o que a PR confere, se bloqueia ou só alerta, e quais exceções valem. Skills e templates apontam para este arquivo em vez de copiar os critérios.
 
 ## Quando se aplica
 - Em toda PR aberta a partir de **2026-09-29**.
@@ -24,6 +24,7 @@ Definir, num lugar só, as 13 travas que toda Pull Request precisa cumprir: onde
 | 1 | As-is / to-be | A US tem **Como é hoje** e **Como deve ficar**, descrevendo comportamento, não código. | A descrição traz o as-is/to-be técnico (o que o código fazia, o que passa a fazer) e o link da US. | 🔴 |
 | 5 | Integrações | A US ou a Task lista os **sistemas afetados**: o que a mudança consome, quem consome o que muda, se há quebra de contrato e para quem. | A seção **Integrações** confirma o planejado ou explica o que mudou no desenvolvimento. "Nenhuma" é aceito, com justificativa. | 🔴 |
 | 6 | Tamanho | A Task é fatiada para caber numa PR abaixo do limite desta trava. | Alerta se a PR tiver **mais de 20 arquivos ou mais de 400 linhas** alteradas, **ou** mexer em contrato público, migração de banco ou biblioteca compartilhada. Quando dispara, a descrição lista as áreas ou sistemas que podem ser afetados, e a trava 8 passa a exigir 2 aprovações. | 🟡 |
+| 14 | Decisão técnica | `skills/04-architecture-assessment` e `reference/boas-praticas-dev/06-documentacao.md`: decisão importante vira ADR no modelo `templates/DECISION-RECORD.template.md`, revisado e aceito antes do código. | Vale para PR que muda contrato entre sistemas ou API pública, modelo de dados (migração), traz dependência nova ou toca mais de um sistema. A seção **Decisão técnica** cita o ADR que a mudança segue ou cria, com número e estado, ou declara "Não precisa de ADR: _motivo_". Seção ausente nesses casos: 🔴. Código que contradiz um ADR `aceita`: achado bloqueante; corrige o código ou abre um ADR que o substitua. ADR citado ainda em `proposta`: 🟡. | 🔴 / 🟡 |
 
 ### Desenvolvimento e test case
 

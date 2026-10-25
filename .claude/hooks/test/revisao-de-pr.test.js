@@ -23,9 +23,9 @@ function arquivosDe(dir) {
   );
 }
 
-test('o parecer da rodada traz o resultado de cada uma das 13 travas de process/15', () => {
+test('o parecer da rodada traz o resultado de cada uma das 14 travas de process/15', () => {
   const travas = travasDoProcesso();
-  assert.strictEqual(travas.length, 13);
+  assert.strictEqual(travas.length, 14);
   const tpl = ler(TEMPLATE);
   const secao = tpl.split('## 🚦 Travas de PR')[1];
   assert.ok(secao, 'falta a seção 🚦 Travas de PR no parecer');

@@ -45,6 +45,13 @@ _Opcional: some quando a decisão não mexe no que já está rodando._
 ## Critérios de aceitação
 _[preencher: o que prova que a decisão funcionou: consulta, teste, métrica]_
 
+## Revisões
+_Uma linha por rodada (`templates/DESIGN-REVIEW.template.md`). `aceita` só com a última rodada em "aprovar" ou "aprovar com comentários" e nenhum problema crítico aberto._
+
+| Rodada | Data | Revisor (papel) | Veredicto | Revisão |
+|---|---|---|---|---|
+| _[preencher: R1]_ | _[preencher: AAAA-MM-DD]_ | _[preencher]_ | _[preencher]_ | _[preencher: link do arquivo da rodada]_ |
+
 ## Perguntas abertas
 _Só em `proposta`._
 

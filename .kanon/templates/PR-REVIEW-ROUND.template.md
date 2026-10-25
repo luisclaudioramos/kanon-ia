@@ -65,6 +65,7 @@ _Redigido por `skills/13-code-review` e publicado por `skills/34-pull-request-re
 > | 11 — Cobertura de 100% | _[preencher: cobertura do diff e mutação]_ |
 > | 12 — Validação de tela | _[preencher]_ |
 > | 13 — Fundamentos de design | _[preencher]_ |
+> | 14 — Decisão técnica | _[preencher: ADR citado e estado, contradição com ADR aceito, ou motivo de não precisar]_ |
 >
 > ## 🔁 Apontamentos da rodada anterior
 > _Só a partir da rodada 2._

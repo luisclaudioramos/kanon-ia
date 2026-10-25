@@ -26,6 +26,11 @@ _(gerado/validado por `skills/20-diagram-authoring`)_
 ## Decisões voláteis isoladas
 _[preencher: quais integrações externas ou regras mutáveis foram isoladas atrás de interfaces estáveis — base agents/AGENT-ARCHITECT.md]_
 
+## ADRs desta Feature
+| ADR | Decisão | Estado |
+|---|---|---|
+| _[preencher: ADR-NNNN, link para a pasta de decisões do projeto]_ | _[preencher]_ | _[preencher: proposta, aceita, rejeitada ou substituída]_ |
+
 ## Consequências
 - _[preencher: o que essa decisão facilita]_
 - _[preencher: o que essa decisão custa/limita]_

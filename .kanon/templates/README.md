@@ -12,7 +12,8 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 | [REQUIREMENT-SUMMARY.template.md](REQUIREMENT-SUMMARY.template.md) | Brief executivo, gerado por `skills/39-generate-requirement-summary` |
 | [DESIGN.template.md](DESIGN.template.md) | Hard gate de ≥2 alternativas de alto nível, gerado por `skills/41-design-gate` — bloqueia os 3 abaixo até `APPROVED` |
 | [PLAN.template.md](PLAN.template.md) | Plano mestre da Feature; herda a decisão já aprovada em `DESIGN.md` |
-| [ARCHITECTURE.template.md](ARCHITECTURE.template.md) | ADR gerado por `skills/04-architecture-assessment` |
+| [ARCHITECTURE.template.md](ARCHITECTURE.template.md) | Documento de arquitetura da Feature, gerado por `skills/04-architecture-assessment`; lista os ADRs que ela gerou |
+| [DECISION-RECORD.template.md](DECISION-RECORD.template.md) | Modelo único de RFC e ADR (`reference/boas-praticas-dev/06-documentacao.md`): número, estado, contexto, decisão, alternativas, consequências, riscos, migração e rollback, critérios de aceitação. Usado por `skills/04-architecture-assessment` e por qualquer decisão técnica, com ou sem Feature |
 | [FEATURE.template.md](FEATURE.template.md) | Especificação funcional, gerada por `skills/03-create-feature-artifacts`. Do título ao "Anexo A" é o modelo do item publicado, conferido pela trava de `process/18-work-item-publication-gate.md` |
 
 ### Grupo 2 — Refino e Desdobramento
@@ -69,7 +70,7 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 |---|---|
 | [evidence/EVIDENCE.template.md](evidence/EVIDENCE.template.md) | Fonte Markdown do pacote de auditoria (`skills/33-audit-evidence`) — a geração do `.docx` final é ferramental futuro, fora do escopo desta pasta |
 | [documentacao/FIXED-PAGES.md](documentacao/FIXED-PAGES.md) | Hierarquia de páginas: pasta Features obrigatória, em local informado por quem publica |
-| [documentacao/PAGE-MODELS.md](documentacao/PAGE-MODELS.md) | Modelos de página: Feature (ficha + filhos `NN — Nome`), ADR, relatório mensal |
+| [documentacao/PAGE-MODELS.md](documentacao/PAGE-MODELS.md) | Modelos de página: Feature (ficha + filhos `NN — Nome`), ADR (publicação do `DECISION-RECORD`), relatório mensal |
 | [documentacao/STANDARDS.md](documentacao/STANDARDS.md) | Padrões de escrita: títulos, sem referência interna, fontes, situação e atualizações |
 
 ### Grupo 8 — Perfil da empresa

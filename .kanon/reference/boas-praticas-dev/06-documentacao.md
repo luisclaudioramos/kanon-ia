@@ -22,8 +22,16 @@ Todo projeto — e, num [monorepo](GLOSSARIO.md#monorepo), todo pacote/app publi
 - Documente APIs públicas (assinatura, parâmetros, retorno, exceções) especialmente em bibliotecas/serviços consumidos por outros times.
 - [Docstrings](GLOSSARIO.md#docstring) devem explicar contrato e comportamento, não reimplementar o código em prosa.
 
-## Decisões arquiteturais (ADRs)
-Para decisões importantes e não óbvias (escolha de banco, padrão arquitetural, troca de biblioteca crítica), registre um ADR (Architecture Decision Record) curto: contexto, decisão, alternativas consideradas, consequências. Evita que a mesma discussão se repita meses depois.
+## Decisões técnicas (RFC e ADR)
+Para decisões importantes e não óbvias, registre um [ADR](GLOSSARIO.md#adr) curto. Evita que a mesma discussão se repita meses depois. RFC e ADR usam o mesmo modelo, [`templates/DECISION-RECORD.template.md`](../../templates/DECISION-RECORD.template.md): a [RFC](GLOSSARIO.md#rfc) é o documento no estado `proposta`, e vira ADR na mesma página quando é aceita.
+
+- **Quando registrar um ADR:** escolha de banco, padrão arquitetural ou biblioteca crítica; mudança de contrato entre sistemas ou do modelo de dados; decisão difícil de desfazer; dependência nova. Vale também fora de uma Feature (sustentação, incidente, plataforma).
+- **Quando abrir RFC antes:** a decisão afeta mais de um time ou sistema, ou tem mais de uma alternativa real e quem decide quer ouvir comentários antes.
+- **Quando fazer uma análise antes da RFC:** quando ainda não se sabem as opções. A análise aprovada vira a RFC.
+- **Estados:** `proposta` → `aceita` ou `rejeitada`; uma decisão aceita que deixa de valer fica `substituída`, com `substituida_por` apontando para o ADR novo, que aponta de volta em `substitui`. ADR aceito não é reescrito: a mudança vira um ADR novo.
+- **Quem decide é uma pessoa:** o `AGENT-ARCHITECT` escreve, o `AGENT-TECH-LEAD` revisa e o estado `aceita` só vale com `aprovado_em` e o papel em `quem_decide`.
+- **Número e pasta:** `ADR-NNNN`, sequencial por projeto, nunca reutilizado (rejeitada e substituída guardam o número). O arquivo é `ADR-NNNN-<nome-curto>.md`, na pasta de decisões que o perfil da empresa registra em "Processos > Decisões técnicas"; sem valor no perfil, `decisions/` na pasta do projeto.
+- **Alternativas só as reais**, cada uma com o motivo do descarte. O plano de migração e rollback separa homologação e produção.
 
 ## Documentação viva
 - Documentação desatualizada é pior que ausência de documentação — gera confiança falsa.

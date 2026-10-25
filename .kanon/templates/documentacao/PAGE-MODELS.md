@@ -72,13 +72,7 @@ _[preencher: texto, tabela ou diagrama Mermaid; citar arquivo:linha ou a consult
 ```
 
 ## Modelo de Decision Record (ADR)
-```
-# ADR-_[preencher]_: _[preencher: título da decisão]_
-Contexto: _[preencher]_
-Decisão: _[preencher]_
-Alternativas consideradas: _[preencher]_
-Consequências: _[preencher]_
-```
+A página publicada é o ADR do projeto, no modelo [`DECISION-RECORD.template.md`](../DECISION-RECORD.template.md), com o mesmo número e o estado em destaque no topo. Só ADR `aceita` ou `substituída` é publicado; RFC em `proposta` fica no repositório de conteúdo.
 
 ## Modelo de Monthly Report
 ```

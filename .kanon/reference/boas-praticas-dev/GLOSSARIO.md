@@ -4,7 +4,7 @@ Termos técnicos usados nos documentos deste repositório, para consulta rápida
 
 <a id="adr"></a>
 ### ADR (Architecture Decision Record)
-Documento curto que registra uma decisão arquitetural importante: contexto, decisão tomada, alternativas consideradas e consequências. Evita que a mesma discussão se repita meses depois.
+Documento curto que registra uma decisão técnica importante: contexto, decisão tomada, alternativas consideradas e consequências. Evita que a mesma discussão se repita meses depois. No kanon, é o estado `aceita` do modelo `templates/DECISION-RECORD.template.md` (ver [RFC](#rfc)).
 
 <a id="aaa"></a>
 ### AAA (Arrange-Act-Assert)
@@ -141,6 +141,10 @@ Comando Git que reaplica os commits de uma branch sobre outra base, reescrevendo
 <a id="regressao"></a>
 ### Regressão (Teste de)
 Teste escrito para garantir que um bug corrigido não volte a acontecer no futuro.
+
+<a id="rfc"></a>
+### RFC (Request for Comments)
+Proposta de decisão técnica aberta a comentários antes de ser tomada. No kanon, é o estado `proposta` do modelo `templates/DECISION-RECORD.template.md`: aceita, a mesma página vira o [ADR](#adr).
 
 <a id="rollback"></a>
 ### Rollback

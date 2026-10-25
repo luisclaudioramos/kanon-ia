@@ -11,13 +11,14 @@ Fase 1 — Arquitetura e Especificação. Roda após [`03-create-feature-artifac
 
 ## Saídas
 - `reports/architecture-assessment.md` com as 2 alternativas avaliadas, a decisão e o tech-stack final.
+- Um ADR numerado por decisão relevante (`templates/DECISION-RECORD.template.md`), na pasta de decisões do projeto (perfil, "Processos > Decisões técnicas"), com `origem` apontando para a Feature.
 - Tabela "Impacted Systems" do `FEATURE.md` preenchida (repositórios/serviços tocados, tipo, impacto, ambiente/projeto de deploy).
 
 ## Regras principais
 - Aciona [`agents/AGENT-ARCHITECT.md`](../../agents/AGENT-ARCHITECT.md) para propor as alternativas e [`agents/AGENT-TECH-LEAD.md`](../../agents/AGENT-TECH-LEAD.md) para validar/desempatar.
 - A decisão final de arquitetura (stack escolhida, alternativa descartada) também é registrada na tabela "Decisões" do `FEATURE.md`, além do ADR completo em `ARCHITECTURE.md`.
 - Executa obrigatoriamente no tier de modelo **Forte + High** (ver [`process/08-model-orchestration.md`](../../process/08-model-orchestration.md)).
-- A decisão é registrada como ADR (ver `agents/AGENT-ARCHITECT.md`, base `reference/boas-praticas-dev/06-documentacao.md`).
+- A decisão é registrada como ADR no modelo único de RFC e ADR (ver `agents/AGENT-ARCHITECT.md`, base `reference/boas-praticas-dev/06-documentacao.md`). O `ARCHITECTURE.md` é o documento da Feature e lista os ADRs que ela gerou; o número e o estado ficam no ADR.
 - Nenhuma das alternativas pode depender de hardcode de ambiente (ver [`process/10-core-agnosticism-gate.md`](../../process/10-core-agnosticism-gate.md)).
 
 ## Depende de

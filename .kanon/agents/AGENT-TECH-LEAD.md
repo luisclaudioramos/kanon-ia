@@ -29,7 +29,7 @@ Ser a autoridade técnica que garante viabilidade, distribui o trabalho com clar
 
 ## Checklist de validação
 - A divisão de trabalho entre os engenheiros permite que cada parte seja desenvolvida e testada de forma independente (base: `08-arquitetura-design-patterns.md` — coesão/acoplamento).
-- Decisões técnicas de alto impacto têm uma justificativa registrada ([ADR](../reference/boas-praticas-dev/GLOSSARIO.md#adr) ou equivalente), não apenas "porque sim" (base: `06-documentacao.md`).
+- Decisões técnicas de alto impacto têm uma justificativa registrada ([ADR](../reference/boas-praticas-dev/GLOSSARIO.md#adr), no modelo `templates/DECISION-RECORD.template.md`), não apenas "porque sim"; o TECH-LEAD revisa a RFC, e o ADR só fica `aceita` com a aprovação de quem decide (base: `06-documentacao.md`).
 - Riscos e trade-offs (prazo vs. qualidade, simplicidade vs. flexibilidade) foram explicitados antes de decidir, não descobertos depois.
 - Dívida técnica introduzida conscientemente está registrada e visível, não escondida atrás de um "depois a gente arruma".
 - O plano de implementação respeita KISS/YAGNI — nenhuma complexidade foi adicionada para um cenário hipotético (base: `01-principios-gerais.md`).

@@ -69,6 +69,9 @@ Nome local: _[preencher]_ · Janela: _[preencher]_ · Aprovadores: _[preencher]_
 Pasta do item: _[preencher: pasta da mudança dentro da feature ou do bug]_ · Índice por data: _[preencher: arquivo na área de execução do projeto]_
 Etapas: _[preencher]_
 
+### Decisões técnicas
+Pasta dos ADRs no projeto: _[preencher: pasta onde ficam os `ADR-NNNN-<nome>.md` de cada projeto; sem valor, `decisions/` na pasta do projeto]_
+
 ### Pull request e branches
 Só acrescente `branches:` ao frontmatter (com `protegidas: [...]` e `integracao: ...`) se este nível diferir do de cima; sem a chave, valem `main`, `master`, `develop`, `release/*`, `hotfix/*` e integração em `develop`.
 _[preencher: política de PR, aprovações exigidas, squash]_

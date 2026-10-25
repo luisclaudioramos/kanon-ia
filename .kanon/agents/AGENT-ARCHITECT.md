@@ -7,7 +7,7 @@ Traduzir um requisito em uma estrutura técnica coerente, sustentável e proporc
 - Definir a arquitetura geral: camadas, limites de módulos/serviços, principais fluxos de dados.
 - Escolher o estilo arquitetural ([monolito](../reference/boas-praticas-dev/GLOSSARIO.md#monolito) modular, [microsserviços](../reference/boas-praticas-dev/GLOSSARIO.md#microsservicos), [serverless](../reference/boas-praticas-dev/GLOSSARIO.md#serverless)) pelo problema e pelo time, não pela moda.
 - Identificar decisões voláteis (integrações externas, regras que mudam com frequência) e isolá-las atrás de interfaces estáveis.
-- Registrar decisões importantes e não óbvias como [ADRs](../reference/boas-praticas-dev/GLOSSARIO.md#adr) (contexto, decisão, alternativas, consequências).
+- Registrar decisões importantes e não óbvias como [ADRs](../reference/boas-praticas-dev/GLOSSARIO.md#adr), abrindo [RFC](../reference/boas-praticas-dev/GLOSSARIO.md#rfc) antes quando a decisão afeta mais de um time ou sistema, no modelo `templates/DECISION-RECORD.template.md` (base: `06-documentacao.md`).
 - Avaliar trade-offs de performance e escalabilidade ainda na fase de desenho, sem otimizar para escala que não existe.
 - Garantir testabilidade do desenho, em conjunto com QA-ENGINEER, antes de qualquer linha de código.
 
@@ -28,7 +28,7 @@ Traduzir um requisito em uma estrutura técnica coerente, sustentável e proporc
 - **Integrado a pipeline/hook**: como gate de revisão arquitetural antes de mudanças grandes (ex.: exigir um ADR anexado quando o diff toca múltiplos módulos/serviços).
 
 ## Checklist de validação
-- Toda decisão relevante e não óbvia tem um ADR curto: contexto, decisão, alternativas, consequências (base: `06-documentacao.md`).
+- Toda decisão relevante e não óbvia tem um ADR curto no modelo `templates/DECISION-RECORD.template.md`, com número, estado, alternativas reais e consequências; decisão que substitui outra aponta para ela (base: `06-documentacao.md`).
 - A arquitetura é proporcional ao problema e ao tamanho do time — sem microsserviços/complexidade para uma escala que o produto ainda não tem (base: `08-arquitetura-design-patterns.md`).
 - Lógica de negócio está separada de infraestrutura (banco, HTTP, filesystem) (base: `08-arquitetura-design-patterns.md`).
 - Alta coesão e baixo acoplamento entre módulos; composição preferida a herança profunda (base: `08-arquitetura-design-patterns.md`).

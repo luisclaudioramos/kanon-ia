@@ -5,6 +5,7 @@
 - Formule uma hipótese sobre a causa raiz antes de mexer no código; mudanças aleatórias ("tentar e ver") desperdiçam tempo e mascaram a causa real.
 - Isole a variável: reduza o problema ao menor caso possível que ainda reproduz o bug ([bisecção](GLOSSARIO.md#bisseccao), remoção de partes do sistema).
 - Não pare no primeiro sintoma — pergunte "por quê" repetidamente até chegar à causa raiz, não apenas ao ponto onde o erro aparece.
+- Antes de afirmar uma causa ou um número para fora do time, siga [`process/19-evidence-verification.md`](../../process/19-evidence-verification.md): significado de cada campo conferido, hipóteses concorrentes, validação, pre-mortem e conferência independente.
 
 ## Ferramentas
 - Prefira [debugger](GLOSSARIO.md#debugger) e logs estruturados a `print`/`console.log` espalhados — mais fácil de remover e mais informativo.

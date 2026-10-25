@@ -30,6 +30,7 @@ No repositório de conteúdo, numa pasta `kanon/` em cada nível:
 <empresa>/<area>/kanon/
 <empresa>/<area>/<equipe>/kanon/
     perfil.md       estado atual (template: templates/PERFIL.template.md)
+    ambiente.md     fatos do ambiente (template: templates/AMBIENTE.template.md)
     historico.md    toda mudança (template: templates/HISTORICO-PERFIL.template.md)
 ```
 
@@ -42,6 +43,7 @@ No repositório de conteúdo, numa pasta `kanon/` em cada nível:
 - **Nada entra sem confirmação humana.** Proposta recusada também vai para o histórico.
 - **Regra local × melhoria do núcleo**: pedido para o kanon agir diferente que só vale para aquele nível vai para "Regras locais" do perfil; pedido que valeria para qualquer empresa vira proposta de mudança no núcleo, registrada para decisão do mantenedor do kanon.
 - **Públicos**: a seção "Públicos" do perfil liga cada público de `reference/comunicacao/02-publicos.md` a um papel ou grupo e a um canal. Herda como as tabelas de comunicação: o nível mais específico que cita um público troca a linha inteira dele. Público ausente em toda a cadeia é "não registrado" e a skill que precisar dele pergunta.
+- **Fatos do ambiente**: o que os dados significam e como os sistemas se comportam de fato (significado de tabela e campo, efeito de job e botão, o que está em vigor em cada ambiente, limites das ferramentas de consulta) ficam em `<empresa>/kanon/ambiente.md` (template: `templates/AMBIENTE.template.md`), com a fonte e a data de conferência de cada fato. Lido antes de toda triagem, incidente e análise; gravado na hora em que o fato é descoberto, por qualquer skill, sem passar pela skill 51 (não é perfil: é evidência). Fato mais antigo que `validade_dias` é premissa a reconferir (`process/19-evidence-verification.md`).
 - **Decisões técnicas**: a pasta dos ADRs de cada projeto fica em "Processos > Decisões técnicas" do perfil; sem valor, `decisions/` na pasta do projeto (`reference/boas-praticas-dev/06-documentacao.md`).
 - **`nomes_reservados`** lista os nomes próprios do nível (empresa, área, equipe, pessoas, canais) que nunca podem aparecer em `.kanon/` — a lista alimenta o Selo I ampliado (`process/10`). A skill 51 acrescenta cada pessoa e canal que registra.
 - **Nunca no perfil**: segredo, token, credencial, dado pessoal além de nome e contato de trabalho, procedimento técnico de ferramenta (vai no adaptador).

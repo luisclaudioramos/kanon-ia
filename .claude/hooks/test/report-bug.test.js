@@ -33,9 +33,15 @@ const TRIAGEM_OK = `# Bug — x
 | 1 | Regra | AC-02 da US-03: "grava a campanha" |
 | 2 | Reproduz? | sim, passos abaixo |
 | 3 | Linha | \`CampaignService.cs:88\` |
-| 4 | O dado confirma? | homologação: SELECT ... = 0 linhas |
+| 4 | O dado confirma? | Sim, homologação: SELECT ... = 3 linhas com o campo gravado vazio |
 | 5 | Ambiente e configuração | versão 3.28 implantada, sem fila parada |
 | 6 | Regressão? | _[preencher: "não" · ou a mudança]_ |
+
+## Verificação
+- **Campos conferidos**: \`campaign.name\` gravado por \`CampaignService.cs:88\`; amostra de 3 linhas
+- **Hipóteses**: H1 defeito no serviço; H2 consulta errada (refutada: mesma contagem pelo id); H3 esperado (refutada pelo AC-02)
+- **Validação**: mecanismo provado na linha 88; nenhuma premissa sem teste
+- **Conferência independente**: outro agente refez a consulta sem a hipótese: 3 linhas
 
 ## Repro Steps
 1. a
@@ -63,7 +69,7 @@ test('trava: BUG.md novo sem a seção, ou com pergunta 1 a 5 em aberto, é recu
   const vazio = rodarHook('bug-triage-gate', gravar(f, tpl), { cwd: d });
   assert.strictEqual(vazio.decisao, 'deny');
   assert.match(vazio.motivo, /pergunta 1 sem resposta.*pergunta 5 sem resposta/);
-  const quatro = TRIAGEM_OK.replace('homologação: SELECT ... = 0 linhas', '_[preencher: ambiente]_');
+  const quatro = TRIAGEM_OK.replace('Sim, homologação: SELECT ... = 3 linhas com o campo gravado vazio', '_[preencher: ambiente]_');
   assert.match(rodarHook('bug-triage-gate', gravar(f, quatro), { cwd: d }).motivo, /pergunta 4 sem resposta/);
 });
 
@@ -162,7 +168,7 @@ test('triagem replicável: a skill exige registrar como refazer e o template tem
   assert.ok(tpl.indexOf('## Como refazer a triagem') < tpl.indexOf('## Repro Steps'), 'a seção vem antes dos Repro Steps');
 });
 
-const LATENTE = TRIAGEM_OK.replace('homologação: SELECT ... = 0 linhas', 'latente: o caminho roda em produção, mas o banco não guarda o valor anterior');
+const LATENTE = TRIAGEM_OK.replace('Sim, homologação: SELECT ... = 3 linhas com o campo gravado vazio', 'latente: o caminho roda em produção, mas o banco não guarda o valor anterior');
 
 test('Bug latente: a skill restringe a item já registrado e com análise; item novo continua sem BUG.md', () => {
   const triagem = ler('skills/32-report-bug/SKILL.md').split('## Triagem: é bug de verdade?')[1];
@@ -177,7 +183,7 @@ test('Bug latente: a skill restringe a item já registrado e com análise; item 
 test('trava: pergunta 1 a 5 "não medido" é recusada', () => {
   const d = pasta();
   const f = path.join(d, 'BUG.md');
-  const nm = TRIAGEM_OK.replace('homologação: SELECT ... = 0 linhas', 'não medido: banco sem rota · pedido à infra em 18/10');
+  const nm = TRIAGEM_OK.replace('Sim, homologação: SELECT ... = 3 linhas com o campo gravado vazio', 'não medido: banco sem rota · pedido à infra em 18/10');
   const r = rodarHook('bug-triage-gate', gravar(f, nm), { cwd: d });
   assert.strictEqual(r.decisao, 'deny');
   assert.match(r.motivo, /pergunta 4 não medida/);
@@ -188,7 +194,7 @@ test('trava: pergunta 4 "latente" só passa com o item de origem preenchido', ()
   const f = path.join(d, 'BUG.md');
   const sem = rodarHook('bug-triage-gate', gravar(f, LATENTE), { cwd: d });
   assert.strictEqual(sem.decisao, 'deny');
-  assert.match(sem.motivo, /Bug latente sem o item de origem/);
+  assert.match(sem.motivo, /pergunta 4 latente ou plausível sem o item de origem/);
   const vazio = LATENTE.replace('## Triagem', '**Item de origem**: _[preencher: id]_\n\n## Triagem');
   assert.strictEqual(rodarHook('bug-triage-gate', gravar(f, vazio), { cwd: d }).decisao, 'deny');
   const com = LATENTE.replace('## Triagem', '**Item de origem**: [177964](https://exemplo/177964)\n\n## Triagem');
@@ -213,4 +219,38 @@ test('trava: rascunho e espelho de item da ferramenta de trabalho (BUG-<id>) nã
   for (const nome of ['BUG.md', 'BUG-01.md', 'BUG-02-importacao.md', 'BUG-123-x.md']) {
     assert.strictEqual(rodarHook('bug-triage-gate', gravar(path.join(d, nome), 'x'), { cwd: d }).decisao, 'deny', nome);
   }
+});
+
+test('trava: pergunta 4 "Sim" exige a seção Verificação completa (process/19)', () => {
+  const d = pasta();
+  const f = path.join(d, 'BUG.md');
+  const semSecao = TRIAGEM_OK.split('## Verificação')[0] + '## Repro Steps\n1. a\n';
+  const r1 = rodarHook('bug-triage-gate', gravar(f, semSecao), { cwd: d });
+  assert.strictEqual(r1.decisao, 'deny');
+  assert.match(r1.motivo, /sem a seção "## Verificação"/);
+  const incompleta = TRIAGEM_OK.replace(/- \*\*Conferência independente\*\*:.*$/m, '- **Conferência independente**: _[preencher]_');
+  const r2 = rodarHook('bug-triage-gate', gravar(f, incompleta), { cwd: d });
+  assert.strictEqual(r2.decisao, 'deny');
+  assert.match(r2.motivo, /Verificação sem Conferência independente/);
+});
+
+test('trava: pergunta 4 sem rótulo é recusada; "plausível" só com o item de origem', () => {
+  const d = pasta();
+  const f = path.join(d, 'BUG.md');
+  const semRotulo = TRIAGEM_OK.replace('| 4 | O dado confirma? | Sim,', '| 4 | O dado confirma? | homologação,');
+  assert.match(rodarHook('bug-triage-gate', gravar(f, semRotulo), { cwd: d }).motivo, /pergunta 4 sem rótulo/);
+  const plausivel = TRIAGEM_OK.replace('| 4 | O dado confirma? | Sim,', '| 4 | O dado confirma? | plausível: falta conferir o campo,');
+  assert.strictEqual(rodarHook('bug-triage-gate', gravar(f, plausivel), { cwd: d }).decisao, 'deny');
+  const comItem = plausivel.replace('## Triagem', '**Item de origem**: 123 (link)\n\n## Triagem');
+  assert.strictEqual(rodarHook('bug-triage-gate', gravar(f, comItem), { cwd: d }).decisao, 'allow');
+});
+
+test('processo 19: está no índice e a skill 32, o template de Bug e o 11-debugging apontam para ele', () => {
+  assert.ok(ler('process/19-evidence-verification.md').includes('## Regras'));
+  assert.match(ler('process/README.md'), /\[19\]\(19-evidence-verification\.md\)/);
+  for (const rel of ['skills/32-report-bug/SKILL.md', 'templates/BUG.template.md', 'reference/boas-praticas-dev/11-debugging.md']) {
+    assert.ok(ler(rel).includes('19-evidence-verification'), rel);
+  }
+  assert.ok(ler('templates/BUG.template.md').includes('## Verificação'));
+  assert.ok(ler('process/17-company-profile.md').includes('ambiente.md'));
 });

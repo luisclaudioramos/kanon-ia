@@ -51,6 +51,7 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 | [HANDOFF-PO.template.md](HANDOFF-PO.template.md) | `skills/46-handoff-authoring` — passagem de bastão para PO |
 | [HANDOFF-NEGOCIOS.template.md](HANDOFF-NEGOCIOS.template.md) | `skills/46-handoff-authoring` — passagem de bastão para Negócios |
 | [STATUS-REPORT.template.md](STATUS-REPORT.template.md) | Mensagem do tipo "Status" para liderança executiva ou gestão de entrega: estado com a régua de cor, progresso desde o último report, riscos e bloqueios, decisões necessárias e próximos marcos (data só da estimativa do time) |
+| [AMBIENTE.template.md](AMBIENTE.template.md) | Fatos do ambiente de uma empresa (`process/17-company-profile.md`, `process/19-evidence-verification.md`): significado de tabelas e campos, comportamento de jobs e botões, o que está em vigor em cada ambiente, limites das ferramentas de consulta |
 | [MENSAGEM.template.md](MENSAGEM.template.md) | Mensagem avulsa para um público (`reference/comunicacao/`), revisada por `agents/AGENT-COMMUNICATOR.md`: público, tipo, destino, fontes, texto e aprovação |
 | [MEMORY.template.md](MEMORY.template.md) | `skills/15-memory-update` |
 | [COST-OF-OWNERSHIP.template.md](COST-OF-OWNERSHIP.template.md) | `skills/30-cost-of-ownership-tco` |

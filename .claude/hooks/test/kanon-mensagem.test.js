@@ -133,6 +133,15 @@ test('status para a liderança com a data da estimativa do time passa sem erro (
   assert.strictEqual(r.code, 0, r.stdout);
 });
 
+test('número de impacto sem verificacao no frontmatter é aviso (process/19)', () => {
+  const texto = 'Pessoal, 800 desafios caíram de 1 para 0 depois do resgate.';
+  const sem = validar(mensagem({ publico: 'Time técnico', tipo: 'Aviso', texto }));
+  assert.strictEqual(sem.code, 0, sem.stdout);
+  assert.match(sem.stdout, /AVISO .*número de impacto sem `verificacao`/);
+  const com = validar(mensagem({ publico: 'Time técnico', tipo: 'Aviso', texto, extra: 'verificacao: triagem/TRIAGEM.md#verificação' }));
+  assert.doesNotMatch(com.stdout, /número de impacto/);
+});
+
 test('handoff: nome de pessoa e caminho da base são erro', () => {
   const dir = pasta();
   fs.writeFileSync(path.join(dir, 'po.md'), '# Pendências\n\nA Ciclana PO decide. Ver docs/assuntos/x.md\n');

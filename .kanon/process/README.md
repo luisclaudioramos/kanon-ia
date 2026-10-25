@@ -27,6 +27,7 @@ Cada arquivo é autocontido e segue o mesmo template: Propósito, Quando se apli
 | [16](16-design-foundations.md) | Design Foundations | As regras D1–D6 de interface: obrigatórias quando o perfil de design as define, incentivo quando não; bug visual × oportunidade técnica |
 | [17](17-company-profile.md) | Company Profile | O núcleo fala em capacidades; o perfil vivo de cada empresa, área e equipe diz papéis, ferramentas, comunicação e processos, sempre com confirmação humana |
 | [18](18-work-item-publication-gate.md) | Work Item Publication Gate | Feature e User Story só vão para a ferramenta de trabalho no modelo do template, com os documentos anexados, sem link relativo e sem prazo ou estratégia interna |
+| [19](19-evidence-verification.md) | Evidence Verification | Nenhum número ou conclusão sai do chat sem o significado dos campos conferido, hipóteses concorrentes, validação, pre-mortem e conferência independente; conclusão que cai é corrigida por adendo em todo lugar onde passou |
 
 Este índice é a "Constituição" do sistema completo: harness (`.kanon/`) + skills numeradas + agentes + hooks + `seals.manifest.json` (neste mesmo diretório). Todas essas peças já existem neste repositório — os 19 processos abaixo são lidos e aplicados por elas.
 

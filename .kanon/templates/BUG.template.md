@@ -15,9 +15,21 @@ _Seis perguntas de `skills/32-report-bug`, cada uma com a evidência. Só é Bug
 | 1 | Regra que diz o que deveria acontecer | _[preencher: trecho + link do critério de aceite, regra ou contrato]_ |
 | 2 | Reproduz? | _[preencher: sim, nos passos abaixo · ou ocorrência nos logs com horário e identificador]_ |
 | 3 | Linha que produz o comportamento | _[preencher: `arquivo:linha`]_ |
-| 4 | O dado confirma? | _[preencher: ambiente, consulta e resultado · ou "latente: " + o que foi medido]_ |
+| 4 | O dado confirma? | _[preencher: "Sim" (com a seção Verificação) + ambiente, consulta e resultado · "plausível: " + o que falta verificar · ou "latente: " + o que foi medido]_ |
 | 5 | Ambiente e configuração descartados | _[preencher: versão implantada, configuração, serviços e filas conferidos]_ |
 | 6 | Regressão? | _[preencher: "não" · ou a mudança (PR, versão) que alterou o comportamento]_ |
+
+## Verificação
+_Obrigatória quando a pergunta 4 é "Sim" (`process/19-evidence-verification.md`). Sem ela, a 4 fica "plausível" ou "latente"._
+
+- **Fatos do ambiente lidos**: _[preencher: arquivo e data; fatos usados]_
+- **Campos conferidos**: _[preencher: cada campo de filtro, junção ou data — o que significa, a fonte (código que grava ou fato do ambiente) e a amostra]_
+- **Hipóteses**: _[preencher: pelo menos duas, incluindo "a consulta ou o campo está errado" e "é o esperado"; para cada uma, o que a refutaria e o resultado]_
+- **Cadeia causal**: _[preencher: do gatilho ao sintoma, cada passo com a evidência]_
+- **Validação**: _[preencher: as cinco perguntas do processo 19, com a resposta]_
+- **Pre-mortem**: _[preencher: se estiver errado, por quê; e o teste feito]_
+- **Conferência independente**: _[preencher: quem conferiu (outro agente, sem a hipótese), o que recebeu e o resultado]_
+- **Conclusão**: _[preencher: confirmada / plausível / refutada / inconclusiva; limite do número com a direção do erro]_
 
 ## Como refazer a triagem
 _Uma linha por pergunta: ferramenta, conexão (nome do valor no perfil, sem credencial) e o comando ou a consulta exata. Scripts ao lado deste arquivo; nunca só na área temporária da sessão._

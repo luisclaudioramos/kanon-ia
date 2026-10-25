@@ -5,6 +5,7 @@ destino: _[preencher: canal, conversa ou work item, como o perfil registra]_
 conversa: _[preencher: identificador da mensagem-mãe, quando for resposta; senão remover]_
 fontes:
   - _[preencher: de onde vem cada fato (consulta, arquivo, commit), com data]_
+verificacao: _[preencher: link da seção Verificação que sustenta cada número de impacto (process/19-evidence-verification.md); senão remover]_
 status: rascunho
 aprovado_em: _[preencher: AAAA-MM-DD, quando a pessoa aprovar texto e destino]_
 enviado_em: _[preencher: AAAA-MM-DD, quando a pessoa enviar]_

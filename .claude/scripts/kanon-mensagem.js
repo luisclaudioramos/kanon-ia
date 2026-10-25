@@ -25,6 +25,9 @@ const SEM_NOME_DE_DEV = ['Negócio', 'Liderança executiva', 'Parceiro ou fornec
 const PAPEL_DEV = /\bdev\b|desenvolvedor|engenheir/i;
 // Cortes de reference/comunicacao/04-escrita-clara.md: valem para todos os públicos.
 const ABERTURA_QUE_ANUNCIA = /gostaria de (?:informar|avisar|comunicar|compartilhar)|venho por meio desta|segue abaixo|espero que (?:estejam|esteja|você esteja) bem|passando (?:aqui )?para (?:informar|avisar)|desculp[ae] (?:o|pelo) incômodo|desculpe incomodar/i;
+// Número de impacto (process/19-evidence-verification.md): número com 3+ dígitos na mesma linha de uma palavra
+// de impacto. Sem `verificacao` no frontmatter, é aviso: a pessoa confere se o número passou pela verificação.
+const NUMERO_DE_IMPACTO = /(?=.*\b\d{1,3}(?:\.\d{3})+\b|.*\b\d{3,}\b)(?=.*\b(?:afetad|ca[íi]ram|caiu|impact|perd|zerad|derrubad|duplicad|clientes|participantes|usu[áa]rios))/i;
 const FECHO_GENERICO = /qualquer (?:coisa|dúvida)|fico à disposição|estou à disposição|espero ter ajudado/i;
 
 function secao(md, titulo) {
@@ -93,6 +96,10 @@ function validarMensagem(arquivo, md, projectDir) {
   if (abertura) avisos.push(`abertura que só anuncia ("${abertura[0]}"): a primeira linha é o pedido, a pergunta ou a conclusão`);
   const fecho = linhas.length > 1 && linhas[linhas.length - 1].match(FECHO_GENERICO);
   if (fecho) avisos.push(`fecho genérico ("${fecho[0]}"): termine quando o conteúdo acabar ou ofereça algo específico`);
+  const impacto = linhas.find((l) => NUMERO_DE_IMPACTO.test(l));
+  if (impacto && vazio(fm.verificacao)) {
+    avisos.push(`número de impacto sem \`verificacao\` no frontmatter ("${impacto.slice(0, 60)}"): aponte a seção Verificação que o sustenta (process/19-evidence-verification.md)`);
+  }
   return { erros, avisos };
 }
 

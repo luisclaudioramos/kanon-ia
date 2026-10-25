@@ -7,7 +7,7 @@ Permitir que um agente ou usuário registre uma lição de forma isolada (ex.: "
 Fase 6 — Memória, Custo e Encerramento. Pode ser acionada a qualquer momento do pipeline, não só no final — é mais granular que [`15-memory-update`](../15-memory-update/SKILL.md).
 
 ## Entradas
-- A lição pontual a ser registrada (o quê, por quê, contexto mínimo).
+- A lição pontual a ser registrada (o quê, por quê, contexto mínimo). Uma fonte comum é a seção "Lições aprendidas" do postmortem (`templates/POSTMORTEM.template.md`), que aponta para a entrada criada.
 
 ## Saídas
 - Entrada isolada em `MEMORY.md`.

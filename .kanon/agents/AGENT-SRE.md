@@ -37,7 +37,7 @@ Garantir que o sistema seja implantado com segurança e opere de forma confiáve
 - Métricas-chave (erro, latência, saturação) são monitoradas logo após cada deploy (base: `10-ci-cd-deploy.md`).
 - Existe um plano de rollback rápido e já testado — se não é rápido de reverter, não é seguro de implantar (base: `10-ci-cd-deploy.md`).
 - Alertas configurados são acionáveis; alerta que ninguém age é ruído e deve ser removido ou ajustado (base: `10-ci-cd-deploy.md`).
-- Incidentes geram [post-mortem](../reference/boas-praticas-dev/GLOSSARIO.md#post-mortem) sem culpa ([blameless](../reference/boas-praticas-dev/GLOSSARIO.md#blameless)), com ações de acompanhamento concretas (base: `11-debugging.md`).
+- Incidentes que cumprem os critérios de `11-debugging.md` ("Postmortem") geram [post-mortem](../reference/boas-praticas-dev/GLOSSARIO.md#post-mortem) sem culpa ([blameless](../reference/boas-praticas-dev/GLOSSARIO.md#blameless)) no modelo `templates/POSTMORTEM.template.md`: linha temporal com início, detecção, contenção e resolução; causa raiz com "por que não foi pego antes"; cada ação corretiva com item na ferramenta de trabalho (base: `11-debugging.md`).
 
 ## Formato de saída
 - **Severidade**: bloqueante | recomendação | nit

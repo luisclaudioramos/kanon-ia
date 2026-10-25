@@ -36,6 +36,7 @@ Cada arquivo aqui é um `.template.md`: uma estrutura pronta para ser copiada e 
 | [BUG-INSTRUCTIONS.template.md](BUG-INSTRUCTIONS.template.md) | Guia para reportar bugs |
 | [TEST-CASE.template.md](TEST-CASE.template.md) | `skills/25-test-case-authoring` |
 | [TEST-REPORT.template.md](TEST-REPORT.template.md) | `skills/28-test-report` |
+| [POSTMORTEM.template.md](POSTMORTEM.template.md) | Postmortem sem culpa de incidente (`reference/boas-praticas-dev/11-debugging.md`): resumo, linha temporal com os quatro marcos, impacto, causa raiz, o que funcionou e falhou, ações corretivas com item, lições aprendidas |
 | [GAP-REPORT.template.md](GAP-REPORT.template.md) | Análise de lacunas para decisão go/no-go |
 
 ### Grupo 4 — Governança, Revisão e Entrega

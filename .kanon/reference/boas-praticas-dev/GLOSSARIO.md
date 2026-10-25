@@ -120,7 +120,7 @@ Sequência automatizada de etapas (build, testes, scanning, deploy) que o códig
 
 <a id="post-mortem"></a>
 ### Post-mortem
-Documento/reunião de análise feita após um incidente, registrando o que aconteceu, o impacto, a causa raiz e as ações para evitar recorrência. Ver também [Blameless](#blameless).
+Documento/reunião de análise feita após um incidente, registrando o que aconteceu, o impacto, a causa raiz e as ações para evitar recorrência. Ver também [Blameless](#blameless). No kanon, modelo em `templates/POSTMORTEM.template.md` e critérios em `11-debugging.md`.
 
 <a id="pr"></a>
 ### PR (Pull Request)

@@ -33,14 +33,14 @@ Se uma etapa do pipeline não puder ser concluída (skill indisponível, artefat
 
 **Errado** — pipeline pulando etapa:
 ```
-Skill 14 (implementar-endpoint) acionada diretamente, sem Requirement Summary
+Skill 12 (development-execution) acionada diretamente, sem Requirement Summary
 nem plano técnico registrados.
 ```
 
 **Certo** — sequência respeitada, registro final feito:
 ```
-Skill 01 (requirement-summary) → artefato: requisito com critério de aceite
-Skill 05 (design-tecnico) → artefato: ADR
-Skill 14 (implementar-endpoint) → artefato: PR
-Skill 30 (memory-update) → MEMORY.md atualizado com o aprendizado da feature
+Skill 39 (generate-requirement-summary) → artefato: requisito com critério de aceite
+Skill 04 (architecture-assessment) → artefato: ADR em ARCHITECTURE.md
+Skill 12 (development-execution) → artefato: PR
+Skill 15 (memory-update) → MEMORY.md atualizado com o aprendizado da feature
 ```

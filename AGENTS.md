@@ -63,6 +63,9 @@ relatórios. Termos técnicos, comandos e nomes de código ficam no original (`p
 - **Termo novo, explicação curta:** se o leitor pode não conhecer o termo, explique numa frase na primeira vez.
 - **Sem abertura que só anuncia nem fecho genérico**, e número no lugar do vago: os cortes de
   [`04-escrita-clara.md`](.kanon/reference/comunicacao/04-escrita-clara.md) valem também no chat.
+- **Em análise, quando ajudar:** o nível de confiança (alto, médio, baixo) junto da conclusão, o que ficou fora
+  do escopo, os dados que faltaram e como verificar que ficou resolvido. Não entram em resposta de execução
+  (commit, envio, status).
 - **Caminhos relativos:** nada de caminho absoluto da máquina (`/home/...`) no chat, em notas ou mensagens.
 - **Mensagem de progresso:** uma frase, em português, dizendo o que está sendo feito agora.
 
